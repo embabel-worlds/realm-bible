@@ -189,3 +189,47 @@
     RETURN p.displayTitle AS person,
            f.displayTitle AS father,
            m.displayTitle AS mother
+
+- name: SearchPassages
+  description: The chapters that narrate or contain what the reader describes, in their own words — found by an agentic search over the World English Bible that reformulates, reads and judges each candidate, returned with each chapter's verses in both the King James and the World English Bible so either can be shown. Only chapters judged to fit come back, so fewer than the limit is normal.
+  params:
+    query:
+      type: string
+      default: "a younger brother is sold by jealous siblings who lie to their father"
+      description: "What the reader remembers, in plain modern English."
+    limit:
+      type: int
+      default: 8
+      description: "How many chapters to return, closest first."
+  # AGENTIC, NOT A SINGLE PASS. A reader describes a story, not its words: "bears eat boys who mocked a
+  # prophet" shares almost no vocabulary with 2 Kings 2 ("youths… mocked him… two female bears… mauled"),
+  # and one fused vector+keyword pass ranked it 8th behind chapters about eating. The agentic loop
+  # reformulates, runs both retrievals, reads into candidates and keeps only chapters it judges to fit,
+  # citing only text it saw. Measured: 2 Kings 2, Jonah 1, Luke 10 and 1 Samuel 17 — all missed or
+  # mis-ranked by the single pass — each came back first with fit 1.0, in 4–7 s.
+  #
+  # WHY THE WEB, WHEN THE KJV IS THE DEFAULT: meaning is searched in modern English because readers
+  # ask in modern English. Measured on "a woman kills a sleeping enemy general by driving a tent peg
+  # through his head": the WEB chapters rank Judges 4 and 5 first; the KJV chapters miss both in
+  # their top five. The hit is mapped back to its Passage (a document's uri ends in the osis), and
+  # the chapter is returned in both translations, so the page shows whichever the reader chose.
+  #
+  # Scoped to the Bible's WEB chapters by tag, inside the retrieval, so the loop never spends its
+  # budget on other documents in the world. `r.score` is the loop's judged fit (0..1) and `r.snippet`
+  # the evidence it read — both returned.
+  cypher: |
+    MATCH (c:Concept {value: $query})-[r:RELEVANT_TO {via: 'agentic-rag', intent: 'find the Bible chapter that narrates or contains what the reader describes'}]->(d:Document)
+    WHERE 'web' IN d.tags
+    WITH r, d, split(d.uri, '/')[3] AS osis
+    MATCH (b:Book)<-[:IN]-(p:Passage {osis: osis})<-[:IN]-(v:Verse)
+    WITH r, p, b, v ORDER BY v.verse
+    WITH r, p, b, collect({n: v.verse, kjv: v.text, web: v.web, ref: v.name}) AS verses
+    RETURN r.rank AS rank,
+           r.score AS fit,
+           p.osis AS osis,
+           p.name AS passage,
+           b.testament AS testament,
+           r.snippet AS matched,
+           verses
+    ORDER BY rank
+    LIMIT $limit
