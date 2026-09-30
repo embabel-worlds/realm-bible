@@ -1,0 +1,91 @@
+# The five older public-domain translations, fetched from bible-api.com one verse per call.
+#
+# One producer per translation, because the translation is a STATIC argument: a join hands the
+# producer only the verse reference, and nothing in the anchor says which translation was wanted.
+# Each producer feeds its own type (AsvVerse, …) — see types/bible.yml for why they cannot share
+# one.
+#
+# The key is the verse's `apiRef` (`Judges3:21`, `SongofSolomon2:9`): its human reference with the
+# spaces removed. bible-api parses that form, and answers OSIS (`Judg.3.21`) with 404; the engine
+# refuses a key containing whitespace as a path segment, so `Judges 3:21` itself cannot be sent. The whole response is ONE object, so `records` is `$` and every
+# projection is a top-level read. The text arrives with the source's own whitespace — leading
+# newlines, and deep indentation in YLT — so views trim() it.
+#
+# bible-api maps the Douay-Rheims onto KJV numbering itself: its "Psalms 23:1" is the Vulgate's
+# Psalm 22, "The Lord ruleth me". Nothing here renumbers.
+#
+# Cache is `immutable`: a translation of a verse never changes, and the publisher's rate limit is
+# the scarce thing.
+
+- name: asvVerse
+  kind: remote
+  operation: verseInTranslation
+  records: "$"
+  keyArgs: [reference]
+  args: { translation: asv }
+  echoKeyAs: key
+  maxKeysPerCall: 1
+  project:
+    text: text
+    translation: translation_id
+    translationName: translation_name
+  cache: { kind: immutable }
+
+- name: bbeVerse
+  kind: remote
+  operation: verseInTranslation
+  records: "$"
+  keyArgs: [reference]
+  args: { translation: bbe }
+  echoKeyAs: key
+  maxKeysPerCall: 1
+  project:
+    text: text
+    translation: translation_id
+    translationName: translation_name
+  cache: { kind: immutable }
+
+- name: darbyVerse
+  kind: remote
+  operation: verseInTranslation
+  records: "$"
+  keyArgs: [reference]
+  args: { translation: darby }
+  echoKeyAs: key
+  maxKeysPerCall: 1
+  project:
+    text: text
+    translation: translation_id
+    translationName: translation_name
+  cache: { kind: immutable }
+
+- name: draVerse
+  kind: remote
+  operation: verseInTranslation
+  records: "$"
+  keyArgs: [reference]
+  args: { translation: dra }
+  echoKeyAs: key
+  maxKeysPerCall: 1
+  project:
+    text: text
+    translation: translation_id
+    translationName: translation_name
+  cache: { kind: immutable }
+
+# bible-api carries Young's Literal Translation for the NEW TESTAMENT ONLY. An Old Testament
+# verse is a 404 — no rendering, not an empty one.
+
+- name: yltVerse
+  kind: remote
+  operation: verseInTranslation
+  records: "$"
+  keyArgs: [reference]
+  args: { translation: ylt }
+  echoKeyAs: key
+  maxKeysPerCall: 1
+  project:
+    text: text
+    translation: translation_id
+    translationName: translation_name
+  cache: { kind: immutable }

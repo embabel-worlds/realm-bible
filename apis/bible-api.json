@@ -1,0 +1,20 @@
+{
+  "openapi": "3.0.3",
+  "info": { "title": "bible-api.com", "version": "1.0" },
+  "servers": [ { "url": "https://bible-api.com" } ],
+  "paths": {
+    "/{reference}": {
+      "get": {
+        "operationId": "verseInTranslation",
+        "summary": "One verse (or a range) in one public-domain translation",
+        "parameters": [
+          { "name": "reference", "in": "path", "required": true, "schema": { "type": "string" },
+            "description": "A human reference such as `Judges 3:21`. OSIS (`Judg.3.21`) is NOT accepted." },
+          { "name": "translation", "in": "query", "required": false, "schema": { "type": "string" },
+            "description": "Translation id: kjv, web, asv, bbe, darby, dra, ylt. Default web." }
+        ],
+        "responses": { "200": { "description": "the passage" }, "404": { "description": "no such verse in this translation" } }
+      }
+    }
+  }
+}

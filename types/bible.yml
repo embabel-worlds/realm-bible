@@ -1,0 +1,247 @@
+# The Bible as a graph: three STORED types and a set of VIRTUAL ones.
+#
+#   Book ◀─IN─ Passage ◀─IN─ Verse ─MENTIONS──▶ BiblePerson ─FATHER/MOTHER─▶ BiblePerson
+#                              │                     ▲
+#                              └─RENDERED──▶ AsvVerse, BbeVerse, DarbyVerse, DraVerse, YltVerse
+#                                                    │
+#                  BibleNameQuery {name} ──NAMED─────┘
+#
+# The stored graph is seeded from reference/ and never changes. Every verse carries the King James
+# text (`text`, the default) and the World English Bible (`web`, the modern choice), because both
+# must be searchable. People and the older translations are fetched on demand: nobody asks about
+# all 3,069 people at once, and nobody searches the Darby translation for a word.
+
+- name: Book
+  description: "One of the 66 books, in canonical order. `osis` is the OSIS abbreviation (Gen, Judg, 1Kgs)."
+  userAnchor: false
+  properties:
+    osis:
+      identity: true
+      description: "OSIS book abbreviation, e.g. `Judg`. Identity."
+    name: "The book's name as printed, e.g. `Judges`, `1 Kings`, `Song of Solomon`."
+    bookOrder:
+      type: int
+      description: "Position in the Protestant canon, 1 (Genesis) to 66 (Revelation)."
+    testament: "`Old Testament` or `New Testament`."
+    division: "Traditional grouping: Pentateuch, History, Wisdom, Major Prophets, Gospels, Epistles…"
+
+- name: Passage
+  description: "One CHAPTER of a book — the unit of reading, and the unit a question about a stretch of narrative is asked at. Reached from Verse via IN; itself IN a Book."
+  userAnchor: false
+  properties:
+    osis:
+      identity: true
+      description: "OSIS chapter reference, e.g. `Judg.3`. Identity."
+    name: "Human reference, e.g. `Judges 3`."
+    book: "OSIS book abbreviation, e.g. `Judg`."
+    chapter:
+      type: int
+      description: "Chapter number."
+    verseCount:
+      type: int
+      description: "Number of verses in the chapter."
+
+- name: Verse
+  description: "One verse, with the King James text as `text` (the default) and the World English Bible as `web` (a modern public-domain translation). `people` lists the Theographic ids of the people the verse mentions; traverse MENTIONS to get them. Search with toLower(v.text) CONTAINS 'goat' — CONTAINS also matches `goats` and `scapegoat`."
+  userAnchor: false
+  properties:
+    osis:
+      identity: true
+      description: "OSIS verse reference, e.g. `Judg.3.21`. Identity."
+    name: "Human reference, e.g. `Judges 3:21`."
+    apiRef: "The same reference with the spaces removed, e.g. `1Kings16:31` — the key every translation producer fetches by, because a key with whitespace cannot be a URL path segment."
+    book: "OSIS book abbreviation, e.g. `Judg`."
+    chapter:
+      type: int
+      description: "Chapter number."
+    verse:
+      type: int
+      description: "Verse number."
+    text: "The King James Version text. The DEFAULT translation."
+    web: "The World English Bible text — modern English, public domain. Absent on the two verses (Romans 16:26–27) the WEB numbers differently."
+    people:
+      cardinality: LIST
+      description: "Theographic person ids mentioned in this verse, e.g. `ehud_1039`. The key MENTIONS joins on."
+    event: "The Theographic event this verse belongs to, when it has one, e.g. `Deliverance by Ehud`."
+
+# ── People ────────────────────────────────────────────────────────────────────────────────────────
+
+- name: BibleNameQuery
+  visibility: internal
+  userAnchor: false
+  description: >-
+    An anchor for one name being looked up among the people of the Bible. Pin a name to reach
+    everyone who bore it: `MATCH (:BibleNameQuery {name:'Zechariah'})-[:NAMED]->(p:BiblePerson)`.
+    A name is not a person — there are 26 Zechariahs — so expect several rows.
+  properties:
+    name:
+      identity: true
+      description: "The name to look up, matched case-insensitively against Theographic's `name`. Identity."
+
+- name: BiblePerson
+  description: >-
+    A person in the Bible, from Theographic Bible Metadata (CC BY-SA 4.0). Reached by name from a
+    pinned BibleNameQuery (NAMED), from a Verse that mentions them (MENTIONS), or from a child
+    (FATHER, MOTHER). `personLookup` is the identity — never `name`, which 26 Zechariahs share.
+    Theographic marks much of its data `wip`; `status` says so per person, and the years are
+    scholarly estimates, not facts.
+  virtualJoins:
+    - anchorLabel: BibleNameQuery
+      relationship: NAMED
+      keyField: name
+      recordKeyField: nameQueried
+      producer: biblePeopleByName
+      description: "Everyone who bore this name. A lead, not an identification."
+    - anchorLabel: Verse
+      relationship: MENTIONS
+      keyField: people
+      recordKeyField: lookupQueried
+      # Every BiblePerson carries its id as `personLookup`, whichever producer fetched it. Declaring
+      # that lets a query asked from the verse side — `(v:Verse)-[:MENTIONS]-(p {name:'Moses'})` —
+      # fetch the Moseses by NAME and link the verses that list them, instead of binding all 31,102
+      # verses and being refused. `lookupQueried` is an echo only this producer writes.
+      materializedKeyField: personLookup
+      producer: biblePeopleById
+      description: "The people a verse mentions, as Theographic tags them."
+    - anchorLabel: BiblePerson
+      relationship: FATHER
+      keyField: father
+      recordKeyField: lookupQueried
+      producer: biblePeopleById
+      description: "This person's father, where Theographic records one."
+    - anchorLabel: BiblePerson
+      relationship: MOTHER
+      keyField: mother
+      recordKeyField: lookupQueried
+      producer: biblePeopleById
+      description: "This person's mother, where Theographic records one."
+  properties:
+    personLookup:
+      identity: true
+      description: "Theographic id, e.g. `jezebel_1605`. Identity; the value a Verse's `people` list holds."
+    name: "The person's name."
+    displayTitle: "Name with a disambiguating note where one is needed, e.g. `Zechariah (son of Jehoiada)`."
+    gender: "`Male` or `Female`, where recorded."
+    birthYear: "Estimated year of birth; negative is BC. A string — toInteger() before arithmetic."
+    deathYear: "Estimated year of death; negative is BC. A string."
+    verseCount: "How many verses mention this person. A string — toInteger() before ordering."
+    verses: "Comma-separated OSIS references of every verse that mentions this person."
+    father: "Theographic id of the father, when recorded. The key FATHER joins on."
+    mother: "Theographic id of the mother, when recorded. The key MOTHER joins on."
+    partners: "Comma-separated Theographic ids of spouses."
+    children: "Comma-separated Theographic ids of children."
+    siblings: "Comma-separated Theographic ids of siblings."
+    dictionary: "Easton's Bible Dictionary entry (1897, public domain), where there is one."
+    status: "Theographic's own curation status for this record; `wip` means unfinished."
+    nameQueried: "The name this record was fetched for (NAMED only)."
+    lookupQueried: "The id this record was fetched for (MENTIONS, FATHER, MOTHER)."
+
+# ── Other translations ────────────────────────────────────────────────────────────────────────────
+#
+# One TYPE per translation, not one type with a `translation` property. A type has exactly one
+# identity property, and the only key a fetched verse carries is the reference it was fetched for.
+# If the five shared a type, the ASV and the Darby renderings of Judges 3:21 would carry the same
+# identity and MERGE into one node, and a side-by-side comparison would show one translation twice.
+# The shared parent `Rendering` is what lets a query treat them alike.
+
+- name: Rendering
+  visibility: internal
+  userAnchor: false
+  description: "Any fetched translation of a verse. Parent of AsvVerse, BbeVerse, DarbyVerse, DraVerse and YltVerse."
+  properties:
+    key:
+      identity: true
+      description: "The reference this rendering was fetched for, e.g. `Judges3:21`."
+    text: "The verse in this translation."
+    translation: "bible-api's translation id: asv, bbe, darby, dra or ylt."
+    translationName: "The translation's full name."
+
+- name: AsvVerse
+  parents: [Rendering]
+  description: "A verse in the American Standard Version (1901, public domain). Reached from Verse via RENDERED; fetched live."
+  virtualJoins:
+    - anchorLabel: Verse
+      relationship: RENDERED
+      keyField: apiRef
+      recordKeyField: key
+      producer: asvVerse
+      description: "This verse in the American Standard Version."
+  properties:
+    key:
+      identity: true
+      description: "The reference fetched, e.g. `Judges3:21`."
+    text: "The verse in the ASV."
+    translation: "Always `asv`."
+    translationName: "American Standard Version (1901)."
+
+- name: BbeVerse
+  parents: [Rendering]
+  description: "A verse in the Bible in Basic English (1949/1964, public domain) — an 850-word vocabulary, the plainest English here. Reached from Verse via RENDERED; fetched live."
+  virtualJoins:
+    - anchorLabel: Verse
+      relationship: RENDERED
+      keyField: apiRef
+      recordKeyField: key
+      producer: bbeVerse
+      description: "This verse in the Bible in Basic English."
+  properties:
+    key:
+      identity: true
+      description: "The reference fetched, e.g. `Judges3:21`."
+    text: "The verse in the BBE."
+    translation: "Always `bbe`."
+    translationName: "Bible in Basic English."
+
+- name: DarbyVerse
+  parents: [Rendering]
+  description: "A verse in the Darby Bible (1890, public domain) — close to the source languages. Reached from Verse via RENDERED; fetched live."
+  virtualJoins:
+    - anchorLabel: Verse
+      relationship: RENDERED
+      keyField: apiRef
+      recordKeyField: key
+      producer: darbyVerse
+      description: "This verse in the Darby Bible."
+  properties:
+    key:
+      identity: true
+      description: "The reference fetched, e.g. `Judges3:21`."
+    text: "The verse in the Darby Bible."
+    translation: "Always `darby`."
+    translationName: "Darby Bible."
+
+- name: DraVerse
+  parents: [Rendering]
+  description: "A verse in the Douay-Rheims (1899 American edition, public domain) — the Catholic translation from the Vulgate. Reached from Verse via RENDERED; fetched live."
+  virtualJoins:
+    - anchorLabel: Verse
+      relationship: RENDERED
+      keyField: apiRef
+      recordKeyField: key
+      producer: draVerse
+      description: "This verse in the Douay-Rheims."
+  properties:
+    key:
+      identity: true
+      description: "The reference fetched, e.g. `Judges3:21`."
+    text: "The verse in the Douay-Rheims."
+    translation: "Always `dra`."
+    translationName: "Douay-Rheims 1899 American Edition."
+
+- name: YltVerse
+  parents: [Rendering]
+  description: "A verse in Young's Literal Translation (1898, public domain) — word-for-word, keeping the source tenses. Reached from Verse via RENDERED; fetched live."
+  virtualJoins:
+    - anchorLabel: Verse
+      relationship: RENDERED
+      keyField: apiRef
+      recordKeyField: key
+      producer: yltVerse
+      description: "This verse in Young's Literal Translation."
+  properties:
+    key:
+      identity: true
+      description: "The reference fetched, e.g. `Judges3:21`."
+    text: "The verse in Young's Literal Translation."
+    translation: "Always `ylt`."
+    translationName: "Young's Literal Translation."

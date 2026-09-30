@@ -1,0 +1,33 @@
+name: realm-bible
+description: |
+  The Bible as a graph you can query. Every verse, chapter and book is stored,
+  with two texts on each verse: the King James Version, which is the default,
+  and the World English Bible, a modern public-domain translation. Both are
+  searchable. Five older translations (ASV, Basic English, Darby, Douay-Rheims,
+  Young's Literal) are fetched live for any verse you want to compare.
+
+  The people come from Theographic Bible Metadata: 3,069 of them, joined to the
+  verses that mention them and to their fathers and mothers. A name is not a
+  person — there are 26 Zechariahs — so ask by name and expect every bearer.
+
+  Keyless. Nothing to configure.
+version: 0.1.0
+author: rod
+tags:
+  - bible
+  - scripture
+  - reference
+  - people
+exports:
+  - bible_api
+  - Book
+  - Passage
+  - Verse
+  - BibleNameQuery
+  - BiblePerson
+  - Rendering
+  - AsvVerse
+  - BbeVerse
+  - DarbyVerse
+  - DraVerse
+  - YltVerse

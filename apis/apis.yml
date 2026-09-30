@@ -1,0 +1,14 @@
+# One source, no credential. bible-api.com serves public-domain translations one reference per
+# request, keyless.
+#
+# It is PACED by the publisher — about 15 requests per 30 seconds per address — and a remote
+# producer has no pacing field of its own (minIntervalMs exists only for feed producers). So the
+# translation producers are reached one verse at a time and cache forever: scripture does not
+# change, so a verse fetched once is never fetched again. A view that walked a whole chapter
+# through them would exhaust the allowance within the first page.
+- url: bible-api.json
+  name: bible_api
+  type: openapi
+  auth: none
+  operation-ids:
+    - verseInTranslation

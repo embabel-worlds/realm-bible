@@ -1,0 +1,65 @@
+# The people of the Bible, from Theographic Bible Metadata's People.csv (CC BY-SA 4.0): 3,069
+# people, ~1.6 MB, keyless. A published FILE, not an API, so it is a tabular producer — downloaded
+# once per deployment on the first traversal, cached, and matched by column.
+#
+# Two producers over the one file, because a person is reached two ways. By NAME, which is not an
+# identity — 26 Zechariahs, 26 Shemaiahs — so every bearer comes back and the view says so. And by
+# Theographic id, which is: a Verse's `people` list and a person's `father`/`mother` hold ids.
+#
+# The id producer keys on `slug`, not `personLookup`. The two columns hold the same value, but
+# `personLookup` is the FIRST column and the file opens with a UTF-8 byte-order mark, so its header
+# arrives as "﻿personLookup" — a keyColumn that silently matches nothing if the BOM survives
+# the parse. `slug` is mid-row and cannot carry it.
+
+- name: biblePeopleByName
+  kind: tabular
+  url: "https://raw.githubusercontent.com/robertrouse/theographic-bible-metadata/master/CSV/People.csv"
+  format: csv
+  keyColumn: "name"
+  keyMatch: ci
+  keyAs: nameQueried
+  # The file changes when Theographic publishes a revision, which is rare.
+  fileCacheSeconds: 604800
+  maxRowsPerKey: 50
+  project:
+    personLookup: "slug"
+    name: "name"
+    displayTitle: "displayTitle"
+    gender: "gender"
+    birthYear: "birthYear"
+    deathYear: "deathYear"
+    verseCount: "verseCount"
+    verses: "verses"
+    father: "father"
+    mother: "mother"
+    partners: "partners"
+    children: "children"
+    siblings: "siblings"
+    dictionary: "dictText"
+    status: "status"
+
+- name: biblePeopleById
+  kind: tabular
+  url: "https://raw.githubusercontent.com/robertrouse/theographic-bible-metadata/master/CSV/People.csv"
+  format: csv
+  keyColumn: "slug"
+  keyMatch: exact
+  keyAs: lookupQueried
+  fileCacheSeconds: 604800
+  maxRowsPerKey: 1
+  project:
+    personLookup: "slug"
+    name: "name"
+    displayTitle: "displayTitle"
+    gender: "gender"
+    birthYear: "birthYear"
+    deathYear: "deathYear"
+    verseCount: "verseCount"
+    verses: "verses"
+    father: "father"
+    mother: "mother"
+    partners: "partners"
+    children: "children"
+    siblings: "siblings"
+    dictionary: "dictText"
+    status: "status"
