@@ -22,6 +22,28 @@ BibleNameQuery {name} ─NAMED─▶ BiblePerson
 Two translations are stored because search has to scan text, and a producer cannot be scanned.
 The other five are fetched because nobody searches the Darby for a word.
 
+## Search by meaning
+
+`sources.yml` declares the Bible as searchable documents as well as a graph — one document per
+chapter, in both stored translations:
+
+| Source | Trigger | Documents |
+|---|---|---|
+| `bible-kjv` | on-install | 1,189 chapters, `bible://kjv/<osis>` |
+| `bible-web` | manual (`realm_sync_documents`) | 1,189 chapters, `bible://web/<osis>` |
+| `about-the-translations` | on-install | two Wikipedia pages, fetched |
+
+A document's uri ends in its passage's OSIS reference (`bible://web/Judg.4` is `Passage {osis:'Judg.4'}`),
+so a search hit joins straight back to the graph.
+
+**Search the WEB, show the KJV.** Measured on the same query — *"a woman kills a sleeping enemy
+general by driving a tent peg through his head"* — the WEB corpus ranks Judges 4 and 5 first and
+second; the KJV corpus, in seventeenth-century English, misses both in its top five. A reader asking
+in modern English should be searched against modern English, and can then be shown any translation.
+
+Needs an embedding model configured on the appliance; without one, documents ingest but search by
+meaning does not work.
+
 ## Things to know
 
 - **A Passage is a chapter.** Pericope boundaries differ between publishers; chapters are the

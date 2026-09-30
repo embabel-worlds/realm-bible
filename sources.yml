@@ -1,0 +1,69 @@
+# The Bible as searchable DOCUMENTS, beside the graph (realm spec: sources.yml, `lane: documents`).
+#
+# The graph answers "which verses mention Moses"; documents answer "which passages are ABOUT
+# betrayal" — chunked, embedded, and reachable by document search and RELEVANT_TO. Both are built
+# from the same stored verses, so a document's uri (`bible://kjv/Judg.3`) is a passage's osis.
+#
+# One document per CHAPTER: a verse is too short to embed well, a book too long to retrieve.
+# Verse numbers stay in the text, so a hit can be traced to its verse.
+#
+# No `sourceModifiedAt` is declared: a rendered document's version is the hash of its text, so a
+# re-run re-embeds only a chapter whose text changed, which for scripture is none.
+sources:
+  - name: bible-kjv
+    lane: documents
+    from:
+      cypher: |
+        MATCH (b:Book)<-[:IN]-(p:Passage)<-[:IN]-(v:Verse)
+        WITH b, p, v ORDER BY v.verse
+        WITH b, p, collect({n: v.verse, text: v.text}) AS verses
+        RETURN p.osis AS osis, p.name AS title, b.name AS book, verses
+    document:
+      uri: "bible://kjv/{{ osis }}"
+      title: "{{ title }} (KJV)"
+      content: |
+        # {{ title }}
+
+        {% for v in verses %}{{ v.n }} {{ v.text }}
+        {% endfor %}
+      sourceKind: bible
+      tags: [bible, kjv]
+    sync:
+      # The default translation is searchable from the moment the realm is installed.
+      trigger: on-install
+      prune: true
+
+  - name: bible-web
+    lane: documents
+    from:
+      cypher: |
+        MATCH (b:Book)<-[:IN]-(p:Passage)<-[:IN]-(v:Verse)
+        WHERE v.web IS NOT NULL
+        WITH b, p, v ORDER BY v.verse
+        WITH b, p, collect({n: v.verse, text: v.web}) AS verses
+        RETURN p.osis AS osis, p.name AS title, b.name AS book, verses
+    document:
+      uri: "bible://web/{{ osis }}"
+      title: "{{ title }} (WEB)"
+      content: |
+        # {{ title }}
+
+        {% for v in verses %}{{ v.n }} {{ v.text }}
+        {% endfor %}
+      sourceKind: bible
+      tags: [bible, web]
+    sync:
+      # A second corpus of the same size: run it with realm_sync_documents when it is wanted.
+      trigger: manual
+      prune: true
+
+  - name: about-the-translations
+    lane: documents
+    from:
+      urls:
+        - https://en.wikipedia.org/wiki/King_James_Version
+        - https://en.wikipedia.org/wiki/World_English_Bible
+    document:
+      tags: [bible, translations]
+    sync:
+      trigger: on-install
