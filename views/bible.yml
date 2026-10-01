@@ -233,3 +233,66 @@
            verses
     ORDER BY rank
     LIMIT $limit
+
+# NEWS → SCRIPTURE. Two views, not one, on purpose: the app lists headlines on load (one news call)
+# and runs the agentic search only for the story a reader picks. Ten agentic runs behind a page load
+# would be ten model loops nobody asked for.
+#
+# The news comes from realm-research (NewsItem over Brave, keyed by the ResearchTopic's name), so
+# TodaysHeadlines needs that realm installed with a Brave key; without it the view has no HAS_NEWS
+# join and the app says so rather than showing an empty strip.
+
+- name: TodaysHeadlines
+  description: Today's news stories, from realm-research's Brave news search — the stories Scripture Search finds passages for. Needs realm-research.
+  params:
+    topic:
+      type: string
+      default: "world news today"
+      description: "What to search the news for; the topic text IS the Brave query."
+    limit:
+      type: int
+      default: 8
+      description: "How many stories (Brave returns at most 10)."
+  cypher: |
+    MATCH (t:ResearchTopic {name: $topic})-[:HAS_NEWS]->(n:NewsItem)
+    RETURN n.title AS headline,
+           n.description AS summary,
+           n.url AS url,
+           n.age AS age
+    LIMIT $limit
+
+- name: PassagesForStory
+  description: The Bible chapters whose story or teaching speaks most directly to a news story — an agentic search over the World English Bible that keeps only chapters it judges to fit, with each chapter's verses in the King James and the World English Bible. Fewer than the limit, or none, is a real answer.
+  params:
+    story:
+      type: string
+      default: "Russia launches its largest attack on Ukraine's energy grid, forcing power cuts ahead of winter"
+      description: "The headline and its summary, as one text."
+    limit:
+      type: int
+      default: 3
+      description: "How many chapters to return, closest first."
+  # Same retrieval as SearchPassages; only the intent differs, and the intent is the whole game.
+  # News English shares almost nothing with Scripture, so an intent that asks for "a parallel" lets the
+  # loop search in news words and settle on a generic verse: measured on eight headlines (2026-10-01),
+  # six landed on Isaiah 60:18, "violence shall no more be heard in your land". Asking it to restate the
+  # event in biblical terms FIRST and search with that gave a different, apt chapter for most —
+  # Fairford's foreign plot → 2 Kings 11 ("Treason! Treason!"), a nuclear threat → Jeremiah 18 — and an
+  # honest empty for a story the Bible has no event for. The judge can still be fooled by a pun ("plot of
+  # ground", fit 1.0); the evidence is returned so a reader can see why.
+  cypher: |
+    MATCH (c:Concept {value: $story})-[r:RELEVANT_TO {via: 'agentic-rag', intent: 'first restate this news event as the kind of event the Bible itself narrates, in plain biblical terms (for example: a plot against the king is uncovered; a foreign army burns a city; strangers seek refuge in a land; kings make and break a covenant; a ruler threatens to destroy a nation), then find the chapter that narrates that event. Search with the restatement, not the news words'}]->(d:Document)
+    WHERE 'web' IN d.tags
+    WITH r, d, split(d.uri, '/')[3] AS osis
+    MATCH (b:Book)<-[:IN]-(p:Passage {osis: osis})<-[:IN]-(v:Verse)
+    WITH r, p, b, v ORDER BY v.verse
+    WITH r, p, b, collect({n: v.verse, kjv: v.text, web: v.web, ref: v.name}) AS verses
+    RETURN r.rank AS rank,
+           r.score AS fit,
+           p.osis AS osis,
+           p.name AS passage,
+           b.testament AS testament,
+           r.snippet AS matched,
+           verses
+    ORDER BY rank
+    LIMIT $limit

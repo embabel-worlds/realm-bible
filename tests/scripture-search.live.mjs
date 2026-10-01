@@ -113,6 +113,24 @@ try {
   check('the KJV prints the divine name in small capitals', (await page.locator('#reader .sc').count()) > 0);
   check('the chapter opens with an illuminated initial', (await page.locator('#reader p.first').count()) === 1);
 
+  /* Today's news: one call on load, the agentic search only for the story picked. */
+  await page.locator('.story').first().waitFor({ timeout: 15000 });
+  const stories = await page.locator('.story').count();
+  check('today\'s headlines are listed', stories >= 3, `${stories}`);
+  check('each headline links to its source', (await page.locator('.news a.src').count()) >= 3);
+  check('the strip does not report Brave\'s ten-result page as a problem', !(await page.locator('#news .problem').count()));
+  await page.locator('.story').first().click();
+  await page.waitForFunction(() => document.querySelector('#results .card, #results .placeholder:not(:empty)')
+    && !/Reading candidate/.test(document.querySelector('#results').textContent), null, { timeout: 30000 });
+  const storyCards = await page.locator('.card').count();
+  const storyEmpty = /No chapter was judged to tell an event/.test(await page.locator('#results').textContent());
+  check('a story answers with chapters or says it has none', storyCards > 0 || storyEmpty, `${storyCards} cards`);
+  if (storyCards) {
+    check('a story\'s card shows the reasoning behind the parallel', (await page.locator('.card .why').count()) > 0);
+    check('the note names the story it answers', /same kind of event/.test(await page.locator('#results .note').textContent()));
+  }
+  check('the picked story is marked', (await page.locator('.story[aria-pressed="true"]').count()) === 1);
+
   /* A deep link answers on load. */
   await page.goto(`${url}?q=${encodeURIComponent('the shepherd boy David fights the Philistine champion Goliath')}`, { waitUntil: 'networkidle' });
   await firstCard().waitFor({ timeout: 30000 });

@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="/api/v1/apps-runtime/v1/theme.css">
 <script src="/api/v1/apps-runtime/v1/embabel.js"></script>
 <script type="application/embabel-app+json">
-{"version":1,"name":"scripture-search","requires":{"lenses":[],"views":["SearchPassages","PeopleInPassage","CompareTranslations"],"realms":["realm-bible"],"namespaces":[]}}
+{"version":1,"name":"scripture-search","requires":{"lenses":[],"views":["SearchPassages","PeopleInPassage","CompareTranslations","TodaysHeadlines","PassagesForStory"],"realms":["realm-bible"],"namespaces":[]}}
 </script>
 <style>
   /* A printed Bible, not a dashboard: vellum, iron-gall ink, and rubrication — the red scribes used to mark
@@ -91,6 +91,20 @@
   .problem{border:1px solid #c9a39a;background:#f6e3dc;color:#7f2419;border-radius:3px;padding:12px 14px;font-size:0.92rem;}
   footer{max-width:1180px;margin:30px auto 0;color:var(--faded);font-size:0.85rem;text-align:center;font-style:italic;}
   footer a{color:var(--faded);}
+  /* Today's news reads as a printed margin note: a rubric heading and a quiet list, not a news ticker. */
+  .news{max-width:860px;margin:22px auto 0;text-align:left;border-top:1px solid var(--rule);padding-top:12px;}
+  .news h2{margin:0 0 4px;font-weight:normal;font-variant:small-caps;letter-spacing:0.18em;color:var(--rubric);font-size:0.95rem;text-align:center;}
+  .news .sub{color:var(--faded);font-size:0.85rem;font-style:italic;text-align:center;margin:0 0 10px;}
+  .news ol{list-style:none;margin:0;padding:0;columns:2;column-gap:26px;}
+  @media (max-width:700px){.news ol{columns:1;}}
+  .news li{break-inside:avoid;margin:0 0 8px;display:flex;gap:8px;align-items:baseline;}
+  .story{background:transparent;border:0;padding:0;text-align:left;color:var(--ink);font-size:0.98rem;line-height:1.35;cursor:pointer;}
+  .story:hover{color:var(--rubric);text-decoration:underline;text-decoration-color:var(--rule);}
+  .story[aria-pressed="true"]{color:var(--rubric);}
+  .news .age{color:var(--faded);font-size:0.78rem;font-style:italic;white-space:nowrap;}
+  .news .src{color:var(--faded);font-size:0.78rem;}
+  .why{margin-top:8px;color:var(--faded);font-size:0.88rem;font-style:italic;line-height:1.45;border-top:1px dotted var(--rule);padding-top:6px;}
+  .storyline{color:var(--ink);font-style:normal;}
   #how-it-works{max-width:1180px;margin:24px auto 0;background:var(--page);border:1px solid var(--rule);border-radius:3px;
     padding:24px 30px;line-height:1.65;display:none;}
   #how-it-works:target{display:block;}
@@ -127,6 +141,11 @@
     </div>
   </div>
   <embabel-operation-state id="state"></embabel-operation-state>
+  <section class="news" id="news" aria-label="Today's news">
+    <h2>Scripture for today's news</h2>
+    <p class="sub">Pick a story: the search restates it as the kind of event the Bible tells, then finds the chapter that tells it.</p>
+    <div id="headlines"><p class="note" style="text-align:center">Gathering today's stories…</p></div>
+  </section>
 </header>
 
 <main>
@@ -190,6 +209,23 @@ RETURN p.displayTitle AS person, p.personLookup AS id,
 ORDER BY verses DESC, person</pre>
   <p><b><code>CompareTranslations</code></b> — one verse in seven translations, when you click a verse. Parameter: <code>ref</code> (e.g. "Judges 4:21").
     The King James and World English come from the graph; the other five are fetched live for that verse.</p>
+  <p><b><code>TodaysHeadlines</code></b> — the news strip, once per visit. It reads realm-research's news join, which searches Brave for the
+    topic text ("world news today") and returns at most ten stories.</p>
+  <pre>MATCH (t:ResearchTopic {name: $topic})-[:HAS_NEWS]-&gt;(n:NewsItem)
+RETURN n.title AS headline, n.description AS summary, n.url AS url, n.age AS age
+LIMIT $limit</pre>
+  <p><b><code>PassagesForStory</code></b> — when you pick a story. The same retrieval and traversal as <code>SearchPassages</code>, with the
+    headline and summary as the text and a different instruction to the loop:</p>
+  <pre>MATCH (c:Concept {value: $story})-[r:RELEVANT_TO {via: 'agentic-rag',
+      intent: 'first restate this news event as the kind of event the Bible itself narrates,
+               in plain biblical terms … then find the chapter that narrates that event.
+               Search with the restatement, not the news words'}]-&gt;(d:Document)
+WHERE 'web' IN d.tags
+…  (then Book ← Passage ← Verse, as above)</pre>
+  <p>The instruction matters more than anything else here. News English shares almost no words with Scripture: asked only for "a parallel",
+    the search settled six of eight stories on the same verse, Isaiah 60:18. Asked to restate the event first, it found a plot against a
+    state in 2 Kings 11 ("Treason! Treason!") and a nuclear threat in Jeremiah 18 ("concerning a nation … to pluck up and to break down").
+    The line under each card is that reasoning, so a match that rests on a pun is visible as one.</p>
 
   <h3>When it looks wrong</h3>
   <ul>
@@ -202,6 +238,11 @@ ORDER BY verses DESC, person</pre>
     <li><b>"People" is empty.</b> Theographic tags no one in that chapter — common in law, poetry and genealogy-free prophecy — not an error.</li>
     <li><b>Fewer than seven translations.</b> Young's Literal is New Testament only on its source, so an Old Testament verse has six. A missing
       ASV, Basic English, Darby or Douay-Rheims row means that fetch failed; its reason is shown.</li>
+    <li><b>A story with no chapter.</b> The search judged that the Bible tells no event like it, and says so rather than reaching for a verse.</li>
+    <li><b>A connection that is only a word.</b> The judge can be fooled by a pun — "a terror plot" once matched "a plot of ground full of
+      barley". The reasoning line under the card shows when that has happened.</li>
+    <li><b>No news strip.</b> Today's stories come from realm-research's Brave search; without that realm and its key the strip says so, and
+      everything else works.</li>
     <li><b>Search fails outright.</b> The appliance needs an embedding model to search by meaning; without one, documents exist but cannot be
       searched this way.</li>
   </ul>
@@ -214,7 +255,9 @@ ORDER BY verses DESC, person</pre>
       (<code>RELEVANT_TO {via: 'agentic-rag'}</code>) and then traverses <code>Book ← Passage ← Verse</code> in the same Cypher — elsewhere that
       is an agent framework, a vector store and a database joined in application code.</li>
     <li>People are never stored: <code>MENTIONS</code> is a join to a published CSV, fetched when a chapter asks for it.</li>
-    <li>This page has no backend of its own. It asks the world for three views by name when you act.</li>
+    <li>Live news and a two-thousand-year-old text meet in one query language: the headlines are a join another realm contributes,
+      fetched from Brave on demand, and the passage for a story is the same agentic edge pointed at it.</li>
+    <li>This page has no backend of its own. It asks the world for five views by name when you act.</li>
   </ul>
   <p><a href="#" id="close-how">Close</a></p>
 </section>
@@ -232,6 +275,10 @@ ORDER BY verses DESC, person</pre>
   var searchToken = 0;
   var peopleCache = {};
   var compareCache = {};
+  /* What the shown rows answer: the reader's own description, or a news story. The cards and the reader
+     are the same either way; only the sentence above them and the evidence line differ. */
+  var asked = { kind: 'query', text: '' };
+  var headlines = [];
 
   function esc(s) {
     return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
@@ -290,12 +337,18 @@ ORDER BY verses DESC, person</pre>
 
   function renderResults() {
     if (!rows.length) {
-      resultsEl.innerHTML = '<div class="placeholder">No chapter was judged to fit that description. Try it another way — ' +
-        'what happens, who is there, or a phrase you remember.</div>';
+      resultsEl.innerHTML = asked.kind === 'story'
+        ? '<div class="placeholder">No chapter was judged to tell an event like this one. Not every story has a biblical ' +
+          'parallel, and the search says so rather than reaching for one.</div>'
+        : '<div class="placeholder">No chapter was judged to fit that description. Try it another way — ' +
+          'what happens, who is there, or a phrase you remember.</div>';
       return;
     }
-    resultsEl.innerHTML = '<p class="note">Chapters judged to fit your description, best first — highlighted verses are the evidence ' +
-      'the search read. Showing the ' + (translation === 'web' ? 'World English Bible' : 'King James Version') + '.</p>' +
+    var lead = asked.kind === 'story'
+      ? 'Chapters the search judged to tell the same kind of event as <span class="storyline">“' + esc(asked.text) + '”</span>. ' +
+        'Under each is the reading it judged by — a parallel, not a prophecy.'
+      : 'Chapters judged to fit your description, best first — highlighted verses are the evidence the search read.';
+    resultsEl.innerHTML = '<p class="note">' + lead + ' Showing the ' + (translation === 'web' ? 'World English Bible' : 'King James Version') + '.</p>' +
       rows.map(function (row) {
         var hits = matchedVerses(row);
         var shown = (hits.length ? row.verses.filter(function (v) { return hits.indexOf(v.n) >= 0; }) : row.verses.slice(0, 2)).slice(0, 3);
@@ -304,20 +357,43 @@ ORDER BY verses DESC, person</pre>
           '<span class="testament">' + esc(row.testament || '') + fitLabel(row.fit) + '</span></div>' +
           '<div class="verses scripture">' + shown.map(function (v) {
             return '<span class="vn">' + esc(v.n) + '</span>' + sacred(esc(verseText(v))) + ' ';
-          }).join('') + '</div></div>';
+          }).join('') + '</div>' +
+          /* For a news story the link is an analogy the search drew, so its reasoning is shown, not just the
+             verses: a judge fooled by a pun ("a plot of ground") is then visible as one. */
+          (asked.kind === 'story' && row.matched ? '<div class="why">' + esc(row.matched) + '</div>' : '') + '</div>';
       }).join('');
   }
 
   function search(q) {
     q = (q || '').trim();
     if (!q) return;
+    markStory(-1);
+    try { history.replaceState(null, '', '?q=' + encodeURIComponent(q) + location.hash); } catch (e) { /* preview frames */ }
+    run({ kind: 'query', text: q }, 'SearchPassages', { query: q, limit: 8 },
+      'Reading candidate chapters and judging which ones fit — usually 4 to 8 seconds.');
+  }
+
+  function searchStory(i) {
+    var h = headlines[i];
+    if (!h) return;
+    markStory(i);
+    document.getElementById('q').value = '';
+    try { history.replaceState(null, '', location.pathname + location.hash); } catch (e) { /* preview frames */ }
+    run({ kind: 'story', text: h.headline }, 'PassagesForStory', { story: h.headline + '. ' + (h.summary || ''), limit: 3 },
+      'Restating the story as a biblical event, then reading chapters that tell it — usually 3 to 8 seconds.');
+  }
+
+  function markStory(i) {
+    document.querySelectorAll('.story').forEach(function (b) { b.setAttribute('aria-pressed', String(Number(b.getAttribute('data-i')) === i)); });
+  }
+
+  function run(what, view, params, expectation) {
     var token = ++searchToken;
+    asked = what;
     openOsis = null;
     resultsEl.innerHTML = '<div class="placeholder">Reading candidate chapters…</div>';
     readerEl.innerHTML = '<div class="placeholder scripture">❦<br>Open a chapter to read it here.</div>';
-    try { history.replaceState(null, '', '?q=' + encodeURIComponent(q) + location.hash); } catch (e) { /* preview frames */ }
-    embabel.views.invoke('SearchPassages', { query: q, limit: 8 },
-      { state: stateEl, expectation: 'Reading candidate chapters and judging which ones fit — usually 4 to 8 seconds.' })
+    embabel.views.invoke(view, params, { state: stateEl, expectation: expectation })
       .then(function (res) {
         if (token !== searchToken) return;
         rows = rowsOf(res);
@@ -331,6 +407,33 @@ ORDER BY verses DESC, person</pre>
         rows = [];
         resultsEl.innerHTML = problem('The search could not run: ' + (e && e.message ? e.message : String(e)) +
           ' — this is the search failing, not an absence of passages.');
+      });
+  }
+
+  /* One news call on load — the agentic search runs only for the story a reader picks. The headline view
+     reports PARTIAL whenever Brave had more than its ten-result page, which is every day; that is not a
+     failure and is not shown. No rows at all is: it means the news join is absent or the search failed. */
+  function loadHeadlines() {
+    var el = document.getElementById('headlines');
+    embabel.views.invoke('TodaysHeadlines', { limit: 8 })
+      .then(function (res) {
+        headlines = rowsOf(res);
+        if (!headlines.length) {
+          var w = warningsOf(res).map(warnText).join(' · ');
+          el.innerHTML = '<p class="note" style="text-align:center">No news came back' + (w ? ': ' + esc(w) : '') +
+            '. Today\'s stories need realm-research installed with a Brave search key.</p>';
+          return;
+        }
+        el.innerHTML = '<ol>' + headlines.map(function (h, i) {
+          var host = '';
+          try { host = new URL(h.url).hostname.replace(/^www\./, ''); } catch (e) { /* no url */ }
+          return '<li><button class="story" data-i="' + i + '" aria-pressed="false">' + esc(h.headline) + '</button>' +
+            '<span class="age">' + esc(h.age || '') + (host ? ' · <a class="src" href="' + esc(h.url) + '" target="_blank" rel="noopener noreferrer">' + esc(host) + '</a>' : '') + '</span></li>';
+        }).join('') + '</ol>';
+      })
+      .catch(function (e) {
+        el.innerHTML = '<p class="note" style="text-align:center">Today\'s news could not be read: ' + esc(e && e.message ? e.message : String(e)) +
+          '. Searching Scripture still works.</p>';
       });
   }
 
@@ -421,6 +524,10 @@ ORDER BY verses DESC, person</pre>
   document.querySelectorAll('[data-example]').forEach(function (b) {
     b.addEventListener('click', function () { var q = b.getAttribute('data-example'); document.getElementById('q').value = q; search(q); });
   });
+  document.getElementById('headlines').addEventListener('click', function (e) {
+    var b = e.target.closest('.story');
+    if (b) searchStory(Number(b.getAttribute('data-i')));
+  });
   document.getElementById('t-kjv').addEventListener('click', function () { setTranslation('kjv'); });
   document.getElementById('t-web').addEventListener('click', function () { setTranslation('web'); });
   resultsEl.addEventListener('click', function (e) { var c = e.target.closest('.card'); if (c) openChapter(c.getAttribute('data-osis')); });
@@ -456,6 +563,7 @@ ORDER BY verses DESC, person</pre>
     }
     var q = new URLSearchParams(location.search).get('q');
     if (q) { document.getElementById('q').value = q; search(q); }
+    loadHeadlines();
   });
 })();
 </script>
