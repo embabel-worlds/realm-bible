@@ -273,13 +273,13 @@
       default: 3
       description: "How many chapters to return, closest first."
   # Same retrieval as SearchPassages; only the intent differs, and the intent is the whole game.
-  # News English shares almost nothing with Scripture, so an intent that asks for "a parallel" lets the
-  # loop search in news words and settle on a generic verse: measured on eight headlines (2026-10-01),
-  # six landed on Isaiah 60:18, "violence shall no more be heard in your land". Asking it to restate the
-  # event in biblical terms FIRST and search with that gave a different, apt chapter for most —
-  # Fairford's foreign plot → 2 Kings 11 ("Treason! Treason!"), a nuclear threat → Jeremiah 18 — and an
-  # honest empty for a story the Bible has no event for. The judge can still be fooled by a pun ("plot of
-  # ground", fit 1.0); the evidence is returned so a reader can see why.
+  # News English shares almost nothing with Scripture. Asked plainly for "the chapter that tells of the
+  # same kind of event", the loop searched in news words: a diverted aircraft matched "pray that your
+  # flight will not be in the winter". Asking it to restate the event in biblical terms FIRST, and search
+  # with that, found a conspiracy against the king for a foreign terror plot and a nation threatened with
+  # destruction for a nuclear warning (measured 2026-10-01). The appliance's meaning check then keeps a
+  # chapter only when it tells the same kind of event, so a story with no biblical counterpart returns
+  # nothing — three of eight that day. r.snippet is the evidence it judged by.
   cypher: |
     MATCH (c:Concept {value: $story})-[r:RELEVANT_TO {via: 'agentic-rag', intent: 'first restate this news event as the kind of event the Bible itself narrates, in plain biblical terms (for example: a plot against the king is uncovered; a foreign army burns a city; strangers seek refuge in a land; kings make and break a covenant; a ruler threatens to destroy a nation), then find the chapter that narrates that event. Search with the restatement, not the news words'}]->(d:Document)
     WHERE 'web' IN d.tags

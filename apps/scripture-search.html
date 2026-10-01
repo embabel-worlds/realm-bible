@@ -222,10 +222,12 @@ LIMIT $limit</pre>
                Search with the restatement, not the news words'}]-&gt;(d:Document)
 WHERE 'web' IN d.tags
 …  (then Book ← Passage ← Verse, as above)</pre>
-  <p>The instruction matters more than anything else here. News English shares almost no words with Scripture: asked only for "a parallel",
-    the search settled six of eight stories on the same verse, Isaiah 60:18. Asked to restate the event first, it found a plot against a
-    state in 2 Kings 11 ("Treason! Treason!") and a nuclear threat in Jeremiah 18 ("concerning a nation … to pluck up and to break down").
-    The line under each card is that reasoning, so a match that rests on a pun is visible as one.</p>
+  <p>The instruction matters more than anything else here. News English shares almost no words with Scripture: asked plainly for "the
+    same kind of event", the search matched a diverted aircraft to "pray that your flight will not be in the winter". Asked to restate the
+    event in biblical terms first, it finds conspiracies against a king for a foreign terror plot, and a besieged city for an airstrike.
+    The appliance then checks each chapter's meaning against the story and keeps it only if it tells the same kind of event — so a pun
+    ("a plot of ground") or a broad theme is dropped, and a story the Bible has no counterpart for returns nothing. The line under each
+    card is the evidence it judged by.</p>
 
   <h3>When it looks wrong</h3>
   <ul>
@@ -239,8 +241,8 @@ WHERE 'web' IN d.tags
     <li><b>Fewer than seven translations.</b> Young's Literal is New Testament only on its source, so an Old Testament verse has six. A missing
       ASV, Basic English, Darby or Douay-Rheims row means that fetch failed; its reason is shown.</li>
     <li><b>A story with no chapter.</b> The search judged that the Bible tells no event like it, and says so rather than reaching for a verse.</li>
-    <li><b>A connection that is only a word.</b> The judge can be fooled by a pun — "a terror plot" once matched "a plot of ground full of
-      barley". The reasoning line under the card shows when that has happened.</li>
+    <li><b>A connection that still looks loose.</b> Each chapter passed a check that it tells the same kind of event, but that check is a
+      model's judgement; the evidence line under the card shows what it judged by.</li>
     <li><b>No news strip.</b> Today's stories come from realm-research's Brave search; without that realm and its key the strip says so, and
       everything else works.</li>
     <li><b>Search fails outright.</b> The appliance needs an embedding model to search by meaning; without one, documents exist but cannot be
