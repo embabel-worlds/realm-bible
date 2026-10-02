@@ -90,6 +90,10 @@
       relationship: NAMED
       keyField: name
       recordKeyField: nameQueried
+      # Every record this producer returns carries the name it was found by as `name`, so
+      # `MATCH (p:BiblePerson {name: 'Moses'})` can be answered through this join without the
+      # BibleNameQuery anchor being written out. Case is the query's own: Cypher matches exactly.
+      materializedKeyField: name
       producer: biblePeopleByName
       description: "Everyone who bore this name. A lead, not an identification."
     - anchorLabel: Verse
