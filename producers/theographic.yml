@@ -37,6 +37,10 @@
     siblings: "siblings"
     dictionary: "dictText"
     status: "status"
+  # Theographic stores a person's children as one comma-separated cell of ids. Split here, so the CHILD
+  # join is keyed on a list and reaches every child, at every hop of a walk.
+  compute:
+    childIds: "[c IN split(r.children, ',') WHERE trim(c) <> '' | trim(c)]"
 
 - name: biblePeopleById
   kind: tabular
@@ -63,3 +67,7 @@
     siblings: "siblings"
     dictionary: "dictText"
     status: "status"
+  # Theographic stores a person's children as one comma-separated cell of ids. Split here, so the CHILD
+  # join is keyed on a list and reaches every child, at every hop of a walk.
+  compute:
+    childIds: "[c IN split(r.children, ',') WHERE trim(c) <> '' | trim(c)]"

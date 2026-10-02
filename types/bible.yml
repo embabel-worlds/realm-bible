@@ -118,6 +118,12 @@
       keyField: mother
       recordKeyField: lookupQueried
       producer: biblePeopleById
+    - anchorLabel: BiblePerson
+      relationship: CHILD
+      keyField: childIds
+      recordKeyField: lookupQueried
+      producer: biblePeopleById
+      description: "This person's children. The reverse of FATHER and MOTHER, so descendants can be walked."
       description: "This person's mother, where Theographic records one."
   properties:
     personLookup:
