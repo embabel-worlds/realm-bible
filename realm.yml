@@ -12,7 +12,13 @@ description: |
 
   Keyless. Nothing to configure.
 version: 0.1.0
-author: rod
+# Experimental: it relies on engine features from October 2026 — finding a person by name, walking a
+# family tree in reverse and through list-valued keys, and DERIVE demands planned like queries. On an
+# older host those queries are refused. Querying the Rendering parent label (every translation at
+# once) awaits a further engine fix; the concrete translation labels work everywhere.
+maturity: experimental
+url: https://github.com/embabel-worlds/realm-bible
+author: Rod Johnson
 tags:
   - bible
   - scripture
@@ -24,6 +30,7 @@ exports:
   - Passage
   - Verse
   - BibleNameQuery
+  - BibleIdQuery
   - BiblePerson
   - Rendering
   - AsvVerse
