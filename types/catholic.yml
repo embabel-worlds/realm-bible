@@ -1,0 +1,133 @@
+# The Catholic year, stored: one LiturgicalDay per date and one Celebration per thing celebrated.
+#
+#   Celebration ─ON─▶ LiturgicalDay
+#
+# Seeded from reference/catholic-calendar-<year>.yml, which scripts/calendar/build.mjs computes from
+# romcal. The universal General Roman Calendar only — a country's own calendar (its patron, a holy
+# day transferred to Sunday) is not applied, and views say so.
+
+- name: LiturgicalDay
+  description: "One day of the General Roman Calendar: the principal celebration, its rank, the liturgical colour and season, and the Sunday/weekday lectionary cycles. `date` is ISO (`2026-10-01`)."
+  userAnchor: false
+  properties:
+    date:
+      identity: true
+      description: "ISO date, e.g. `2026-10-01`. Identity."
+    weekday: "Day of the week, e.g. `Thursday`."
+    celebration: "The day's principal celebration as the calendar names it."
+    rank: "solemnity, sunday, feast, memorial, optional memorial or weekday — of the principal celebration."
+    colour: "Liturgical colour of the principal celebration: white, red, green, purple, rose or black."
+    season: "advent time, christmas time, ordinary time, lent, paschal triduum or easter time."
+    sundayCycle: "Sunday lectionary year: a, b or c."
+    weekdayCycle: "Weekday lectionary year: 1 or 2."
+    psalterWeek: "Week of the four-week psalter, 1–4."
+    holyDayOfObligation:
+      type: boolean
+      description: "True when the universal calendar makes it a holy day of obligation (a bishops' conference may transfer or dispense)."
+
+- name: Celebration
+  description: "One thing celebrated on a day — a solemnity, a feast, a memorial, or each of several optional memorials. `saints` holds the calendar's ids for the saints it honours; SaintOfDay maps them to Wikidata."
+  userAnchor: false
+  properties:
+    key:
+      identity: true
+      description: "`<date>/<id>`, e.g. `2026-10-01/therese_of_the_child_jesus_and_the_holy_face_of_lisieux_virgin`. Identity."
+    celebrationId: "The calendar's stable id for the celebration — the same every year, e.g. `all_saints`."
+    date: "ISO date."
+    name: "The celebration's English name, e.g. `Saint Thérèse of the Child Jesus, Virgin and Doctor of the Church`."
+    rank: "solemnity, sunday, feast, memorial, optional memorial or weekday."
+    rankOrder:
+      type: int
+      description: "1 solemnity … 6 weekday — sort by it to put the day's greatest first."
+    principal:
+      type: boolean
+      description: "True for the day's principal celebration; optional memorials beside a weekday are false."
+    optional:
+      type: boolean
+      description: "True for an optional memorial — a parish may keep it or the weekday."
+    colours: "Liturgical colours, a list."
+    holyDayOfObligation:
+      type: boolean
+      description: "True when the universal calendar makes it a holy day of obligation."
+    saints: "The calendar's ids for the saints honoured, a list (empty for a feast of the Lord or a weekday)."
+
+# ── Devotions ────────────────────────────────────────────────────────────────────────────────
+#
+#   RosaryMystery ─TOLD_IN─▶ Passage          RosaryDay {weekday} names the set prayed that day
+#   Prayer                                     CatechismEntry  (every catechism, one shape)
+#
+# All public domain or facts of practice; see reference/catholic-*.yml headers for sources.
+
+- name: RosaryMystery
+  description: "One of the twenty mysteries of the Rosary: its set (joyful, luminous, sorrowful, glorious), its number in the set, the Scripture it meditates (`scripture`, a verse range; TOLD_IN the Passage), and the fruit traditionally asked for."
+  userAnchor: false
+  properties:
+    key:
+      identity: true
+      description: "`<set>-<number>`, e.g. `joyful-1`. Identity."
+    set: "joyful, luminous, sorrowful or glorious."
+    number:
+      type: int
+      description: "1–5 within the set."
+    name: "e.g. `The Annunciation`."
+    scripture: "The verse range it meditates, e.g. `Luke 1:26-38`."
+    osis: "OSIS chapter the range falls in, e.g. `Luke.1` — TOLD_IN joins to that Passage."
+    fruit: "The grace traditionally asked for in meditating it, e.g. `Humility`."
+    note: "Set where the mystery is not itself narrated in Scripture."
+
+- name: RosaryDay
+  description: "Which set of mysteries is prayed on each day of the week (Mon & Sat joyful, Tue & Fri sorrowful, Wed & Sun glorious, Thu luminous — Rosarium Virginis Mariae, 2002)."
+  userAnchor: false
+  properties:
+    weekday:
+      identity: true
+      description: "Day of the week, e.g. `Thursday`. Identity."
+    set: "joyful, luminous, sorrowful or glorious."
+
+- name: Prayer
+  description: "A traditional Catholic prayer in its long-established public-domain English form — Our Father, Hail Mary, Glory Be, Hail Holy Queen, the Angelus, the Memorare…"
+  userAnchor: false
+  properties:
+    key:
+      identity: true
+      description: "Slug, e.g. `hail-mary`. Identity."
+    name: "e.g. `Hail Mary`."
+    text: "The prayer."
+
+- name: CatechismEntry
+  description: "One entry of a public-domain catechism, in a shape every catechism shares: a question and answer (Baltimore) or a numbered passage. `catechismId` names the catechism; `part`/`section` place it in the book."
+  userAnchor: false
+  properties:
+    key:
+      identity: true
+      description: "`<catechismId>/<number>`, e.g. `baltimore-2/6`. Identity."
+    catechism: "The catechism's name, e.g. `Baltimore Catechism No. 2`."
+    catechismId: "Stable id: `baltimore-2`."
+    part: "The book's own division, e.g. `Lesson 1`."
+    partNumber:
+      type: int
+      description: "The division's number, for ordering."
+    section: "The division's title, e.g. `On The End Of Man`."
+    number:
+      type: int
+      description: "The entry's number in the catechism."
+    question: "The question, where the catechism is in question-and-answer form."
+    text: "The answer or passage."
+    note: "Editorial note — set when an entry's text is withheld or qualified."
+
+- name: CccTopic
+  description: "A topic, feast or devotion and where the Catechism of the Catholic Church treats it: paragraph numbers, and a link to the official text on vatican.va. No CCC text is carried — it is copyright. A Rosary mystery's topic EXPLAINS that mystery."
+  userAnchor: false
+  properties:
+    key:
+      identity: true
+      description: "Slug of the topic, e.g. `the-eucharist`. Identity."
+    topic: "e.g. `The Eucharist`, `Rosary — The Annunciation`."
+    paragraphs: "CCC paragraph numbers, e.g. `1322–1419` or `971, 2678, 2708`."
+    firstParagraph:
+      type: int
+      description: "The first paragraph number, for ordering."
+    url: "The vatican.va page holding the first paragraph — the official text."
+    section: "That page's heading in the Catechism, e.g. `Article 3 THE SACRAMENT OF THE EUCHARIST`."
+    urls: "Every vatican.va page the ranges start on, a list."
+    mystery: "The Rosary mystery's key, e.g. `joyful-1`, when the topic is a mystery."

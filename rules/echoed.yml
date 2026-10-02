@@ -1,0 +1,20 @@
+# DERIVE rule set: chapters echoed across the canon — probe for relationship-type strata.
+name: bible/echoed
+derives: Echoed
+description: >-
+  A Torah chapter with a parallel elsewhere is echoed; so is any chapter that parallels at least two
+  echoed chapters. Stacked on bible/parallels' derived PARALLELS relationship.
+properties:
+  via:
+    type: string
+    description: "Why the chapter is echoed — 'torah' (a parallelled Torah chapter) or 'quorum' (parallels two echoed chapters)."
+rules:
+  - derive: "(p:Echoed {via: 'torah'})"
+    from: |
+      MATCH (b:Book)<-[:IN]-(p:Passage)-[:PARALLELS]-(q:Passage)
+      WHERE b.name IN ['Genesis', 'Exodus', 'Leviticus', 'Numbers', 'Deuteronomy']
+  - derive: "(p:Echoed {via: 'quorum'})"
+    from: |
+      MATCH (p:Passage)-[:PARALLELS]-(q:Echoed)
+      WITH p, count(DISTINCT q) AS k
+      WHERE k >= 2

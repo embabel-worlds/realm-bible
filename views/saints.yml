@@ -1,0 +1,95 @@
+# Saints, fetched live from Wikidata and Wikipedia, starting from the calendar's saints (CalendarSaint),
+# a country (Country), or Scripture (ScriptureSaint). Every view here reaches the public Wikidata endpoint
+# or Wikipedia on first use and caches for a week.
+
+- name: SaintsOfTheDay
+  description: The saints the calendar honours on a date, each with Wikidata's card — dates, birth, death and burial places with coordinates for a map, image, religious order, canonization — fetched live. Pair with TodayInTheChurch, which answers at once.
+  params:
+    date:
+      type: string
+      default: "2026-10-01"
+      description: "ISO date, e.g. `2026-10-01`."
+  cypher: |
+    MATCH (d:LiturgicalDay {date: $date})<-[:ON]-(c:Celebration)
+    MATCH (s:CalendarSaint) WHERE s.saintId IN c.saints
+    MATCH (s)-[:CARD]->(k:SaintCard)
+    RETURN c.name AS celebration, c.rank AS rank, s.label AS saint, k.wd AS wd,
+           k.wdDescription AS description, k.birthDate AS born, k.deathDate AS died,
+           k.birthPlace AS birthPlace, k.birthCoord AS birthCoord, k.birthCountry AS birthCountry,
+           k.deathPlace AS deathPlace, k.deathCoord AS deathCoord, k.deathCountry AS deathCountry,
+           k.burialPlace AS burialPlace, k.burialCoord AS burialCoord,
+           k.image AS image, k.religiousOrder AS religiousOrder, k.canonization AS canonization, k.article AS article
+    ORDER BY c.rankOrder, saint
+
+- name: SaintLife
+  description: One saint's life — Wikidata's card (places with coordinates, dates, image, order) and the opening of their Wikipedia article (CC BY-SA 4.0, shown with its link), fetched live — by Wikidata entity.
+  params:
+    wd:
+      type: string
+      default: "http://www.wikidata.org/entity/Q181715"
+      description: "The saint's Wikidata entity IRI, e.g. `http://www.wikidata.org/entity/Q676555` (Francis of Assisi)."
+  cypher: |
+    MATCH (k:SaintCard {wd: $wd})
+    OPTIONAL MATCH (k)-[:LIFE]->(l:SaintLife)
+    RETURN k.wdLabel AS saint, k.wdDescription AS description, k.birthDate AS born, k.deathDate AS died,
+           k.birthPlace AS birthPlace, k.birthCoord AS birthCoord, k.birthCountry AS birthCountry,
+           k.deathPlace AS deathPlace, k.deathCoord AS deathCoord, k.deathCountry AS deathCountry,
+           k.burialPlace AS burialPlace, k.burialCoord AS burialCoord,
+           k.image AS image, k.religiousOrder AS religiousOrder, k.canonization AS canonization, k.feastDay AS feastDay,
+           l.extract AS life, l.thumbnail AS thumbnail, l.pageUrl AS wikipedia
+
+- name: SaintPatronOf
+  description: What a saint is patron of — cities, countries, trades, causes — as Wikidata records it (churches dedicated to them excluded), fetched live.
+  params:
+    wd:
+      type: string
+      default: "http://www.wikidata.org/entity/Q676555"
+      description: "The saint's Wikidata entity IRI."
+    limit:
+      type: int
+      default: 40
+      description: "How many to return."
+  cypher: |
+    MATCH (k:SaintCard {wd: $wd})-[:PATRON_OF]->(p:SaintPatronage)
+    RETURN p.thingLabel AS patronOf, collect(DISTINCT p.kindLabel)[0..3] AS kind
+    ORDER BY patronOf
+    LIMIT $limit
+
+- name: SaintsOfCountry
+  description: The saints and blessed (and venerable, and servants of God) of a country — citizenship or birthplace — from Wikidata, fetched live, by ISO 3166-1 alpha-2 code so the app can start from the reader's locale. Saints first, then the others, each by date of death.
+  params:
+    country:
+      type: string
+      default: "IE"
+      description: "ISO 3166-1 alpha-2 code, e.g. `IE`, `PL`, `US`."
+    limit:
+      type: int
+      default: 60
+      description: "How many to return."
+  cypher: |
+    MATCH (c:Country {iso2: toUpper($country)})-[:SAINTS]->(s:CountrySaint)
+    WITH c, s, CASE WHEN s.canonization CONTAINS 'saint' AND NOT s.canonization CONTAINS 'Servant' THEN 0
+                    WHEN s.canonization CONTAINS 'lessed' THEN 1 WHEN s.canonization CONTAINS 'enerable' THEN 2 ELSE 3 END AS standing
+    RETURN c.name AS country, s.wdLabel AS name, s.canonization AS canonization, s.wdDescription AS description,
+           s.birthDate AS born, s.deathDate AS died, s.feastDay AS feastDay, s.wd AS wd, s.article AS article
+    ORDER BY standing, died
+    LIMIT $limit
+
+- name: SaintsInScripture
+  description: The saints who are also people of Scripture — the apostles, the Holy Family, the women at the tomb, Stephen, Timothy — with how many verses name them, the chapters that name them most, and their feasts in the calendar as month-day and name (`06-29 Saints Peter and Paul, Apostles`).
+  params:
+    chapters:
+      type: int
+      default: 5
+      description: "How many of each saint's chapters to list, most-mentioning first."
+  cypher: |
+    MATCH (s:ScriptureSaint)
+    MATCH (p:Passage)<-[:IN]-(v:Verse) WHERE s.personLookup IN v.people
+    WITH s, p, count(v) AS verses ORDER BY verses DESC
+    WITH s, sum(verses) AS total, collect(p.name)[0..$chapters] AS chapters
+    OPTIONAL MATCH (cs:CalendarSaint {qid: s.qid})
+    OPTIONAL MATCH (:LiturgicalDay)<-[:ON]-(c:Celebration) WHERE cs.saintId IN c.saints
+    WITH s, total, chapters, collect(DISTINCT substring(c.date, 5) + ' ' + c.name) AS feasts
+    RETURN s.label AS saint, s.wd AS wd, s.personLookup AS person, total AS verses, chapters,
+           [f IN feasts WHERE f IS NOT NULL] AS feasts
+    ORDER BY verses DESC

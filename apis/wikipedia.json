@@ -1,0 +1,30 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Wikipedia REST API — page summary",
+    "version": "1.0",
+    "description": "The opening of an English Wikipedia article. Text is CC BY-SA 4.0; always show the page URL with it."
+  },
+  "servers": [{ "url": "https://en.wikipedia.org/api/rest_v1" }],
+  "paths": {
+    "/page/summary/{title}": {
+      "get": {
+        "operationId": "pageSummary",
+        "summary": "The summary of one article",
+        "parameters": [
+          {
+            "name": "title",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" },
+            "description": "The article title with spaces as underscores, e.g. `Francis_of_Assisi`."
+          }
+        ],
+        "responses": {
+          "200": { "description": "the summary" },
+          "404": { "description": "no such article" }
+        }
+      }
+    }
+  }
+}

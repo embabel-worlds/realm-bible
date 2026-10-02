@@ -1,0 +1,11 @@
+{
+  "name": "realm-bible-calendar",
+  "private": true,
+  "description": "Builds reference/catholic-calendar-*.yml from romcal (MIT). Run: npm ci && node build.mjs",
+  "type": "module",
+  "dependencies": {
+    "romcal": "3.0.0-dev.140",
+    "@romcal/calendar.general-roman": "3.0.0-dev.140",
+    "yaml": "2.6.1"
+  }
+}
