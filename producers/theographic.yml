@@ -71,3 +71,66 @@
   # join is keyed on a list and reaches every child, at every hop of a walk.
   compute:
     childIds: "[c IN split(r.children, ',') WHERE trim(c) <> '' | trim(c)]"
+
+# The same file read from the parent's side: everyone whose `father` (or `mother`) is the id asked
+# for. These back the reverse FATHER and MOTHER joins, so `(p)<-[:FATHER]-(c)` finds p's children by
+# asking the table who names p, rather than reading each child's own row. A Theographic id is exact.
+- name: biblePeopleByFather
+  kind: tabular
+  url: "https://raw.githubusercontent.com/robertrouse/theographic-bible-metadata/master/CSV/People.csv"
+  format: csv
+  keyColumn: "father"
+  keyMatch: exact
+  keyAs: fatherQueried
+  fileCacheSeconds: 604800
+  maxRowsPerKey: 100
+  project:
+    personLookup: "slug"
+    name: "name"
+    displayTitle: "displayTitle"
+    gender: "gender"
+    birthYear: "birthYear"
+    deathYear: "deathYear"
+    verseCount: "verseCount"
+    verses: "verses"
+    father: "father"
+    mother: "mother"
+    partners: "partners"
+    children: "children"
+    siblings: "siblings"
+    dictionary: "dictText"
+    status: "status"
+  # Theographic stores a person's children as one comma-separated cell of ids. Split here, so the CHILD
+  # join is keyed on a list and reaches every child, at every hop of a walk.
+  compute:
+    childIds: "[c IN split(r.children, ',') WHERE trim(c) <> '' | trim(c)]"
+
+- name: biblePeopleByMother
+  kind: tabular
+  url: "https://raw.githubusercontent.com/robertrouse/theographic-bible-metadata/master/CSV/People.csv"
+  format: csv
+  keyColumn: "mother"
+  keyMatch: exact
+  keyAs: motherQueried
+  fileCacheSeconds: 604800
+  maxRowsPerKey: 100
+  project:
+    personLookup: "slug"
+    name: "name"
+    displayTitle: "displayTitle"
+    gender: "gender"
+    birthYear: "birthYear"
+    deathYear: "deathYear"
+    verseCount: "verseCount"
+    verses: "verses"
+    father: "father"
+    mother: "mother"
+    partners: "partners"
+    children: "children"
+    siblings: "siblings"
+    dictionary: "dictText"
+    status: "status"
+  # Theographic stores a person's children as one comma-separated cell of ids. Split here, so the CHILD
+  # join is keyed on a list and reaches every child, at every hop of a walk.
+  compute:
+    childIds: "[c IN split(r.children, ',') WHERE trim(c) <> '' | trim(c)]"

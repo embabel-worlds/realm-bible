@@ -118,6 +118,24 @@
       keyField: mother
       recordKeyField: lookupQueried
       producer: biblePeopleById
+    # FATHER and MOTHER read from the parent: keyed by the parent's own id, a record belongs to the
+    # anchor when its `father` (or `mother`) names it. Declared TO_ANCHOR because the edge still runs
+    # child→parent; the engine picks this join when the query walks the arrow backwards, as in
+    # `(p:BiblePerson {name:'Moses'})<-[:FATHER|MOTHER*]-(a)`, so descendants need no other vocabulary.
+    - anchorLabel: BiblePerson
+      relationship: FATHER
+      direction: TO_ANCHOR
+      keyField: personLookup
+      recordKeyField: father
+      producer: biblePeopleByFather
+      description: "The people whose father this is — the FATHER edge walked from the father's end."
+    - anchorLabel: BiblePerson
+      relationship: MOTHER
+      direction: TO_ANCHOR
+      keyField: personLookup
+      recordKeyField: mother
+      producer: biblePeopleByMother
+      description: "The people whose mother this is — the MOTHER edge walked from the mother's end."
     - anchorLabel: BiblePerson
       relationship: CHILD
       keyField: childIds
@@ -140,6 +158,7 @@
     mother: "Theographic id of the mother, when recorded. The key MOTHER joins on."
     partners: "Comma-separated Theographic ids of spouses."
     children: "Comma-separated Theographic ids of children."
+    childIds: "The children's Theographic ids as a list, split from `children`. The key CHILD joins on."
     siblings: "Comma-separated Theographic ids of siblings."
     dictionary: "Easton's Bible Dictionary entry (1897, public domain), where there is one."
     status: "Theographic's own curation status for this record; `wip` means unfinished."
