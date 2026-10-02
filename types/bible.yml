@@ -78,6 +78,18 @@
       identity: true
       description: "The name to look up, matched case-insensitively against Theographic's `name`. Identity."
 
+- name: BibleIdQuery
+  visibility: internal
+  userAnchor: false
+  description: >-
+    An anchor for one Theographic person id. It exists so a person can be found by id where the id
+    comes from data — a verse's `people`, a parent column — as in
+    `MATCH (p:BiblePerson {personLookup: pid})`: the engine writes this door, pinned to the id, by itself.
+  properties:
+    personLookup:
+      identity: true
+      description: "Theographic's id for one person, e.g. `moses_2108`. Identity."
+
 - name: BiblePerson
   description: >-
     A person in the Bible, from Theographic Bible Metadata (CC BY-SA 4.0). Reached by name from a
@@ -96,6 +108,17 @@
       materializedKeyField: name
       producer: biblePeopleByName
       description: "Everyone who bore this name. A lead, not an identification."
+    - anchorLabel: BibleIdQuery
+      relationship: WITH_ID
+      keyField: personLookup
+      recordKeyField: lookupQueried
+      # The door is identified by the very id it fetches with, so a pin on `personLookup` names exactly
+      # one door — which is what lets `MATCH (p:BiblePerson {personLookup: pid})` be answered by id.
+      # MENTIONS also declares personLookup, but its door is a stored Verse holding a LIST of ids: a pin
+      # cannot name one Verse, and the engine will not look a person up through it.
+      materializedKeyField: personLookup
+      producer: biblePeopleById
+      description: "The one person with this Theographic id."
     - anchorLabel: Verse
       relationship: MENTIONS
       keyField: people
