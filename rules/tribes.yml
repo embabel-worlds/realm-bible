@@ -27,7 +27,7 @@ description: >-
 requires:
   # A literal depth: a parameter in a variable-length bound does not parse as Cypher, though
   # realm-spec §13.6's own example writes one — tracked as an engine gap.
-  - materialize: "MATCH (:BiblePerson {name: 'Israel'})<-[:FATHER*1..40]-(:BiblePerson) RETURN 1"
+  - materialize: "MATCH (root:BiblePerson {name: 'Israel'})<-[:FATHER*1..40]-(:BiblePerson) RETURN 1"
     description: "Israel's descendants have to be fetched before descent can be concluded."
 rules:
   - derive: "(s:TribeMember {tribe: s.name})"
