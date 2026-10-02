@@ -342,3 +342,16 @@
     MATCH (p:TribalChapter {tribe: $tribe})
     RETURN p.name AS passage, p.tribalCast AS members
     ORDER BY members DESC, passage
+
+- name: GreatestHouses
+  description: The fathers with the most descendants through the male line among Israel's descendants (rules/progenitors.yml), largest first.
+  params:
+    limit:
+      type: int
+      default: 15
+      description: "How many fathers to return."
+  cypher: |
+    MATCH (p:Progenitor)
+    RETURN p.displayTitle AS father, p.descendants AS descendants
+    ORDER BY descendants DESC
+    LIMIT $limit

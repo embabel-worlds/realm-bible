@@ -1,0 +1,30 @@
+# DERIVE rule set: how many descendants each father has, counted through the whole tree.
+#
+# A rule, not a walk, because the answer is an aggregate carried UP the tree: a father's count is
+# the sum of his children's counts plus the children themselves. A `*` walk from one person can
+# count that one person's line; the rule counts every line at once, so "who founded the largest
+# house" is one query. Settles because a family tree has no cycles — the count climbs once per
+# generation and stops (realm-spec §13.2), here in about 40 rounds.
+#
+# One rule, so `descendants` has one writer. Facts are fetched, so the set declares the same
+# demand as bible/tribes: Israel's descendants, through the reverse FATHER join.
+
+name: bible/progenitors
+derives: Progenitor
+properties:
+  descendants:
+    type: int
+    description: "Every descendant through the male line that Theographic links, below Israel."
+description: >-
+  A father with recorded children; `descendants` counts everyone below him in the male line among
+  Israel's fetched descendants. Theographic's linkage decides the numbers — a line it does not
+  connect is not counted.
+requires:
+  - materialize: "MATCH (:BiblePerson {name: 'Israel'})<-[:FATHER*1..40]-(:BiblePerson) RETURN 1"
+    description: "Israel's descendants have to be fetched before they can be counted."
+rules:
+  - derive: "(p:Progenitor {descendants: n})"
+    from: |
+      MATCH (c:BiblePerson)-[:FATHER]->(p:BiblePerson)
+      OPTIONAL MATCH (k:Progenitor) WHERE k = c
+      WITH p, sum(coalesce(k.descendants, 0) + 1) AS n
