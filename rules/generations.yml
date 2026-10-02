@@ -1,0 +1,32 @@
+# DERIVE rule set: how many generations each person stands from Adam, through the male line.
+#
+# A rule, not a walk, because the answer is a NUMBER carried down every line at once: Adam is 0 and a
+# son is his father's generation plus one. `max` keeps it sound in recursion (realm-spec §13.2) and
+# picks the longer line where Theographic records more than one — Luke 3's extra Cainan puts
+# Abraham at 20, not Genesis 11's 19. A family tree has no cycles, so the number settles in as many
+# rounds as the deepest line (about 75).
+#
+# Facts are fetched, so the set declares its demand: Adam's descendants, through the reverse FATHER
+# join, deep enough to reach the end of Luke's genealogy.
+
+name: bible/generations
+derives: Generation
+properties:
+  fromAdam:
+    type: int
+    description: "Generations from Adam (Adam is 0) along the longest male line Theographic links."
+description: >-
+  Each of Adam's linked descendants, labelled with how many generations they stand from Adam. Checks
+  against the biblical genealogies: Noah 9 (Genesis 5), David 13 after Abraham (Matthew 1), Josiah
+  15 after Solomon (1 Chronicles 3). A person whose father chain does not reach Adam has no number.
+requires:
+  - materialize: "MATCH (:BiblePerson {name: 'Adam'})<-[:FATHER*1..90]-(:BiblePerson) RETURN 1"
+    description: "Adam's descendants have to be fetched before they can be counted."
+rules:
+  - derive: "(a:Generation {fromAdam: 0})"
+    from: |
+      MATCH (a:BiblePerson {name: 'Adam'})
+  - derive: "(c:Generation {fromAdam: g})"
+    from: |
+      MATCH (c:BiblePerson)-[:FATHER]->(p:Generation)
+      WITH c, max(p.fromAdam) + 1 AS g

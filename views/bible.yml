@@ -355,3 +355,15 @@
     RETURN p.displayTitle AS father, p.descendants AS descendants
     ORDER BY descendants DESC
     LIMIT $limit
+
+- name: GenerationFromAdam
+  description: How many generations each bearer of a name stands from Adam through the male line (rules/generations.yml). No row means Theographic does not link that person's father chain back to Adam.
+  params:
+    name:
+      type: string
+      default: "David"
+      description: "The person's name, exactly as Theographic spells it."
+  cypher: |
+    MATCH (g:Generation {name: $name})
+    RETURN g.displayTitle AS person, g.fromAdam AS generation
+    ORDER BY generation
