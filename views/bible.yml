@@ -296,3 +296,49 @@
            verses
     ORDER BY rank
     LIMIT $limit
+
+# ── Derived: tribes, parallel tellings, tribal chapters (rules/*.yml) ─────────────────────────
+# Naming a derived label is what evaluates its rule set, so these views are how the rules reach
+# every surface.
+
+- name: TribeOf
+  description: The tribe of Israel each bearer of a name descends from, through the father (rules/tribes.yml). No row means Theographic does not link that person's father chain to a son of Israel.
+  params:
+    name:
+      type: string
+      default: "Moses"
+      description: "The person's name, exactly as Theographic spells it."
+  cypher: |
+    MATCH (t:TribeMember {name: $name})
+    RETURN t.displayTitle AS person, t.tribe AS tribe
+
+- name: TribeCensus
+  description: How many people Theographic links to each tribe by descent (rules/tribes.yml) — a count of linked records, not a population.
+  cypher: |
+    MATCH (t:TribeMember)
+    RETURN t.tribe AS tribe, count(*) AS people
+    ORDER BY people DESC
+
+- name: ParallelTellings
+  description: Chapters in other books that share a cast with this one — parallel tellings and copied lists (rules/parallels.yml).
+  params:
+    passage:
+      type: string
+      default: "2 Samuel 8"
+      description: "The chapter, e.g. `2 Samuel 8`."
+  cypher: |
+    MATCH (a:Passage {name: $passage})-[r:PARALLELS]-(b:Passage)
+    RETURN b.name AS parallel, r.shared AS sharedPeople
+    ORDER BY sharedPeople DESC
+
+- name: TribalChapters
+  description: Chapters whose cast is mostly one tribe, strongest first (rules/tribal-chapters.yml, stacked on rules/tribes.yml).
+  params:
+    tribe:
+      type: string
+      default: "Levi"
+      description: "The tribe, e.g. `Levi`, `Judah`."
+  cypher: |
+    MATCH (p:TribalChapter {tribe: $tribe})
+    RETURN p.name AS passage, p.tribalCast AS members
+    ORDER BY members DESC, passage

@@ -1,0 +1,46 @@
+# DERIVE rule set: chapters in different books that tell the same story.
+#
+# The signal is a shared cast. Two chapters naming the same ten people are, far more often than
+# not, two tellings of one event or two copies of one list: Samuel–Kings against Chronicles, the
+# synoptic gospels, Ezra 2 against Nehemiah 7. A relationship rule because the conclusion is a
+# THRESHOLD over an aggregate — "at least n distinct people in common" — which no path expresses.
+#
+# Pivoted through people, deliberately. Pairing every verse with every verse is a cartesian over
+# 31,102 verses; pairing only the chapters one person appears in, and ignoring people who appear
+# everywhere (God, Israel, David), binds about twenty thousand candidate pairs. The facts are all
+# stored, so no demand is needed.
+
+name: bible/parallels
+derives: PARALLELS
+properties:
+  shared:
+    type: int
+    description: "Distinct people both chapters name."
+description: >-
+  Two chapters in different books that name at least `minShared` of the same people, ignoring
+  people named in more than `maxSpread` chapters. Genealogies and census lists dominate the top of
+  the ranking because they share the most names; narrative parallels (David's wars in 2 Samuel 8
+  and 1 Chronicles 18, the Twelve in Mark 3 and Matthew 10) sit below them.
+params:
+  minShared:
+    type: int
+    default: 5
+    description: "Distinct people both chapters must name."
+  maxSpread:
+    type: int
+    default: 40
+    description: "Ignore people named in more chapters than this — they are too common to signal a shared story."
+rules:
+  - derive: "(a)-[:PARALLELS {shared: n}]->(b)"
+    from: |
+      MATCH (p:Passage)<-[:IN]-(v:Verse)
+      UNWIND v.people AS pid
+      WITH pid, collect(DISTINCT p) AS ps
+      WHERE size(ps) >= 2 AND size(ps) <= $maxSpread
+      UNWIND ps AS a
+      UNWIND ps AS b
+      WITH a, b, pid WHERE a.osis < b.osis
+      MATCH (a:Passage)-[:IN]->(ba:Book), (b:Passage)-[:IN]->(bb:Book)
+      WHERE ba <> bb
+      WITH a, b, count(DISTINCT pid) AS n
+      WHERE n >= $minShared

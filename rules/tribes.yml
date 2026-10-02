@@ -1,0 +1,40 @@
+# DERIVE rule set: which of the twelve tribes a person belongs to, by descent.
+#
+# A rule, not a walk, because the answer is a PROPERTY carried down a line: a son of Israel founds
+# a tribe and every descendant inherits it through the father. A `*1..n` walk can say that two
+# people are related; it cannot say "and therefore this one is a Levite" for every person at once.
+#
+# The facts are FETCHED, not stored — Theographic's people arrive through producers — and a rule
+# body reads only what is already in the graph. So the set declares its demand: before any rule
+# runs, the engine walks Israel's descendants through the reverse FATHER join (a producer keyed by
+# the father column). Without it the set would conclude over whatever prefix the consumer's query
+# happened to fetch, and say nothing about it (realm-spec §13.6).
+#
+# Patrilineal, as the Bible reckons tribe. A person whose father chain does not reach a son of
+# Israel in Theographic gets no tribe — Saul, Gideon and Samson among them — which is a gap in the
+# data's linkage, not a claim that they had none.
+
+name: bible/tribes
+derives: TribeMember
+properties:
+  tribe:
+    type: string
+    description: "The son of Israel this person descends from in the male line — Judah, Levi, Benjamin…"
+description: >-
+  A person's tribe of Israel, by descent through the father from one of Israel's sons. Only people
+  whose father chain in Theographic reaches a son of Israel are members; Joseph's descendants carry
+  "Joseph" (Ephraim and Manasseh are his sons, not a separate line here).
+requires:
+  # A literal depth: a parameter in a variable-length bound does not parse as Cypher, though
+  # realm-spec §13.6's own example writes one — tracked as an engine gap.
+  - materialize: "MATCH (:BiblePerson {name: 'Israel'})<-[:FATHER*1..40]-(:BiblePerson) RETURN 1"
+    description: "Israel's descendants have to be fetched before descent can be concluded."
+rules:
+  - derive: "(s:TribeMember {tribe: s.name})"
+    from: |
+      MATCH (s:BiblePerson)-[:FATHER]->(:BiblePerson {name: 'Israel'})
+      WHERE s.gender = 'Male'
+  - derive: "(c:TribeMember {tribe: t})"
+    from: |
+      MATCH (c:BiblePerson)-[:FATHER]->(m:TribeMember)
+      WITH c, m.tribe AS t

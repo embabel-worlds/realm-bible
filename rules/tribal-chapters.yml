@@ -1,0 +1,33 @@
+# DERIVE rule set: chapters whose cast is mostly one tribe.
+#
+# Stacked on bible/tribes — its body reads TribeMember — so the engine has to evaluate the tribes
+# first (cross-rule-set strata). One writer per property, so a chapter gets the tribe with the most
+# members it names, and the count of them.
+
+name: bible/tribal-chapters
+derives: TribalChapter
+properties:
+  tribe:
+    type: string
+    description: "The tribe with the most members named in the chapter."
+  tribalCast:
+    type: int
+    description: "How many distinct members of that tribe the chapter names."
+description: >-
+  A chapter naming at least `minMembers` distinct people of one tribe, labelled with that tribe.
+  Tribe comes from bible/tribes, so its gaps are this set's gaps.
+params:
+  minMembers:
+    type: int
+    default: 5
+    description: "Distinct members of one tribe the chapter must name."
+rules:
+  - derive: "(p:TribalChapter {tribe: top.tribe, tribalCast: top.k})"
+    from: |
+      MATCH (p:Passage)<-[:IN]-(v:Verse)
+      UNWIND v.people AS pid
+      MATCH (m:TribeMember {personLookup: pid})
+      WITH p, m.tribe AS tribe, count(DISTINCT m) AS k
+      ORDER BY k DESC
+      WITH p, collect({tribe: tribe, k: k})[0] AS top
+      WHERE top.k >= $minMembers
