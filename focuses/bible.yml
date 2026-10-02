@@ -1,0 +1,25 @@
+# Scripture, with Jonathon.
+#
+# A focus is a named scoping of the chat surface: it picks a persona and a
+# set of realms whose tools the chat LLM can see, and hides the rest. Here
+# the scoping is the point — Jonathon reaches scripture, the people in it
+# and the translations, and nothing else in the world. A pastor who can
+# also read your email is a different and worse idea.
+#
+# Activate with `/focus bible` in chat; `/focus off` to leave.
+
+name: bible
+displayName: Scripture
+description: "Read, search and talk about the Bible with Jonathon"
+icon: "✝"
+defaultPersona: jonathon
+
+# Realm names exactly as realm.yml spells them — this realm is realm-bible.
+# Add realm-research here if you want Jonathon to reach TodaysHeadlines and
+# PassagesForStory, which are the two views that need it.
+realms: [realm-bible]
+
+# Kept deliberately, not by default: Jonathon needs memory_search and
+# memory_save to remember a person between conversations, and view_run to
+# read a verse at all.
+builtins: true

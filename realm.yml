@@ -26,6 +26,7 @@ tags:
   - people
 exports:
   - bible_api
+  - wikipedia
   - Book
   - Passage
   - Verse
@@ -38,3 +39,17 @@ exports:
   - DarbyVerse
   - DraVerse
   - YltVerse
+  - LiturgicalDay
+  - Celebration
+  - RosaryMystery
+  - RosaryDay
+  - Prayer
+  - CatechismEntry
+  - CccTopic
+  - CalendarSaint
+  - SaintCard
+  - SaintPatronage
+  - SaintLife
+  - Country
+  - CountrySaint
+  - ScriptureSaint

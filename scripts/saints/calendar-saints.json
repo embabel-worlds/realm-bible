@@ -1,0 +1,1591 @@
+[
+ {
+  "saintId": "achilleus_of_terracina_martyr",
+  "qid": "Q721711",
+  "label": "Nereus and Achilleus",
+  "matched": "curated",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "adalbert_of_prague_bishop",
+  "qid": "Q243427",
+  "label": "Adalbert of Prague",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "agatha_of_sicily_virgin",
+  "qid": "Q200895",
+  "label": "Agatha of Sicily",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "agnes_of_rome_virgin",
+  "qid": "Q210096",
+  "label": "Agnes of Rome",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "albert_the_great_bishop",
+  "qid": "Q60059",
+  "label": "Albertus Magnus",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "aloysius_gonzaga_religious",
+  "qid": "Q310307",
+  "label": "Aloysius Gonzaga",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "alphonsus_mary_liguori_bishop",
+  "qid": "Q273334",
+  "label": "Alphonsus Maria de Liguori",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "ambrose_of_milan_bishop",
+  "qid": "Q43689",
+  "label": "Ambrose",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "andrew_apostle",
+  "qid": "Q43399",
+  "label": "Andrew the Apostle",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "andrew_dung_lac_priest",
+  "qid": "Q496924",
+  "label": "Andrew Dung-Lac",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "andrew_kim_tae_gon_priest",
+  "qid": "Q343569",
+  "label": "Andrew Kim Taegon",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "angela_merici_virgin",
+  "qid": "Q236216",
+  "label": "Angela Merici",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "anne_mother_of_mary",
+  "qid": "Q164294",
+  "label": "Saint Anne",
+  "matched": "curated",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "anselm_of_canterbury_bishop",
+  "qid": "Q43939",
+  "label": "Anselm of Canterbury",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "ansgar_of_hamburg_bishop",
+  "qid": "Q110299",
+  "label": "Ansgar",
+  "matched": "curated",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "anthony_mary_claret_bishop",
+  "qid": "Q162973",
+  "label": "Anthony Mary Claret",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "anthony_of_egypt_abbot",
+  "qid": "Q170547",
+  "label": "Anthony the Great",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "anthony_of_padua_priest",
+  "qid": "Q167477",
+  "label": "Anthony of Padua",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "anthony_zaccaria_priest",
+  "qid": "Q380099",
+  "label": "Anthony Maria Zaccaria",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "apollinaris_of_ravenna_bishop",
+  "qid": "Q320199",
+  "label": "Apollinaris of Ravenna",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "assumption_of_the_blessed_virgin_mary",
+  "qid": "Q345",
+  "label": "Mary",
+  "matched": "curated",
+  "canonization": ""
+ },
+ {
+  "saintId": "athanasius_of_alexandria_bishop",
+  "qid": "Q44024",
+  "label": "Athanasius of Alexandria",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "augustine_of_canterbury_bishop",
+  "qid": "Q32520",
+  "label": "Augustine of Canterbury",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "augustine_of_hippo_bishop",
+  "qid": "Q8018",
+  "label": "Augustine of Hippo",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "augustine_zhao_rong_priest",
+  "qid": "Q552659",
+  "label": "Augustinus Zhao Rong",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "barnabas_apostle",
+  "qid": "Q185856",
+  "label": "Barnabas",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "bartholomew_apostle",
+  "qid": "Q43982",
+  "label": "Bartholomew the Apostle",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "basil_the_great_bishop",
+  "qid": "Q44258",
+  "label": "Basil of Caesarea",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "bede_the_venerable_priest",
+  "qid": "Q154938",
+  "label": "Bede",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "benedict_of_nursia_abbot",
+  "qid": "Q44265",
+  "label": "Benedict of Nursia",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "bernard_of_clairvaux_abbot",
+  "qid": "Q188411",
+  "label": "Bernard of Clairvaux",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "bernardine_of_siena_priest",
+  "qid": "Q316295",
+  "label": "Bernardino of Siena",
+  "matched": "curated",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "blaise_of_sebaste_bishop",
+  "qid": "Q151967",
+  "label": "Blaise of Sebaste",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "bonaventure_of_bagnoregio_bishop",
+  "qid": "Q43746",
+  "label": "Bonaventure",
+  "matched": "curated",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "boniface_of_mainz_bishop",
+  "qid": "Q160445",
+  "label": "Saint Boniface",
+  "matched": "curated",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "bridget_of_sweden_religious",
+  "qid": "Q204996",
+  "label": "Bridget of Sweden",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "bruno_of_cologne_priest",
+  "qid": "Q312314",
+  "label": "Bruno of Cologne",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "cajetan_of_thiene_priest",
+  "qid": "Q379914",
+  "label": "Saint Cajetan",
+  "matched": "curated",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "callistus_i_pope",
+  "qid": "Q122376",
+  "label": "Callixtus I",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "camillus_de_lellis_priest",
+  "qid": "Q332656",
+  "label": "Camillus de Lellis",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "casimir_of_poland",
+  "qid": "Q312057",
+  "label": "Saint Casimir",
+  "matched": "curated",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "catherine_of_alexandria_virgin",
+  "qid": "Q179718",
+  "label": "Catherine of Alexandria",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "catherine_of_siena_virgin",
+  "qid": "Q229190",
+  "label": "Catherine of Siena",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "cecilia_of_rome_virgin",
+  "qid": "Q80513",
+  "label": "Saint Cecilia",
+  "matched": "curated",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "chair_of_saint_peter_the_apostle",
+  "qid": "Q33923",
+  "label": "Saint Peter",
+  "matched": "curated",
+  "canonization": ""
+ },
+ {
+  "saintId": "charles_borromeo_bishop",
+  "qid": "Q216946",
+  "label": "Charles Borromeo",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "charles_lwanga_martyr",
+  "qid": "Q560121",
+  "label": "Karoli Lwanga",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "christopher_magallanes_priest",
+  "qid": "Q1152723",
+  "label": "Cristóbal Magallanes Jara",
+  "matched": "curated",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "clare_of_assisi_virgin",
+  "qid": "Q191107",
+  "label": "Clare of Assisi",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "clement_i_pope",
+  "qid": "Q42887",
+  "label": "Clement",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "columban_of_luxeuil_abbot",
+  "qid": "Q319653",
+  "label": "Columbanus",
+  "matched": "curated",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "conversion_of_saint_paul_the_apostle",
+  "qid": "Q9200",
+  "label": "Paul the Apostle",
+  "matched": "curated",
+  "canonization": ""
+ },
+ {
+  "saintId": "cornelius_i_pope",
+  "qid": "Q54798",
+  "label": "Cornelius",
+  "matched": "curated",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "cosmas_of_cilicia_martyr",
+  "qid": "Q76486",
+  "label": "Saints Cosmas and Damian",
+  "matched": "curated",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "cyprian_of_carthage_bishop",
+  "qid": "Q190240",
+  "label": "Cyprian",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "cyril_constantine_the_philosopher_monk",
+  "qid": "Q239925",
+  "label": "Saints Cyril and Methodius",
+  "matched": "curated",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "cyril_of_alexandria_bishop",
+  "qid": "Q44079",
+  "label": "Cyril of Alexandria",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "cyril_of_jerusalem_bishop",
+  "qid": "Q298654",
+  "label": "Cyril of Jerusalem",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "damasus_i_pope",
+  "qid": "Q130997",
+  "label": "Damasus I",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "damian_of_cilicia_martyr",
+  "qid": "Q76486",
+  "label": "Saints Cosmas and Damian",
+  "matched": "curated",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "denis_of_paris_bishop",
+  "qid": "Q244380",
+  "label": "Denis of Paris",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "dominic_de_guzman_priest",
+  "qid": "Q44091",
+  "label": "Saint Dominic",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "elizabeth_of_hungary_religious",
+  "qid": "Q159862",
+  "label": "Elizabeth of Hungary",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "elizabeth_of_portugal",
+  "qid": "Q235857",
+  "label": "Elizabeth of Aragon",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "ephrem_the_syrian_deacon",
+  "qid": "Q200608",
+  "label": "Ephrem the Syrian",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "eusebius_of_vercelli_bishop",
+  "qid": "Q181489",
+  "label": "Eusebius of Vercelli",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "fabian_i_pope",
+  "qid": "Q131159",
+  "label": "Fabian",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "faustina_kowalska_virgin",
+  "qid": "Q18978",
+  "label": "Santa Faustina Kowalska",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "felicity_of_carthage_martyr",
+  "qid": "Q11697793",
+  "label": "Felicity",
+  "matched": "curated",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "fidelis_of_sigmaringen_priest",
+  "qid": "Q470613",
+  "label": "Fidelis of Sigmaringen",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "frances_of_rome_religious",
+  "qid": "Q239129",
+  "label": "Frances of Rome",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "francis_de_sales_bishop",
+  "qid": "Q231256",
+  "label": "Francis de Sales",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "francis_of_assisi",
+  "qid": "Q676555",
+  "label": "Francis of Assisi",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "francis_of_paola_hermit",
+  "qid": "Q315640",
+  "label": "Francisco",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "francis_xavier_priest",
+  "qid": "Q163900",
+  "label": "Francis Xavier",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "gabriel_archangel",
+  "qid": "Q81989",
+  "label": "Gabriel",
+  "matched": "curated",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "george_of_lydda_martyr",
+  "qid": "Q48438",
+  "label": "Saint George",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "gertrude_the_great_virgin",
+  "qid": "Q61934",
+  "label": "Gertrude the Great",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "gregory_i_the_great_pope",
+  "qid": "Q42827",
+  "label": "Gregory I",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "gregory_nazianzen_bishop",
+  "qid": "Q44011",
+  "label": "Gregory of Nazianzus",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "gregory_of_narek_abbot",
+  "qid": "Q969758",
+  "label": "Gregory of Narek",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "gregory_vii_pope",
+  "qid": "Q133063",
+  "label": "Gregory VII",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "hedwig_of_silesia_religious",
+  "qid": "Q57520",
+  "label": "Hedwig of Silesia",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "henry_ii_emperor",
+  "qid": "Q103556",
+  "label": "Henry II, Holy Roman Emperor",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "hilary_of_poitiers_bishop",
+  "qid": "Q44344",
+  "label": "Hilary of Poitiers",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "hildegard_of_bingen_abbess",
+  "qid": "Q70991",
+  "label": "Hildegard of Bingen",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "hippolytus_of_rome_priest",
+  "qid": "Q207113",
+  "label": "Hippolytus",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "ignatius_of_antioch_bishop",
+  "qid": "Q44170",
+  "label": "Ignatius of Antioch",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "ignatius_of_loyola_priest",
+  "qid": "Q44281",
+  "label": "Ignatius of Loyola",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "immaculate_conception_of_the_blessed_virgin_mary",
+  "qid": "Q345",
+  "label": "Mary",
+  "matched": "curated",
+  "canonization": ""
+ },
+ {
+  "saintId": "immaculate_heart_of_mary",
+  "qid": "Q345",
+  "label": "Mary",
+  "matched": "curated",
+  "canonization": ""
+ },
+ {
+  "saintId": "irenaeus_of_lyon_bishop",
+  "qid": "Q182123",
+  "label": "Irenaeus",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "isaac_jogues_priest",
+  "qid": "Q588832",
+  "label": "Isaac Jogues",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "isidore_of_seville_bishop",
+  "qid": "Q166876",
+  "label": "Isidore of Seville",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "james_apostle",
+  "qid": "Q43999",
+  "label": "St. James the Elder",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "james_the_less_apostle",
+  "qid": "Q44047",
+  "label": "James, son of Alphaeus",
+  "matched": "curated",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "jane_frances_de_chantal_religious",
+  "qid": "Q234521",
+  "label": "Jane Frances de Chantal",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "januarius_i_of_benevento_bishop",
+  "qid": "Q315312",
+  "label": "Januarius",
+  "matched": "curated",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "jerome_emiliani",
+  "qid": "Q451914",
+  "label": "Gerolamo Emiliani",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "jerome_of_stridon_priest",
+  "qid": "Q44248",
+  "label": "Jerome",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "joachim_father_of_mary",
+  "qid": "Q314700",
+  "label": "Joachim",
+  "matched": "curated",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "john_apostle",
+  "qid": "Q44015",
+  "label": "John the Apostle",
+  "matched": "curated",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "john_baptist_de_la_salle_priest",
+  "qid": "Q312758",
+  "label": "Jean-Baptiste de La Salle",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "john_bosco_priest",
+  "qid": "Q146183",
+  "label": "John Bosco",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "john_chrysostom_bishop",
+  "qid": "Q43706",
+  "label": "John Chrysostom",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "john_damascene_priest",
+  "qid": "Q51884",
+  "label": "John of Damascus",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "john_de_brebeuf_priest",
+  "qid": "Q713402",
+  "label": "Jean de Brébeuf",
+  "matched": "curated",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "john_eudes_priest",
+  "qid": "Q441714",
+  "label": "Jean Eudes",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "john_fisher_bishop",
+  "qid": "Q317149",
+  "label": "John Fisher",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "john_henry_newman_priest",
+  "qid": "Q44490",
+  "label": "John Henry Newman",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "john_i_pope",
+  "qid": "Q160916",
+  "label": "John I",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "john_leonardi_priest",
+  "qid": "Q1355472",
+  "label": "Giovanni Leonardi",
+  "matched": "curated",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "john_mary_vianney_priest",
+  "qid": "Q243816",
+  "label": "Jean-Marie Vianney",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "john_of_avila_priest",
+  "qid": "Q320160",
+  "label": "John of Ávila",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "john_of_capistrano_priest",
+  "qid": "Q310359",
+  "label": "John of Capistrano",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "john_of_god_duarte_cidade_religious",
+  "qid": "Q320171",
+  "label": "John of God",
+  "matched": "curated",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "john_of_kanty_priest",
+  "qid": "Q275624",
+  "label": "John Cantius",
+  "matched": "curated",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "john_of_the_cross_priest",
+  "qid": "Q190388",
+  "label": "John of the Cross",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "john_paul_ii_pope",
+  "qid": "Q989",
+  "label": "John Paul II",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "john_xxiii_pope",
+  "qid": "Q23873",
+  "label": "John XXIII",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "josaphat_kuntsevych_bishop",
+  "qid": "Q355884",
+  "label": "Josaphat Kuntsevych",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "joseph_of_calasanz_priest",
+  "qid": "Q360589",
+  "label": "Joseph Calasanz",
+  "matched": "curated",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "joseph_spouse_of_mary",
+  "qid": "Q128267",
+  "label": "Saint Joseph",
+  "matched": "curated",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "joseph_the_worker",
+  "qid": "Q128267",
+  "label": "Saint Joseph",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "josephine_bakhita_virgin",
+  "qid": "Q236030",
+  "label": "Josephine Bakhita",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "juan_diego_cuauhtlatoatzin",
+  "qid": "Q335539",
+  "label": "Juan Diego Cuauhtlatoatzin",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "jude_apostle",
+  "qid": "Q43945",
+  "label": "Jude the Apostle",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "justin_martyr",
+  "qid": "Q185117",
+  "label": "Justin Martyr",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "lawrence_of_brindisi_priest",
+  "qid": "Q313803",
+  "label": "Lawrence of Brindisi",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "lawrence_of_rome_deacon",
+  "qid": "Q17590",
+  "label": "Lawrence of Rome",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "lawrence_ruiz_martyr",
+  "qid": "Q369793",
+  "label": "Lorenzo Ruiz",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "lazarus_of_bethany",
+  "qid": "Q539890",
+  "label": "Lazarus of Bethany",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "leo_i_the_great_pope",
+  "qid": "Q43954",
+  "label": "Leo I",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "louis_grignion_de_montfort_priest",
+  "qid": "Q88927",
+  "label": "Louis de Montfort",
+  "matched": "curated",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "louis_ix_of_france",
+  "qid": "Q346",
+  "label": "Louis IX of France",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "lucy_of_syracuse_virgin",
+  "qid": "Q183240",
+  "label": "Saint Lucy",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "luke_evangelist",
+  "qid": "Q128538",
+  "label": "Luke the Evangelist",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "marcellinus_of_rome_martyr",
+  "qid": "Q449701",
+  "label": "Marcellinus and Peter",
+  "matched": "curated",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "margaret_mary_alacoque_virgin",
+  "qid": "Q235853",
+  "label": "Margaret Mary Alacoque",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "margaret_of_scotland",
+  "qid": "Q230507",
+  "label": "Saint Margaret of Scotland",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "maria_goretti_virgin",
+  "qid": "Q234697",
+  "label": "Maria Goretti",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "mark_evangelist",
+  "qid": "Q31966",
+  "label": "Mark the Evangelist",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "martha_of_bethany",
+  "qid": "Q232453",
+  "label": "Martha",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "martin_de_porres_religious",
+  "qid": "Q313293",
+  "label": "Martin de Porres",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "martin_i_pope",
+  "qid": "Q172390",
+  "label": "Martin I",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "martin_of_tours_bishop",
+  "qid": "Q133704",
+  "label": "Martin of Tours",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "mary_magdalene",
+  "qid": "Q63070",
+  "label": "Mary Magdalene",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "mary_magdalene_de_pazzi_virgin",
+  "qid": "Q242040",
+  "label": "Magdalena de Pazzi",
+  "matched": "curated",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "mary_mother_of_the_church",
+  "qid": "Q345",
+  "label": "Mary",
+  "matched": "curated",
+  "canonization": "BLESSED"
+ },
+ {
+  "saintId": "mary_of_bethany",
+  "qid": "Q239058",
+  "label": "Mary of Bethany",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "matthew_apostle",
+  "qid": "Q43600",
+  "label": "Matthew the Apostle",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "matthias_apostle",
+  "qid": "Q44020",
+  "label": "Matthias the Apostle",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "maximilian_mary_raymund_kolbe_priest",
+  "qid": "Q153850",
+  "label": "Maximilian Kolbe",
+  "matched": "curated",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "methodius_michael_of_thessaloniki_bishop",
+  "qid": "Q470621",
+  "label": "Methodius of Thessaloniki",
+  "matched": "curated",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "michael_archangel",
+  "qid": "Q45581",
+  "label": "Michael",
+  "matched": "curated",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "monica_of_hippo",
+  "qid": "Q234689",
+  "label": "Monica of Hippo",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "most_holy_name_of_mary",
+  "qid": "Q345",
+  "label": "Mary",
+  "matched": "curated",
+  "canonization": ""
+ },
+ {
+  "saintId": "nativity_of_john_the_baptist",
+  "qid": "Q40662",
+  "label": "John the Baptist",
+  "matched": "curated",
+  "canonization": ""
+ },
+ {
+  "saintId": "nativity_of_the_blessed_virgin_mary",
+  "qid": "Q345",
+  "label": "Mary",
+  "matched": "curated",
+  "canonization": ""
+ },
+ {
+  "saintId": "nereus_of_terracina_martyr",
+  "qid": "Q721711",
+  "label": "Nereus and Achilleus",
+  "matched": "curated",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "nicholas_of_myra_bishop",
+  "qid": "Q44269",
+  "label": "Saint Nicholas",
+  "matched": "curated",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "norbert_of_xanten_bishop",
+  "qid": "Q160374",
+  "label": "Norbert of Xanten",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "our_lady_of_fatima",
+  "qid": "Q345",
+  "label": "Mary",
+  "matched": "curated",
+  "canonization": ""
+ },
+ {
+  "saintId": "our_lady_of_guadalupe",
+  "qid": "Q345",
+  "label": "Mary",
+  "matched": "curated",
+  "canonization": ""
+ },
+ {
+  "saintId": "our_lady_of_loreto",
+  "qid": "Q345",
+  "label": "Mary",
+  "matched": "curated",
+  "canonization": ""
+ },
+ {
+  "saintId": "our_lady_of_lourdes",
+  "qid": "Q345",
+  "label": "Mary",
+  "matched": "curated",
+  "canonization": ""
+ },
+ {
+  "saintId": "our_lady_of_mount_carmel",
+  "qid": "Q345",
+  "label": "Mary",
+  "matched": "curated",
+  "canonization": ""
+ },
+ {
+  "saintId": "our_lady_of_sorrows",
+  "qid": "Q345",
+  "label": "Mary",
+  "matched": "curated",
+  "canonization": ""
+ },
+ {
+  "saintId": "our_lady_of_the_rosary",
+  "qid": "Q345",
+  "label": "Mary",
+  "matched": "curated",
+  "canonization": ""
+ },
+ {
+  "saintId": "pancras_of_rome_martyr",
+  "qid": "Q336731",
+  "label": "Pancras of Rome",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "passion_of_saint_john_the_baptist",
+  "qid": "Q40662",
+  "label": "John the Baptist",
+  "matched": "curated",
+  "canonization": ""
+ },
+ {
+  "saintId": "patrick_of_ireland_bishop",
+  "qid": "Q165479",
+  "label": "Saint Patrick",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "paul_apostle",
+  "qid": "Q9200",
+  "label": "Paul the Apostle",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "paul_chong_ha_sang_martyr",
+  "qid": "Q179935",
+  "label": "Paul Chong Hasang",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "paul_miki_martyr",
+  "qid": "Q380649",
+  "label": "Paul Miki",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "paul_of_the_cross_priest",
+  "qid": "Q370261",
+  "label": "Paul of the Cross",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "paul_vi_pope",
+  "qid": "Q16975",
+  "label": "Paul VI",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "paulinus_of_nola_bishop",
+  "qid": "Q132473",
+  "label": "Paulinus of Nola",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "perpetua_of_carthage_martyr",
+  "qid": "Q12871157",
+  "label": "Perpetua",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "peter_apostle",
+  "qid": "Q33923",
+  "label": "Saint Peter",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "peter_canisius_priest",
+  "qid": "Q44624",
+  "label": "Peter Canisius",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "peter_chanel_priest",
+  "qid": "Q380651",
+  "label": "Peter Chanel",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "peter_chrysologus_bishop",
+  "qid": "Q328742",
+  "label": "Peter Chrysologus",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "peter_claver_priest",
+  "qid": "Q167458",
+  "label": "Peter Claver",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "peter_damian_bishop",
+  "qid": "Q258369",
+  "label": "Peter Damian",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "peter_julian_eymard_priest",
+  "qid": "Q560994",
+  "label": "Peter Julian Eymard",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "peter_the_exorcist_martyr",
+  "qid": "Q449701",
+  "label": "Marcellinus and Peter",
+  "matched": "curated",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "philip_apostle",
+  "qid": "Q43675",
+  "label": "Philip the Apostle",
+  "matched": "curated",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "philip_neri_priest",
+  "qid": "Q217791",
+  "label": "Philip Neri",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "pius_francesco_forgione_priest",
+  "qid": "Q193754",
+  "label": "Padre Pio",
+  "matched": "curated",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "pius_v_pope",
+  "qid": "Q131945",
+  "label": "Pius V",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "pius_x_pope",
+  "qid": "Q43739",
+  "label": "Pius X",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "polycarp_of_smyrna_bishop",
+  "qid": "Q192371",
+  "label": "Polycarp",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "pontian_i_pope",
+  "qid": "Q132113",
+  "label": "Pontian",
+  "matched": "curated",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "presentation_of_the_blessed_virgin_mary",
+  "qid": "Q345",
+  "label": "Mary",
+  "matched": "curated",
+  "canonization": ""
+ },
+ {
+  "saintId": "queenship_of_the_blessed_virgin_mary",
+  "qid": "Q345",
+  "label": "Mary",
+  "matched": "curated",
+  "canonization": ""
+ },
+ {
+  "saintId": "raphael_archangel",
+  "qid": "Q56951",
+  "label": "Raphael",
+  "matched": "curated",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "raymond_of_penyafort_priest",
+  "qid": "Q318980",
+  "label": "Raymond of Penyafort",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "rita_of_cascia_religious",
+  "qid": "Q153024",
+  "label": "Q153024",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "robert_bellarmine_bishop",
+  "qid": "Q298664",
+  "label": "Robert Bellarmine",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "romuald_of_ravenna_abbot",
+  "qid": "Q379691",
+  "label": "Romuald",
+  "matched": "curated",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "rose_of_lima_virgin",
+  "qid": "Q244383",
+  "label": "Rose of Lima",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "scholastica_of_nursia_virgin",
+  "qid": "Q231300",
+  "label": "Scholastica",
+  "matched": "curated",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "sebastian_of_milan_martyr",
+  "qid": "Q183332",
+  "label": "Saint Sebastian",
+  "matched": "curated",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "sharbel_makhluf_priest",
+  "qid": "Q331876",
+  "label": "Charbel Makhluf",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "simon_apostle",
+  "qid": "Q12871",
+  "label": "Simon the Zealot",
+  "matched": "curated",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "sixtus_ii_pope",
+  "qid": "Q127385",
+  "label": "Sixtus II",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "stanislaus_of_szczepanow_bishop",
+  "qid": "Q351635",
+  "label": "Stanislaus of Szczepanów",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "stephen_i_of_hungary",
+  "qid": "Q177903",
+  "label": "Stephen I of Hungary",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "stephen_the_first_martyr",
+  "qid": "Q161775",
+  "label": "Saint Stephen",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "sylvester_i_pope",
+  "qid": "Q47149",
+  "label": "Sylvester I",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "teresa_benedicta_of_the_cross_stein_virgin",
+  "qid": "Q76749",
+  "label": "Edith Stein",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "teresa_of_calcutta_virgin",
+  "qid": "Q30547",
+  "label": "Mother Teresa",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "teresa_of_jesus_of_avila_virgin",
+  "qid": "Q174880",
+  "label": "Teresa of Ávila",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "therese_of_the_child_jesus_and_the_holy_face_of_lisieux_virgin",
+  "qid": "Q181715",
+  "label": "Thérèse of Lisieux",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "thomas_apostle",
+  "qid": "Q43669",
+  "label": "Thomas the Apostle",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "thomas_aquinas_priest",
+  "qid": "Q9438",
+  "label": "Thomas Aquinas",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "thomas_becket_bishop",
+  "qid": "Q192236",
+  "label": "Thomas Becket",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "thomas_more_martyr",
+  "qid": "Q42544",
+  "label": "Thomas More",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "timothy_of_ephesus_bishop",
+  "qid": "Q212647",
+  "label": "Timothy",
+  "matched": "curated",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "titus_of_crete_bishop",
+  "qid": "Q320136",
+  "label": "Saint Titus",
+  "matched": "curated",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "turibius_of_mogrovejo_bishop",
+  "qid": "Q467993",
+  "label": "Turibius of Mongrovejo",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "vincent_de_paul_priest",
+  "qid": "Q244413",
+  "label": "Vincent de Paul",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "vincent_ferrer_priest",
+  "qid": "Q317131",
+  "label": "Vincent Ferrer",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "vincent_of_saragossa_deacon",
+  "qid": "Q318974",
+  "label": "Vincent of Saragossa",
+  "matched": "search",
+  "canonization": "SAINT"
+ },
+ {
+  "saintId": "visitation_of_mary",
+  "qid": "Q345",
+  "label": "Mary",
+  "matched": "curated",
+  "canonization": ""
+ },
+ {
+  "saintId": "wenceslaus_i_of_bohemia_martyr",
+  "qid": "Q196527",
+  "label": "Saint Wenceslaus I, Duke of Bohemia",
+  "matched": "search",
+  "canonization": "SAINT"
+ }
+]

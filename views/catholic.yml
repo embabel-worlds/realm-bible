@@ -1,0 +1,134 @@
+# The Catholic edition's views. Each takes its date from the caller — a view never knows what
+# "today" is where the reader is, and the app does.
+
+- name: TodayInTheChurch
+  description: What the Church celebrates on a date in the General Roman Calendar — the day's principal celebration, any optional memorials beside it with the saints each honours (name and Wikidata entity, for SaintLife), the liturgical colour, season and lectionary cycles. Stored, so it answers at once. The universal calendar only; a country's own calendar may differ.
+  params:
+    date:
+      type: string
+      default: "2026-10-01"
+      description: "ISO date, e.g. `2026-10-01`. The app passes today's date in the reader's own time zone."
+  cypher: |
+    MATCH (d:LiturgicalDay {date: $date})<-[:ON]-(c:Celebration)
+    OPTIONAL MATCH (s:CalendarSaint) WHERE s.saintId IN c.saints
+    WITH d, c, collect({saintId: s.saintId, wd: s.wd, name: s.label}) AS saints
+    WITH d, c, [x IN saints WHERE x.wd IS NOT NULL] AS saints ORDER BY c.rankOrder, c.principal DESC, c.name
+    RETURN d.date AS date,
+           d.weekday AS weekday,
+           d.season AS season,
+           d.colour AS colour,
+           d.sundayCycle AS sundayCycle,
+           d.weekdayCycle AS weekdayCycle,
+           d.holyDayOfObligation AS holyDayOfObligation,
+           collect({id: c.celebrationId, name: c.name, rank: c.rank, optional: c.optional, colours: c.colours, saints: saints}) AS celebrations
+
+- name: FeastsInRange
+  description: The solemnities and feasts (and, if asked, memorials) between two dates — the coming week's calendar, or a month's. Sundays included.
+  params:
+    from:
+      type: string
+      default: "2026-10-01"
+      description: "First ISO date."
+    to:
+      type: string
+      default: "2026-10-31"
+      description: "Last ISO date, inclusive."
+    maxRank:
+      type: int
+      default: 4
+      description: "Highest rankOrder to include: 3 = solemnities, Sundays and feasts; 4 adds memorials; 5 adds optional memorials."
+  cypher: |
+    MATCH (d:LiturgicalDay)<-[:ON]-(c:Celebration)
+    WHERE d.date >= $from AND d.date <= $to AND c.rankOrder <= $maxRank
+    RETURN d.date AS date, d.weekday AS weekday, c.name AS celebration, c.rank AS rank, c.colours AS colours
+    ORDER BY date, c.rankOrder
+
+- name: RosaryToday
+  description: The mysteries of the Rosary prayed on a date — the set for that day of the week, each mystery with the Scripture it meditates and the fruit asked for, and the passage's verses in the King James Version.
+  params:
+    date:
+      type: string
+      default: "2026-10-01"
+      description: "ISO date, e.g. `2026-10-01` (2025–2030). The app passes today's date in the reader's own time zone."
+  cypher: |
+    MATCH (d:LiturgicalDay {date: $date})
+    MATCH (r:RosaryDay {weekday: d.weekday})
+    MATCH (m:RosaryMystery {set: r.set})-[:TOLD_IN]->(p:Passage)
+    RETURN d.weekday AS weekday, r.set AS mysteries, m.number AS number, m.name AS mystery,
+           m.scripture AS scripture, p.name AS passage, m.fruit AS fruit, m.note AS note
+    ORDER BY number
+
+- name: Prayers
+  description: The traditional prayers — Our Father, Hail Mary, Glory Be, the Fatima Prayer, Hail Holy Queen, the Apostles' Creed, the Angelus, the Memorare, and others — in their long-established English forms.
+  params:
+    name:
+      type: string
+      default: ""
+      description: "Part of a prayer's name, e.g. `Hail`; empty for all of them."
+  cypher: |
+    MATCH (p:Prayer)
+    WHERE $name = '' OR toLower(p.name) CONTAINS toLower($name)
+    RETURN p.key AS key, p.name AS name, p.text AS text
+    ORDER BY name
+
+- name: CatechismLesson
+  description: One lesson (or part) of a catechism, question by question, in the book's order.
+  params:
+    catechism:
+      type: string
+      default: "baltimore-2"
+      description: "The catechism: `baltimore-2` (Baltimore Catechism No. 2, 1885)."
+    lesson:
+      type: int
+      default: 1
+      description: "The lesson number, e.g. `1` (On the End of Man)."
+  cypher: |
+    MATCH (e:CatechismEntry {catechismId: $catechism, partNumber: $lesson})
+    RETURN e.catechism AS catechism, e.part AS lesson, e.section AS title, e.number AS number,
+           e.question AS question, e.text AS answer, e.note AS note
+    ORDER BY number
+
+- name: CatechismSearch
+  description: Catechism questions and answers containing a word or phrase, across every catechism the realm holds, in each book's order.
+  params:
+    term:
+      type: string
+      default: "grace"
+      description: "A word or phrase, matched case-insensitively in the question or the answer."
+    catechism:
+      type: string
+      default: ""
+      description: "Limit to one catechism, e.g. `baltimore-2`; empty for all."
+    limit:
+      type: int
+      default: 25
+      description: "How many entries to return."
+  cypher: |
+    MATCH (e:CatechismEntry)
+    WHERE ($catechism = '' OR e.catechismId = $catechism)
+      AND (toLower(e.question) CONTAINS toLower($term) OR toLower(e.text) CONTAINS toLower($term))
+    RETURN e.catechism AS catechism, e.part AS lesson, e.section AS title, e.number AS number,
+           e.question AS question, e.text AS answer
+    ORDER BY catechism, number
+    LIMIT $limit
+
+- name: CatechismOnTopic
+  description: What the catechisms say on a topic — the matching questions and answers of the public-domain catechisms the realm holds, and where the Catechism of the Catholic Church treats it (paragraph numbers with links to the official text on vatican.va; the CCC's own text is not carried).
+  params:
+    topic:
+      type: string
+      default: "Eucharist"
+      description: "A word or phrase, e.g. `Eucharist`, `Rosary`, `purgatory`, `saints`."
+    limit:
+      type: int
+      default: 12
+      description: "How many catechism answers to return."
+  cypher: |
+    OPTIONAL MATCH (t:CccTopic) WHERE toLower(t.topic) CONTAINS toLower($topic)
+    WITH collect(DISTINCT {topic: t.topic, paragraphs: t.paragraphs, section: t.section, url: t.url}) AS ccc
+    OPTIONAL MATCH (e:CatechismEntry)
+    WHERE toLower(e.question) CONTAINS toLower($topic) OR toLower(e.text) CONTAINS toLower($topic)
+    WITH ccc, e ORDER BY e.catechism, e.number
+    WITH ccc, collect({catechism: e.catechism, lesson: e.part, number: e.number, question: e.question, answer: e.text})[0..$limit] AS answers
+    RETURN [x IN ccc WHERE x.topic IS NOT NULL] AS catechismOfTheCatholicChurch,
+           [a IN answers WHERE a.number IS NOT NULL] AS publicDomainCatechisms

@@ -1,0 +1,156 @@
+# Saints: who the calendar's saints are, and their lives, fetched live from Wikidata and Wikipedia.
+#
+#   CalendarSaint {saintId} ─CARD─▶ SaintCard ─PATRON_OF─▶ SaintPatronage
+#   SaintQuery {wd}        ─CARD─▶ SaintCard ─LIFE─▶ SaintLife (Wikipedia summary)
+#   Country {iso2}         ─SAINTS─▶ CountrySaint
+#
+# CalendarSaint and Country are stored (reference/catholic-saints.yml, reference/catholic-countries.yml);
+# everything else is fetched when a query reaches it. A Celebration names its saints by `saints`
+# (calendar ids), which CalendarSaint.saintId matches.
+
+- name: CalendarSaint
+  description: "A saint (or blessed, or Our Lady) honoured in the General Roman Calendar, with the Wikidata entity that is them. `saintId` is the calendar's id, as listed in a Celebration's `saints`."
+  userAnchor: false
+  properties:
+    saintId:
+      identity: true
+      description: "The calendar's id, e.g. `therese_of_the_child_jesus_and_the_holy_face_of_lisieux_virgin`. Identity."
+    qid: "Wikidata QID, e.g. `Q181715`."
+    wd: "Wikidata entity IRI — the key CARD fetches with."
+    label: "Wikidata's English label, e.g. `Thérèse of Lisieux`."
+    matched: "`search` (Wikidata's entity search, checked) or `curated` (set by hand)."
+    canonization: "The calendar's level: saint, blessed — or empty for a feast of Our Lady or of an event."
+
+- name: SaintQuery
+  visibility: internal
+  userAnchor: false
+  description: >-
+    An anchor for one Wikidata entity, so a saint's card can be fetched by entity wherever the IRI comes
+    from — `MATCH (c:SaintCard {wd: $wd})`: the engine writes this door, pinned to the IRI, by itself.
+  properties:
+    wd:
+      identity: true
+      description: "Wikidata entity IRI, e.g. `http://www.wikidata.org/entity/Q181715`. Identity."
+
+- name: SaintCard
+  description: >-
+    What Wikidata records about a saint: dates, birth/death/burial places with coordinates and
+    countries, image, canonization status, religious order, feast day, and the English Wikipedia
+    article (LIFE fetches its summary). Fetched live; CC0. Dates are Wikidata's and may be traditional
+    or approximate for early saints.
+  properties:
+    wd:
+      identity: true
+      description: "Wikidata entity IRI. Identity."
+    wdLabel: "English label."
+    wdDescription: "One-line English description."
+    birthDate: "Date of birth (P569), ISO timestamp — approximate for early saints."
+    deathDate: "Date of death (P570)."
+    birthPlace: "Place of birth (P19)."
+    birthCoord: "Its coordinates, WKT `Point(lon lat)`."
+    birthCountry: "Its country (P17)."
+    deathPlace: "Place of death (P20)."
+    deathCoord: "Its coordinates, WKT `Point(lon lat)`."
+    deathCountry: "Its country."
+    burialPlace: "Place of burial (P119)."
+    burialCoord: "Its coordinates, WKT `Point(lon lat)`."
+    image: "Wikimedia Commons image (P18), a URL."
+    canonization: "Canonization status (P411), e.g. `Catholic saint`."
+    religiousOrder: "Religious order (P611), e.g. `Order of Discalced Carmelites`."
+    feastDay: "Feast day (P841) as Wikidata records it — the calendar's own date is on Celebration."
+    article: "English Wikipedia article title, spaces as underscores, e.g. `Teresa_of_Ávila`."
+  virtualJoins:
+    - anchorLabel: CalendarSaint
+      relationship: CARD
+      keyField: wd
+      recordKeyField: wd
+      producer: saintCardByEntity
+      description: "The card of the calendar saint: `MATCH (s:CalendarSaint {saintId: …})-[:CARD]->(c:SaintCard)`."
+    - anchorLabel: SaintQuery
+      relationship: CARD
+      keyField: wd
+      recordKeyField: wd
+      materializedKeyField: wd
+      producer: saintCardByEntity
+      description: "The card for one entity — `MATCH (c:SaintCard {wd: $wd})`."
+
+- name: SaintPatronage
+  description: "Something a saint is patron of — a city, a country, a trade, a cause — as Wikidata records it on the patronised thing (P417). Churches dedicated to the saint are excluded."
+  properties:
+    patronKey:
+      identity: true
+      description: "`<saint IRI>|<thing IRI>`. Identity."
+    wd: "The saint's entity IRI."
+    thing: "The patronised thing's entity IRI."
+    thingLabel: "Its English label, e.g. `Amsterdam`."
+    kindLabel: "What kind of thing it is, e.g. `city`, `occupation`."
+  virtualJoins:
+    - anchorLabel: SaintCard
+      relationship: PATRON_OF
+      keyField: wd
+      recordKeyField: wd
+      producer: saintPatronageByEntity
+      description: "What the saint is patron of: `(c:SaintCard)-[:PATRON_OF]->(p:SaintPatronage)`."
+
+- name: SaintLife
+  description: "The opening of the saint's English Wikipedia article — Wikipedia's own summary — fetched live, never stored. Text is CC BY-SA 4.0: show `pageUrl` with it."
+  properties:
+    key:
+      identity: true
+      description: "The article title it was fetched by. Identity."
+    title: "The article's title."
+    extract: "The summary — the article's opening paragraphs, plain text."
+    thumbnail: "A thumbnail image URL, when the article has one."
+    pageUrl: "The article's URL — the attribution link."
+  virtualJoins:
+    - anchorLabel: SaintCard
+      relationship: LIFE
+      keyField: article
+      recordKeyField: key
+      producer: wikipediaSummary
+      description: "The saint's life in brief: `(c:SaintCard)-[:LIFE]->(l:SaintLife)`."
+
+- name: Country
+  description: "A country, by ISO 3166-1 alpha-2 code, with its Wikidata entity — the start of `SAINTS`."
+  userAnchor: false
+  properties:
+    iso2:
+      identity: true
+      description: "ISO 3166-1 alpha-2, upper case, e.g. `IE`. Identity."
+    wd: "Wikidata entity IRI."
+    qid: "Wikidata QID, e.g. `Q27`."
+    name: "English name."
+
+- name: CountrySaint
+  description: "A saint, blessed, venerable or servant of God whose citizenship or birthplace Wikidata places in a country, fetched live (CC0)."
+  properties:
+    memberKey:
+      identity: true
+      description: "`<country IRI>|<person IRI>`. Identity."
+    country: "The country's entity IRI."
+    wd: "The person's entity IRI — fetch the full card with `MATCH (c:SaintCard {wd: …})`."
+    wdLabel: "English label."
+    wdDescription: "One-line description."
+    canonization: "Canonization status, e.g. `Catholic saint`, `Blessed`, `Venerable`, `Servant of God`."
+    birthDate: "Date of birth."
+    deathDate: "Date of death."
+    feastDay: "Feast day as Wikidata records it."
+    article: "English Wikipedia article title, spaces as underscores."
+  virtualJoins:
+    - anchorLabel: Country
+      relationship: SAINTS
+      keyField: wd
+      recordKeyField: country
+      producer: saintsOfCountry
+      description: "The saints and blessed of a country: `MATCH (:Country {iso2: 'IE'})-[:SAINTS]->(s:CountrySaint)`."
+
+- name: ScriptureSaint
+  description: "A saint who is also a person of Scripture: the Wikidata saint and the Theographic person who is them, matched by hand (Peter is `peter_2745`, Mary the mother of Jesus `mary_1938`). The bridge from the calendar's saints to the verses that name them."
+  userAnchor: false
+  properties:
+    qid:
+      identity: true
+      description: "Wikidata QID, e.g. `Q33923`. Identity."
+    wd: "Wikidata entity IRI."
+    personLookup: "Theographic person id — matches Verse.people and BiblePerson.personLookup."
+    label: "Who they are, e.g. `James the Less (son of Alphaeus)`."

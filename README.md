@@ -87,6 +87,70 @@ realm-research with a Brave key). Search is agentic retrieval over the WEB chapt
 APPLIANCE_URL=http://localhost:11043 APPLIANCE_USER=… APPLIANCE_PASSWORD=… node tests/scripture-search.live.mjs
 ```
 
+## Jonathon
+
+`personalities/jonathon/` and `focuses/bible.yml` — the realm ships a speaker. Jonathon is a
+pastor: he listens, he opens the text rather than talking about it, he wants the person he is
+talking to known and he wants them to come to faith, and he says so once rather than pushing.
+
+```
+/focus bible
+```
+
+The focus binds the chat to `realm-bible` alone, so Jonathon reaches scripture, the people in it
+and the translations, and no other realm's tools — a pastor who can also read your email is a
+different and worse idea. `builtins: true` is kept deliberately: he needs `view_run` to read a
+verse, and `memory_save` / `memory_search` to remember a person between conversations. Add
+`realm-research` to the focus's `realms` to let him reach `TodaysHeadlines` and `PassagesForStory`.
+
+Two rules in his prompt are load-bearing. Every word of scripture comes from a `view_run` call and
+is named with its translation — he never quotes from memory, because misquoting scripture to make a
+point is the one failure with no excuse. And a disclosure of self-harm, abuse or danger drops the
+register entirely for emergency services and a crisis line: he is not a counsellor, and faith is
+not the treatment.
+
+## The Catholic year, the saints, and devotions
+
+Stored, so they answer at once:
+
+| Data | Source | View |
+|---|---|---|
+| `LiturgicalDay`, `Celebration` — every day 2025–2030 of the General Roman Calendar: celebrations by rank (optional memorials kept), colour, season, lectionary cycles, holy days of obligation | computed by [romcal](https://github.com/romcal/romcal) (MIT), `scripts/calendar/` | `TodayInTheChurch`, `FeastsInRange` |
+| `RosaryMystery`, `RosaryDay` — the twenty mysteries, each with its Scripture (TOLD_IN the Passage) and fruit, and the set for each weekday | the Church's practice (*Rosarium Virginis Mariae*, 2002) | `RosaryToday` |
+| `Prayer` — Our Father, Hail Mary, Glory Be, Hail Holy Queen, the Angelus, the Memorare… | traditional English forms, public domain | `Prayers` |
+| `CatechismEntry` — the Baltimore Catechism No. 2, question by question | Project Gutenberg #14552, public domain | `CatechismLesson`, `CatechismSearch` |
+| `CccTopic` — ~80 topics, feasts and Rosary mysteries mapped to paragraphs of the Catechism of the Catholic Church, linked to the official text on vatican.va | paragraph numbers only — the CCC's text is copyright and not carried | `CatechismOnTopic` |
+| `CalendarSaint` — each calendar saint's Wikidata entity; `ScriptureSaint` — saints who are people of Scripture, matched to Theographic; `Country` — ISO 3166 codes to Wikidata | Wikidata (CC0), matched and reviewed in `scripts/saints/` | — |
+
+Fetched live, cached a week:
+
+| Data | Source | View |
+|---|---|---|
+| `SaintCard` — dates; birth, death and burial places with coordinates; image; order; canonization | Wikidata (CC0) | `SaintsOfTheDay`, `SaintLife` |
+| `SaintLife` — the opening of the saint's Wikipedia article | Wikipedia (CC BY-SA 4.0 — shown with its link, never stored) | `SaintLife` |
+| `SaintPatronage` — what the saint is patron of | Wikidata P417, churches excluded | `SaintPatronOf` |
+| `CountrySaint` — the saints and blessed of a country, by citizenship or birthplace | Wikidata (CC0) | `SaintsOfCountry` |
+
+`SaintsInScripture` joins the two worlds: the apostles, the Holy Family, the women of Bethany and the
+rest, with the verses that name them and their feasts.
+
+Things to know:
+
+- **The universal calendar only.** A country's own calendar — its patron, a holy day a bishops'
+  conference moves to Sunday — is not applied, and a Sunday outranks most saints (St Francis falls on
+  the 27th Sunday of Ordinary Time in 2026).
+- **A saint is matched once, by hand where it matters.** Wikidata's search finds churches and
+  paintings as readily as saints; `scripts/saints/calendar-saints.json` records each match and whether
+  it was searched or curated. romcal names both apostles James `james_apostle`; the one kept with
+  Philip on 3 May is renamed `james_the_less_apostle`.
+- **Catechisms are public-domain texts only.** The Baltimore Catechism's source is a later printing
+  that revised one answer (No. 257, the Communion fast) to then-current discipline; that answer is
+  withheld rather than passed off as the 1885 text. The Catechism of the Catholic Church is linked,
+  never quoted.
+- **Rebuilding:** `cd scripts/calendar && npm ci && node build.mjs`; `python scripts/devotions/crawl_ccc.py`
+  then `python scripts/devotions/build_devotions.py`; `python scripts/saints/build_saints.py`. Downloads
+  are cached under `data/source/` (git-ignored).
+
 ## Things to know
 
 - **A Passage is a chapter.** Pericope boundaries differ between publishers; chapters are the
@@ -126,3 +190,9 @@ CC BY-SA 4.0, as their source requires:
 - World English Bible — public domain, via https://ebible.org.
 - ASV, BBE, Darby, Douay-Rheims and YLT — public domain, served by https://bible-api.com.
 - Easton's Bible Dictionary (1897), quoted in `BiblePerson.dictionary` — public domain.
+- The General Roman Calendar data is computed by romcal (MIT, https://github.com/romcal/romcal).
+- The Baltimore Catechism No. 2 (1885), via Project Gutenberg eBook #14552 — public domain.
+- Wikidata (saints, places, countries) — CC0. Wikipedia summaries — CC BY-SA 4.0, fetched live and
+  shown with their link.
+- The Catechism of the Catholic Church is linked at https://www.vatican.va/archive/ENG0015/ — its text
+  is not reproduced.
