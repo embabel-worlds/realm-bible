@@ -90,7 +90,11 @@
 # Orthodox prepodobni); an entry in a Catholic hagiography (Santi e Beati,
 # Nominis, the Dicastery's causesanti.va); a status a pope conferred; or a plain "saint" who died
 # before 1054, venerated by the undivided Church. And never when the status names a conferring body
-# with no pope or Catholic body beside it — a stray qualifier must not undo a pope's own. `fame` is the number of Wikipedias with an article on them
+# with no pope or Catholic body beside it — a stray qualifier must not undo a pope's own. Nor when
+# their religion is Orthodoxy and not also the Catholic Church, unless they died before 1054: Santi e
+# Beati and Nominis list some Orthodox saints (Peter the Aleut), and the hagiographies are editorial.
+# A person with several statuses is reported by the highest — Edith Stein is a Catholic saint, not
+# "The Venerable" — because the view ranks saints first by that one value. `fame` is the number of Wikipedias with an article on them
 # (Wikidata's sitelink count): a fair proxy for "famous", so Patrick comes before a 5th-century
 # bishop known from one martyrology. The 600 most famous are kept.
 - name: saintsOfCountryByFame
@@ -98,7 +102,8 @@
   endpoint: "https://query.wikidata.org/sparql"
   query: |
     SELECT ?country ?wd (SAMPLE(?label) AS ?wdLabel) (SAMPLE(?desc) AS ?wdDescription)
-           (SAMPLE(?canonLabel) AS ?canonization) (SAMPLE(?born) AS ?birthDate) (SAMPLE(?died) AS ?deathDate)
+           (SUBSTR(MIN(?rankedStatus), 3) AS ?canonization)
+           (SAMPLE(?born) AS ?birthDate) (SAMPLE(?died) AS ?deathDate)
            (SAMPLE(?feastLabel) AS ?feastDay) (SAMPLE(?articleKey) AS ?article) (SAMPLE(?links) AS ?fame)
            (CONCAT(STR(?country), "|", STR(?wd)) AS ?memberKey)
     WHERE {
@@ -119,7 +124,20 @@
       FILTER(EXISTS { ?wd p:P411/pq:P1027 ?catholicBody .
                       { ?catholicBody wdt:P39 wd:Q19546 } UNION { VALUES ?catholicBody { wd:Q9592 wd:Q159583 wd:Q1131466 } } }
              || NOT EXISTS { ?wd p:P411/pq:P1027 [] })
+      FILTER NOT EXISTS {
+        ?wd wdt:P140 ?orthodoxy VALUES ?orthodoxy { wd:Q3333484 wd:Q35032 }
+        FILTER NOT EXISTS { ?wd wdt:P140 wd:Q9592 }
+        FILTER NOT EXISTS { ?wd wdt:P570 ?schism FILTER(YEAR(?schism) < 1054) }
+      }
       ?canon rdfs:label ?canonLabel FILTER(LANG(?canonLabel) = "en")
+      # Each status prefixed with its rank as TEXT, so MIN picks the highest and keeps its own label.
+      # Wikidata's engine fails a query with a numeric constant in IF, or any constant inside an
+      # aggregate ("Headless value factory"), so neither a numeric rank nor choosing the label
+      # after grouping will run.
+      BIND(CONCAT(IF(?canon IN (wd:Q3464126, wd:Q43115, wd:Q123110154), "0",
+                  IF(?canon IN (wd:Q2369287, wd:Q51620), "1",
+                  IF(?canon IN (wd:Q51619, wd:Q12774503), "2",
+                  IF(?canon = wd:Q869974, "3", "4")))), "|", ?canonLabel) AS ?rankedStatus)
       ?wd rdfs:label ?label FILTER(LANG(?label) = "en")
       ?wd wikibase:sitelinks ?links .
       OPTIONAL { ?wd schema:description ?desc FILTER(LANG(?desc) = "en") }
