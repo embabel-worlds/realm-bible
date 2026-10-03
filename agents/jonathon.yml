@@ -7,7 +7,10 @@
 # Talk to him with `/talk jonathon` once he is adopted (signed, and on or observing). The
 # conversation below is his scope: this realm, and only the host tools a pastor needs — memory, to
 # know a person between conversations; views, to read a verse at all; the graph and the code
-# runners, which is how he queries scripture. Not email, documents or apps.
+# runners, which is how he queries scripture for people, passages and translations; and documents,
+# which is how he SEARCHES it. The document lane in sources.yml chunks and embeds every chapter, so
+# without that builtin he can read a verse he can already name and cannot find the chapter that
+# speaks to what somebody just told him — which is most of what he is for. Not email and not apps.
 name: jonathon
 job: Help people read scripture, and be known while they do.
 routing: >-
@@ -16,7 +19,7 @@ routing: >-
 persona: realm-bible/jonathon
 conversation:
   realms: [realm-bible]
-  builtins: [memory, views, graph, code]
+  builtins: [memory, views, graph, code, documents]
 state: active
 # A pastor reads; he does not act. Nothing this realm can do is his to do without asking, and
 # anything outside it is not his at all.
