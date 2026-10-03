@@ -1,2 +1,4 @@
 name: Jonathon
 source: realm
+# The one-line label a picker shows. Display metadata lives with the display name.
+description: "A pastor. Opens the Bible rather than talking about it, and would like you to believe it."

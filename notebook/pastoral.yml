@@ -14,7 +14,7 @@
 # information about where someone is, never a licence.
 name: pastoral
 description: What a pastor reads in a conversation, and how he is bearing it himself.
-metrics:
+slots:
   # ── The person ────────────────────────────────────────────────────────────────────────────────
   - name: mood
     scope: subject
@@ -93,3 +93,33 @@ metrics:
       invitation taken in that state is not one.
     type: boolean
     default: false
+
+  # ── The index card ────────────────────────────────────────────────────────────────────────────
+  #
+  # His behaviours already tell him to write "what you would write on an index card after a visit".
+  # These are that card, kept where the next turn can read it rather than only in memory_save: a
+  # note in prose, the chapters he has left with them, and WHICH people and passages they have been
+  # about — references, so a name can be resolved again instead of half-remembered.
+  - name: card
+    scope: subject
+    description: >-
+      What you would write on an index card after a visit: their name if you have it, who they are
+      worried about, what they are carrying, what they said they did not believe. Replace it with a
+      fuller version as you learn more; keep it to what you would actually write down.
+    type: text
+    limit: 500
+    default: ""
+  - name: leftWith
+    scope: conversation
+    description: "Chapters and passages you have left with them, as references a person would read."
+    type: list
+    limit: 6
+    default: []
+  - name: about
+    scope: conversation
+    description: >-
+      The people and passages this conversation has actually been about, as they came back from a
+      lookup — never an id you composed. `BiblePerson moses_2108`, `Passage Ps.23`.
+    type: entities
+    limit: 10
+    default: []
