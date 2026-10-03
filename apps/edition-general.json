@@ -1,0 +1,7 @@
+{
+  "edition": "general",
+  "title": "Scripture Search",
+  "page": "scripture-search.html",
+  "translations": { "default": "kjv", "order": ["kjv", "web"] },
+  "sections": ["search", "news", "reader"]
+}

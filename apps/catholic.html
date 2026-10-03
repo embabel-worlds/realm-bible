@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Today in the Church</title>
+<meta name="description" content="The Catholic edition of Scripture Search: today's feast in the General Roman Calendar, the life of the saint and where they lived, today's Rosary with its Scripture, what the catechisms say, saints from your country, and the Bible to read and search.">
+<link rel="stylesheet" href="/api/v1/apps-runtime/v1/theme.css">
+<script src="/api/v1/apps-runtime/v1/embabel.js"></script>
+<script type="application/embabel-app+json">
+{"version":1,"name":"catholic","requires":{"lenses":[],"views":["TodayInTheChurch","SaintLife","SaintPatronOf","RosaryToday","Prayers","CatechismOnTopic","CatechismSearch","CatechismLesson","SaintsOfCountry","SaintsInScripture","SearchPassages","ReadPassage","PeopleInPassage","CompareTranslations"],"realms":["realm-bible"],"namespaces":[]}}
+</script>
+<link rel="stylesheet" href="bible.css">
+<script src="bible-core.js"></script>
+<style>
+  /* The Catholic edition adds one idea to the shared theme: the day's liturgical colour. It sets --lit, the
+     accent every panel borrows, so the page is green on an ordinary weekday, violet in Lent, red for a martyr. */
+  :root{--lit:#a67c2e;--lit-wash:rgba(166,124,46,0.10);}
+  .edition{font-variant:small-caps;letter-spacing:0.22em;color:var(--lit);font-size:0.85rem;margin-top:2px;}
+  .wrap{max-width:1180px;margin:0 auto;}
+  .panel{background:var(--page);border:1px solid var(--rule);border-radius:3px;padding:20px 24px;margin:18px 0;
+    box-shadow:0 1px 0 rgba(42,31,20,0.05),0 4px 14px rgba(42,31,20,0.05);}
+  .panel h2{margin:0 0 4px;font-weight:normal;font-variant:small-caps;letter-spacing:0.12em;color:var(--lit);font-size:1.05rem;}
+  .panel .lede2{color:var(--faded);font-style:italic;font-size:0.92rem;margin:0 0 12px;}
+  .two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;}
+  @media (max-width:900px){.two{grid-template-columns:1fr;}}
+  .two > .panel{margin:0;}
+  .grid-gap{margin:18px 0;}
+
+  /* Today in the Church */
+  #today{border-top:5px solid var(--lit);background:linear-gradient(var(--lit-wash),var(--lit-wash)),var(--page);text-align:center;}
+  .daybar{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:6px;}
+  .daybar button,.daybar input{font:inherit;background:transparent;border:1px solid var(--rule);border-radius:999px;padding:4px 12px;color:var(--faded);}
+  .daybar button:hover{color:var(--lit);border-color:var(--lit);}
+  .daybar .datestr{font-variant:small-caps;letter-spacing:0.14em;color:var(--ink);font-size:1rem;}
+  .feast{font-size:1.9rem;line-height:1.2;margin:8px 0 6px;}
+  .feast small{display:block;font-size:0.95rem;color:var(--faded);font-style:italic;margin-top:4px;}
+  .meta{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;color:var(--faded);font-size:0.9rem;}
+  .swatch{display:inline-block;width:0.9em;height:0.9em;border-radius:50%;border:1px solid var(--rule);vertical-align:-1px;margin-right:4px;}
+  .obligation{display:inline-block;margin-top:10px;border:1px solid var(--lit);color:var(--lit);border-radius:999px;padding:3px 12px;font-size:0.88rem;font-variant:small-caps;letter-spacing:0.08em;}
+  .also{margin-top:10px;color:var(--faded);font-size:0.92rem;}
+  .also button{font:inherit;background:none;border:none;color:var(--ink);text-decoration:underline dotted var(--rule);cursor:pointer;padding:0 2px;}
+  .also button[aria-pressed="true"]{color:var(--lit);}
+
+  /* The saint */
+  .saint{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:22px;}
+  @media (max-width:900px){.saint{grid-template-columns:1fr;}}
+  .saint h3{text-align:left;margin:0;color:var(--ink);font-size:1.5rem;letter-spacing:0.02em;font-variant:normal;}
+  .saint .desc{color:var(--faded);font-style:italic;margin:2px 0 10px;}
+  .saint img.portrait{float:right;max-width:150px;max-height:200px;margin:0 0 10px 16px;border:1px solid var(--rule);border-radius:2px;background:var(--raised);}
+  .saint .life{line-height:1.65;font-size:1.04rem;}
+  .facts{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;margin:12px 0;font-size:0.94rem;}
+  .facts dt{color:var(--faded);font-variant:small-caps;letter-spacing:0.05em;}
+  .facts dd{margin:0;}
+  .attrib{color:var(--faded);font-size:0.8rem;font-style:italic;}
+  .attrib a{color:var(--faded);}
+  #map{height:320px;border:1px solid var(--rule);border-radius:2px;background:var(--raised);}
+  .places{list-style:none;padding:0;margin:8px 0 0;font-size:0.92rem;}
+  .places li{margin:3px 0;}
+  .places .kind{color:var(--lit);font-variant:small-caps;letter-spacing:0.06em;margin-right:6px;}
+  .linkbtn{font:inherit;background:none;border:none;color:var(--lit);cursor:pointer;padding:0;text-decoration:underline dotted;}
+  .patrons{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;}
+  .patrons span{border:1px solid var(--rule);border-radius:999px;padding:2px 10px;font-size:0.86rem;}
+
+  /* Lists: Rosary, catechism, saints */
+  ol.mysteries{list-style:none;padding:0;margin:0;counter-reset:m;}
+  ol.mysteries li{border-bottom:1px dotted var(--rule);padding:8px 0;display:grid;grid-template-columns:2em 1fr;gap:6px;}
+  ol.mysteries li::before{counter-increment:m;content:counter(m,upper-roman);color:var(--lit);font-variant:small-caps;}
+  .mystery{font-size:1.05rem;}
+  .fruit{color:var(--faded);font-size:0.88rem;font-style:italic;}
+  .ref{font:inherit;background:none;border:none;color:var(--lit);cursor:pointer;padding:0;font-size:0.92rem;text-decoration:underline dotted;}
+  .qa{border-bottom:1px dotted var(--rule);padding:8px 0;}
+  .qa .q{font-weight:bold;}
+  .qa .q .n{color:var(--lit);font-weight:normal;margin-right:6px;font-size:0.85rem;}
+  .qa .a{margin-top:3px;line-height:1.55;}
+  .qa .src{color:var(--faded);font-size:0.8rem;font-style:italic;}
+  .ccc{list-style:none;padding:0;margin:6px 0 12px;}
+  .ccc li{margin:4px 0;}
+  .ccc .para{color:var(--lit);font-variant:small-caps;margin-right:6px;}
+  .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:8px 0;}
+  .row input,.row select{font:inherit;background:var(--page);border:1px solid var(--rule);border-radius:4px;padding:6px 10px;color:var(--ink);}
+  .row button{font:inherit;background:var(--lit);color:#fbf4e4;border:0;border-radius:4px;padding:6px 14px;cursor:pointer;}
+  .people-list{list-style:none;padding:0;margin:0;}
+  .people-list li{border-bottom:1px dotted var(--rule);padding:7px 0;}
+  .people-list .who{font-size:1.04rem;}
+  .people-list .when{color:var(--faded);font-size:0.86rem;}
+  .people-list .standing{color:var(--lit);font-variant:small-caps;font-size:0.82rem;letter-spacing:0.05em;margin-left:6px;}
+  .chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:4px;}
+  .chips .ref{border:1px solid var(--rule);border-radius:999px;padding:1px 9px;text-decoration:none;}
+  .soon{color:var(--faded);font-style:italic;}
+
+  /* Prayers */
+  .header-actions{margin-top:12px;}
+  .header-actions button{font:inherit;background:transparent;border:1px solid var(--rule);border-radius:999px;padding:4px 14px;color:var(--faded);font-style:italic;cursor:pointer;}
+  .header-actions button:hover{color:var(--lit);border-color:var(--lit);}
+  dialog#prayers{max-width:680px;width:calc(100% - 32px);border:1px solid var(--rule);border-radius:3px;background:var(--page);color:var(--ink);padding:22px 26px;}
+  dialog#prayers::backdrop{background:rgba(42,31,20,0.35);}
+  dialog#prayers h2{font-weight:normal;font-variant:small-caps;letter-spacing:0.12em;color:var(--lit);margin:0 0 10px;text-align:center;}
+  .prayer{margin:14px 0;}
+  .prayer h3{margin:0 0 4px;font-size:1rem;color:var(--lit);font-variant:small-caps;letter-spacing:0.08em;text-align:left;}
+  .prayer p{margin:0;line-height:1.65;font-size:1.05rem;}
+  .search-head{max-width:860px;margin:30px auto 0;text-align:center;}
+  .search-head h2{font-weight:normal;font-variant:small-caps;letter-spacing:0.12em;color:var(--lit);margin:0 0 4px;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="kicker">The Holy Bible</div>
+  <h1>Today in the Church</h1>
+  <div class="edition">Catholic edition</div>
+  <div class="fleuron" aria-hidden="true">❦</div>
+  <div class="header-actions">
+    <button id="open-prayers" type="button">Prayers</button>
+    <a class="chip" href="scripture-search.html" style="text-decoration:none;margin-left:6px">General edition</a>
+  </div>
+  <embabel-operation-state id="state"></embabel-operation-state>
+</header>
+
+<div class="wrap">
+  <section class="panel" id="today" aria-label="Today in the Church">
+    <div class="daybar">
+      <button id="prev-day" type="button" aria-label="The day before">‹</button>
+      <span class="datestr" id="datestr">…</span>
+      <button id="next-day" type="button" aria-label="The day after">›</button>
+      <input type="date" id="pick-day" aria-label="Choose a day — whose feast is your birthday?" title="Whose feast is your birthday?">
+      <button id="to-today" type="button">Today</button>
+    </div>
+    <div id="feast"><div class="placeholder">Reading the calendar…</div></div>
+  </section>
+
+  <section class="panel" id="saint" aria-label="The saint of the day">
+    <h2>The saint of the day</h2>
+    <div id="saint-body"><p class="soon">…</p></div>
+  </section>
+
+  <div class="two grid-gap">
+    <section class="panel" id="rosary" aria-label="Today's Rosary">
+      <h2>Today's Rosary</h2>
+      <p class="lede2" id="rosary-lede">…</p>
+      <div id="rosary-body"></div>
+    </section>
+    <section class="panel" id="catechism" aria-label="The catechism">
+      <h2>The Catechism</h2>
+      <p class="lede2" id="catechism-lede">…</p>
+      <div id="catechism-today"></div>
+      <form class="row" id="catechism-search">
+        <input id="cq" placeholder="Ask the catechism: grace, purgatory, the Mass…" aria-label="Search the catechism">
+        <button type="submit">Search</button>
+      </form>
+      <div class="row">
+        <label for="lesson" class="attrib" style="font-style:normal">Baltimore Catechism lesson</label>
+        <select id="lesson"></select>
+      </div>
+      <div id="catechism-results"></div>
+    </section>
+  </div>
+
+  <div class="two grid-gap">
+    <section class="panel" id="country" aria-label="Saints from your country">
+      <h2>Saints from <span id="country-name">your country</span></h2>
+      <div class="row">
+        <select id="country-pick" aria-label="Country"></select>
+      </div>
+      <div id="country-body"><p class="soon">They load when you scroll here.</p></div>
+    </section>
+    <section class="panel" id="scripture-saints" aria-label="Saints in Scripture">
+      <h2>Saints in Scripture</h2>
+      <p class="lede2">The saints the calendar keeps who also walk through the Bible — their feasts, and the chapters that tell of them. Open a chapter to read it below.</p>
+      <div id="scripture-saints-body"><p class="soon">They load when you scroll here.</p></div>
+    </section>
+  </div>
+
+  <div class="search-head">
+    <h2>Search the Scriptures</h2>
+    <p class="lede">Describe a passage the way you remember it — the search reads candidate chapters and keeps the ones it judges to fit.</p>
+    <form id="search">
+      <input id="q" autocomplete="off" aria-label="Describe the passage" placeholder="e.g. the angel greets Mary">
+      <button class="go" type="submit">Search</button>
+    </form>
+    <div class="row" style="justify-content:center">
+      <button class="chip" data-example="the angel Gabriel greets a young woman and tells her she will bear a son">the Annunciation</button>
+      <button class="chip" data-example="Jesus gives the keys of the kingdom to Peter">the keys</button>
+      <button class="chip" data-example="the first Christian martyr is stoned while a young man watches">the first martyr</button>
+      <div class="toggle" role="group" aria-label="Translation">
+        <button id="t-kjv" aria-pressed="true" title="King James Version (1611)">KJV</button>
+        <button id="t-web" aria-pressed="false" title="World English Bible — modern English, public domain">WEB</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main id="reading">
+  <section aria-label="Closest chapters">
+    <div id="results"><div class="placeholder">Search for a passage — or open a Rosary mystery or a saint's chapter above.</div></div>
+  </section>
+  <section aria-label="Reader">
+    <div class="reader" id="reader"><div class="placeholder scripture">❦<br>Open a chapter to read it here.</div></div>
+  </section>
+</main>
+
+<dialog id="prayers" aria-label="Prayers">
+  <h2>Prayers</h2>
+  <div id="prayers-body"><p class="soon">…</p></div>
+  <p style="text-align:center"><button id="close-prayers" class="linkbtn" type="button">Close</button></p>
+</dialog>
+
+<section id="how-it-works">
+  <h2>How it works</h2>
+  <h3>The data</h3>
+  <ul>
+    <li><b>The calendar</b> — the General Roman Calendar for 2025–2030, computed with the open-source romcal library (MIT) and stored in the
+      realm: every day's celebrations with rank, liturgical colour and season, holy days of obligation, and movable feasts reckoned from Easter.
+      Local calendars (a country's or a diocese's own feasts) are not included.</li>
+    <li><b>Saints</b> — each saint the calendar names is matched to Wikidata, the free knowledge base (CC0): dates, places with coordinates,
+      image, religious order, canonization, patronages. Fetched live and cached for a week.</li>
+    <li><b>Lives</b> — the opening of the saint's English Wikipedia article (CC BY-SA 4.0), fetched live and shown with its link.</li>
+    <li><b>The Rosary</b> — the four sets of mysteries, their traditional weekdays and their Scripture, stored in the realm.</li>
+    <li><b>Catechisms</b> — the Baltimore Catechism No. 2 (1891, public domain), questions and answers by lesson. The Catechism of the
+      Catholic Church is copyrighted, so it is not reproduced: topics link to its paragraphs on vatican.va.</li>
+    <li><b>Prayers</b> — traditional English texts in the public domain.</li>
+    <li><b>The Bible</b> — the King James and World English Bible, as in the general edition; the Douay-Rheims is one of the seven
+      translations a verse can be compared in.</li>
+  </ul>
+  <h3>The questions</h3>
+  <p><b><code>TodayInTheChurch</code></b> {date} — the day's celebrations, rank, colour, season, and the saints each one honours:</p>
+  <pre>MATCH (d:LiturgicalDay {date: $date})&lt;-[:ON]-(c:Celebration)
+OPTIONAL MATCH (s:CalendarSaint) WHERE s.saintId IN c.saints
+…  RETURN d.date, d.season, d.colour, d.holyDayOfObligation, collect({…, saints}) AS celebrations</pre>
+  <p><b><code>SaintLife</code></b> {wd} — a saint's card from Wikidata and the opening of their Wikipedia article, both fetched live:</p>
+  <pre>MATCH (k:SaintCard {wd: $wd})
+OPTIONAL MATCH (k)-[:LIFE]-&gt;(l:SaintLife)
+RETURN k.wdLabel, k.birthPlace, k.birthCoord, k.deathPlace, k.deathCoord, …, l.extract, l.pageUrl</pre>
+  <p><b><code>RosaryToday</code></b> {date}, <b><code>CatechismOnTopic</code></b> {topic}, <b><code>CatechismSearch</code></b> {term},
+    <b><code>CatechismLesson</code></b> {catechism, lesson}, <b><code>SaintsOfCountry</code></b> {country}, <b><code>SaintsInScripture</code></b>,
+    <b><code>Prayers</code></b> — each a saved query in the realm, called by name. The catechism panel picks its topic from the day: a Marian
+    feast asks about Mary, the Guardian Angels about angels, any saint's day about the communion of saints, otherwise the season.</p>
+  <p>The search and the reader below are the general edition's, shared (<code>bible-core.js</code>): an agentic search over the World English
+    chapters, the reader in KJV or WEB, the people in a chapter, and one verse in seven translations.</p>
+  <h3>When it looks wrong</h3>
+  <ul>
+    <li><b>No saint on a day.</b> Weekdays in a season, and Sundays, honour no saint; and a day outside 2025–2030 is not in the stored calendar.</li>
+    <li><b>The life or the map does not load.</b> Wikidata and Wikipedia are public services and sometimes slow or unreachable; the panel says
+      so and links to the saint's Wikidata page instead.</li>
+    <li><b>A feast your parish keeps is missing.</b> Only the General Roman Calendar is here, not national or diocesan calendars.</li>
+    <li><b>A saint in the wrong country.</b> Saints are matched to a country by Wikidata's citizenship and birthplace, which reflect today's borders.</li>
+  </ul>
+  <h3>What made this possible</h3>
+  <ul>
+    <li>A stored calendar, a live knowledge base, a live encyclopedia and the Bible's own text meet in one query language: a saint's card is a
+      join to Wikidata made when you ask, and their chapters are a join to the people Theographic tags in each verse.</li>
+    <li>This page has no backend of its own. It asks the world for saved views by name.</li>
+  </ul>
+  <p><a href="#" id="close-how">Close</a></p>
+</section>
+
+<footer><a href="#how-it-works">How it works</a></footer>
+
+<script>
+/* The Catholic edition: today's feast, its saint and their places, the day's Rosary, the catechism, saints of
+   the reader's country and saints in Scripture — over the shared core's search and reader. Every panel loads
+   only what it shows, caches it, and on failure says what failed and offers to try again; nothing retries alone. */
+(function () {
+  var U = BibleCore.util, esc = U.esc, rowsOf = U.rowsOf, problem = U.problem, errText = U.errText, warningsOf = U.warningsOf, warnText = U.warnText;
+  var stateEl = document.getElementById('state');
+  var core = BibleCore({ state: stateEl, results: document.getElementById('results'), reader: document.getElementById('reader') });
+  var edition = null;
+  var day = null;                 // 'YYYY-MM-DD' shown
+  var cache = {};                 // view+args → promise
+  var loadToken = 0;
+  var map = null, mapLayer = null;
+
+  /* One cached promise per call, dropped on failure so a retry really retries. */
+  function call(view, args, opts) {
+    var key = view + JSON.stringify(args);
+    if (!cache[key]) {
+      cache[key] = embabel.views.invoke(view, args, opts || {}).catch(function (e) { delete cache[key]; throw e; });
+    }
+    return cache[key];
+  }
+  function retry(id, label) { return ' <button class="linkbtn" data-retry="' + id + '">' + esc(label || 'Try again') + '</button>'; }
+
+  /* Today in the reader's own timezone — never the server's, never baked in. */
+  function localToday() {
+    var d = new Date();
+    return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+  }
+  function shift(iso, days) {
+    var p = iso.split('-').map(Number), d = new Date(p[0], p[1] - 1, p[2] + days);
+    return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+  }
+  function longDate(iso) {
+    var p = iso.split('-').map(Number);
+    return new Date(p[0], p[1] - 1, p[2]).toLocaleDateString(undefined, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+  }
+  function cap(s) { return String(s || '').replace(/^\w/, function (c) { return c.toUpperCase(); }); }
+  function year(s) { var m = String(s || '').match(/^-?\d{1,4}/); return m ? m[0].replace(/^-/, '') + (String(s).charAt(0) === '-' ? ' BC' : '') : ''; }
+  function point(p) { var m = String(p || '').match(/Point\(([-\d.]+)\s+([-\d.]+)\)/); return m ? [Number(m[2]), Number(m[1])] : null; }
+  function qid(wd) { return String(wd || '').replace(/^.*\//, ''); }
+  function rankLabel(r) { return { solemnity: 'Solemnity', feast: 'Feast', memorial: 'Memorial', 'optional memorial': 'Optional memorial', sunday: 'Sunday', weekday: 'Weekday' }[r] || cap(r); }
+
+  function setColour(colour) {
+    var c = (edition && edition.colours[colour]) || (edition && edition.colours.white);
+    if (!c) return;
+    document.documentElement.style.setProperty('--lit', c.accent);
+    document.documentElement.style.setProperty('--lit-wash', c.wash);
+  }
+
+  // ── Today ───────────────────────────────────────────────────────────────────────────────────
+  var chosenCelebration = 0, todayRow = null;
+  function loadDay(iso) {
+    day = iso;
+    var token = ++loadToken;
+    try { history.replaceState(null, '', '?date=' + iso + location.hash); } catch (e) { /* preview frames */ }
+    document.getElementById('datestr').textContent = longDate(iso);
+    document.getElementById('pick-day').value = iso;
+    document.getElementById('feast').innerHTML = '<div class="placeholder">Reading the calendar…</div>';
+    call('TodayInTheChurch', { date: iso }).then(function (res) {
+      if (token !== loadToken) return;
+      todayRow = rowsOf(res)[0] || null;
+      chosenCelebration = 0;
+      renderToday();
+      loadSaint();
+      loadRosary();
+      loadCatechismToday();
+    }).catch(function (e) {
+      if (token !== loadToken) return;
+      document.getElementById('feast').innerHTML = problem('The calendar could not be read: ' + errText(e)) + retry('day');
+    });
+  }
+
+  function renderToday() {
+    var el = document.getElementById('feast');
+    var cal = edition.calendar;
+    if (!todayRow || !todayRow.celebrations || !todayRow.celebrations.length || !todayRow.date) {
+      setColour('green');
+      el.innerHTML = '<div class="placeholder">This day is outside the stored calendar (' + esc(cal.from.slice(0, 4)) + '–' + esc(cal.to.slice(0, 4)) +
+        '). Choose a day within it.</div>';
+      return;
+    }
+    var cels = todayRow.celebrations, main = cels[chosenCelebration] || cels[0];
+    var colour = (main.colours && main.colours[0]) || todayRow.colour;
+    setColour(colour);
+    var label = (edition.colours[colour] || {}).label || colour;
+    el.innerHTML =
+      '<div class="feast scripture">' + esc(main.name) + '<small>' + esc(rankLabel(main.rank)) + '</small></div>' +
+      '<div class="meta"><span><span class="swatch" style="background:var(--lit)"></span>' + esc(cap(label)) + '</span>' +
+      '<span>' + esc(cap(todayRow.season)) + '</span>' +
+      '<span title="The Sunday and weekday cycles of readings">Year ' + esc(String(todayRow.sundayCycle || '').toUpperCase()) +
+      (todayRow.weekdayCycle ? ' · cycle ' + esc(todayRow.weekdayCycle) : '') + '</span></div>' +
+      (todayRow.holyDayOfObligation ? '<div class="obligation">A holy day of obligation</div>' : '') +
+      (cels.length > 1 ? '<div class="also">' + (cels.every(function (c) { return c.optional; }) ? 'Optional memorials today: ' : 'Also today: ') +
+        cels.map(function (c, i) {
+          return '<button data-cel="' + i + '" aria-pressed="' + (i === chosenCelebration) + '">' + esc(c.name) + '</button>';
+        }).join(' · ') + '</div>' : '');
+  }
+
+  // ── The saint ───────────────────────────────────────────────────────────────────────────────
+  function saintsOfDay() {
+    if (!todayRow || !todayRow.celebrations) return [];
+    var c = todayRow.celebrations[chosenCelebration] || todayRow.celebrations[0];
+    return (c && c.saints) || [];
+  }
+
+  function loadSaint() {
+    var body = document.getElementById('saint-body');
+    var saints = saintsOfDay();
+    if (!saints.length) {
+      var c = todayRow && todayRow.celebrations && todayRow.celebrations[chosenCelebration];
+      body.innerHTML = '<p class="soon">' + (c ? esc(c.name) + ' honours no single saint.' : 'No celebration on this day.') +
+        ' Choose a saint’s day with the arrows or the date, or see the saints from your country below.</p>';
+      return;
+    }
+    var s = saints[0];
+    var others = saints.slice(1);
+    body.innerHTML = '<p class="soon">Reading the life of ' + esc(s.name) + '…</p>';
+    var token = loadToken;
+    call('SaintLife', { wd: s.wd }, { state: stateEl, expectation: 'Fetching ' + s.name + ' from Wikidata and Wikipedia — a few seconds the first time.' })
+      .then(function (res) {
+        if (token !== loadToken) return;
+        var k = rowsOf(res)[0];
+        if (!k) { body.innerHTML = saintFallback(s, 'Wikidata returned nothing for this saint.'); return; }
+        renderSaint(s, k, others);
+      }).catch(function (e) {
+        if (token !== loadToken) return;
+        body.innerHTML = saintFallback(s, 'The life could not be fetched: ' + errText(e)) + retry('saint');
+      });
+  }
+
+  function saintFallback(s, why) {
+    return '<h3 class="scripture" style="text-align:left">' + esc(s.name) + '</h3>' + problem(why) +
+      '<p class="attrib">See <a href="https://www.wikidata.org/wiki/' + esc(qid(s.wd)) + '" target="_blank" rel="noopener">' + esc(s.name) +
+      ' on Wikidata</a>.</p>';
+  }
+
+  function renderSaint(s, k, others) {
+    var body = document.getElementById('saint-body');
+    var places = [
+      ['born', k.birthPlace, k.birthCoord, k.birthCountry],
+      ['died', k.deathPlace, k.deathCoord, k.deathCountry],
+      ['buried', k.burialPlace, k.burialCoord, null],
+    ].filter(function (p) { return p[1]; });
+    var dates = [year(k.born), year(k.died)].filter(Boolean).join(' – ');
+    var img = k.thumbnail || k.image;
+    body.innerHTML =
+      '<div class="saint"><div>' +
+        (img ? '<img class="portrait" src="' + esc(img) + '" alt="' + esc(k.saint || s.name) + '" loading="lazy" referrerpolicy="no-referrer">' : '') +
+        '<h3 class="scripture">' + esc(k.saint || s.name) + '</h3>' +
+        '<div class="desc">' + esc(cap(k.description || '')) + (dates ? ' · ' + esc(dates) : '') + '</div>' +
+        (k.life ? '<div class="life scripture">' + esc(k.life) + '</div>' +
+          '<p class="attrib">From <a href="' + esc(k.wikipedia) + '" target="_blank" rel="noopener">Wikipedia</a>, CC BY-SA 4.0.</p>'
+          : '<p class="soon">The Wikipedia life could not be fetched this time.</p>') +
+        '<dl class="facts">' +
+          (k.religiousOrder ? '<dt>Order</dt><dd>' + esc(k.religiousOrder) + '</dd>' : '') +
+          (k.canonization ? '<dt>Standing</dt><dd>' + esc(cap(k.canonization)) + '</dd>' : '') +
+          (k.feastDay ? '<dt>Feast</dt><dd>' + esc(k.feastDay) + '</dd>' : '') +
+          '<dt>Patron of</dt><dd><button class="linkbtn" id="show-patrons" data-wd="' + esc(s.wd) + '">Show</button><div class="patrons" id="patrons"></div></dd>' +
+        '</dl>' +
+        (others.length ? '<p class="also" style="text-align:left">Also honoured today: ' + others.map(function (o) { return esc(o.name); }).join(', ') + '</p>' : '') +
+        '<p class="attrib">Card: <a href="https://www.wikidata.org/wiki/' + esc(qid(s.wd)) + '" target="_blank" rel="noopener">Wikidata</a> (CC0).</p>' +
+      '</div><div>' +
+        '<div id="map" aria-label="Where ' + esc(k.saint || s.name) + ' lived"></div>' +
+        '<ul class="places">' + places.map(function (p) {
+          var pt = point(p[2]);
+          return '<li><span class="kind">' + esc(p[0]) + '</span>' + esc(p[1]) + (p[3] ? ', ' + esc(p[3]) : '') +
+            (pt ? ' <a class="attrib" href="https://www.openstreetmap.org/?mlat=' + pt[0] + '&mlon=' + pt[1] + '#map=9/' + pt[0] + '/' + pt[1] +
+              '" target="_blank" rel="noopener">map</a>' : '') + '</li>';
+        }).join('') + '</ul>' +
+      '</div></div>';
+    drawMap(places);
+  }
+
+  /* Leaflet is loaded only the first time a saint has a place with coordinates. */
+  var leafletReady = null;
+  function leaflet() {
+    if (leafletReady) return leafletReady;
+    leafletReady = new Promise(function (resolve, reject) {
+      var css = document.createElement('link');
+      css.rel = 'stylesheet'; css.href = 'https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css';
+      document.head.appendChild(css);
+      var s = document.createElement('script');
+      s.src = 'https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js';
+      s.onload = function () { resolve(window.L); };
+      s.onerror = function () { leafletReady = null; reject(new Error('the map library could not be loaded')); };
+      document.head.appendChild(s);
+    });
+    return leafletReady;
+  }
+  function drawMap(places) {
+    var el = document.getElementById('map');
+    var pts = places.map(function (p) { return { kind: p[0], name: p[1], at: point(p[2]) }; }).filter(function (p) { return p.at; });
+    if (!pts.length) { el.outerHTML = '<p class="soon">No places with coordinates for this saint.</p>'; return; }
+    leaflet().then(function (L) {
+      if (!document.getElementById('map')) return;
+      if (map) { map.remove(); map = null; }
+      map = L.map('map', { scrollWheelZoom: false });
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 17, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      }).addTo(map);
+      mapLayer = L.layerGroup().addTo(map);
+      var latlngs = pts.map(function (p) {
+        L.circleMarker(p.at, { radius: 7, color: getComputedStyle(document.documentElement).getPropertyValue('--lit').trim() || '#9b2d20', weight: 2, fillOpacity: 0.6 })
+          .bindTooltip(cap(p.kind) + ': ' + p.name).addTo(mapLayer);
+        return p.at;
+      });
+      if (latlngs.length > 1) L.polyline(latlngs, { weight: 1.5, dashArray: '4 4', color: '#7b6a50' }).addTo(mapLayer);
+      if (latlngs.length === 1) map.setView(latlngs[0], 7); else map.fitBounds(latlngs, { padding: [30, 30], maxZoom: 8 });
+    }).catch(function (e) {
+      var m = document.getElementById('map');
+      if (m) m.outerHTML = '<p class="soon">The map could not be drawn (' + esc(errText(e)) + '); the places are listed below with links.</p>';
+    });
+  }
+
+  function loadPatrons(btn) {
+    var box = document.getElementById('patrons');
+    btn.disabled = true; btn.textContent = 'Looking up…';
+    call('SaintPatronOf', { wd: btn.getAttribute('data-wd'), limit: 40 }, { state: stateEl, expectation: 'Asking Wikidata what this saint is patron of — up to 15 seconds.' })
+      .then(function (res) {
+        var rows = rowsOf(res);
+        btn.remove();
+        box.innerHTML = rows.length ? rows.map(function (r) { return '<span title="' + esc((r.kind || []).join(', ')) + '">' + esc(r.patronOf) + '</span>'; }).join('')
+          : '<span class="soon" style="border:none">None recorded in Wikidata.</span>';
+      }).catch(function (e) {
+        btn.disabled = false; btn.textContent = 'Try again';
+        box.innerHTML = '<span class="soon" style="border:none">Could not ask Wikidata: ' + esc(errText(e)) + '</span>';
+      });
+  }
+
+  // ── The Rosary ──────────────────────────────────────────────────────────────────────────────
+  function loadRosary() {
+    var body = document.getElementById('rosary-body'), lede = document.getElementById('rosary-lede');
+    var token = loadToken;
+    call('RosaryToday', { date: day }).then(function (res) {
+      if (token !== loadToken) return;
+      var rows = rowsOf(res);
+      if (!rows.length) { lede.textContent = ''; body.innerHTML = '<p class="soon">No mysteries for this day.</p>'; return; }
+      lede.innerHTML = 'On ' + esc(rows[0].weekday) + 's the Church prays the <b>' + esc(cap(rows[0].mysteries)) + ' Mysteries</b>. ' +
+        'Open a mystery to read its Scripture below.';
+      body.innerHTML = '<ol class="mysteries">' + rows.map(function (r) {
+        return '<li><div><div class="mystery scripture">' + esc(r.mystery) + '</div>' +
+          '<button class="ref" data-ref="' + esc(r.scripture) + '" data-why="' + esc(r.mystery) + '">' + esc(r.scripture) + '</button>' +
+          (r.fruit ? ' <span class="fruit">— fruit: ' + esc(r.fruit) + '</span>' : '') + '</div></li>';
+      }).join('') + '</ol>' +
+        '<p class="attrib"><button class="linkbtn" data-open-prayers>The prayers of the Rosary</button></p>';
+    }).catch(function (e) {
+      if (token !== loadToken) return;
+      body.innerHTML = problem('The Rosary could not be read: ' + errText(e)) + retry('rosary');
+    });
+  }
+
+  // ── The catechism ───────────────────────────────────────────────────────────────────────────
+  function topicForDay() {
+    if (!todayRow || !todayRow.celebrations || !todayRow.celebrations.length) return null;
+    var name = (todayRow.celebrations[chosenCelebration] || todayRow.celebrations[0]).name;
+    var hit = edition.feastTopics.filter(function (t) { return new RegExp(t.match, 'i').test(name); })[0];
+    if (hit && !(hit.topic === 'saints' && /week|Sunday/i.test(name))) return { topic: hit.topic, why: name };
+    var season = edition.seasonTopics[String(todayRow.season || '').toLowerCase()];
+    return season ? { topic: season, why: cap(todayRow.season) } : null;
+  }
+
+  function renderAnswers(rows, title) {
+    if (!rows.length) return '<p class="soon">No answers found.</p>';
+    return (title ? '<p class="attrib" style="font-style:normal">' + esc(title) + '</p>' : '') + rows.map(function (r) {
+      return '<div class="qa"><div class="q"><span class="n">' + esc(r.number) + '</span>' + esc(r.question) + '</div>' +
+        '<div class="a scripture">' + esc(r.answer) + '</div>' +
+        '<div class="src">' + esc(r.catechism) + (r.lesson ? ', ' + esc(r.lesson) : '') + (r.title ? ' — ' + esc(r.title) : '') + '</div>' +
+        (r.note ? '<div class="src">' + esc(r.note) + '</div>' : '') + '</div>';
+    }).join('');
+  }
+
+  function loadCatechismToday() {
+    var box = document.getElementById('catechism-today'), lede = document.getElementById('catechism-lede');
+    var t = topicForDay();
+    if (!t) { lede.textContent = 'Ask the catechism anything, or read it lesson by lesson.'; box.innerHTML = ''; return; }
+    lede.innerHTML = 'For ' + esc(t.why) + ': what the catechisms say about <b>' + esc(t.topic.toLowerCase()) + '</b>.';
+    var token = loadToken;
+    call('CatechismOnTopic', { topic: t.topic, limit: 3 }).then(function (res) {
+      if (token !== loadToken) return;
+      var r = rowsOf(res)[0] || {};
+      var ccc = r.catechismOfTheCatholicChurch || [], pd = r.publicDomainCatechisms || [];
+      box.innerHTML =
+        (ccc.length ? '<ul class="ccc">' + ccc.slice(0, 4).map(function (c) {
+          return '<li><span class="para">CCC ' + esc(c.paragraphs) + '</span><a href="' + esc(c.url) + '" target="_blank" rel="noopener">' + esc(c.topic) + '</a></li>';
+        }).join('') + '</ul><p class="attrib">The Catechism of the Catholic Church, on vatican.va.</p>' : '') +
+        renderAnswers(pd);
+    }).catch(function (e) {
+      if (token !== loadToken) return;
+      box.innerHTML = problem('The catechism could not be read: ' + errText(e)) + retry('catechism');
+    });
+  }
+
+  function searchCatechism(term) {
+    var box = document.getElementById('catechism-results');
+    term = (term || '').trim();
+    if (!term) return;
+    box.innerHTML = '<p class="soon">Searching…</p>';
+    Promise.all([call('CatechismOnTopic', { topic: term, limit: 0 }), call('CatechismSearch', { term: term, limit: 8 })]).then(function (both) {
+      var ccc = (rowsOf(both[0])[0] || {}).catechismOfTheCatholicChurch || [];
+      var rows = rowsOf(both[1]);
+      box.innerHTML = (ccc.length ? '<ul class="ccc">' + ccc.slice(0, 5).map(function (c) {
+          return '<li><span class="para">CCC ' + esc(c.paragraphs) + '</span><a href="' + esc(c.url) + '" target="_blank" rel="noopener">' + esc(c.topic) + '</a></li>';
+        }).join('') + '</ul>' : '') +
+        (rows.length ? renderAnswers(rows, rows.length + ' answer' + (rows.length === 1 ? '' : 's') + ' in the Baltimore Catechism')
+          : (ccc.length ? '' : '<p class="soon">Nothing found for “' + esc(term) + '”. Try one word: grace, sin, Mass, baptism.</p>'));
+    }).catch(function (e) {
+      box.innerHTML = problem('The search could not run: ' + errText(e));
+    });
+  }
+
+  function loadLesson(n) {
+    var box = document.getElementById('catechism-results');
+    box.innerHTML = '<p class="soon">Opening lesson ' + esc(n) + '…</p>';
+    call('CatechismLesson', { catechism: 'baltimore-2', lesson: Number(n) }).then(function (res) {
+      var rows = rowsOf(res);
+      box.innerHTML = rows.length ? renderAnswers(rows.map(function (r) { return Object.assign({}, r, { title: null }); }),
+        (rows[0].lesson || 'Lesson ' + n) + ' — ' + (rows[0].title || '')) : '<p class="soon">No such lesson.</p>';
+    }).catch(function (e) {
+      box.innerHTML = problem('The lesson could not be read: ' + errText(e));
+    });
+  }
+
+  // ── Saints of a country ─────────────────────────────────────────────────────────────────────
+  function guessCountry() {
+    var langs = (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'en-IE']);
+    for (var i = 0; i < langs.length; i++) {
+      var m = String(langs[i]).match(/[-_]([A-Za-z]{2})$/);
+      if (m) return m[1].toUpperCase();
+    }
+    return 'IE';
+  }
+  function countryName(code) {
+    var hit = edition.countries.filter(function (c) { return c[0] === code; })[0];
+    if (hit) return hit[1];
+    try { return new Intl.DisplayNames([navigator.language || 'en'], { type: 'region' }).of(code); } catch (e) { return code; }
+  }
+  function loadCountry(code) {
+    var body = document.getElementById('country-body');
+    try { localStorage.setItem('realm-bible.country', code); } catch (e) { /* private mode */ }
+    document.getElementById('country-name').textContent = countryName(code);
+    document.getElementById('country-pick').value = code;
+    body.innerHTML = '<p class="soon">Asking Wikidata for the saints and blessed of ' + esc(countryName(code)) + ' — this can take a while the first time.</p>';
+    call('SaintsOfCountry', { country: code, limit: 25 }, { state: stateEl, expectation: 'Asking Wikidata — up to a minute the first time, cached afterwards.' })
+      .then(function (res) {
+        var rows = rowsOf(res);
+        if (!rows.length) { body.innerHTML = '<p class="soon">Wikidata names no saints or blessed for ' + esc(countryName(code)) + '.</p>'; return; }
+        body.innerHTML = '<ul class="people-list">' + rows.map(function (r) {
+          var dates = [year(r.born), year(r.died)].filter(Boolean).join(' – ');
+          var link = r.article ? 'https://en.wikipedia.org/wiki/' + encodeURIComponent(r.article) : 'https://www.wikidata.org/wiki/' + qid(r.wd);
+          return '<li><a class="who" href="' + esc(link) + '" target="_blank" rel="noopener">' + esc(r.name) + '</a>' +
+            '<span class="standing">' + esc(r.canonization || '') + '</span>' +
+            '<div class="when">' + esc(cap(r.description || '')) + (dates ? ' · ' + esc(dates) : '') + (r.feastDay ? ' · feast ' + esc(r.feastDay) : '') + '</div></li>';
+        }).join('') + '</ul><p class="attrib">From Wikidata (CC0), by citizenship or birthplace; saints first, then blessed and venerable.</p>';
+      }).catch(function (e) {
+        body.innerHTML = problem('Wikidata could not be reached for ' + countryName(code) + ': ' + errText(e)) + retry('country');
+      });
+  }
+
+  // ── Saints in Scripture ─────────────────────────────────────────────────────────────────────
+  function loadScriptureSaints() {
+    var body = document.getElementById('scripture-saints-body');
+    body.innerHTML = '<p class="soon">Finding the saints of the calendar in the Bible…</p>';
+    call('SaintsInScripture', { chapters: 4 }).then(function (res) {
+      var rows = rowsOf(res);
+      if (!rows.length) { body.innerHTML = '<p class="soon">None found.</p>'; return; }
+      body.innerHTML = '<ul class="people-list">' + rows.map(function (r) {
+        return '<li><span class="who">' + esc(r.saint) + '</span> <span class="when">' + esc(r.verses) + ' verses</span>' +
+          /* Mary has two dozen feasts; three, then a count, keeps the list a list. */
+          ((r.feasts || []).length ? '<div class="when">' + r.feasts.slice(0, 3).map(function (f) {
+            var md = f.slice(0, 5), name = f.slice(6);
+            return '<button class="ref" data-md="' + esc(md) + '" title="Go to this feast">' + esc(name) + '</button>';
+          }).join(' · ') + (r.feasts.length > 3 ? ' <span class="when">and ' + (r.feasts.length - 3) + ' more</span>' : '') + '</div>' : '') +
+          '<div class="chips">' + (r.chapters || []).map(function (c) {
+            return '<button class="ref" data-passage="' + esc(c) + '" data-why="' + esc(r.saint) + ' in ' + esc(c) + '">' + esc(c) + '</button>';
+          }).join('') + '</div></li>';
+      }).join('') + '</ul>';
+    }).catch(function (e) {
+      body.innerHTML = problem('Could not find the saints in Scripture: ' + errText(e)) + retry('scripture-saints');
+    });
+  }
+
+  // ── Prayers ─────────────────────────────────────────────────────────────────────────────────
+  function openPrayers() {
+    var dlg = document.getElementById('prayers'), body = document.getElementById('prayers-body');
+    if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', '');
+    call('Prayers', { name: '' }).then(function (res) {
+      var rows = rowsOf(res);
+      var order = ['sign-of-the-cross', 'apostles-creed', 'our-father', 'hail-mary', 'glory-be', 'fatima', 'hail-holy-queen'];
+      rows.sort(function (a, b) {
+        var ia = order.indexOf(a.key), ib = order.indexOf(b.key);
+        return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib) || String(a.name).localeCompare(b.name);
+      });
+      body.innerHTML = rows.map(function (r) {
+        return '<div class="prayer"><h3>' + esc(r.name) + '</h3><p class="scripture">' + esc(r.text) + '</p></div>';
+      }).join('') + '<p class="attrib">Traditional English texts, in the public domain.</p>';
+    }).catch(function (e) {
+      body.innerHTML = problem('The prayers could not be read: ' + errText(e));
+    });
+  }
+
+  // ── Wiring ──────────────────────────────────────────────────────────────────────────────────
+  function onVisible(el, f) {
+    if (!('IntersectionObserver' in window)) { f(); return; }
+    var io = new IntersectionObserver(function (es) { if (es.some(function (e) { return e.isIntersecting; })) { io.disconnect(); f(); } }, { rootMargin: '200px' });
+    io.observe(el);
+  }
+
+  function wire() {
+    core.wire();
+    document.getElementById('prev-day').addEventListener('click', function () { loadDay(shift(day, -1)); });
+    document.getElementById('next-day').addEventListener('click', function () { loadDay(shift(day, 1)); });
+    document.getElementById('to-today').addEventListener('click', function () { loadDay(localToday()); });
+    document.getElementById('pick-day').addEventListener('change', function (e) { if (e.target.value) loadDay(e.target.value); });
+    document.getElementById('feast').addEventListener('click', function (e) {
+      var b = e.target.closest('[data-cel]');
+      if (!b) return;
+      chosenCelebration = Number(b.getAttribute('data-cel'));
+      renderToday(); loadSaint(); loadCatechismToday();
+    });
+    document.getElementById('open-prayers').addEventListener('click', openPrayers);
+    document.getElementById('close-prayers').addEventListener('click', function () { var d = document.getElementById('prayers'); if (d.close) d.close(); else d.removeAttribute('open'); });
+    document.getElementById('catechism-search').addEventListener('submit', function (e) { e.preventDefault(); searchCatechism(document.getElementById('cq').value); });
+    var lesson = document.getElementById('lesson');
+    lesson.innerHTML = '<option value="">Choose…</option>' + Array.from({ length: 37 }, function (_, i) { return '<option value="' + (i + 1) + '">Lesson ' + (i + 1) + '</option>'; }).join('');
+    lesson.addEventListener('change', function () { if (lesson.value) loadLesson(lesson.value); });
+    var pick = document.getElementById('country-pick');
+    pick.innerHTML = edition.countries.map(function (c) { return '<option value="' + c[0] + '">' + esc(c[1]) + '</option>'; }).join('');
+    pick.addEventListener('change', function () { loadCountry(pick.value); });
+
+    document.body.addEventListener('click', function (e) {
+      var t = e.target;
+      var ref = t.closest('[data-ref]');
+      if (ref && !ref.closest('#reader')) { core.openRef(ref.getAttribute('data-ref'), ref.getAttribute('data-why')); return; }
+      var pas = t.closest('[data-passage]');
+      if (pas && !pas.closest('#reader')) { core.openPassage(pas.getAttribute('data-passage'), { why: pas.getAttribute('data-why') }); return; }
+      var md = t.closest('[data-md]');
+      if (md) {
+        var y = Number(day.slice(0, 4)), target = y + '-' + md.getAttribute('data-md');
+        if (target < day) target = (y + 1) + '-' + md.getAttribute('data-md');
+        loadDay(target);
+        document.getElementById('today').scrollIntoView({ behavior: 'smooth' });
+        return;
+      }
+      if (t.closest('[data-open-prayers]')) { openPrayers(); return; }
+      if (t.id === 'show-patrons') { loadPatrons(t); return; }
+      var r = t.closest('[data-retry]');
+      if (r) {
+        var what = r.getAttribute('data-retry');
+        if (what === 'day') loadDay(day);
+        else if (what === 'saint') loadSaint();
+        else if (what === 'rosary') loadRosary();
+        else if (what === 'catechism') loadCatechismToday();
+        else if (what === 'country') loadCountry(document.getElementById('country-pick').value);
+        else if (what === 'scripture-saints') loadScriptureSaints();
+      }
+    });
+  }
+
+  BibleCore.ready().then(function (m) {
+    if (m && m.ok === false) {
+      document.getElementById('feast').innerHTML = problem('This app needs ' + (m.missing || []).join(', ') + ', which this world does not have. ' +
+        'Install realm-bible to use it.');
+      return null;
+    }
+    return fetch('edition-catholic.json', { credentials: 'include' }).then(function (r) {
+      if (!r.ok) throw new Error('edition-catholic.json: HTTP ' + r.status);
+      return r.json();
+    });
+  }).then(function (cfg) {
+    if (!cfg) return;
+    edition = cfg;
+    wire();
+    var params = new URLSearchParams(location.search);
+    var d = params.get('date');
+    loadDay(/^\d{4}-\d{2}-\d{2}$/.test(d || '') ? d : localToday());
+    var saved = null;
+    try { saved = localStorage.getItem('realm-bible.country'); } catch (e) { /* private mode */ }
+    var code = params.get('country') || saved || guessCountry();
+    document.getElementById('country-name').textContent = countryName(code);
+    if (!edition.countries.some(function (c) { return c[0] === code; })) edition.countries.unshift([code, countryName(code)]);
+    document.getElementById('country-pick').innerHTML = edition.countries.map(function (c) { return '<option value="' + c[0] + '">' + esc(c[1]) + '</option>'; }).join('');
+    document.getElementById('country-pick').value = code;
+    onVisible(document.getElementById('country'), function () { loadCountry(code); });
+    onVisible(document.getElementById('scripture-saints'), loadScriptureSaints);
+    var q = params.get('q');
+    if (q) { document.getElementById('q').value = q; core.search(q); }
+  }).catch(function (e) {
+    document.getElementById('feast').innerHTML = problem('The edition could not start: ' + errText(e));
+  });
+})();
+</script>
+
+<div id="embabel-badge" style="position:fixed;bottom:0;left:0;right:0;text-align:center;padding:6px 0;background:rgba(10,10,15,0.9);border-top:1px solid rgba(99,192,245,0.2);font-size:0.75rem;color:#6b7280;z-index:9999;pointer-events:none;">
+  Created with <a href="https://worlds.embabel.com" target="_blank" rel="noopener noreferrer" style="color:#63c0f5;text-decoration:none;pointer-events:auto;">Embabel Worlds</a>
+</div>
+</body>
+</html>

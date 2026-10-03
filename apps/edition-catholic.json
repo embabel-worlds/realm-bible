@@ -1,0 +1,248 @@
+{
+  "edition": "catholic",
+  "title": "Today in the Church",
+  "page": "catholic.html",
+  "calendar": {
+    "name": "General Roman Calendar",
+    "from": "2025-01-01",
+    "to": "2030-12-31"
+  },
+  "translations": {
+    "default": "kjv",
+    "order": [
+      "kjv",
+      "web"
+    ],
+    "note": "The Douay-Rheims, the traditional Catholic English Bible, is among the seven translations a verse can be compared in."
+  },
+  "sections": [
+    "today",
+    "saint",
+    "rosary",
+    "catechism",
+    "country",
+    "scripture-saints",
+    "search",
+    "reader",
+    "prayers"
+  ],
+  "colours": {
+    "white": {
+      "accent": "#a67c2e",
+      "wash": "rgba(166,124,46,0.10)",
+      "label": "white"
+    },
+    "gold": {
+      "accent": "#a67c2e",
+      "wash": "rgba(166,124,46,0.12)",
+      "label": "gold"
+    },
+    "red": {
+      "accent": "#a3261c",
+      "wash": "rgba(163,38,28,0.09)",
+      "label": "red"
+    },
+    "green": {
+      "accent": "#3f6b3a",
+      "wash": "rgba(63,107,58,0.09)",
+      "label": "green"
+    },
+    "violet": {
+      "accent": "#5e3a78",
+      "wash": "rgba(94,58,120,0.09)",
+      "label": "violet"
+    },
+    "purple": {
+      "accent": "#5e3a78",
+      "wash": "rgba(94,58,120,0.09)",
+      "label": "violet"
+    },
+    "rose": {
+      "accent": "#b4587a",
+      "wash": "rgba(180,88,122,0.10)",
+      "label": "rose"
+    },
+    "black": {
+      "accent": "#2a1f14",
+      "wash": "rgba(42,31,20,0.08)",
+      "label": "black"
+    }
+  },
+  "feastTopics": [
+    {
+      "match": "Pentecost|Holy Spirit",
+      "topic": "Holy Spirit"
+    },
+    {
+      "match": "Body and Blood|Corpus Christi|Lord's Supper|Holy Thursday",
+      "topic": "Eucharist"
+    },
+    {
+      "match": "Rosary",
+      "topic": "Rosary"
+    },
+    {
+      "match": "Mary|Our Lady|Virgin Mary|Mother of God|Assumption|Immaculate|Annunciation",
+      "topic": "Mary"
+    },
+    {
+      "match": "Angel|Michael|Gabriel|Raphael",
+      "topic": "angels"
+    },
+    {
+      "match": "Saint|Saints|Blessed",
+      "topic": "saints"
+    }
+  ],
+  "seasonTopics": {
+    "lent": "Lent",
+    "easter time": "Easter",
+    "easter": "Easter",
+    "advent": "Advent",
+    "christmas time": "Christmas",
+    "christmas": "Christmas",
+    "ordinary time": "saints"
+  },
+  "countries": [
+    [
+      "IE",
+      "Ireland"
+    ],
+    [
+      "GB",
+      "United Kingdom"
+    ],
+    [
+      "US",
+      "United States"
+    ],
+    [
+      "CA",
+      "Canada"
+    ],
+    [
+      "AU",
+      "Australia"
+    ],
+    [
+      "NZ",
+      "New Zealand"
+    ],
+    [
+      "FR",
+      "France"
+    ],
+    [
+      "IT",
+      "Italy"
+    ],
+    [
+      "ES",
+      "Spain"
+    ],
+    [
+      "PT",
+      "Portugal"
+    ],
+    [
+      "DE",
+      "Germany"
+    ],
+    [
+      "AT",
+      "Austria"
+    ],
+    [
+      "BE",
+      "Belgium"
+    ],
+    [
+      "NL",
+      "Netherlands"
+    ],
+    [
+      "PL",
+      "Poland"
+    ],
+    [
+      "CZ",
+      "Czechia"
+    ],
+    [
+      "HU",
+      "Hungary"
+    ],
+    [
+      "HR",
+      "Croatia"
+    ],
+    [
+      "MT",
+      "Malta"
+    ],
+    [
+      "MX",
+      "Mexico"
+    ],
+    [
+      "BR",
+      "Brazil"
+    ],
+    [
+      "AR",
+      "Argentina"
+    ],
+    [
+      "CO",
+      "Colombia"
+    ],
+    [
+      "PE",
+      "Peru"
+    ],
+    [
+      "CL",
+      "Chile"
+    ],
+    [
+      "PH",
+      "Philippines"
+    ],
+    [
+      "IN",
+      "India"
+    ],
+    [
+      "VN",
+      "Vietnam"
+    ],
+    [
+      "KR",
+      "South Korea"
+    ],
+    [
+      "JP",
+      "Japan"
+    ],
+    [
+      "NG",
+      "Nigeria"
+    ],
+    [
+      "UG",
+      "Uganda"
+    ],
+    [
+      "KE",
+      "Kenya"
+    ],
+    [
+      "CD",
+      "DR Congo"
+    ],
+    [
+      "LB",
+      "Lebanon"
+    ]
+  ]
+}
