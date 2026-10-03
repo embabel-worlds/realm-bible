@@ -75,7 +75,7 @@
       description: "The card for one entity — `MATCH (c:SaintCard {wd: $wd})`."
 
 - name: SaintPatronage
-  description: "Something a saint is patron of — a city, a country, a trade, a cause — as Wikidata records it on the patronised thing (P417). Churches dedicated to the saint are excluded."
+  description: "Something a saint is patron of — a city, a country, a trade, a cause — as Wikidata records it on the patronised thing (P417). Buildings dedicated to the saint — churches, convents, chapels — are excluded."
   properties:
     patronKey:
       identity: true
@@ -136,12 +136,15 @@
     deathDate: "Date of death."
     feastDay: "Feast day as Wikidata records it."
     article: "English Wikipedia article title, spaces as underscores."
+    fame:
+      type: int
+      description: "How many Wikipedias have an article on them (Wikidata sitelinks) — the order of 'most famous'."
   virtualJoins:
     - anchorLabel: Country
       relationship: SAINTS
       keyField: wd
       recordKeyField: country
-      producer: saintsOfCountry
+      producer: saintsOfCountryByFame
       description: "The saints and blessed of a country: `MATCH (:Country {iso2: 'IE'})-[:SAINTS]->(s:CountrySaint)`."
 
 - name: ScriptureSaint

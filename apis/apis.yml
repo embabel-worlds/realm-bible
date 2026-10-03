@@ -12,3 +12,17 @@
   auth: none
   operation-ids:
     - verseInTranslation
+
+# Wikipedia's page-summary endpoint: the opening of an article, keyless. Used for a saint's life, by
+# the article title Wikidata names. Text is CC BY-SA 4.0 — fetched live, shown with its link, never
+# stored. Named `bible_wikipedia_summary` because a world holds one API per name and realm-research
+# ships one called `wikipedia`.
+- url: wikipedia-summary.json
+  name: bible_wikipedia_summary
+  type: openapi
+  auth: none
+  # Wikimedia refuses a request without a descriptive User-Agent (HTTP 403, https://w.wiki/4wJS).
+  headers:
+    User-Agent: "EmbabelRealmBible/0.1 (https://github.com/embabel-worlds/realm-bible)"
+  operation-ids:
+    - pageSummary

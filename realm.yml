@@ -26,7 +26,7 @@ tags:
   - people
 exports:
   - bible_api
-  - wikipedia
+  - bible_wikipedia_summary
   - Book
   - Passage
   - Verse

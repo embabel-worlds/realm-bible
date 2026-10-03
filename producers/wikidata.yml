@@ -54,9 +54,9 @@
 
 # ── What a saint is patron of ────────────────────────────────────────────────────────────────
 # Wikidata records patronage on the PATRONISED thing (P417 "patron saint", on a city or a trade), so
-# this reads the inverse. Churches and chapels dedicated to the saint carry the same property and
-# outnumber everything else (Saint Nicholas: ~700, mostly buildings), so buildings are excluded and
-# the rest capped per saint.
+# this reads the inverse. Churches, convents and chapels dedicated to the saint carry the same
+# property and outnumber everything else (Francis of Assisi: 65 church buildings alone), so every
+# architectural structure (Q811979) is excluded, with disambiguation pages, and the rest capped.
 - name: saintPatronageByEntity
   kind: sparql
   endpoint: "https://query.wikidata.org/sparql"
@@ -64,7 +64,8 @@
     SELECT ?wd ?thing ?thingLabel ?kindLabel ?patronKey WHERE {
       VALUES ?wd { {{keys}} }
       ?thing wdt:P417 ?wd .
-      FILTER NOT EXISTS { ?thing wdt:P31/wdt:P279* wd:Q24398318 }
+      FILTER NOT EXISTS { ?thing wdt:P31/wdt:P279* wd:Q811979 }
+      FILTER NOT EXISTS { ?thing wdt:P31 wd:Q4167410 }
       ?thing rdfs:label ?thingLabel FILTER(LANG(?thingLabel) = "en")
       OPTIONAL { ?thing wdt:P31 ?kind . ?kind rdfs:label ?kindLabel FILTER(LANG(?kindLabel) = "en") }
       BIND(CONCAT(STR(?wd), "|", STR(?thing)) AS ?patronKey)
@@ -82,14 +83,16 @@
 # Keyed by the country's entity IRI (reference/catholic-countries.yml maps ISO 3166 codes to it, so
 # the app can start from the reader's locale). A person counts when Wikidata records a canonization
 # status — saint, blessed, venerable, servant of God — and either their citizenship or their
-# birthplace's country is that country.
-- name: saintsOfCountry
+# birthplace's country is that country. `fame` is the number of Wikipedias with an article on them
+# (Wikidata's sitelink count): a fair proxy for "famous", so Patrick comes before a 5th-century
+# bishop known from one martyrology. The 600 most famous are kept.
+- name: saintsOfCountryByFame
   kind: sparql
   endpoint: "https://query.wikidata.org/sparql"
   query: |
     SELECT ?country ?wd (SAMPLE(?label) AS ?wdLabel) (SAMPLE(?desc) AS ?wdDescription)
            (SAMPLE(?canonLabel) AS ?canonization) (SAMPLE(?born) AS ?birthDate) (SAMPLE(?died) AS ?deathDate)
-           (SAMPLE(?feastLabel) AS ?feastDay) (SAMPLE(?articleKey) AS ?article)
+           (SAMPLE(?feastLabel) AS ?feastDay) (SAMPLE(?articleKey) AS ?article) (SAMPLE(?links) AS ?fame)
            (CONCAT(STR(?country), "|", STR(?wd)) AS ?memberKey)
     WHERE {
       VALUES ?country { {{keys}} }
@@ -97,6 +100,7 @@
       ?wd wdt:P411 ?canon .
       ?canon rdfs:label ?canonLabel FILTER(LANG(?canonLabel) = "en")
       ?wd rdfs:label ?label FILTER(LANG(?label) = "en")
+      ?wd wikibase:sitelinks ?links .
       OPTIONAL { ?wd schema:description ?desc FILTER(LANG(?desc) = "en") }
       OPTIONAL { ?wd wdt:P569 ?born }
       OPTIONAL { ?wd wdt:P570 ?died }
@@ -105,6 +109,7 @@
                  BIND(REPLACE(STR(?artName), " ", "_") AS ?articleKey) }
     }
     GROUP BY ?country ?wd
+    ORDER BY DESC(?fame)
     LIMIT 600
   keyVar: country
   keyForm: iri

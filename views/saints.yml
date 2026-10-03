@@ -11,8 +11,8 @@
       description: "ISO date, e.g. `2026-10-01`."
   cypher: |
     MATCH (d:LiturgicalDay {date: $date})<-[:ON]-(c:Celebration)
-    MATCH (s:CalendarSaint) WHERE s.saintId IN c.saints
-    MATCH (s)-[:CARD]->(k:SaintCard)
+    UNWIND c.saints AS sid
+    MATCH (s:CalendarSaint {saintId: sid})-[:CARD]->(k:SaintCard)
     RETURN c.name AS celebration, c.rank AS rank, s.label AS saint, k.wd AS wd,
            k.wdDescription AS description, k.birthDate AS born, k.deathDate AS died,
            k.birthPlace AS birthPlace, k.birthCoord AS birthCoord, k.birthCountry AS birthCountry,
@@ -56,23 +56,24 @@
     LIMIT $limit
 
 - name: SaintsOfCountry
-  description: The saints and blessed (and venerable, and servants of God) of a country — citizenship or birthplace — from Wikidata, fetched live, by ISO 3166-1 alpha-2 code so the app can start from the reader's locale. Saints first, then the others, each by date of death.
+  description: The saints and blessed (and venerable, and servants of God) of a country — citizenship or birthplace — from Wikidata, fetched live, by ISO 3166-1 alpha-2 code so the app can start from the reader's locale. Saints first, then the blessed, the venerable and servants of God, each by fame (how many Wikipedias have an article on them).
   params:
     country:
       type: string
       default: "IE"
-      description: "ISO 3166-1 alpha-2 code, e.g. `IE`, `PL`, `US`."
+      description: "ISO 3166-1 alpha-2 code in upper case, e.g. `IE`, `PL`, `US`. The code pins the one country whose saints are fetched; an expression over it (toUpper) would not, and every country would be fetched."
     limit:
       type: int
       default: 60
       description: "How many to return."
   cypher: |
-    MATCH (c:Country {iso2: toUpper($country)})-[:SAINTS]->(s:CountrySaint)
+    MATCH (c:Country {iso2: $country})-[:SAINTS]->(s:CountrySaint)
     WITH c, s, CASE WHEN s.canonization CONTAINS 'saint' AND NOT s.canonization CONTAINS 'Servant' THEN 0
                     WHEN s.canonization CONTAINS 'lessed' THEN 1 WHEN s.canonization CONTAINS 'enerable' THEN 2 ELSE 3 END AS standing
     RETURN c.name AS country, s.wdLabel AS name, s.canonization AS canonization, s.wdDescription AS description,
-           s.birthDate AS born, s.deathDate AS died, s.feastDay AS feastDay, s.wd AS wd, s.article AS article
-    ORDER BY standing, died
+           s.birthDate AS born, s.deathDate AS died, s.feastDay AS feastDay, s.wd AS wd, s.article AS article,
+           toInteger(s.fame) AS fame
+    ORDER BY standing, fame DESC
     LIMIT $limit
 
 - name: SaintsInScripture
