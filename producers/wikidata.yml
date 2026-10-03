@@ -81,9 +81,16 @@
 
 # ── The saints and blessed of a country ──────────────────────────────────────────────────────
 # Keyed by the country's entity IRI (reference/catholic-countries.yml maps ISO 3166 codes to it, so
-# the app can start from the reader's locale). A person counts when Wikidata records a canonization
-# status — saint, blessed, venerable, servant of God — and either their citizenship or their
-# birthplace's country is that country. `fame` is the number of Wikipedias with an article on them
+# the app can start from the reader's locale). A person counts when either their citizenship or their
+# birthplace's country is that country, and Wikidata gives Catholic evidence for their sanctity.
+# A bare canonization status is not that evidence: P411 also carries other churches' saints — the
+# African Orthodox Church's John Coltrane, the Episcopal Church's Thurgood Marshall, the Orthodox
+# hieromartyrs. So a person counts on one of: a status only the Catholic process confers (Catholic
+# saint, blessed, Venerable, servant of God — not "The Venerable", which Wikidata also uses for the
+# Orthodox prepodobni); an entry in a Catholic hagiography (Santi e Beati,
+# Nominis, the Dicastery's causesanti.va); a status a pope conferred; or a plain "saint" who died
+# before 1054, venerated by the undivided Church. And never when the status names a conferring body
+# with no pope or Catholic body beside it — a stray qualifier must not undo a pope's own. `fame` is the number of Wikipedias with an article on them
 # (Wikidata's sitelink count): a fair proxy for "famous", so Patrick comes before a 5th-century
 # bishop known from one martyrology. The 600 most famous are kept.
 - name: saintsOfCountryByFame
@@ -98,6 +105,20 @@
       VALUES ?country { {{keys}} }
       { ?wd wdt:P27 ?country } UNION { ?wd wdt:P19/wdt:P17 ?country }
       ?wd wdt:P411 ?canon .
+      {
+        ?wd wdt:P411 ?catholicStatus
+        VALUES ?catholicStatus { wd:Q3464126 wd:Q2369287 wd:Q51620 wd:Q869974 wd:Q51619 }
+      } UNION {
+        ?wd wdt:P6126|wdt:P4286|wdt:P9588 []
+      } UNION {
+        ?wd wdt:P411 ?plainSaint VALUES ?plainSaint { wd:Q43115 wd:Q123110154 }
+        ?wd wdt:P570 ?undivided FILTER(YEAR(?undivided) < 1054)
+      } UNION {
+        ?wd p:P411/pq:P1027 ?pope . ?pope wdt:P39 wd:Q19546
+      }
+      FILTER(EXISTS { ?wd p:P411/pq:P1027 ?catholicBody .
+                      { ?catholicBody wdt:P39 wd:Q19546 } UNION { VALUES ?catholicBody { wd:Q9592 wd:Q159583 wd:Q1131466 } } }
+             || NOT EXISTS { ?wd p:P411/pq:P1027 [] })
       ?canon rdfs:label ?canonLabel FILTER(LANG(?canonLabel) = "en")
       ?wd rdfs:label ?label FILTER(LANG(?label) = "en")
       ?wd wikibase:sitelinks ?links .
