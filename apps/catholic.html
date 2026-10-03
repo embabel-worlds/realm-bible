@@ -297,6 +297,18 @@ RETURN k.wdLabel, k.birthPlace, k.birthCoord, k.deathPlace, k.deathCoord, …, l
   function year(s) { var m = String(s || '').match(/^-?\d{1,4}/); return m ? m[0].replace(/^-/, '') + (String(s).charAt(0) === '-' ? ' BC' : '') : ''; }
   function point(p) { var m = String(p || '').match(/Point\(([-\d.]+)\s+([-\d.]+)\)/); return m ? [Number(m[2]), Number(m[1])] : null; }
   function qid(wd) { return String(wd || '').replace(/^.*\//, ''); }
+  function dayMonth(iso) {
+    var p = iso.split('-').map(Number);
+    return new Date(p[0], p[1] - 1, p[2]).toLocaleDateString(undefined, { day: 'numeric', month: 'long' });
+  }
+  /* Wikidata writes a feast day in English ("October 3", "3 October"); compare it with an ISO day by month and day. */
+  var MONTHS = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+  function sameDay(text, iso) {
+    var t = String(text).toLowerCase(), m = MONTHS.findIndex(function (n) { return t.indexOf(n) >= 0; }), d = t.match(/\b(\d{1,2})\b/);
+    if (m < 0 || !d) return null;
+    var p = iso.split('-').map(Number);
+    return p[1] === m + 1 && p[2] === Number(d[1]);
+  }
   function rankLabel(r) { return { solemnity: 'Solemnity', feast: 'Feast', memorial: 'Memorial', 'optional memorial': 'Optional memorial', sunday: 'Sunday', weekday: 'Weekday' }[r] || cap(r); }
 
   function setColour(colour) {
@@ -401,6 +413,13 @@ RETURN k.wdLabel, k.birthPlace, k.birthCoord, k.deathPlace, k.deathCoord, …, l
       ['buried', k.burialPlace, k.burialCoord, null],
     ].filter(function (p) { return p[1]; });
     var dates = [year(k.born), year(k.died)].filter(Boolean).join(' – ');
+    /* Wikidata's description often already carries the dates ("(1873–1897)"); then they are not repeated. */
+    if (dates && year(k.born) && String(k.description || '').indexOf(year(k.born)) >= 0) dates = '';
+    /* The feast is the calendar's: this saint is shown because the General Roman Calendar keeps them on this
+       day. Wikidata's feast day may be another calendar's or the pre-1969 date (Thérèse: 3 October) — shown
+       only as a secondary "also kept on", never in place of the day the page is built on. */
+    var feast = dayMonth(day);
+    var otherFeasts = String(k.feastDay || '').split(/\s*[,;]\s*/).filter(function (f) { return f && sameDay(f, day) === false; });
     var img = k.thumbnail || k.image;
     body.innerHTML =
       '<div class="saint"><div>' +
@@ -413,7 +432,8 @@ RETURN k.wdLabel, k.birthPlace, k.birthCoord, k.deathPlace, k.deathCoord, …, l
         '<dl class="facts">' +
           (k.religiousOrder ? '<dt>Order</dt><dd>' + esc(k.religiousOrder) + '</dd>' : '') +
           (k.canonization ? '<dt>Standing</dt><dd>' + esc(cap(k.canonization)) + '</dd>' : '') +
-          (k.feastDay ? '<dt>Feast</dt><dd>' + esc(k.feastDay) + '</dd>' : '') +
+          '<dt>Feast</dt><dd>' + esc(feast) + ' <span class="attrib">(General Roman Calendar)</span>' +
+            (otherFeasts.length ? '<div class="attrib">also kept on ' + otherFeasts.map(esc).join(', ') + ' in other or older calendars</div>' : '') + '</dd>' +
           '<dt>Patron of</dt><dd><button class="linkbtn" id="show-patrons" data-wd="' + esc(s.wd) + '">Show</button><div class="patrons" id="patrons"></div></dd>' +
         '</dl>' +
         (others.length ? '<p class="also" style="text-align:left">Also honoured today: ' + others.map(function (o) { return esc(o.name); }).join(', ') + '</p>' : '') +

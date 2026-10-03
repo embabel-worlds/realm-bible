@@ -81,6 +81,13 @@ try {
     const mapOk = await page.locator('#map.leaflet-container').waitFor({ timeout: 20000 }).then(() => true, () => false);
     check('her places are mapped', mapOk);
     check('places are listed with their kind', (await page.locator('#saint-body .places li').count()) > 0);
+    check('no empty "also honoured" line on a one-saint day', !/Also honoured today:\s*$/m.test(await text('#saint-body')) &&
+      !(await page.locator('#saint-body .also').count()));
+    const desc = await text('#saint-body .desc');
+    check('her dates are shown once', (desc.match(/1873/g) || []).length === 1, desc.trim());
+    const facts = await text('#saint-body .facts');
+    check('her feast is the calendar\'s 1 October, Wikidata\'s 3 October only as "also kept on"',
+      /1 October|October 1/.test(facts) && !/Feast\s*October 3/.test(facts) && /also kept on October 3/.test(facts), facts.replace(/\s+/g, ' ').trim().slice(0, 200));
   }
 
   /* The Rosary: Thursday → the Luminous Mysteries, five of them, each opening its Scripture. */
