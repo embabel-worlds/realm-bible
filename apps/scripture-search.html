@@ -8,112 +8,10 @@
 <link rel="stylesheet" href="/api/v1/apps-runtime/v1/theme.css">
 <script src="/api/v1/apps-runtime/v1/embabel.js"></script>
 <script type="application/embabel-app+json">
-{"version":1,"name":"scripture-search","requires":{"lenses":[],"views":["SearchPassages","PeopleInPassage","CompareTranslations","TodaysHeadlines","PassagesForStory"],"realms":["realm-bible"],"namespaces":[]}}
+{"version":1,"name":"scripture-search","requires":{"lenses":[],"views":["SearchPassages","ReadPassage","PeopleInPassage","CompareTranslations","TodaysHeadlines","PassagesForStory"],"realms":["realm-bible"],"namespaces":[]}}
 </script>
-<style>
-  /* A printed Bible, not a dashboard: vellum, iron-gall ink, and rubrication — the red scribes used to mark
-     the parts of a text a reader navigates by (verse numbers, headings, initials). */
-  :root{--vellum:#efe5cf;--page:#f8f1df;--raised:#f1e6cb;--rule:#d6c39b;--ink:#2a1f14;--faded:#7b6a50;
-        --rubric:#9b2d20;--gold:#a67c2e;--hl:rgba(166,124,46,0.17);--person:#5b3f7a;
-        --serif:'Iowan Old Style','Palatino Linotype',Palatino,'Book Antiqua',Georgia,serif;
-        --embabel-bg:var(--vellum);--embabel-surface:var(--page);--embabel-border:var(--rule);--embabel-text:var(--ink);}
-  *{box-sizing:border-box;}
-  html,body{margin:0;color:var(--ink);font-family:var(--serif);}
-  body{padding:0 16px 64px;background:var(--vellum);
-    background-image:radial-gradient(ellipse at 50% 0%,rgba(255,250,235,0.9),rgba(239,229,207,0) 60%),
-                     radial-gradient(ellipse at 100% 100%,rgba(166,124,46,0.10),rgba(0,0,0,0) 55%);
-    background-attachment:fixed;}
-  .scripture{font-family:var(--serif);}
-  .sc{font-variant:small-caps;letter-spacing:0.04em;}
-  header{max-width:1180px;margin:0 auto;padding:40px 0 16px;text-align:center;}
-  .kicker{font-variant:small-caps;letter-spacing:0.28em;color:var(--rubric);font-size:0.9rem;}
-  h1{margin:4px 0 0;font-size:2.6rem;font-weight:normal;letter-spacing:0.06em;font-variant:small-caps;}
-  .fleuron{color:var(--gold);font-size:1.3rem;margin:6px 0 10px;letter-spacing:0.6em;}
-  .lede{color:var(--faded);margin:0 auto 22px;max-width:720px;line-height:1.6;font-style:italic;font-size:1.05rem;}
-  form{display:flex;gap:10px;flex-wrap:wrap;max-width:860px;margin:0 auto;}
-  #q{flex:1 1 420px;min-width:0;background:var(--page);color:var(--ink);border:1px solid var(--rule);border-radius:4px;
-    padding:14px 16px;font:inherit;font-size:1.1rem;outline:none;box-shadow:inset 0 1px 3px rgba(42,31,20,0.08);}
-  #q::placeholder{color:#a8977a;font-style:italic;}
-  #q:focus{border-color:var(--gold);}
-  button{font:inherit;cursor:pointer;}
-  .go{background:var(--rubric);color:#fbf4e4;border:0;border-radius:4px;padding:0 26px;font-variant:small-caps;letter-spacing:0.08em;font-size:1.05rem;}
-  .go:hover{background:#7f2419;}
-  .row{display:flex;gap:8px;align-items:center;justify-content:center;flex-wrap:wrap;margin:14px auto 0;max-width:980px;}
-  .chip{background:transparent;border:1px solid var(--rule);color:var(--faded);border-radius:999px;padding:4px 13px;font-size:0.92rem;font-style:italic;}
-  .chip:hover{color:var(--rubric);border-color:var(--rubric);}
-  .toggle{display:inline-flex;border:1px solid var(--rule);border-radius:999px;overflow:hidden;margin-left:10px;}
-  .toggle button{background:transparent;border:0;color:var(--faded);padding:5px 14px;font-variant:small-caps;letter-spacing:0.06em;}
-  .toggle button[aria-pressed="true"]{background:var(--rubric);color:#fbf4e4;}
-  embabel-operation-state{display:block;max-width:860px;margin:12px auto 0;text-align:left;}
-  main{max-width:1180px;margin:10px auto 0;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:26px;}
-  @media (max-width:900px){main{grid-template-columns:1fr;}}
-  .note{color:var(--faded);font-size:0.9rem;line-height:1.5;margin:4px 0 12px;font-style:italic;}
-  .card{background:var(--page);border:1px solid var(--rule);border-radius:3px;padding:14px 18px;margin-bottom:12px;cursor:pointer;
-    box-shadow:0 1px 0 rgba(42,31,20,0.05),0 4px 14px rgba(42,31,20,0.05);transition:border-color .15s,box-shadow .15s;}
-  .card:hover{border-color:var(--gold);}
-  .card.open{border-color:var(--rubric);box-shadow:inset 3px 0 0 var(--rubric),0 4px 14px rgba(42,31,20,0.07);}
-  .card .top{display:flex;align-items:baseline;gap:10px;border-bottom:1px solid var(--rule);padding-bottom:6px;}
-  .rank{color:var(--rubric);font-size:0.95rem;min-width:1.2em;}
-  .passage{font-variant:small-caps;letter-spacing:0.05em;font-size:1.15rem;}
-  .testament{margin-left:auto;color:var(--faded);font-size:0.8rem;font-style:italic;}
-  .card .verses{margin-top:8px;font-size:1.02rem;line-height:1.6;}
-  .vn{color:var(--rubric);font-size:0.68em;vertical-align:super;margin-right:3px;font-weight:bold;}
-  .reader{background:var(--page);border:1px solid var(--rule);border-radius:3px;padding:26px 32px 28px;position:sticky;top:12px;
-    max-height:calc(100vh - 90px);overflow:auto;box-shadow:0 2px 0 rgba(42,31,20,0.04),0 10px 30px rgba(42,31,20,0.08);}
-  @media (max-width:900px){.reader{position:static;max-height:none;padding:22px 20px;}}
-  .reader .book{text-align:center;font-variant:small-caps;letter-spacing:0.3em;color:var(--rubric);font-size:0.95rem;}
-  .reader h2{margin:2px 0 0;text-align:center;font-weight:normal;font-size:1.9rem;letter-spacing:0.04em;}
-  .reader .sub{text-align:center;color:var(--faded);font-size:0.85rem;font-style:italic;margin:6px 0 4px;}
-  .reader .fleuron{text-align:center;margin:4px 0 14px;}
-  .chapter{text-align:justify;hyphens:auto;}
-  /* A column this narrow cannot justify without rivers; ragged-right reads better than gaps. */
-  @media (max-width:560px){.chapter{text-align:left;}}
-  .chapter p{margin:0 0 4px;line-height:1.75;font-size:1.1rem;padding:2px 6px;border-radius:2px;cursor:pointer;}
-  .chapter p:hover{background:var(--raised);}
-  .chapter p.first::first-letter{float:left;font-size:3.6em;line-height:0.82;margin:6px 8px 0 0;color:var(--rubric);
-    text-shadow:1px 1px 0 var(--gold);}
-  .chapter p.match{background:var(--hl);}
-  .chapter p.person{box-shadow:inset 3px 0 0 var(--person);}
-  .chapter p.picked{outline:1px solid var(--rubric);}
-  h3{font-size:0.95rem;font-variant:small-caps;letter-spacing:0.18em;color:var(--rubric);margin:22px 0 10px;font-weight:normal;text-align:center;}
-  .people{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;}
-  .person-chip{background:transparent;border:1px solid var(--rule);color:var(--ink);border-radius:999px;padding:3px 12px;font-size:0.9rem;}
-  .person-chip:hover{border-color:var(--person);}
-  .person-chip[aria-pressed="true"]{border-color:var(--person);color:#fbf4e4;background:var(--person);}
-  .person-chip small{color:var(--faded);margin-left:5px;font-style:italic;}
-  .person-chip[aria-pressed="true"] small{color:#e6dcf0;}
-  .compare{border-top:1px solid var(--rule);margin-top:18px;padding-top:2px;}
-  .tr{display:grid;grid-template-columns:160px 1fr;gap:14px;padding:9px 0;border-bottom:1px dotted var(--rule);}
-  @media (max-width:560px){.tr{grid-template-columns:1fr;gap:2px;}}
-  .tr .name{color:var(--rubric);font-size:0.85rem;font-variant:small-caps;letter-spacing:0.04em;padding-top:3px;}
-  .tr .text{line-height:1.6;}
-  .placeholder{color:var(--faded);text-align:center;padding:60px 20px;line-height:1.6;font-style:italic;}
-  .problem{border:1px solid #c9a39a;background:#f6e3dc;color:#7f2419;border-radius:3px;padding:12px 14px;font-size:0.92rem;}
-  footer{max-width:1180px;margin:30px auto 0;color:var(--faded);font-size:0.85rem;text-align:center;font-style:italic;}
-  footer a{color:var(--faded);}
-  /* Today's news reads as a printed margin note: a rubric heading and a quiet list, not a news ticker. */
-  .news{max-width:860px;margin:22px auto 0;text-align:left;border-top:1px solid var(--rule);padding-top:12px;}
-  .news h2{margin:0 0 4px;font-weight:normal;font-variant:small-caps;letter-spacing:0.18em;color:var(--rubric);font-size:0.95rem;text-align:center;}
-  .news .sub{color:var(--faded);font-size:0.85rem;font-style:italic;text-align:center;margin:0 0 10px;}
-  .news ol{list-style:none;margin:0;padding:0;columns:2;column-gap:26px;}
-  @media (max-width:700px){.news ol{columns:1;}}
-  .news li{break-inside:avoid;margin:0 0 8px;display:flex;gap:8px;align-items:baseline;}
-  .story{background:transparent;border:0;padding:0;text-align:left;color:var(--ink);font-size:0.98rem;line-height:1.35;cursor:pointer;}
-  .story:hover{color:var(--rubric);text-decoration:underline;text-decoration-color:var(--rule);}
-  .story[aria-pressed="true"]{color:var(--rubric);}
-  .news .age{color:var(--faded);font-size:0.78rem;font-style:italic;white-space:nowrap;}
-  .news .src{color:var(--faded);font-size:0.78rem;}
-  .why{margin-top:8px;color:var(--faded);font-size:0.88rem;font-style:italic;line-height:1.45;border-top:1px dotted var(--rule);padding-top:6px;}
-  .storyline{color:var(--ink);font-style:normal;}
-  #how-it-works{max-width:1180px;margin:24px auto 0;background:var(--page);border:1px solid var(--rule);border-radius:3px;
-    padding:24px 30px;line-height:1.65;display:none;}
-  #how-it-works:target{display:block;}
-  #how-it-works h2{margin-top:0;font-weight:normal;font-variant:small-caps;letter-spacing:0.08em;color:var(--rubric);}
-  #how-it-works h3{text-align:left;}
-  #how-it-works pre{background:#f2e8d2;border:1px solid var(--rule);border-radius:3px;padding:12px;overflow:auto;font-size:0.8rem;
-    color:#3b2e1f;font-family:ui-monospace,Menlo,monospace;}
-  #how-it-works code{color:var(--rubric);font-family:ui-monospace,Menlo,monospace;font-size:0.88em;}
-</style>
+<link rel="stylesheet" href="bible.css">
+<script src="bible-core.js"></script>
 </head>
 <body>
 
@@ -267,113 +165,19 @@ WHERE 'web' IN d.tags
 <footer><a href="#how-it-works">How it works</a></footer>
 
 <script>
+/* The general edition: search, the reader and today's news, over the shared core (bible-core.js). */
 (function () {
-  var stateEl = document.getElementById('state');
+  var U = BibleCore.util, esc = U.esc, rowsOf = U.rowsOf, warningsOf = U.warningsOf, warnText = U.warnText, problem = U.problem;
   var resultsEl = document.getElementById('results');
-  var readerEl = document.getElementById('reader');
-  var translation = 'kjv';
-  var rows = [];
-  var openOsis = null;
-  var searchToken = 0;
-  var peopleCache = {};
-  var compareCache = {};
-  /* What the shown rows answer: the reader's own description, or a news story. The cards and the reader
-     are the same either way; only the sentence above them and the evidence line differ. */
-  var asked = { kind: 'query', text: '' };
+  var core = BibleCore({
+    state: document.getElementById('state'), results: resultsEl, reader: document.getElementById('reader'),
+  });
   var headlines = [];
 
-  function esc(s) {
-    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
-      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
-    });
+  function markStory(i) {
+    document.querySelectorAll('.story').forEach(function (b) { b.setAttribute('aria-pressed', String(Number(b.getAttribute('data-i')) === i)); });
   }
-  function rowsOf(r) {
-    if (!r) return [];
-    if (Array.isArray(r.data)) return r.data;
-    if (r.data && Array.isArray(r.data.rows)) return r.data.rows;
-    if (Array.isArray(r.rows)) return r.rows;
-    return [];
-  }
-  function warningsOf(r) {
-    if (!r) return [];
-    if (Array.isArray(r.warnings)) return r.warnings;
-    if (r.data && Array.isArray(r.data.warnings)) return r.data.warnings;
-    return [];
-  }
-  function problem(msg) { return '<div class="problem">' + esc(msg) + '</div>'; }
-  /* The public envelope carries warnings as {code, message}; older shapes carry strings. */
-  function warnText(w) { return typeof w === 'string' ? w : (w && (w.message || w.code)) || String(w); }
-
-  /* A verse is "matched" when its World English wording appears in the excerpt the search matched. The
-     excerpt is WEB text, so the comparison is always against v.web, whichever translation is shown. */
-  function norm(s) { return String(s || '').toLowerCase().replace(/[^a-z0-9 ]+/g, ' ').replace(/\s+/g, ' ').trim(); }
-  function matchedVerses(row) {
-    var excerpt = norm(row.matched);
-    var hits = (row.verses || []).filter(function (v) {
-      var w = norm(v.web);
-      if (!w) return false;
-      var probe = w.length > 40 ? w.slice(0, 40) : w;
-      var tail = w.length > 40 ? w.slice(-40) : w;
-      return excerpt.indexOf(probe) >= 0 || excerpt.indexOf(tail) >= 0;
-    }).map(function (v) { return v.n; });
-    return hits;
-  }
-  /* The search's judged fit, 0 to 1: 1.0 means it read the chapter and judged that it narrates or contains what
-     was described. Shown only below 1.0, where it is information — a column of "1.0" is noise. */
-  function fitLabel(f) {
-    var n = Number(f);
-    if (!isFinite(n) || n >= 1) return '';
-    return ' · <span title="How well the search judged this chapter fits your description, from 0 to 1">fit ' + n.toFixed(2) + '</span>';
-  }
-  /* The divine name as English Bibles print it: LORD, and GOD after "Lord", in small capitals. Applied to
-     already-escaped text, so it only ever wraps words it found. */
-  function sacred(escapedText) {
-    return escapedText.replace(/\b(LORD|GOD)\b/g, function (w) { return '<span class="sc">' + w.charAt(0) + w.slice(1).toLowerCase() + '</span>'; });
-  }
-  function roman(n) {
-    var map = [[100, 'C'], [90, 'XC'], [50, 'L'], [40, 'XL'], [10, 'X'], [9, 'IX'], [5, 'V'], [4, 'IV'], [1, 'I']], out = '';
-    map.forEach(function (m) { while (n >= m[0]) { out += m[1]; n -= m[0]; } });
-    return out;
-  }
-  function verseText(v) { return translation === 'web' ? (v.web || v.kjv) : v.kjv; }
-
-  function renderResults() {
-    if (!rows.length) {
-      resultsEl.innerHTML = asked.kind === 'story'
-        ? '<div class="placeholder">No chapter was judged to tell an event like this one. Not every story has a biblical ' +
-          'parallel, and the search says so rather than reaching for one.</div>'
-        : '<div class="placeholder">No chapter was judged to fit that description. Try it another way — ' +
-          'what happens, who is there, or a phrase you remember.</div>';
-      return;
-    }
-    var lead = asked.kind === 'story'
-      ? 'Chapters the search judged to tell the same kind of event as <span class="storyline">“' + esc(asked.text) + '”</span>. ' +
-        'Under each is the reading it judged by — a parallel, not a prophecy.'
-      : 'Chapters judged to fit your description, best first — highlighted verses are the evidence the search read.';
-    resultsEl.innerHTML = '<p class="note">' + lead + ' Showing the ' + (translation === 'web' ? 'World English Bible' : 'King James Version') + '.</p>' +
-      rows.map(function (row) {
-        var hits = matchedVerses(row);
-        var shown = (hits.length ? row.verses.filter(function (v) { return hits.indexOf(v.n) >= 0; }) : row.verses.slice(0, 2)).slice(0, 3);
-        return '<div class="card' + (row.osis === openOsis ? ' open' : '') + '" data-osis="' + esc(row.osis) + '" tabindex="0">' +
-          '<div class="top"><span class="rank">' + esc(row.rank) + '</span><span class="passage">' + esc(row.passage) + '</span>' +
-          '<span class="testament">' + esc(row.testament || '') + fitLabel(row.fit) + '</span></div>' +
-          '<div class="verses scripture">' + shown.map(function (v) {
-            return '<span class="vn">' + esc(v.n) + '</span>' + sacred(esc(verseText(v))) + ' ';
-          }).join('') + '</div>' +
-          /* For a news story the link is an analogy the search drew, so its reasoning is shown, not just the
-             verses: a judge fooled by a pun ("a plot of ground") is then visible as one. */
-          (asked.kind === 'story' && row.matched ? '<div class="why">' + esc(row.matched) + '</div>' : '') + '</div>';
-      }).join('');
-  }
-
-  function search(q) {
-    q = (q || '').trim();
-    if (!q) return;
-    markStory(-1);
-    try { history.replaceState(null, '', '?q=' + encodeURIComponent(q) + location.hash); } catch (e) { /* preview frames */ }
-    run({ kind: 'query', text: q }, 'SearchPassages', { query: q, limit: 8 },
-      'Reading candidate chapters and judging which ones fit — usually 4 to 8 seconds.');
-  }
+  core.onSearch(function () { markStory(-1); });
 
   function searchStory(i) {
     var h = headlines[i];
@@ -381,35 +185,8 @@ WHERE 'web' IN d.tags
     markStory(i);
     document.getElementById('q').value = '';
     try { history.replaceState(null, '', location.pathname + location.hash); } catch (e) { /* preview frames */ }
-    run({ kind: 'story', text: h.headline }, 'PassagesForStory', { story: h.headline + '. ' + (h.summary || ''), limit: 3 },
+    core.run({ kind: 'story', text: h.headline }, 'PassagesForStory', { story: h.headline + '. ' + (h.summary || ''), limit: 3 },
       'Restating the story as a biblical event, then reading chapters that tell it — usually 3 to 8 seconds.');
-  }
-
-  function markStory(i) {
-    document.querySelectorAll('.story').forEach(function (b) { b.setAttribute('aria-pressed', String(Number(b.getAttribute('data-i')) === i)); });
-  }
-
-  function run(what, view, params, expectation) {
-    var token = ++searchToken;
-    asked = what;
-    openOsis = null;
-    resultsEl.innerHTML = '<div class="placeholder">Reading candidate chapters…</div>';
-    readerEl.innerHTML = '<div class="placeholder scripture">❦<br>Open a chapter to read it here.</div>';
-    embabel.views.invoke(view, params, { state: stateEl, expectation: expectation })
-      .then(function (res) {
-        if (token !== searchToken) return;
-        rows = rowsOf(res);
-        var w = warningsOf(res);
-        renderResults();
-        if (w.length) resultsEl.insertAdjacentHTML('afterbegin', problem('Partial answer: ' + w.map(warnText).join(' · ')));
-        if (rows.length) openChapter(rows[0].osis);
-      })
-      .catch(function (e) {
-        if (token !== searchToken) return;
-        rows = [];
-        resultsEl.innerHTML = problem('The search could not run: ' + (e && e.message ? e.message : String(e)) +
-          ' — this is the search failing, not an absence of passages.');
-      });
   }
 
   /* One news call on load — the agentic search runs only for the story a reader picks. The headline view
@@ -434,129 +211,18 @@ WHERE 'web' IN d.tags
         }).join('') + '</ol>';
       })
       .catch(function (e) {
-        el.innerHTML = '<p class="note" style="text-align:center">Today\'s news could not be read: ' + esc(e && e.message ? e.message : String(e)) +
+        el.innerHTML = '<p class="note" style="text-align:center">Today\'s news could not be read: ' + esc(U.errText(e)) +
           '. Searching Scripture still works.</p>';
       });
   }
 
-  function openChapter(osis) {
-    var row = rows.filter(function (r) { return r.osis === osis; })[0];
-    if (!row) return;
-    openOsis = osis;
-    renderResults();
-    var hits = matchedVerses(row);
-    var book = row.passage.replace(/\s+\d+$/, ''), chapterNo = Number((row.passage.match(/(\d+)$/) || [])[1]);
-    readerEl.innerHTML =
-      '<div class="book" data-passage="' + esc(row.passage) + '">' + esc(book) + '</div>' +
-      '<h2 class="scripture">' + (chapterNo ? 'Chapter ' + roman(chapterNo) : esc(row.passage)) + '</h2>' +
-      '<div class="sub">' + (translation === 'web' ? 'World English Bible' : 'The King James Version') +
-      ' · shaded verses are the ones the search read · touch a verse to compare translations</div>' +
-      '<div class="fleuron" aria-hidden="true">❦</div>' +
-      '<div class="chapter scripture">' + row.verses.map(function (v, i) {
-        var cls = [i === 0 ? 'first' : '', hits.indexOf(v.n) >= 0 ? 'match' : ''].filter(Boolean).join(' ');
-        /* The first verse opens with the illuminated initial, so its number stays out of the way. */
-        return '<p data-ref="' + esc(v.ref) + '" data-n="' + esc(v.n) + '"' + (cls ? ' class="' + cls + '"' : '') + '>' +
-          (i === 0 ? '' : '<span class="vn">' + esc(v.n) + '</span>') + sacred(esc(verseText(v))) + '</p>';
-      }).join('') + '</div>' +
-      '<div class="fleuron" aria-hidden="true">❦</div><h3>People in this chapter</h3><div id="people" class="people"><span class="note">Looking up who is mentioned…</span></div>' +
-      '<div id="compare"></div>';
-    var first = readerEl.querySelector('p.match');
-    if (first) first.scrollIntoView({ block: 'center', behavior: 'smooth' });
-    loadPeople(row.passage);
-  }
-
-  function loadPeople(passage) {
-    var el = document.getElementById('people');
-    var cached = peopleCache[passage];
-    var p = cached ? Promise.resolve(cached) : embabel.views.invoke('PeopleInPassage', { passage: passage }, { state: stateEl })
-      .then(function (res) { var packed = { rows: rowsOf(res), warnings: warningsOf(res) }; peopleCache[passage] = packed; return packed; });
-    p.then(function (packed) {
-      var shown = readerEl.querySelector('[data-passage]');
-      if (!document.getElementById('people') || !shown || shown.getAttribute('data-passage') !== passage) return;
-      if (!packed.rows.length) {
-        el.innerHTML = '<span class="note">Theographic tags no one in this chapter.</span>';
-        return;
-      }
-      el.innerHTML = packed.rows.map(function (r) {
-        return '<button class="person-chip" aria-pressed="false" data-verses="' + esc((r.verseNumbers || []).join(',')) + '">' +
-          esc(r.person) + '<small>' + esc(r.verses) + (r.verses === 1 ? ' verse' : ' verses') + '</small></button>';
-      }).join('') + (packed.warnings.length ? problem('Partial: ' + packed.warnings.map(warnText).join(' · ')) : '');
-    }).catch(function (e) {
-      el.innerHTML = problem('Could not look up the people: ' + (e && e.message ? e.message : String(e)));
-    });
-  }
-
-  function compare(ref, para) {
-    readerEl.querySelectorAll('p.picked').forEach(function (p) { p.classList.remove('picked'); });
-    para.classList.add('picked');
-    var box = document.getElementById('compare');
-    box.innerHTML = '<div class="compare"><h3>' + esc(ref) + ' in seven translations</h3><p class="note">Fetching the five older translations…</p></div>';
-    var cached = compareCache[ref];
-    /* No shared state bar: its generic "Partial result" would announce the expected YLT gap on every Old
-       Testament verse, after the panel has already said why. Missing translations are named in the panel. */
-    var p = cached ? Promise.resolve(cached) : embabel.views.invoke('CompareTranslations', { ref: ref })
-      .then(function (res) { var packed = { rows: rowsOf(res), warnings: warningsOf(res) }; compareCache[ref] = packed; return packed; });
-    p.then(function (packed) {
-      /* Which translations should be here, named — the envelope's warning says only "PARTIAL", not which
-         source fell short, so the rows decide. The YLT gap on an Old Testament verse is expected. */
-      var got = packed.rows.map(function (r) { return r.translation; }).join(' | ');
-      var nt = /^(Matthew|Mark|Luke|John|Acts|Romans|1 Corinthians|2 Corinthians|Galatians|Ephesians|Philippians|Colossians|1 Thessalonians|2 Thessalonians|1 Timothy|2 Timothy|Titus|Philemon|Hebrews|James|1 Peter|2 Peter|1 John|2 John|3 John|Jude|Revelation) /.test(ref);
-      var expected = ['American Standard Version', 'Bible in Basic English', 'Darby', 'Douay-Rheims'].concat(nt ? ["Young's Literal"] : []);
-      var missing = expected.filter(function (name) { return got.indexOf(name) < 0; });
-      box.innerHTML = '<div class="compare"><h3>' + esc(ref) + ' in ' + packed.rows.length + ' translations</h3>' +
-        packed.rows.map(function (r) {
-          return '<div class="tr"><div class="name">' + esc(r.translation) + '</div><div class="text scripture">' + sacred(esc(r.text)) + '</div></div>';
-        }).join('') +
-        (nt ? '' : '<p class="note">Young\'s Literal is New Testament only at its source, so an Old Testament verse has no YLT row.</p>') +
-        (missing.length ? problem('Could not be fetched this time: ' + missing.join(', ') + '.') : '') + '</div>';
-    }).catch(function (e) {
-      box.innerHTML = problem('Could not compare translations: ' + (e && e.message ? e.message : String(e)));
-    });
-  }
-
-  function setTranslation(t) {
-    translation = t;
-    document.getElementById('t-kjv').setAttribute('aria-pressed', String(t === 'kjv'));
-    document.getElementById('t-web').setAttribute('aria-pressed', String(t === 'web'));
-    if (rows.length) renderResults();
-    if (openOsis) openChapter(openOsis);
-  }
-
-  document.getElementById('search').addEventListener('submit', function (e) { e.preventDefault(); search(document.getElementById('q').value); });
-  document.querySelectorAll('[data-example]').forEach(function (b) {
-    b.addEventListener('click', function () { var q = b.getAttribute('data-example'); document.getElementById('q').value = q; search(q); });
-  });
+  core.wire();
   document.getElementById('headlines').addEventListener('click', function (e) {
     var b = e.target.closest('.story');
     if (b) searchStory(Number(b.getAttribute('data-i')));
   });
-  document.getElementById('t-kjv').addEventListener('click', function () { setTranslation('kjv'); });
-  document.getElementById('t-web').addEventListener('click', function () { setTranslation('web'); });
-  resultsEl.addEventListener('click', function (e) { var c = e.target.closest('.card'); if (c) openChapter(c.getAttribute('data-osis')); });
-  resultsEl.addEventListener('keydown', function (e) {
-    if (e.key === 'Enter') { var c = e.target.closest('.card'); if (c) openChapter(c.getAttribute('data-osis')); }
-  });
-  readerEl.addEventListener('click', function (e) {
-    var chip = e.target.closest('.person-chip');
-    if (chip) {
-      var on = chip.getAttribute('aria-pressed') !== 'true';
-      readerEl.querySelectorAll('.person-chip').forEach(function (c) { c.setAttribute('aria-pressed', 'false'); });
-      readerEl.querySelectorAll('p.person').forEach(function (p) { p.classList.remove('person'); });
-      if (on) {
-        chip.setAttribute('aria-pressed', 'true');
-        var ns = chip.getAttribute('data-verses').split(',');
-        readerEl.querySelectorAll('.chapter p').forEach(function (p) {
-          if (ns.indexOf(p.getAttribute('data-n')) >= 0) p.classList.add('person');
-        });
-      }
-      return;
-    }
-    var para = e.target.closest('.chapter p');
-    if (para) compare(para.getAttribute('data-ref'), para);
-  });
-  document.getElementById('close-how').addEventListener('click', function (e) { e.preventDefault(); history.replaceState(null, '', location.pathname + location.search); document.getElementById('how-it-works').style.display = ''; });
 
-  (embabel.manifest && embabel.manifest.ready ? embabel.manifest.ready : Promise.resolve({ ok: true })).then(function (m) {
+  BibleCore.ready().then(function (m) {
     if (m && m.ok === false) {
       resultsEl.innerHTML = problem('This app needs ' + (m.missing || []).join(', ') + ', which this world does not have. ' +
         'Install realm-bible to use it.');
@@ -564,7 +230,7 @@ WHERE 'web' IN d.tags
       return;
     }
     var q = new URLSearchParams(location.search).get('q');
-    if (q) { document.getElementById('q').value = q; search(q); }
+    if (q) { document.getElementById('q').value = q; core.search(q); }
     loadHeadlines();
   });
 })();
