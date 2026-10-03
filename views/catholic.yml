@@ -77,7 +77,7 @@
     catechism:
       type: string
       default: "baltimore-2"
-      description: "The catechism: `baltimore-2` (Baltimore Catechism No. 2, 1885)."
+      description: "The catechism: `baltimore-2` (Baltimore Catechism No. 2, 1885), `bcp-1979` (An Outline of the Faith, by section number) or `church-catechism` (the Church Catechism of 1662, lesson 1)."
     lesson:
       type: int
       default: 1
@@ -98,7 +98,7 @@
     catechism:
       type: string
       default: ""
-      description: "Limit to one catechism, e.g. `baltimore-2`; empty for all."
+      description: "Limit to one catechism — `baltimore-2`, `bcp-1979` (An Outline of the Faith) or `church-catechism` (1662); empty for all."
     limit:
       type: int
       default: 25

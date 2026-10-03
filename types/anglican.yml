@@ -1,0 +1,120 @@
+# The Anglican edition: the Daily Office of the Episcopal Church's Book of Common Prayer (1979), its
+# collects, canticles, psalter and prayers, and the Church's historic formularies.
+#
+#   OfficeDay ─PSALM─▶ Passage        ─LESSON─▶ Passage        ─COLLECT─▶ Collect        ─CANTICLE─▶ Canticle
+#   Canticle ─FROM─▶ Passage           BcpPsalm ─SAME_AS─▶ Passage
+#   ArticleOfReligion ─PROVED_BY─▶ Passage        CatechismEntry (An Outline of the Faith; the Church Catechism)
+#
+# Seeded from reference/anglican-*.yml, which scripts/anglican/ builds from the Prayer Book's own tables
+# and rules. The 1979 Prayer Book is public domain; no 1662 (Crown copyright) text is carried. See
+# each reference file's header for its source.
+
+- name: OfficeDay
+  description: "Morning or Evening Prayer on one date (2025–2030), as the 1979 Book of Common Prayer orders it: the day's name in the church year, any Holy Day kept (transferred where the Prayer Book's rules move it), the season, the customary colour, the psalms and lessons the Daily Office Lectionary appoints, the collect and the suggested canticles. PSALM and LESSON join the chapters; COLLECT and CANTICLE the texts."
+  userAnchor: false
+  properties:
+    key:
+      identity: true
+      description: "`<date>/<office>`, e.g. `2026-11-29/morning`. Identity."
+    date: "ISO date, e.g. `2026-11-29`."
+    office: "`morning` or `evening`."
+    weekday: "Day of the week, e.g. `Sunday`."
+    name: "The day as the Prayer Book names it, e.g. `The First Sunday of Advent`, `Friday, Proper 21`, `Saint Andrew`."
+    feast: "The Holy Day kept, if any, e.g. `Saint Andrew` — on the day it is observed after any transfer."
+    commemoration: "A lesser feast the Prayer Book's calendar lists for the date, e.g. `Jackson Kemper, First Missionary Bishop in the United States, 1870` — optional, and not kept over a Sunday or Holy Day."
+    season: "Advent, Christmas, Epiphany, Lent, Holy Week, Easter or Season after Pentecost."
+    colour: "The customary liturgical colour: blue, white, green, violet, red or black. The Prayer Book appoints none; this is custom."
+    rank: "principal feast, feast of our Lord, sunday, holy day, fast, holy week, easter week or weekday."
+    lectionaryYear: "Year of the two-year lectionary: `one` (begun at Advent before an odd year) or `two`."
+    psalms: "The psalms as the lectionary prints them, e.g. `146, 147` or `20, 21:1-7(8-14)`; parentheses and brackets mark what may be omitted."
+    psalmPassages: "Each psalm as a chapter name, e.g. `Psalms 146` — the Passage name."
+    lessons: "The lessons read at this office, e.g. `Isaiah 1:1-9`. A lesson from the Apocrypha is listed but joins to no Passage."
+    lessonPassages: "The chapters the lessons touch, e.g. `Isaiah 1`."
+    collect: "The Collect's key, e.g. `first-sunday-of-advent`."
+    canticles: "The Canticles' keys the Prayer Book suggests, in order: after the first lesson, after the second (Rite Two numbering)."
+    canticlesRiteOne: "The Rite One form of each suggested canticle, where it has one, e.g. `canticle-4`; empty where it has none."
+    source: "Which table the psalms and lessons come from: `Year One`, `Year Two` or `Holy Days`."
+    note: "A transfer, an Eve, or a rubric that changes the day's psalms."
+
+- name: Collect
+  description: "A collect of the church year from the 1979 Prayer Book, in both its forms: `rite1` (traditional, 'thee' and 'thou') and `rite2` (contemporary). Sundays and seasons, Propers 1–29 after Pentecost, and the Holy Days."
+  userAnchor: false
+  properties:
+    key:
+      identity: true
+      description: "Slug, e.g. `first-sunday-of-advent`, `proper-21`, `saint-andrew`. Identity."
+    name: "e.g. `First Sunday of Advent`, `Proper 21`, `Saint Andrew`."
+    kind: "`season` or `holy day`."
+    monthDay: "For a Holy Day on a fixed date, `MM-DD`, e.g. `11-30`; for a Proper, the date it is closest to."
+    note: "For a Proper, which Sunday it belongs to, e.g. `The Sunday closest to September 28`."
+    rite1: "The collect in Rite One (traditional language)."
+    rite2: "The collect in Rite Two (contemporary language)."
+    rite1Alternatives: "Further Rite One collects the Prayer Book offers for the day, a list."
+    rite2Alternatives: "Further Rite Two collects the Prayer Book offers for the day, a list."
+
+- name: Canticle
+  description: "One of the twenty-one canticles of the Daily Office: 1–7 in Rite One's wording, 8–21 in Rite Two's. A biblical canticle is FROM its chapter."
+  userAnchor: false
+  properties:
+    key:
+      identity: true
+      description: "`canticle-<number>`, e.g. `canticle-16`. Identity."
+    number:
+      type: int
+      description: "The Prayer Book's number, 1–21."
+    name: "e.g. `The Song of Zechariah`."
+    latin: "The Latin title, e.g. `Benedictus Dominus Deus`."
+    rite: "`One` or `Two`."
+    source: "Where it is taken from, e.g. `Luke 1:68-79`."
+    text: "The canticle as printed, a line per half-verse."
+
+- name: BcpPsalm
+  description: "A psalm in the Psalter of the 1979 Prayer Book — its own translation, with the Latin incipit and the asterisk marking the half-verse. SAME_AS the realm's chapter of Psalms (which reads in the King James and World English Bibles)."
+  userAnchor: false
+  properties:
+    key:
+      identity: true
+      description: "`psalm-<number>`, e.g. `psalm-23`. Identity."
+    number:
+      type: int
+      description: "1–150."
+    name: "e.g. `Psalm 23`."
+    latin: "The Latin incipit, e.g. `Dominus regit me`."
+    verseCount:
+      type: int
+      description: "Number of verses."
+    verses: "The verses, each beginning with its number, a list."
+
+- name: BcpPrayer
+  description: "One of the Prayers and Thanksgivings of the 1979 Prayer Book (pages 814–841), by number, with the heading it stands under — e.g. `For the Human Family`, `A General Thanksgiving`."
+  userAnchor: false
+  properties:
+    key:
+      identity: true
+      description: "`prayer-<n>` or `thanksgiving-<n>`. Identity."
+    kind: "`prayer` or `thanksgiving`."
+    number:
+      type: int
+      description: "The Prayer Book's number within its kind."
+    name: "e.g. `For Peace`."
+    category: "The heading, e.g. `Prayers for the Church`."
+    text: "The prayer."
+
+- name: ArticleOfReligion
+  description: "One of the Articles of Religion — the Thirty-Nine Articles of 1571 as the Episcopal Church established them in 1801 — with the original text where the American one departs from it, and the Scripture proofs a public-domain catechism of the Articles (1877) cites; each Article is PROVED_BY those chapters."
+  userAnchor: false
+  properties:
+    key:
+      identity: true
+      description: "`article-<number>`, e.g. `article-6`. Identity."
+    number:
+      type: int
+      description: "1–39."
+    roman: "The number as printed, e.g. `VI`."
+    title: "e.g. `Of the Sufficiency of the Holy Scriptures for Salvation.`"
+    text: "The Article as established in 1801."
+    original1571: "The 1571 (and 1662) text, where the Prayer Book gives it because the American text departs from it."
+    omitted:
+      type: boolean
+      description: "True for Article XXI, which the American Church omits."
+    proofTexts: "The Scripture references cited as proofs, e.g. `Deuteronomy 4:35`, a list."

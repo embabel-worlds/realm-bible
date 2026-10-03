@@ -114,6 +114,7 @@
     question: "The question, where the catechism is in question-and-answer form."
     text: "The answer or passage."
     note: "Editorial note — set when an entry's text is withheld or qualified."
+    proofTexts: "Scripture references the catechism itself names for the entry, e.g. `Exodus 20:1-17`; the entry is PROVED_BY those chapters. Most catechisms give none."
 
 - name: CccTopic
   description: "A topic, feast or devotion and where the Catechism of the Catholic Church treats it: paragraph numbers, and a link to the official text on vatican.va. No CCC text is carried — it is copyright. A Rosary mystery's topic EXPLAINS that mystery."

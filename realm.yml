@@ -53,3 +53,9 @@ exports:
   - Country
   - CountrySaint
   - ScriptureSaint
+  - OfficeDay
+  - Collect
+  - Canticle
+  - BcpPsalm
+  - BcpPrayer
+  - ArticleOfReligion

@@ -151,6 +151,40 @@ Things to know:
   then `python scripts/devotions/build_devotions.py`; `python scripts/saints/build_saints.py`. Downloads
   are cached under `data/source/` (git-ignored).
 
+## The Daily Office — the Anglican edition
+
+`apps/anglican.html` is Morning and Evening Prayer for any day of 2025–2030 by the Episcopal Church's
+*Book of Common Prayer* (1979). Everything is stored, so it answers at once:
+
+| Data | Source | View |
+|---|---|---|
+| `OfficeDay` — each morning and evening: the day in the church year, any Holy Day kept, season, customary colour, lectionary year, the psalms (PSALM the chapter) and lessons (LESSON the chapters), the COLLECT and the suggested CANTICLEs | computed from the Prayer Book's own tables and rules, `scripts/anglican/build_office.py` | `DailyOffice`, `OfficePsalmChapters`, `ChurchYear`, `CollectOfTheDay` |
+| `Collect` — the collects of the church year and the Holy Days, Rite One and Rite Two | the 1979 BCP | `Collects`, `CollectOfTheDay` |
+| `Canticle` — the twenty-one canticles of the Office (FROM their chapter) | the 1979 BCP | `Canticles` |
+| `BcpPsalm` — the Prayer Book's own Psalter (SAME_AS the chapter of Psalms) | the 1979 BCP | `PsalterPsalm` |
+| `BcpPrayer` — the seventy Prayers and eleven Thanksgivings | the 1979 BCP | `PrayerBookPrayers` |
+| `CatechismEntry` — An Outline of the Faith (`bcp-1979`) and the Church Catechism of 1662 (`church-catechism`) | the 1979 BCP; the 1928 US BCP's American form of the 1662 Catechism | `OutlineOfTheFaith`, `CatechismLesson`, `CatechismSearch` |
+| `ArticleOfReligion` — the Thirty-Nine Articles as established in 1801, with the 1571 text where it differs, PROVED_BY the chapters an 1877 catechism of the Articles cites | the 1979 BCP's Historical Documents; *A Catechism of the Thirty-Nine Articles … with Scripture Proofs* (1877), references only | `ArticlesOfReligion`, `ArticlesSearch`, `ArticleProofChapters` |
+
+Things to know:
+
+- **The Prayer Book's rules, applied at build time.** Year One of the lectionary begins at Advent before
+  an odd year; of a day's three readings the Gospel goes to the evening in Year One and the morning in
+  Year Two; Propers after Pentecost go by the Sunday closest to their date; Holy Days move off Sundays
+  and out of Holy Week and Easter Week; Eves give the evening before a feast. Where the Prayer Book
+  leaves a choice to the officiant (re-ordering around a feast, the alternative psalms), the tables'
+  appointment is shown.
+- **Colours are custom.** The Prayer Book appoints none; Advent is given as blue, the common Episcopal
+  use.
+- **No 1662 texts, no lectionaries under copyright.** The English 1662 Prayer Book is Crown property in
+  the United Kingdom, so its collects and offices are not carried; the 1662 Catechism comes from the
+  American 1928 book instead. The Revised Common Lectionary and *Lesser Feasts and Fasts* are copyright:
+  the calendar's commemorations are named, their propers are not given.
+- **No Apocrypha.** The realm's Bible is the Protestant canon, so a lesson from Ecclesiasticus or Wisdom
+  is cited but joins to no chapter.
+- **Rebuilding:** `python scripts/anglican/build_texts.py` then `python scripts/anglican/build_office.py`.
+  Downloads are cached under `data/source/anglican/` (git-ignored).
+
 ## Things to know
 
 - **A Passage is a chapter.** Pericope boundaries differ between publishers; chapters are the
@@ -196,3 +230,9 @@ CC BY-SA 4.0, as their source requires:
   shown with their link.
 - The Catechism of the Catholic Church is linked at https://www.vatican.va/archive/ENG0015/ — its text
   is not reproduced.
+- The Book of Common Prayer (1979) of the Episcopal Church — public domain ("the U S Book of Common
+  Prayer is not and never has been under copyright", the Episcopal Church), via https://www.bcponline.org.
+- The Church Catechism, from the Episcopal Church's Book of Common Prayer (1928) — public domain in the
+  United States, via http://justus.anglican.org/resources/bcp/1928/.
+- *A Catechism of the Thirty-Nine Articles … with Scripture Proofs*, by J. W. (2nd ed., 1877) — public
+  domain; its Scripture references only, via https://newscriptorium.com.

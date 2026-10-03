@@ -1,0 +1,30 @@
+{
+  "edition": "anglican",
+  "title": "The Daily Office",
+  "page": "anglican.html",
+  "calendar": {
+    "name": "The Calendar of the Church Year, Book of Common Prayer (1979)",
+    "from": "2025-01-01",
+    "to": "2030-12-31"
+  },
+  "translations": {
+    "default": "kjv",
+    "order": ["kjv", "web"],
+    "note": "The Office's own Psalter is the 1979 Prayer Book's translation; each psalm can be shown in it beside the King James."
+  },
+  "sections": ["today", "office", "collect", "canticles", "articles", "outline", "search", "reader", "prayers"],
+  "colours": {
+    "white": { "accent": "#a67c2e", "wash": "rgba(166,124,46,0.10)", "label": "white" },
+    "blue": { "accent": "#2f4f7f", "wash": "rgba(47,79,127,0.09)", "label": "blue" },
+    "green": { "accent": "#3f6b3a", "wash": "rgba(63,107,58,0.09)", "label": "green" },
+    "violet": { "accent": "#5e3a78", "wash": "rgba(94,58,120,0.09)", "label": "violet" },
+    "red": { "accent": "#a3261c", "wash": "rgba(163,38,28,0.09)", "label": "red" },
+    "black": { "accent": "#2a1f14", "wash": "rgba(42,31,20,0.08)", "label": "black" }
+  },
+  "eveningFromHour": 15,
+  "catechisms": [
+    { "id": "bcp-1979", "name": "An Outline of the Faith (1979)" },
+    { "id": "church-catechism", "name": "The Church Catechism (1662)" }
+  ],
+  "apocrypha": ["Ecclesiasticus", "Wisdom", "Baruch", "Judith", "Tobit", "1 Maccabees", "2 Maccabees", "1 Esdras", "2 Esdras", "Song of the Three Young Men"]
+}

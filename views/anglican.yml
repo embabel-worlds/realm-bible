@@ -1,0 +1,190 @@
+# The Anglican edition's views. Each takes its date from the caller — a view never knows what "today" is
+# where the reader is, and the app does. Every date's office is computed at build time from the 1979
+# Prayer Book's own tables and rules, so these views only read stored rows.
+
+- name: DailyOffice
+  description: Morning or Evening Prayer on a date (2025–2030) by the Episcopal Church's 1979 Book of Common Prayer — the day in the church year, any Holy Day kept, season, customary colour, the appointed psalms and lessons (with the chapters they are in), the collect in Rite One and Rite Two, and the suggested canticles.
+  params:
+    date:
+      type: string
+      default: "2026-11-29"
+      description: "ISO date, e.g. `2026-11-29`. The app passes today's date in the reader's own time zone."
+    office:
+      type: string
+      default: "morning"
+      description: "`morning` or `evening`."
+  cypher: |
+    MATCH (o:OfficeDay {date: $date, office: $office})-[:COLLECT]->(c:Collect)
+    OPTIONAL MATCH (o)-[:CANTICLE]->(k:Canticle)
+    WITH o, c, collect({key: k.key, number: k.number, name: k.name, latin: k.latin, source: k.source}) AS canticles
+    RETURN o.date AS date, o.office AS office, o.weekday AS weekday, o.name AS day, o.feast AS feast,
+           o.commemoration AS commemoration, o.season AS season, o.colour AS colour, o.rank AS rank,
+           o.lectionaryYear AS lectionaryYear, o.psalms AS psalms, o.psalmPassages AS psalmPassages,
+           o.lessons AS lessons, o.lessonPassages AS lessonPassages, o.canticles AS canticleOrder,
+           o.canticlesRiteOne AS canticlesRiteOne, canticles, o.source AS source, o.note AS note,
+           c.key AS collectKey, c.name AS collectName, c.rite1 AS collectRiteOne, c.rite2 AS collectRiteTwo
+
+- name: OfficePsalmChapters
+  description: The chapters of Psalms appointed at an office, joined to the realm's Bible — so a day's psalms can be read in the King James or World English Bible.
+  params:
+    date:
+      type: string
+      default: "2026-11-29"
+      description: "ISO date."
+    office:
+      type: string
+      default: "morning"
+      description: "`morning` or `evening`."
+  cypher: |
+    MATCH (o:OfficeDay {date: $date, office: $office})-[:PSALM]->(p:Passage)
+    RETURN p.name AS passage, p.chapter AS psalm, p.verseCount AS verses
+    ORDER BY psalm
+
+- name: ChurchYear
+  description: The Sundays, Holy Days and other feasts between two dates in the 1979 Prayer Book's calendar, with season and customary colour — and, if asked, the weekdays' optional commemorations.
+  params:
+    from:
+      type: string
+      default: "2026-11-29"
+      description: "First ISO date."
+    to:
+      type: string
+      default: "2026-12-31"
+      description: "Last ISO date, inclusive."
+    commemorations:
+      type: boolean
+      default: false
+      description: "True to include weekdays that have a commemoration in the Prayer Book's calendar."
+  cypher: |
+    MATCH (o:OfficeDay {office: 'morning'})
+    WHERE o.date >= $from AND o.date <= $to
+      AND (o.rank <> 'weekday' OR ($commemorations AND o.commemoration <> ''))
+    RETURN o.date AS date, o.weekday AS weekday, o.name AS day, o.feast AS feast, o.commemoration AS commemoration,
+           o.rank AS rank, o.season AS season, o.colour AS colour
+    ORDER BY date
+
+- name: Collects
+  description: The collects of the church year whose name matches — a Sunday, a season, a Proper, a Holy Day — each in Rite One (traditional) and Rite Two (contemporary), with any alternatives.
+  params:
+    name:
+      type: string
+      default: "Advent"
+      description: "Part of the name, e.g. `Advent`, `Proper 21`, `Andrew`; empty for all of them."
+  cypher: |
+    MATCH (c:Collect)
+    WHERE $name = '' OR toLower(c.name) CONTAINS toLower($name)
+    RETURN c.key AS key, c.name AS name, c.kind AS kind, c.monthDay AS monthDay, c.note AS note,
+           c.rite1 AS riteOne, c.rite2 AS riteTwo, c.rite1Alternatives AS riteOneAlternatives,
+           c.rite2Alternatives AS riteTwoAlternatives
+    ORDER BY kind DESC, name
+
+- name: CollectOfTheDay
+  description: The collect appointed for a date (2025–2030) — the Sunday's through the week, or the Holy Day's — in Rite One and Rite Two.
+  params:
+    date:
+      type: string
+      default: "2026-11-29"
+      description: "ISO date."
+  cypher: |
+    MATCH (o:OfficeDay {date: $date, office: 'morning'})-[:COLLECT]->(c:Collect)
+    RETURN o.date AS date, o.name AS day, c.name AS collect, c.rite1 AS riteOne, c.rite2 AS riteTwo,
+           c.rite1Alternatives AS riteOneAlternatives, c.rite2Alternatives AS riteTwoAlternatives
+
+- name: Canticles
+  description: The canticles of Morning and Evening Prayer — the Song of Zechariah, the Magnificat, the Te Deum and the rest — by name, Latin title or number, with their full text and the Scripture each is taken from.
+  params:
+    name:
+      type: string
+      default: ""
+      description: "Part of the English or Latin name, e.g. `Magnificat`, `Song of Mary`; empty for all twenty-one."
+  cypher: |
+    MATCH (k:Canticle)
+    WHERE $name = '' OR toLower(k.name) CONTAINS toLower($name) OR toLower(k.latin) CONTAINS toLower($name)
+    RETURN k.key AS key, k.number AS number, k.name AS name, k.latin AS latin, k.rite AS rite,
+           k.source AS source, k.text AS text
+    ORDER BY number
+
+- name: PsalterPsalm
+  description: A psalm in the 1979 Prayer Book's own Psalter — the translation the Office sings — verse by verse, with its Latin incipit.
+  params:
+    number:
+      type: int
+      default: 23
+      description: "The psalm, 1–150."
+  cypher: |
+    MATCH (p:BcpPsalm {number: $number})
+    RETURN p.number AS number, p.name AS name, p.latin AS latin, p.verses AS verses
+
+- name: OutlineOfTheFaith
+  description: An Outline of the Faith, the 1979 Prayer Book's catechism — question and answer, in the book's order — for one section (e.g. `The Sacraments`, `The Holy Spirit`), or the list of its sections when none is given. Search it, and every other catechism, with CatechismSearch.
+  params:
+    section:
+      type: string
+      default: ""
+      description: "Part of a section's title, e.g. `Sacraments`; empty for the list of sections."
+  cypher: |
+    MATCH (e:CatechismEntry {catechismId: 'bcp-1979'})
+    WHERE $section = '' OR toLower(e.section) CONTAINS toLower($section)
+    WITH e ORDER BY e.number
+    WITH e.partNumber AS partNumber, e.section AS section,
+         collect({number: e.number, question: e.question, answer: e.text}) AS entries
+    RETURN partNumber, section, size(entries) AS questions,
+           CASE WHEN $section = '' THEN [] ELSE entries END AS entries
+    ORDER BY partNumber
+
+- name: ArticlesOfReligion
+  description: The Articles of Religion (the Thirty-Nine Articles) — one by number, with its text as the Episcopal Church established it in 1801, the 1571 text where that differs, and its Scripture proofs; or, with number 0, the list of all thirty-nine titles.
+  params:
+    number:
+      type: int
+      default: 0
+      description: "The Article, 1–39; 0 for the list."
+  cypher: |
+    MATCH (a:ArticleOfReligion)
+    WHERE $number = 0 OR a.number = $number
+    RETURN a.number AS number, a.roman AS roman, a.title AS title,
+           CASE WHEN $number = 0 THEN '' ELSE a.text END AS text,
+           CASE WHEN $number = 0 THEN '' ELSE a.original1571 END AS original1571,
+           a.omitted AS omitted,
+           CASE WHEN $number = 0 THEN [] ELSE a.proofTexts END AS proofTexts,
+           size(a.proofTexts) AS proofCount
+    ORDER BY number
+
+- name: ArticlesSearch
+  description: The Articles of Religion whose title or text contains a word or phrase — e.g. `justification`, `predestination`, `sacraments` — with the Scripture proofs of each.
+  params:
+    term:
+      type: string
+      default: "faith"
+      description: "A word or phrase, matched case-insensitively."
+  cypher: |
+    MATCH (a:ArticleOfReligion)
+    WHERE toLower(a.title) CONTAINS toLower($term) OR toLower(a.text) CONTAINS toLower($term)
+       OR toLower(a.original1571) CONTAINS toLower($term)
+    RETURN a.number AS number, a.roman AS roman, a.title AS title, a.text AS text, a.proofTexts AS proofTexts
+    ORDER BY number
+
+- name: ArticleProofChapters
+  description: The chapters of Scripture an Article of Religion is proved by, joined to the realm's Bible, with how many proofs fall in each.
+  params:
+    number:
+      type: int
+      default: 6
+      description: "The Article, 1–39."
+  cypher: |
+    MATCH (a:ArticleOfReligion {number: $number})-[:PROVED_BY]->(p:Passage)
+    RETURN a.title AS article, p.name AS passage, p.book AS book, p.chapter AS chapter
+    ORDER BY book, chapter
+
+- name: PrayerBookPrayers
+  description: The Prayers and Thanksgivings of the 1979 Prayer Book — for the world, the Church, the nation, the sick, families, the departed, and thanksgivings — matched by name or heading.
+  params:
+    name:
+      type: string
+      default: ""
+      description: "Part of a prayer's name or heading, e.g. `Peace`, `Church`, `Thanksgiving`; empty for all of them."
+  cypher: |
+    MATCH (p:BcpPrayer)
+    WHERE $name = '' OR toLower(p.name) CONTAINS toLower($name) OR toLower(p.category) CONTAINS toLower($name)
+    RETURN p.key AS key, p.kind AS kind, p.number AS number, p.name AS name, p.category AS category, p.text AS text
+    ORDER BY kind, number
