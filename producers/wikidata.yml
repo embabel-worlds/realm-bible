@@ -50,7 +50,7 @@
     maxKeysPerCall: 25
     timeoutSeconds: 60
     userAgent: "EmbabelRealmBible/0.1 (https://github.com/embabel-worlds/realm-bible)"
-  cache: { kind: ttl, seconds: 604800, negativeTtlSeconds: 604800 }
+  cache: { kind: ttl, seconds: 2592000, negativeTtlSeconds: 604800 }
 
 # ── What a saint is patron of ────────────────────────────────────────────────────────────────
 # Wikidata records patronage on the PATRONISED thing (P417 "patron saint", on a city or a trade), so
@@ -83,8 +83,12 @@
     maxKeysPerCall: 5
     timeoutSeconds: 60
     userAgent: "EmbabelRealmBible/0.1 (https://github.com/embabel-worlds/realm-bible)"
-  cache: { kind: ttl, seconds: 604800, negativeTtlSeconds: 604800 }
+  cache: { kind: ttl, seconds: 2592000, negativeTtlSeconds: 604800 }
 
+# The three saint producers cache for 30 days: a saint's card, patronage and country change on
+# Wikidata over months, and a cold query to the public endpoint costs seconds to a minute depending
+# on its load — measured 3-60 s for the same country query within an hour.
+#
 # ── The saints and blessed of a country ──────────────────────────────────────────────────────
 # Keyed by the country's entity IRI (reference/catholic-countries.yml maps ISO 3166 codes to it, so
 # the app can start from the reader's locale). A person counts when either their citizenship or their
@@ -162,7 +166,7 @@
     maxKeysPerCall: 1
     timeoutSeconds: 60
     userAgent: "EmbabelRealmBible/0.1 (https://github.com/embabel-worlds/realm-bible)"
-  cache: { kind: ttl, seconds: 604800, negativeTtlSeconds: 604800 }
+  cache: { kind: ttl, seconds: 2592000, negativeTtlSeconds: 604800 }
 
 # ── A saint's life, from Wikipedia ────────────────────────────────────────────────────────────
 # The page-summary endpoint: the article's opening paragraphs as plain text, its thumbnail and URL.
