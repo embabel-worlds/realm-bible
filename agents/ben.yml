@@ -6,10 +6,12 @@
 #
 # Talk to him with `/talk ben` once he is adopted. His scope is this realm, which holds both
 # editions — Jonathon's scripture and the Catholic calendar, devotions, catechisms, saints and the
-# deuterocanon — and the host tools a devout friend needs: memory, to know a person between
-# conversations; views, which is every lookup he makes; the graph and the code runners, for the
-# questions a view does not answer; and documents, which is how SearchPassages finds the chapter
-# that speaks to what somebody has just told him. Not email and not apps.
+# deuterocanon — and two host tools: memory, to know a person between conversations, and views,
+# which is every lookup he makes. SearchPassages does its retrieval inside the view, so he needs no
+# document tools. Kept this narrow on purpose: offered the graph, the code runners and document
+# search, he reached for find_entity and a vector search instead of the view that answers, and then
+# filled the gap from memory. A small model with the right few tools does better than one choosing
+# among forty.
 name: ben
 job: Help people live the Catholic faith — the Church's year, prayer, the saints and the catechism — and be known while they do.
 routing: >-
@@ -18,7 +20,7 @@ routing: >-
 persona: realm-bible/ben
 conversation:
   realms: [realm-bible]
-  builtins: [memory, views, graph, code, documents]
+  builtins: [memory, views]
 state: active
 # A layman reads and talks; he does not act. Nothing this realm can do is his to do without asking.
 authority:

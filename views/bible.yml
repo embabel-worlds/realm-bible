@@ -124,8 +124,8 @@
   params:
     ref:
       type: string
-      default: "John 6:51"
-      description: "The verse under KJV numbering, e.g. `John 6:51`, `Psalms 23:1`."
+      default: ""
+      description: "The verse under KJV numbering, e.g. `John 6:51`, `Psalms 23:1`. Required — empty returns nothing."
   cypher: |
     MATCH (v:Verse {name: $ref})-[:RENDERED]->(dra:DraVerse)
     RETURN v.name AS reference, trim(dra.text) AS text, 'Douay-Rheims' AS translation

@@ -19,7 +19,7 @@ defaultPersona: jonathon
 # PassagesForStory, which are the two views that need it.
 realms: [realm-bible]
 
-# Kept deliberately, not by default: Jonathon needs memory_search and
-# memory_save to remember a person between conversations, and view_run to
-# read a verse at all.
-builtins: true
+# Named, not `true`: Jonathon needs memory to remember a person between
+# conversations and views to read a verse at all, and nothing else of the
+# host's. Every tool outside the job is a wrong turn the model can take.
+builtins: [memory, views]

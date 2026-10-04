@@ -14,6 +14,6 @@ defaultPersona: ben
 
 realms: [realm-bible]
 
-# Kept deliberately: Ben needs memory_search and memory_save to remember a person, and view_run for
-# every lookup.
-builtins: true
+# Named, not `true`: Ben needs memory to remember a person and views for every lookup, and nothing
+# else of the host's. Every tool outside the job is a wrong turn the model can take.
+builtins: [memory, views]

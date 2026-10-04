@@ -7,10 +7,10 @@
   params:
     date:
       type: string
-      default: "2026-10-01"
-      description: "ISO date, e.g. `2026-10-01`."
+      default: ""
+      description: "ISO date, e.g. `2026-10-01` (2025–2030). Empty means today by the server's clock (UTC); pass the reader's own date when you know it."
   cypher: |
-    MATCH (d:LiturgicalDay {date: $date})<-[:ON]-(c:Celebration)
+    MATCH (d:LiturgicalDay {date: CASE $date WHEN '' THEN toString(date()) ELSE $date END})<-[:ON]-(c:Celebration)
     UNWIND c.saints AS sid
     MATCH (s:CalendarSaint {saintId: sid})-[:CARD]->(k:SaintCard)
     RETURN c.name AS celebration, c.rank AS rank, s.label AS saint, k.wd AS wd,
@@ -21,15 +21,30 @@
            k.image AS image, k.religiousOrder AS religiousOrder, k.canonization AS canonization, k.article AS article
     ORDER BY c.rankOrder, saint
 
+- name: FindSaint
+  description: Find a saint by name among the General Roman Calendar's saints and the saints of Scripture — their Wikidata entity (for SaintLife and SaintPatronOf), canonization, and the calendar's id. Matches part of a name, with or without accents (`Therese`, `Thérèse`, `Francis`). A saint the universal calendar does not keep may be found through SaintsOfCountry.
+  params:
+    name:
+      type: string
+      default: "Thérèse"
+      description: "Part of the saint's name, e.g. `Thérèse`, `Therese`, `Francis of Assisi`, `Peter`."
+  cypher: |
+    MATCH (s:CalendarSaint)
+    WHERE toLower(s.label) CONTAINS toLower($name)
+       OR s.saintId CONTAINS replace(replace(toLower(trim($name)), ' ', '_'), '.', '')
+    RETURN s.label AS saint, s.wd AS wd, s.canonization AS canonization, s.saintId AS calendarId
+    ORDER BY size(s.label)
+    LIMIT 10
+
 - name: SaintLife
   description: One saint's life — Wikidata's card (places with coordinates, dates, image, order) and the opening of their Wikipedia article (CC BY-SA 4.0, shown with its link), fetched live — by Wikidata entity.
   params:
     wd:
       type: string
       default: "http://www.wikidata.org/entity/Q181715"
-      description: "The saint's Wikidata entity IRI, e.g. `http://www.wikidata.org/entity/Q676555` (Francis of Assisi)."
+      description: "The saint's Wikidata entity — the IRI FindSaint returns, `http://www.wikidata.org/entity/Q676555`, or the bare QID `Q676555` (Francis of Assisi)."
   cypher: |
-    MATCH (k:SaintCard {wd: $wd})
+    MATCH (k:SaintCard {wd: CASE WHEN $wd STARTS WITH 'http' THEN $wd ELSE 'http://www.wikidata.org/entity/' + $wd END})
     OPTIONAL MATCH (k)-[:LIFE]->(l:SaintLife)
     RETURN k.wdLabel AS saint, k.wdDescription AS description, k.birthDate AS born, k.deathDate AS died,
            k.birthPlace AS birthPlace, k.birthCoord AS birthCoord, k.birthCountry AS birthCountry,
@@ -67,7 +82,8 @@
       default: 60
       description: "How many to return."
   cypher: |
-    MATCH (c:Country {iso2: $country})-[:SAINTS]->(s:CountrySaint)
+    MATCH (c:Country) WHERE c.iso2 = toUpper($country) OR toLower(c.name) = toLower($country)
+    MATCH (c)-[:SAINTS]->(s:CountrySaint)
     WITH c, s, CASE WHEN s.canonization CONTAINS 'saint' AND NOT s.canonization CONTAINS 'Servant' THEN 0
                     WHEN s.canonization CONTAINS 'lessed' THEN 1 WHEN s.canonization CONTAINS 'enerable' THEN 2 ELSE 3 END AS standing
     RETURN c.name AS country, s.wdLabel AS name, s.canonization AS canonization, s.wdDescription AS description,

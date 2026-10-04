@@ -6,10 +6,10 @@
   params:
     date:
       type: string
-      default: "2026-10-01"
-      description: "ISO date, e.g. `2026-10-01`. The app passes today's date in the reader's own time zone."
+      default: ""
+      description: "ISO date, e.g. `2026-10-01`. Empty means today by the server's clock (UTC); pass the reader's own date when you know it."
   cypher: |
-    MATCH (d:LiturgicalDay {date: $date})<-[:ON]-(c:Celebration)
+    MATCH (d:LiturgicalDay {date: CASE $date WHEN '' THEN toString(date()) ELSE $date END})<-[:ON]-(c:Celebration)
     OPTIONAL MATCH (s:CalendarSaint) WHERE s.saintId IN c.saints
     WITH d, c, collect({saintId: s.saintId, wd: s.wd, name: s.label}) AS saints
     WITH d, c, [x IN saints WHERE x.wd IS NOT NULL] AS saints ORDER BY c.rankOrder, c.principal DESC, c.name
@@ -27,19 +27,21 @@
   params:
     from:
       type: string
-      default: "2026-10-01"
-      description: "First ISO date."
+      default: ""
+      description: "First ISO date. Empty means today (UTC)."
     to:
       type: string
-      default: "2026-10-31"
-      description: "Last ISO date, inclusive."
+      default: ""
+      description: "Last ISO date, inclusive. Empty means thirty days after `from`."
     maxRank:
       type: int
       default: 4
       description: "Highest rankOrder to include: 3 = solemnities, Sundays and feasts; 4 adds memorials; 5 adds optional memorials."
   cypher: |
+    WITH CASE $from WHEN '' THEN date() ELSE date($from) END AS first
+    WITH toString(first) AS first, CASE $to WHEN '' THEN toString(first + duration({days: 30})) ELSE $to END AS last
     MATCH (d:LiturgicalDay)<-[:ON]-(c:Celebration)
-    WHERE d.date >= $from AND d.date <= $to AND c.rankOrder <= $maxRank
+    WHERE d.date >= first AND d.date <= last AND c.rankOrder <= $maxRank
     RETURN d.date AS date, d.weekday AS weekday, c.name AS celebration, c.rank AS rank, c.colours AS colours
     ORDER BY date, c.rankOrder
 
@@ -48,10 +50,10 @@
   params:
     date:
       type: string
-      default: "2026-10-01"
-      description: "ISO date, e.g. `2026-10-01` (2025–2030). The app passes today's date in the reader's own time zone."
+      default: ""
+      description: "ISO date, e.g. `2026-10-01` (2025–2030). Empty means today by the server's clock (UTC); pass the reader's own date when you know it."
   cypher: |
-    MATCH (d:LiturgicalDay {date: $date})
+    MATCH (d:LiturgicalDay {date: CASE $date WHEN '' THEN toString(date()) ELSE $date END})
     MATCH (r:RosaryDay {weekday: d.weekday})
     MATCH (m:RosaryMystery {set: r.set})-[:TOLD_IN]->(p:Passage)
     RETURN d.weekday AS weekday, r.set AS mysteries, m.number AS number, m.name AS mystery,
@@ -64,10 +66,10 @@
     name:
       type: string
       default: ""
-      description: "Part of a prayer's name, e.g. `Hail`; empty for all of them."
+      description: "Part of a prayer's name, commas optional, e.g. `Hail Holy Queen`, `Memorare`; empty for all of them."
   cypher: |
     MATCH (p:Prayer)
-    WHERE $name = '' OR toLower(p.name) CONTAINS toLower($name)
+    WHERE $name = '' OR replace(toLower(p.name), ',', '') CONTAINS replace(toLower($name), ',', '')
     RETURN p.key AS key, p.name AS name, p.text AS text
     ORDER BY name
 
@@ -118,16 +120,22 @@
     topic:
       type: string
       default: "Eucharist"
-      description: "A word or phrase, e.g. `Eucharist`, `Rosary`, `purgatory`, `saints`."
+      description: "One or more words, each of which must appear, e.g. `Eucharist`, `purgatory`, `Mass Sunday`. Fewer words find more."
+    catechism:
+      type: string
+      default: ""
+      description: "Limit the public-domain answers to one catechism — `baltimore-2` (Catholic), `bcp-1979` or `church-catechism` (Anglican); empty for all. The CCC references are Catholic either way."
     limit:
       type: int
       default: 12
       description: "How many catechism answers to return."
   cypher: |
-    OPTIONAL MATCH (t:CccTopic) WHERE toLower(t.topic) CONTAINS toLower($topic)
-    WITH collect(DISTINCT {topic: t.topic, paragraphs: t.paragraphs, section: t.section, url: t.url}) AS ccc
+    WITH [w IN split(toLower(trim($topic)), ' ') WHERE w <> ''] AS words
+    OPTIONAL MATCH (t:CccTopic) WHERE all(w IN words WHERE toLower(t.topic) CONTAINS w)
+    WITH words, collect(DISTINCT {topic: t.topic, paragraphs: t.paragraphs, section: t.section, url: t.url}) AS ccc
     OPTIONAL MATCH (e:CatechismEntry)
-    WHERE toLower(e.question) CONTAINS toLower($topic) OR toLower(e.text) CONTAINS toLower($topic)
+    WHERE ($catechism = '' OR e.catechismId = $catechism)
+      AND all(w IN words WHERE toLower(coalesce(e.question, '') + ' ' + e.text) CONTAINS w)
     WITH ccc, e ORDER BY e.catechism, e.number
     WITH ccc, collect({catechism: e.catechism, lesson: e.part, number: e.number, question: e.question, answer: e.text})[0..$limit] AS answers
     RETURN [x IN ccc WHERE x.topic IS NOT NULL] AS catechismOfTheCatholicChurch,
@@ -143,20 +151,21 @@
   params:
     book:
       type: string
-      default: "Sirach"
-      description: "Tobit, Judith, Esther, Wisdom, Sirach, Baruch, Daniel, `1 Maccabees` or `2 Maccabees`."
+      default: ""
+      description: "Tobit, Judith, Esther, Wisdom, Sirach, Baruch, Daniel, `1 Maccabees` or `2 Maccabees`. Required."
     chapter:
       type: int
-      default: 2
-      description: "Chapter. Esther from 11, Daniel from 13."
+      default: 0
+      description: "Chapter. Esther from 11, Daniel from 13. Required."
     verse:
       type: int
-      default: 1
-      description: "Verse."
+      default: 0
+      description: "Verse; 0 (the default) returns the whole chapter."
   cypher: |
     MATCH (b:DeuterocanonBook {name: $book})-[:VERSES]->(v:DeuterocanonVerse)
-    WHERE v.chapter = $chapter AND v.verse = $verse AND v.chapter >= b.fromChapter
+    WHERE v.chapter = $chapter AND ($verse = 0 OR v.verse = $verse) AND v.chapter >= b.fromChapter
     RETURN v.name AS reference, trim(v.text) AS text, 'Douay-Rheims' AS translation
+    ORDER BY v.verse
 
 - name: ReadDeuterocanonPassage
   description: A whole chapter of the deuterocanon in the Douay-Rheims, verse by verse. Fetched live; the first read of a book takes about a second.
