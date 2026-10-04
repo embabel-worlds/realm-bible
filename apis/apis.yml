@@ -26,3 +26,15 @@
     User-Agent: "EmbabelRealmBible/0.1 (https://github.com/embabel-worlds/realm-bible)"
   operation-ids:
     - pageSummary
+
+# getbible.net: whole books of public-domain translations, keyless. Used for the deuterocanon, which
+# bible-api does not carry — getbible's Douay-Rheims has all 73 books. One call returns a whole book
+# (Sirach is 360 KB), and the producer caches it forever, so each book is fetched once.
+- url: getbible.json
+  name: bible_getbible
+  type: openapi
+  auth: none
+  headers:
+    User-Agent: "EmbabelRealmBible/0.1 (https://github.com/embabel-worlds/realm-bible)"
+  operation-ids:
+    - bookInTranslation

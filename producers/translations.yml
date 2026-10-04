@@ -89,3 +89,22 @@
     translation: translation_id
     translationName: translation_name
   cache: { kind: immutable }
+
+# The deuterocanon in the Douay-Rheims, a whole book per call from getbible.net, keyed by
+# getbible's book number. Fetched live and cached forever, like every translation here: nothing
+# about Tobit changes, so a book is fetched once. getbible's World English Bible has only the 66
+# books, so the deuterocanon is Douay-Rheims only.
+- name: deuterocanonBook
+  kind: remote
+  operation: bookInTranslation
+  records: "$.chapters[*].verses[*]"
+  keyArgs: [book]
+  args: { translation: douayrheims }
+  echoKeyAs: bookNumber
+  maxKeysPerCall: 1
+  project:
+    name: name
+    chapter: chapter
+    verse: verse
+    text: text
+  cache: { kind: immutable }

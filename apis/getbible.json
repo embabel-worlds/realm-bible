@@ -1,0 +1,23 @@
+{
+  "openapi": "3.0.3",
+  "info": { "title": "getbible.net", "version": "2" },
+  "servers": [ { "url": "https://api.getbible.net" } ],
+  "paths": {
+    "/v2/{translation}/{book}.json": {
+      "get": {
+        "operationId": "bookInTranslation",
+        "summary": "A whole book of one translation, chapter by chapter, verse by verse",
+        "parameters": [
+          { "name": "translation", "in": "path", "required": true, "schema": { "type": "string" },
+            "description": "getbible's translation id, e.g. `douayrheims`." },
+          { "name": "book", "in": "path", "required": true, "schema": { "type": "string" },
+            "description": "getbible's book number: 1–66 as in a Protestant Bible, 69 Tobit, 70 Judith, 73 Wisdom, 74 Sirach, 75 Baruch, 80 1 Maccabees, 81 2 Maccabees." }
+        ],
+        "responses": {
+          "200": { "description": "the book: `chapters[*].verses[*]`, each verse with chapter, verse, name and text" },
+          "404": { "description": "no such book in this translation" }
+        }
+      }
+    }
+  }
+}

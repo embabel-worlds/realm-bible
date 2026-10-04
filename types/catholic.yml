@@ -132,3 +132,49 @@
     section: "That page's heading in the Catechism, e.g. `Article 3 THE SACRAMENT OF THE EUCHARIST`."
     urls: "Every vatican.va page the ranges start on, a list."
     mystery: "The Rosary mystery's key, e.g. `joyful-1`, when the topic is a mystery."
+
+# ── The deuterocanon ─────────────────────────────────────────────────────────────────────────
+#
+#   DeuterocanonBook ─VERSES─▶ DeuterocanonVerse     (fetched live from getbible.net, cached forever)
+#
+# The books a Catholic Bible has and the stored Verse graph does not: Tobit, Judith, Wisdom, Sirach,
+# Baruch, 1 and 2 Maccabees, and the Douay-Rheims chapters of Esther (11–16) and Daniel (13–14).
+# Only the nine books are stored; their text is fetched a whole book at a time and never again.
+# Douay-Rheims only, in its own (Vulgate) numbering.
+
+- name: DeuterocanonBook
+  description: "A book of the deuterocanon, with the number getbible.net files it under. `fromChapter` is where the Douay-Rheims chapters the stored canon lacks begin — 11 for Esther, 13 for Daniel, 1 otherwise."
+  userAnchor: false
+  properties:
+    name:
+      identity: true
+      description: "Tobit, Judith, Esther, Wisdom, Sirach, Baruch, Daniel, 1 Maccabees or 2 Maccabees. Identity."
+    number: "getbible's book number, as text, e.g. `74` for Sirach."
+    bookOrder:
+      type: int
+      description: "Order in a Catholic Bible, among these nine."
+    fromChapter:
+      type: int
+      description: "First chapter to read: 11 for Esther, 13 for Daniel, 1 otherwise."
+
+- name: DeuterocanonVerse
+  description: "One verse of a deuterocanonical book in the Douay-Rheims (public domain), in its Vulgate numbering. Reached from DeuterocanonBook via VERSES; a whole book is fetched live from getbible.net and cached forever."
+  virtualJoins:
+    - anchorLabel: DeuterocanonBook
+      relationship: VERSES
+      keyField: number
+      recordKeyField: bookNumber
+      producer: deuterocanonBook
+      description: "Every verse of this book in the Douay-Rheims."
+  properties:
+    name:
+      identity: true
+      description: "The reference, e.g. `Sirach 2:1`. Identity."
+    bookNumber: "getbible's book number the verse was fetched under."
+    chapter:
+      type: int
+      description: "Chapter, Vulgate numbering."
+    verse:
+      type: int
+      description: "Verse."
+    text: "The verse in the Douay-Rheims."

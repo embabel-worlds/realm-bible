@@ -119,6 +119,17 @@
     WITH r WHERE r.text IS NOT NULL
     RETURN r.translation AS translation, r.text AS text
 
+- name: ReadVerseDouayRheims
+  description: One verse in the Douay-Rheims, the Catholic translation from the Vulgate, fetched live — under the stored reference, which is KJV numbering. bible-api maps the Psalms itself, so `Psalms 23:1` returns the Vulgate's Psalm 22, "The Lord ruleth me". For Tobit, Sirach and the other deuterocanonical books use ReadDeuterocanon.
+  params:
+    ref:
+      type: string
+      default: "John 6:51"
+      description: "The verse under KJV numbering, e.g. `John 6:51`, `Psalms 23:1`."
+  cypher: |
+    MATCH (v:Verse {name: $ref})-[:RENDERED]->(dra:DraVerse)
+    RETURN v.name AS reference, trim(dra.text) AS text, 'Douay-Rheims' AS translation
+
 - name: PeopleNamed
   description: Everyone in the Bible who bore a name, from Theographic. A name is not a person — there are 26 Zechariahs — so read displayTitle to tell them apart; most-mentioned first.
   params:

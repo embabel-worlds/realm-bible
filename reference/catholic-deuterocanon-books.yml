@@ -1,0 +1,24 @@
+# The books a Catholic Bible has and the stored Verse graph does not, with the number getbible.net
+# files each under. Esther and Daniel are here for the Douay-Rheims chapters the stored canon lacks:
+# Esther 11–16 (Mordecai's dream and the prayers) and Daniel 13–14 (Susanna, Bel and the Dragon) —
+# `fromChapter` is where those begin. Daniel 3:24–90, the Prayer of Azariah and the Song of the
+# Three, is inside a chapter the stored graph has under KJV numbering and is not reached here.
+
+- type: DeuterocanonBook
+  data: { name: "Tobit", number: "69", bookOrder: 1, fromChapter: 1 }
+- type: DeuterocanonBook
+  data: { name: "Judith", number: "70", bookOrder: 2, fromChapter: 1 }
+- type: DeuterocanonBook
+  data: { name: "Esther", number: "17", bookOrder: 3, fromChapter: 11 }
+- type: DeuterocanonBook
+  data: { name: "Wisdom", number: "73", bookOrder: 4, fromChapter: 1 }
+- type: DeuterocanonBook
+  data: { name: "Sirach", number: "74", bookOrder: 5, fromChapter: 1 }
+- type: DeuterocanonBook
+  data: { name: "Baruch", number: "75", bookOrder: 6, fromChapter: 1 }
+- type: DeuterocanonBook
+  data: { name: "Daniel", number: "27", bookOrder: 7, fromChapter: 13 }
+- type: DeuterocanonBook
+  data: { name: "1 Maccabees", number: "80", bookOrder: 8, fromChapter: 1 }
+- type: DeuterocanonBook
+  data: { name: "2 Maccabees", number: "81", bookOrder: 9, fromChapter: 1 }

@@ -132,3 +132,63 @@
     WITH ccc, collect({catechism: e.catechism, lesson: e.part, number: e.number, question: e.question, answer: e.text})[0..$limit] AS answers
     RETURN [x IN ccc WHERE x.topic IS NOT NULL] AS catechismOfTheCatholicChurch,
            [a IN answers WHERE a.number IS NOT NULL] AS publicDomainCatechisms
+
+# ── The deuterocanon ─────────────────────────────────────────────────────────────────────────
+# Douay-Rheims only, fetched live a whole book at a time and cached forever: the first read of a
+# book takes about a second, every read after it is immediate. Daniel 3:24–90 (the Prayer of Azariah
+# and the Song of the Three) is not reached here — Daniel 3 is read through ReadPassage.
+
+- name: ReadDeuterocanon
+  description: One verse of the deuterocanon in the Douay-Rheims — Tobit, Judith, Wisdom, Sirach, Baruch, 1 and 2 Maccabees, or Esther 11–16 and Daniel 13–14 (Susanna, Bel and the Dragon). Vulgate numbering. Fetched live; the first read of a book takes about a second.
+  params:
+    book:
+      type: string
+      default: "Sirach"
+      description: "Tobit, Judith, Esther, Wisdom, Sirach, Baruch, Daniel, `1 Maccabees` or `2 Maccabees`."
+    chapter:
+      type: int
+      default: 2
+      description: "Chapter. Esther from 11, Daniel from 13."
+    verse:
+      type: int
+      default: 1
+      description: "Verse."
+  cypher: |
+    MATCH (b:DeuterocanonBook {name: $book})-[:VERSES]->(v:DeuterocanonVerse)
+    WHERE v.chapter = $chapter AND v.verse = $verse AND v.chapter >= b.fromChapter
+    RETURN v.name AS reference, trim(v.text) AS text, 'Douay-Rheims' AS translation
+
+- name: ReadDeuterocanonPassage
+  description: A whole chapter of the deuterocanon in the Douay-Rheims, verse by verse. Fetched live; the first read of a book takes about a second.
+  params:
+    book:
+      type: string
+      default: "Wisdom"
+      description: "Tobit, Judith, Esther, Wisdom, Sirach, Baruch, Daniel, `1 Maccabees` or `2 Maccabees`."
+    chapter:
+      type: int
+      default: 3
+      description: "Chapter. Esther from 11, Daniel from 13."
+  cypher: |
+    MATCH (b:DeuterocanonBook {name: $book})-[:VERSES]->(v:DeuterocanonVerse)
+    WHERE v.chapter = $chapter AND v.chapter >= b.fromChapter
+    RETURN v.verse AS verse, trim(v.text) AS text, 'Douay-Rheims' AS translation
+    ORDER BY verse
+
+- name: SearchDeuterocanon
+  description: Deuterocanon verses in the Douay-Rheims containing a word or phrase, case-insensitively, in book order. Reads all nine books; the first search fetches any not yet read (about a second each), later ones are immediate.
+  params:
+    term:
+      type: string
+      default: "friend"
+      description: "A word or phrase — the Douay-Rheims's own wording (`charity`, `thou`)."
+    limit:
+      type: int
+      default: 25
+      description: "How many verses to return."
+  cypher: |
+    MATCH (b:DeuterocanonBook)-[:VERSES]->(v:DeuterocanonVerse)
+    WHERE v.chapter >= b.fromChapter AND toLower(v.text) CONTAINS toLower($term)
+    RETURN v.name AS reference, trim(v.text) AS text, 'Douay-Rheims' AS translation
+    ORDER BY b.bookOrder, v.chapter, v.verse
+    LIMIT $limit

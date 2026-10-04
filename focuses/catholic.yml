@@ -1,0 +1,19 @@
+# The Catholic faith, with Ben.
+#
+# A focus is a named scoping of the chat surface: it picks a persona and a set of realms whose tools
+# the chat LLM can see, and hides the rest. Ben reaches the Church's calendar, devotions, catechisms
+# and saints, and scripture with the deuterocanon — and nothing else in the world.
+#
+# Activate with `/focus catholic` in chat; `/focus off` to leave.
+
+name: catholic
+displayName: Catholic
+description: "The Church's year, prayer, the saints and the catechism, with Ben"
+icon: "✝"
+defaultPersona: ben
+
+realms: [realm-bible]
+
+# Kept deliberately: Ben needs memory_search and memory_save to remember a person, and view_run for
+# every lookup.
+builtins: true

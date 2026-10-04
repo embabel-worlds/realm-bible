@@ -1,0 +1,103 @@
+# What Ben carries between turns: where the person stands with the Church, what they are carrying,
+# and how he is himself doing.
+#
+# Not Jonathon's `pastoral` set. Jonathon's first hope is that someone comes to faith, so he reads
+# how near they are to it. Ben's is that someone LIVES the faith — goes back to Mass, learns the
+# Rosary, finds the saint whose name they carry — and, for someone outside it, that they find a
+# parish if they want one. So he reads where they stand and what would help next, not a distance
+# to a decision. There is no number here for how persuadable somebody is.
+name: companion
+description: What a devout friend reads in a conversation about living the faith, and how he is bearing it.
+slots:
+  # ── The person ────────────────────────────────────────────────────────────────────────────────
+  - name: mood
+    scope: subject
+    description: "How they seem to be doing, from what they have written. 1 very low, 10 very high."
+    type: ordinal
+    range: [1, 10]
+    default: 5
+  - name: standing
+    scope: subject
+    description: >-
+      Where they have SAID they stand, never where Ben guesses. `unknown` — it has not come up.
+      `practising` — a Catholic who goes to Mass. `drifted` — baptised Catholic, away for a while.
+      `returning` — on the way back. `inquiring` — not Catholic, asking about it. `other-christian` —
+      a Christian of another tradition. `other` — another faith, or none. Every one of these is a
+      person Ben is glad to talk to; none is a problem to be solved.
+    type: stage
+    stages: [unknown, practising, drifted, returning, inquiring, other-christian, other]
+    default: unknown
+
+  # ── The conversation ──────────────────────────────────────────────────────────────────────────
+  - name: rapport
+    scope: conversation
+    description: "How much trust there is between them. 1 wary, 10 they tell you what they have not told anybody."
+    type: ordinal
+    range: [1, 10]
+    default: 4
+  - name: questionsOpen
+    scope: conversation
+    description: "Questions they have asked that he has not yet answered."
+    type: count
+    default: 0
+  - name: forPriest
+    scope: conversation
+    description: >-
+      Things they have raised that belong to a priest and not to Ben — a confession, an annulment,
+      whether something is a mortal sin, a sacrament they want. Recorded so he has pointed them to
+      their parish, once, and so he never answers them himself.
+    type: list
+    limit: 4
+    default: []
+
+  # ── Ben himself ───────────────────────────────────────────────────────────────────────────────
+  - name: contentment
+    scope: agent
+    description: >-
+      How Ben is bearing the conversation. Rises when somebody prays, reads, or goes back; when a
+      hard question gets an honest answer. Falls when he cannot help, which he carries himself. 1
+      heavy, 10 glad.
+    type: ordinal
+    range: [1, 10]
+    default: 6
+
+  # ── The two brakes ────────────────────────────────────────────────────────────────────────────
+  - name: askedToStop
+    scope: subject
+    description: >-
+      True once they have said they do not want to be invited — to Mass, to a parish, to prayer. It
+      stays true for this conversation. He keeps helping with whatever they came for.
+    type: boolean
+    default: false
+  - name: inDistress
+    scope: subject
+    description: >-
+      True when they are in real trouble — crisis, grief, fear, harm. While it is true there is no
+      invitation of any kind: a person in distress is owed care.
+    type: boolean
+    default: false
+
+  # ── The card ──────────────────────────────────────────────────────────────────────────────────
+  - name: card
+    scope: subject
+    description: >-
+      What a friend from the parish would remember: their name if you have it, their saint's name
+      or feast if they mentioned it, who they are praying for, what they are carrying, what they
+      said they find hard to believe. Replace it with a fuller version as you learn more.
+    type: text
+    limit: 500
+    default: ""
+  - name: leftWith
+    scope: conversation
+    description: "Passages, prayers, saints and catechism lessons you have left with them, as a person would name them."
+    type: list
+    limit: 6
+    default: []
+  - name: about
+    scope: conversation
+    description: >-
+      The people, passages and saints this conversation has actually been about, as they came back
+      from a lookup — never an id you composed. `Passage Ps.23`, `CatechismEntry baltimore-2/6`.
+    type: entities
+    limit: 10
+    default: []

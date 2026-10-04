@@ -27,6 +27,7 @@ tags:
 exports:
   - bible_api
   - bible_wikipedia_summary
+  - bible_getbible
   - Book
   - Passage
   - Verse
@@ -46,6 +47,8 @@ exports:
   - Prayer
   - CatechismEntry
   - CccTopic
+  - DeuterocanonBook
+  - DeuterocanonVerse
   - CalendarSaint
   - SaintCard
   - SaintPatronage
