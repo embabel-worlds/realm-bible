@@ -87,9 +87,10 @@
     MATCH (b:Book)<-[:IN]-(p:Passage)<-[:IN]-(v:Verse)
     WITH b, p, v, CASE $translation WHEN 'web' THEN v.web ELSE v.text END AS text
     WHERE toLower(text) CONTAINS toLower($term)
-    RETURN p.name AS passage,
-           count(v) AS matchingVerses,
-           collect(v.verse)[0..10] AS verses
+    // Aggregate in a WITH that keeps b and p: ordered after a RETURN that aggregates, they are out
+    // of scope, and Neo4j refuses the whole query.
+    WITH b, p, count(v) AS matchingVerses, collect(v.verse)[0..10] AS verses
+    RETURN p.name AS passage, matchingVerses, verses
     ORDER BY matchingVerses DESC, b.bookOrder, p.chapter
     LIMIT $limit
 
