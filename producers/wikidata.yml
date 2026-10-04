@@ -64,7 +64,13 @@
     SELECT ?wd ?thing ?thingLabel ?kindLabel ?patronKey WHERE {
       VALUES ?wd { {{keys}} }
       ?thing wdt:P417 ?wd .
-      FILTER NOT EXISTS { ?thing wdt:P31/wdt:P279* wd:Q811979 }
+      # Not a church, chapel or other building — the patronage of a place you can visit is not what a
+      # reader asks for. Climbed three superclass steps to known ancestors, not the open-ended P279*:
+      # walking every superclass of every candidate cost Wikidata 40-50 s for Francis or Anthony and
+      # timed out for Mary, and three steps excludes exactly the same things (checked against P279*
+      # for Francis, Anthony, Thérèse, Patrick).
+      FILTER NOT EXISTS { ?thing wdt:P31/wdt:P279?/wdt:P279?/wdt:P279? ?built .
+                          VALUES ?built { wd:Q811979 wd:Q41176 wd:Q16970 wd:Q24398318 } }
       FILTER NOT EXISTS { ?thing wdt:P31 wd:Q4167410 }
       ?thing rdfs:label ?thingLabel FILTER(LANG(?thingLabel) = "en")
       OPTIONAL { ?thing wdt:P31 ?kind . ?kind rdfs:label ?kindLabel FILTER(LANG(?kindLabel) = "en") }

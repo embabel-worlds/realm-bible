@@ -59,13 +59,13 @@
     wd:
       type: string
       default: "http://www.wikidata.org/entity/Q676555"
-      description: "The saint's Wikidata entity IRI."
+      description: "The saint's Wikidata entity — the IRI FindSaint returns, or the bare QID, e.g. `Q676555` (Francis of Assisi)."
     limit:
       type: int
       default: 40
       description: "How many to return."
   cypher: |
-    MATCH (k:SaintCard {wd: $wd})-[:PATRON_OF]->(p:SaintPatronage)
+    MATCH (k:SaintCard {wd: CASE WHEN $wd STARTS WITH 'http' THEN $wd ELSE 'http://www.wikidata.org/entity/' + $wd END})-[:PATRON_OF]->(p:SaintPatronage)
     RETURN p.thingLabel AS patronOf, collect(DISTINCT p.kindLabel)[0..3] AS kind
     ORDER BY patronOf
     LIMIT $limit

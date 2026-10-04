@@ -69,6 +69,8 @@ const CASES = [
   ['SaintsOfTheDay', { date: '2026-10-01' }, /Th[ée]r[èe]se/],
   ['FindSaint', { name: 'Therese' }, /Lisieux/],
   ['SaintLife', { wd: 'Q181715' }, /Alen[cç]on/],
+  ['SaintPatronOf', { wd: 'Q676555', limit: 80 }, /Italy/],
+  ['SaintPatronOf', { wd: 'http://www.wikidata.org/entity/Q345', limit: 400 }, null],
   ['SaintsOfCountry', { country: 'Ireland', limit: 10 }, /Columba|Patrick|Brigid/],
   ['SaintsOfCountry', { country: 'PL', limit: 10 }, /Kolbe|Faustina|John Paul/],
   ['SaintsInScripture', {}, /Peter|Paul/],
