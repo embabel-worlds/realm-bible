@@ -20,7 +20,9 @@ description: >-
   Israel's fetched descendants. Theographic's linkage decides the numbers — a line it does not
   connect is not counted.
 requires:
-  - materialize: "MATCH (root:BiblePerson {name: 'Israel'})<-[:FATHER*1..40]-(:BiblePerson) RETURN 1"
+  # Deep enough for the whole tree: Theographic's longest male line runs 52 generations below
+  # Israel, and a shallower bound silently drops everyone past it from every count.
+  - materialize: "MATCH (root:BiblePerson {name: 'Israel'})<-[:FATHER*1..90]-(:BiblePerson) RETURN 1"
     description: "Israel's descendants have to be fetched before they can be counted."
 rules:
   - derive: "(p:Progenitor {descendants: n})"

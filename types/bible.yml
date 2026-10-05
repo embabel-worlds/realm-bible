@@ -141,6 +141,7 @@
       keyField: mother
       recordKeyField: lookupQueried
       producer: biblePeopleById
+      description: "This person's mother, where Theographic records one."
     # FATHER and MOTHER read from the parent: keyed by the parent's own id, a record belongs to the
     # anchor when its `father` (or `mother`) names it. Declared TO_ANCHOR because the edge still runs
     # child→parent; the engine picks this join when the query walks the arrow backwards, as in
@@ -165,7 +166,6 @@
       recordKeyField: lookupQueried
       producer: biblePeopleById
       description: "This person's children. The reverse of FATHER and MOTHER, so descendants can be walked."
-      description: "This person's mother, where Theographic records one."
   properties:
     personLookup:
       identity: true
