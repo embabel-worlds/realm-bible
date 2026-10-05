@@ -168,6 +168,54 @@
     userAgent: "EmbabelRealmBible/0.1 (https://github.com/embabel-worlds/realm-bible)"
   cache: { kind: ttl, seconds: 2592000, negativeTtlSeconds: 604800 }
 
+# ── How many saints a country has ────────────────────────────────────────────────────────────
+# The same people as saintsOfCountryByFame — the same Catholic-evidence filter, so the two agree —
+# but counted, not listed: `total` (saints, blessed, venerable, servants of God) and `canonized`
+# (those with a saint-level status). Uncapped, which the list is not: the list keeps the 600 most
+# famous, so a country with more (Italy 1,277, France 934, Spain 885) cannot be ranked from it.
+# Counting needs no labels or fame, so it is cheap: ten countries a call, about ten seconds cold.
+# The list also requires an English label, so it can come out a few short of `total` (Poland: 240
+# listed, 245 counted).
+- name: saintCountsOfCountry
+  kind: sparql
+  endpoint: "https://query.wikidata.org/sparql"
+  query: |
+    SELECT ?country (COUNT(DISTINCT ?wd) AS ?total) (COUNT(DISTINCT ?saint) AS ?canonized)
+           (CONCAT(STR(?country), "|count") AS ?countKey)
+    WHERE {
+      VALUES ?country { {{keys}} }
+      { ?wd wdt:P27 ?country } UNION { ?wd wdt:P19/wdt:P17 ?country }
+      ?wd wdt:P411 ?canon .
+      {
+        ?wd wdt:P411 ?catholicStatus
+        VALUES ?catholicStatus { wd:Q3464126 wd:Q2369287 wd:Q51620 wd:Q869974 wd:Q51619 }
+      } UNION {
+        ?wd wdt:P6126|wdt:P4286|wdt:P9588 []
+      } UNION {
+        ?wd wdt:P411 ?plainSaint VALUES ?plainSaint { wd:Q43115 wd:Q123110154 }
+        ?wd wdt:P570 ?undivided FILTER(YEAR(?undivided) < 1054)
+      } UNION {
+        ?wd p:P411/pq:P1027 ?pope . ?pope wdt:P39 wd:Q19546
+      }
+      FILTER(EXISTS { ?wd p:P411/pq:P1027 ?catholicBody .
+                      { ?catholicBody wdt:P39 wd:Q19546 } UNION { VALUES ?catholicBody { wd:Q9592 wd:Q159583 wd:Q1131466 } } }
+             || NOT EXISTS { ?wd p:P411/pq:P1027 [] })
+      FILTER NOT EXISTS {
+        ?wd wdt:P140 ?orthodoxy VALUES ?orthodoxy { wd:Q3333484 wd:Q35032 }
+        FILTER NOT EXISTS { ?wd wdt:P140 wd:Q9592 }
+        FILTER NOT EXISTS { ?wd wdt:P570 ?schism FILTER(YEAR(?schism) < 1054) }
+      }
+      OPTIONAL { ?wd wdt:P411 ?saintly VALUES ?saintly { wd:Q3464126 wd:Q43115 wd:Q123110154 } BIND(?wd AS ?saint) }
+    }
+    GROUP BY ?country
+  keyVar: country
+  keyForm: iri
+  fetch:
+    maxKeysPerCall: 10
+    timeoutSeconds: 90
+    userAgent: "EmbabelRealmBible/0.1 (https://github.com/embabel-worlds/realm-bible)"
+  cache: { kind: ttl, seconds: 2592000, negativeTtlSeconds: 604800 }
+
 # ── A saint's life, from Wikipedia ────────────────────────────────────────────────────────────
 # The page-summary endpoint: the article's opening paragraphs as plain text, its thumbnail and URL.
 # CC BY-SA 4.0 — fetched live and shown with its link, never stored. Wikipedia answers redirects for

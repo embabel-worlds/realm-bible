@@ -147,6 +147,27 @@
       producer: saintsOfCountryByFame
       description: "The saints and blessed of a country: `MATCH (:Country {iso2: 'IE'})-[:SAINTS]->(s:CountrySaint)`."
 
+- name: CountrySaintCount
+  description: "How many saints, blessed, venerable and servants of God a country has — citizenship or birthplace, Catholic evidence as for CountrySaint — counted on Wikidata, uncapped. Fetched live (CC0), cached 30 days."
+  properties:
+    countKey:
+      identity: true
+      description: "`<country IRI>|count`. Identity."
+    country: "The country's entity IRI."
+    total:
+      type: int
+      description: "Saints, blessed, venerable and servants of God together."
+    canonized:
+      type: int
+      description: "Those with a saint-level status (canonized saint, or a saint of the undivided Church)."
+  virtualJoins:
+    - anchorLabel: Country
+      relationship: SAINT_COUNT
+      keyField: wd
+      recordKeyField: country
+      producer: saintCountsOfCountry
+      description: "A country's saint counts: `MATCH (c:Country)-[:SAINT_COUNT]->(n:CountrySaintCount)`."
+
 - name: ScriptureSaint
   description: "A saint who is also a person of Scripture: the Wikidata saint and the Theographic person who is them, matched by hand (Peter is `peter_2745`, Mary the mother of Jesus `mary_1938`). The bridge from the calendar's saints to the verses that name them."
   userAnchor: false

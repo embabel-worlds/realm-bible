@@ -55,6 +55,7 @@ exports:
   - SaintLife
   - Country
   - CountrySaint
+  - CountrySaintCount
   - ScriptureSaint
   - OfficeDay
   - Collect

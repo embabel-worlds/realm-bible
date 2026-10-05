@@ -92,6 +92,19 @@
     ORDER BY standing, fame DESC
     LIMIT $limit
 
+- name: CountriesBySaints
+  description: Countries ranked by how many saints they have — saints, blessed, venerable and servants of God by citizenship or birthplace, and how many of those are canonized — counted on Wikidata, uncapped. The first run fetches every country (about four minutes, ten countries a call); after that it is cached for 30 days.
+  params:
+    limit:
+      type: int
+      default: 30
+      description: "How many countries to return."
+  cypher: |
+    MATCH (c:Country)-[:SAINT_COUNT]->(n:CountrySaintCount)
+    RETURN c.name AS country, c.iso2 AS iso2, n.total AS saints, n.canonized AS canonized
+    ORDER BY saints DESC, country
+    LIMIT $limit
+
 - name: SaintsInScripture
   description: The saints who are also people of Scripture — the apostles, the Holy Family, the women at the tomb, Stephen, Timothy — with how many verses name them, the chapters that name them most, and their feasts in the calendar as month-day and name (`06-29 Saints Peter and Paul, Apostles`).
   params:
