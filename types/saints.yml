@@ -3,6 +3,7 @@
 #   CalendarSaint {saintId} ─CARD─▶ SaintCard ─PATRON_OF─▶ SaintPatronage
 #   SaintQuery {wd}        ─CARD─▶ SaintCard ─LIFE─▶ SaintLife (Wikipedia summary)
 #   Country {iso2}         ─SAINTS─▶ CountrySaint
+#   SaintRoll {scope:'all'} ─CAUSE─▶ SaintCause (everyone at once: stages, dates, martyrdom)
 #
 # CalendarSaint and Country are stored (reference/catholic-saints.yml, reference/catholic-countries.yml);
 # everything else is fetched when a query reaches it. A Celebration names its saints by `saints`
@@ -167,6 +168,60 @@
       recordKeyField: country
       producer: saintCountsOfCountry
       description: "A country's saint counts: `MATCH (c:Country)-[:SAINT_COUNT]->(n:CountrySaintCount)`."
+
+- name: SaintRoll
+  visibility: internal
+  userAnchor: false
+  description: >-
+    The roll of saints, as a door onto every saint, blessed, venerable and servant of God at once.
+    One scope, 'all', which is the default — so a bare MATCH (r:SaintRoll) means everyone. It is
+    not stored and does not need to exist.
+  properties:
+    scope: { metadata: { identity: "true", default: "all" } }
+
+- name: SaintCause
+  description: >-
+    One person on the roll of saints — a saint, blessed, venerable or servant of God, with
+    Catholic evidence as for CountrySaint — and how far their cause has gone: the date of each
+    stage Wikidata records, their birth and death, and whether they died a martyr. Everyone at
+    once, for questions over all of them: canonizations per year, the most recent martyr, who
+    lived longest. Fetched live (CC0), cached 30 days. Dates are what Wikidata records: about 1 in
+    9 saints has a canonization date, so a count by year counts what is dated, and says so.
+  properties:
+    causeKey:
+      identity: true
+      description: "`all|<person IRI>`. Identity."
+    scope: "Echo of the roll's scope."
+    wd: "The person's entity IRI — the full card is `MATCH (c:SaintCard {wd: …})`."
+    name: "English label, e.g. `Maximilian Kolbe`."
+    description: "Wikidata's one-line English description."
+    stage: "How far the cause has gone, in plain words: `saint`, `blessed`, `venerable`, `servant of God`, or `other`. Filter on this, not `status`."
+    status: "Wikidata's own label for the highest status, e.g. `Catholic saint`, `canonized saint`, `saint` (a saint of the undivided Church), `blessed`, `Venerable`."
+    kind: "`person`; `biblical figure` (Adam, Sarah — lifespans as Scripture gives them); `existence disputed` (legendary); or `group or other` (the Martyrs of Otranto as one entry). Questions about lifespans should keep to `person`."
+    servantOfGodDate: "When the cause opened and they were named a servant of God, ISO timestamp."
+    venerableDate: "When they were declared venerable (heroic virtue, or martyrdom accepted)."
+    beatificationDate: "When they were beatified."
+    canonizationDate: "When they were canonized."
+    servantOfGodYear: { type: int, description: "Year of servantOfGodDate." }
+    venerableYear: { type: int, description: "Year of venerableDate." }
+    beatificationYear: { type: int, description: "Year of beatificationDate." }
+    canonizationYear: { type: int, description: "Year of canonizationDate. Absent for most saints of the first millennium, who were never formally canonized, and for many since." }
+    birthDate: "Date of birth, ISO timestamp — only when known at least to the year."
+    deathDate: "Date of death, ISO timestamp — only when known at least to the year."
+    birthYear: { type: int, description: "Year of birth. Absent when Wikidata gives only a century or decade." }
+    deathYear: { type: int, description: "Year of death. Absent when Wikidata gives only a century or decade." }
+    exactAgeAtDeath: { type: int, description: "Age at death in whole years, only when both dates are known to the day. Otherwise `deathYear - birthYear`, which may be one year high." }
+    mannerOfDeath: "Manner of death as Wikidata records it (P1196), e.g. `homicide`, `capital punishment`, `natural causes`; several are comma-separated."
+    causeOfDeath: "Cause of death as Wikidata records it (P509), e.g. `decapitation`, `tuberculosis`; several are comma-separated."
+    killedEvidence: "Why they count as killed, when they do — `manner of death: homicide`, `cause of death: assassination`, or `described as: …assassinated…`. Weak evidence of martyrdom, not proof: the Martyrs view labels it as such."
+    martyrEvidence: "Why they count as a martyr, when they do: `manner of death: martyrdom`, `Christian martyr`, or `described as: …` quoting Wikidata's description. Absent when nothing records it — not a finding that they were not."
+  virtualJoins:
+    - anchorLabel: SaintRoll
+      relationship: CAUSE
+      keyField: scope
+      recordKeyField: scope
+      producer: saintCausesAll
+      description: "Everyone on the roll: `MATCH (:SaintRoll)-[:CAUSE]->(s:SaintCause)`."
 
 - name: ScriptureSaint
   description: "A saint who is also a person of Scripture: the Wikidata saint and the Theographic person who is them, matched by hand (Peter is `peter_2745`, Mary the mother of Jesus `mary_1938`). The bridge from the calendar's saints to the verses that name them."

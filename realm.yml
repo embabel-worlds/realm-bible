@@ -34,6 +34,7 @@ exports:
   - BibleNameQuery
   - BibleIdQuery
   - BiblePerson
+  - BibleRoll
   - Rendering
   - AsvVerse
   - BbeVerse
@@ -55,6 +56,8 @@ exports:
   - SaintLife
   - Country
   - CountrySaint
+  - SaintRoll
+  - SaintCause
   - CountrySaintCount
   - ScriptureSaint
   - OfficeDay

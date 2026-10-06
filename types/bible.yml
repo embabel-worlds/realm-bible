@@ -4,12 +4,15 @@
 #                              │                     ▲
 #                              └─RENDERED──▶ AsvVerse, BbeVerse, DarbyVerse, DraVerse, YltVerse
 #                                                    │
-#                  BibleNameQuery {name} ──NAMED─────┘
+#                  BibleNameQuery {name} ──NAMED─────┤
+#                  BibleRoll {scope:'all'} ──PERSON──┘   (everyone at once)
 #
 # The stored graph is seeded from reference/ and never changes. Every verse carries the King James
 # text (`text`, the default) and the World English Bible (`web`, the modern choice), because both
-# must be searchable. People and the older translations are fetched on demand: nobody asks about
-# all 3,069 people at once, and nobody searches the Darby translation for a word.
+# must be searchable. People and the older translations are fetched on demand. People are one
+# small published file, so BibleRoll reads all 3,069 at once for questions over everyone; the
+# translations are one API call per verse, so there is no such door for them — search the stored
+# KJV and WEB, then read the hits in Darby.
 
 - name: Book
   description: "One of the 66 books, in canonical order. `osis` is the OSIS abbreviation (Gen, Judg, 1Kgs)."
@@ -90,6 +93,17 @@
       identity: true
       description: "Theographic's id for one person, e.g. `moses_2108`. Identity."
 
+- name: BibleRoll
+  visibility: internal
+  userAnchor: false
+  description: >-
+    Everyone in Theographic's people list, as a door. One scope, 'all', which is the default — so
+    a bare MATCH (:BibleRoll)-[:PERSON]->(p:BiblePerson) means all 3,069 people. For counting,
+    ranking and filtering over everyone; to find one person, ask by name or id instead. It is not
+    stored and does not need to exist.
+  properties:
+    scope: { metadata: { identity: "true", default: "all" } }
+
 - name: BiblePerson
   description: >-
     A person in the Bible, from Theographic Bible Metadata (CC BY-SA 4.0). Reached by name from a
@@ -108,6 +122,12 @@
       materializedKeyField: name
       producer: biblePeopleByName
       description: "Everyone who bore this name. A lead, not an identification."
+    - anchorLabel: BibleRoll
+      relationship: PERSON
+      keyField: scope
+      recordKeyField: rollScope
+      producer: biblePeopleAll
+      description: "Everyone: `MATCH (:BibleRoll)-[:PERSON]->(p:BiblePerson)`. For questions over all people; find one by name or id."
     - anchorLabel: BibleIdQuery
       relationship: WITH_ID
       keyField: personLookup

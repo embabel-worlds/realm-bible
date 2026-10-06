@@ -123,3 +123,160 @@
     RETURN s.label AS saint, s.wd AS wd, s.personLookup AS person, total AS verses, chapters,
            [f IN feasts WHERE f IS NOT NULL] AS feasts
     ORDER BY verses DESC
+
+# ── The whole roll: every saint, blessed, venerable and servant of God at once ───────────────
+# These read SaintCause, fetched for everyone in one call (about ten seconds cold, then cached for
+# 30 days). Dates are Wikidata's, and Wikidata dates the minority: about 1 in 9 saints has a
+# canonization date, and a mass canonization dates every member while a single one is often left
+# undated. Every view that counts or ranks by a date says so in its own rows' `note`.
+#
+# A martyr is one Wikidata records as such (manner of death, `Christian martyr`, or its own
+# description), or one the General Roman Calendar celebrates as "Martyr" — Maria Goretti is
+# "Italian saint" on Wikidata and "Virgin and Martyr" in the calendar — or, as the weakest evidence
+# and labelled so, one Wikidata records as killed. Óscar Romero, canonized a martyr in 2018, is
+# only "homicide" on Wikidata; Joan of Arc is "capital punishment" and is not venerated as a
+# martyr. `includeKilled: false` keeps to the first two.
+
+- name: CausesByYear
+  description: How many people reached a stage of sainthood each year — canonized, beatified, declared venerable, or named a servant of God — as Wikidata dates it, with up to five names a year. Only dated stages count, and Wikidata dates a minority (about 1 in 9 canonizations), so a year's count is a floor, and the mass canonizations (2000, the Martyrs of China; 1988, Vietnam; 1984, Korea) dominate. People only, not groups.
+  params:
+    stage:
+      type: string
+      default: "canonization"
+      description: "`canonization`, `beatification`, `venerable` or `servantOfGod`."
+    from:
+      type: int
+      default: 1
+      description: "Earliest year to include."
+    limit:
+      type: int
+      default: 50
+      description: "How many years to return, latest first."
+  cypher: |
+    MATCH (:SaintRoll)-[:CAUSE]->(s:SaintCause)
+    WHERE s.kind = 'person'
+    WITH s, CASE $stage
+              WHEN 'canonization' THEN s.canonizationYear
+              WHEN 'beatification' THEN s.beatificationYear
+              WHEN 'venerable' THEN s.venerableYear
+              WHEN 'servantOfGod' THEN s.servantOfGodYear
+            END AS year
+    WHERE year IS NOT NULL AND year >= $from
+    WITH year, count(s) AS people, collect(s.name) AS names
+    RETURN year, people, names[0..5] AS someOfThem,
+           'Counts only stages Wikidata dates; most are undated, so this is a floor.' AS note
+    ORDER BY year DESC
+    LIMIT $limit
+
+- name: Martyrs
+  description: Saints, blessed, venerable and servants of God who died as martyrs, most recent death first, with the evidence for each — Wikidata's record of martyrdom, its description, the General Roman Calendar's title, or (weakest, and labelled so) Wikidata's record that they were killed. Set `includeKilled` false for recorded martyrdom only. Filter by stage for canonized martyrs; `datedOnly` keeps to those whose stage Wikidata dates, which excludes the few Wikidata wrongly marks as saints (some beatified martyrs carry a `Catholic saint` status with no date). Only those whose year of death is known are listed; the counts are MartyrCount.
+  params:
+    stage:
+      type: string
+      default: ""
+      description: "`saint`, `blessed`, `venerable` or `servant of God`; empty for every stage."
+    includeKilled:
+      type: boolean
+      default: true
+      description: "Count those Wikidata records only as killed — homicide, execution — as martyrs, labelled as the weakest evidence."
+    datedOnly:
+      type: boolean
+      default: false
+      description: "Only those whose canonization (for `saint`) or beatification (for `blessed`) Wikidata dates."
+    limit:
+      type: int
+      default: 25
+      description: "How many to return."
+  cypher: |
+    MATCH (cs:CalendarSaint)
+    MATCH (:LiturgicalDay)<-[:ON]-(c:Celebration)
+    WHERE cs.saintId IN c.saints AND c.name CONTAINS 'Martyr'
+    WITH collect(DISTINCT cs.wd) AS calendarMartyrs
+    MATCH (:SaintRoll)-[:CAUSE]->(s:SaintCause)
+    WHERE s.deathYear IS NOT NULL
+      AND ($stage = '' OR s.stage = $stage)
+      AND (NOT $datedOnly OR (s.stage = 'saint' AND s.canonizationYear IS NOT NULL)
+                          OR (s.stage = 'blessed' AND s.beatificationYear IS NOT NULL))
+    WITH s, calendarMartyrs, CASE
+              WHEN s.martyrEvidence IS NOT NULL THEN s.martyrEvidence
+              WHEN s.wd IN calendarMartyrs THEN 'celebrated as a martyr in the General Roman Calendar'
+              WHEN $includeKilled AND s.killedEvidence IS NOT NULL THEN 'killed — ' + s.killedEvidence + ' (weakest evidence, not itself proof)'
+            END AS evidence
+    WHERE evidence IS NOT NULL
+    RETURN s.name AS name, s.stage AS stage, s.status AS status, s.deathDate AS died,
+           s.beatificationYear AS beatified, s.canonizationYear AS canonized,
+           evidence, s.wd AS wd
+    ORDER BY s.deathDate DESC
+    LIMIT $limit
+
+- name: MartyrCount
+  description: "How many martyrs there are at each stage of sainthood — saint, blessed, venerable, servant of God — split by the evidence: recorded (Wikidata or the General Roman Calendar says martyr) and killed (Wikidata records only a killing, the weakest evidence). A martyr nothing records is not counted, so these are floors."
+  cypher: |
+    MATCH (cs:CalendarSaint)
+    MATCH (:LiturgicalDay)<-[:ON]-(c:Celebration)
+    WHERE cs.saintId IN c.saints AND c.name CONTAINS 'Martyr'
+    WITH collect(DISTINCT cs.wd) AS calendarMartyrs
+    MATCH (:SaintRoll)-[:CAUSE]->(s:SaintCause)
+    WITH s, s.martyrEvidence IS NOT NULL OR s.wd IN calendarMartyrs AS recorded,
+         s.killedEvidence IS NOT NULL AS killed
+    WHERE recorded OR killed
+    RETURN s.stage AS stage,
+           sum(CASE WHEN recorded THEN 1 ELSE 0 END) AS recordedMartyrs,
+           sum(CASE WHEN NOT recorded THEN 1 ELSE 0 END) AS killedOnly
+    ORDER BY recordedMartyrs DESC
+
+- name: SaintLifespans
+  description: Saints, blessed, venerable and servants of God by age at death — the longest-lived first, or the youngest first with `youngest`. By default only those whose birth and death are both known to the day, which is the answer to trust; set `exactOnly` false to add those known only by year, which brings in the legends of the first millennium (Ciarán of Saigir, 155 by Wikidata's years) and is one year high at most for the rest. People only — Adam's 930 years are Scripture's, not a lifespan.
+  params:
+    youngest:
+      type: boolean
+      default: false
+      description: "True to list who died youngest first — the saints who died as children."
+    exactOnly:
+      type: boolean
+      default: true
+      description: "Only people whose birth and death are both known to the day."
+    maxAge:
+      type: int
+      default: 200
+      description: "Only those who died at this age or younger — 12 for those who died as children."
+    limit:
+      type: int
+      default: 25
+      description: "How many to return."
+  cypher: |
+    MATCH (:SaintRoll)-[:CAUSE]->(s:SaintCause)
+    WHERE s.kind = 'person' AND s.birthYear IS NOT NULL AND s.deathYear IS NOT NULL
+      AND (s.exactAgeAtDeath IS NOT NULL OR NOT $exactOnly)
+    WITH s, coalesce(s.exactAgeAtDeath, s.deathYear - s.birthYear) AS age
+    WHERE age >= 0 AND age <= $maxAge
+    WITH s, age, CASE WHEN $youngest THEN age ELSE -age END AS rank
+    RETURN s.name AS name, s.stage AS stage, age AS ageAtDeath,
+           s.exactAgeAtDeath IS NOT NULL AS exact,
+           s.birthDate AS born, s.deathDate AS died,
+           s.martyrEvidence IS NOT NULL AS martyr, s.description AS description, s.wd AS wd
+    ORDER BY rank, s.deathDate
+    LIMIT $limit
+
+- name: SaintCauseStages
+  description: The stages of one person's cause, by name — when they were named a servant of God, declared venerable, beatified and canonized, as far as Wikidata dates them — with their birth, death, age at death and any martyrdom. A stage with no date may still have happened; Wikidata dates a minority.
+  params:
+    name:
+      type: string
+      default: "Teresa"
+      description: "Part of the name, any case, e.g. `Kolbe`, `Teresa of Calcutta`."
+    limit:
+      type: int
+      default: 10
+      description: "How many matches to return."
+  cypher: |
+    MATCH (:SaintRoll)-[:CAUSE]->(s:SaintCause)
+    WHERE toLower(s.name) CONTAINS toLower($name)
+    RETURN s.name AS name, s.stage AS stage, s.status AS status,
+           s.servantOfGodDate AS servantOfGod, s.venerableDate AS venerable,
+           s.beatificationDate AS beatified, s.canonizationDate AS canonized,
+           s.birthDate AS born, s.deathDate AS died,
+           coalesce(s.exactAgeAtDeath, s.deathYear - s.birthYear) AS ageAtDeath,
+           s.martyrEvidence AS martyr, s.description AS description, s.wd AS wd
+    ORDER BY s.name
+    LIMIT $limit

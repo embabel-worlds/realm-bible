@@ -72,6 +72,37 @@
   compute:
     childIds: "[c IN split(r.children, ',') WHERE trim(c) <> '' | trim(c)]"
 
+# The whole file, for questions over everyone: how many women, who has the most verses, who lived
+# longest by Theographic's estimates. No key column, so the table itself is the answer, stamped with
+# the roll's scope. It reads the file the other producers already download and cache, so sweeping
+# all 3,069 people costs one parse — the same scan a lookup by name already does. maxRowsPerKey is
+# above the file's size, so the roll is never silently cut short.
+- name: biblePeopleAll
+  kind: tabular
+  url: "https://raw.githubusercontent.com/robertrouse/theographic-bible-metadata/master/CSV/People.csv"
+  format: csv
+  keyAs: rollScope
+  fileCacheSeconds: 604800
+  maxRowsPerKey: 5000
+  project:
+    personLookup: "slug"
+    name: "name"
+    displayTitle: "displayTitle"
+    gender: "gender"
+    birthYear: "birthYear"
+    deathYear: "deathYear"
+    verseCount: "verseCount"
+    verses: "verses"
+    father: "father"
+    mother: "mother"
+    partners: "partners"
+    children: "children"
+    siblings: "siblings"
+    dictionary: "dictText"
+    status: "status"
+  compute:
+    childIds: "[c IN split(r.children, ',') WHERE trim(c) <> '' | trim(c)]"
+
 # The same file read from the parent's side: everyone whose `father` (or `mother`) is the id asked
 # for. These back the reverse FATHER and MOTHER joins, so `(p)<-[:FATHER]-(c)` finds p's children by
 # asking the table who names p, rather than reading each child's own row. A Theographic id is exact.

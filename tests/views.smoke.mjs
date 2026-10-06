@@ -74,6 +74,14 @@ const CASES = [
   ['SaintsOfCountry', { country: 'Ireland', limit: 10 }, /Columba|Patrick|Brigid/],
   ['SaintsOfCountry', { country: 'PL', limit: 10 }, /Kolbe|Faustina|John Paul/],
   ['SaintsInScripture', {}, /Peter|Paul/],
+  ['CausesByYear', { stage: 'canonization', from: 2000 }, /Charles de Foucauld|Newman|Teresa/],
+  ['CausesByYear', { stage: 'beatification', from: 2023, limit: 5 }, /Ulma/],
+  ['Martyrs', { stage: 'saint', datedOnly: true, limit: 5 }, /Romero/],
+  ['Martyrs', { stage: 'saint', includeKilled: false, datedOnly: true, limit: 5 }, /Kolbe/],
+  ['MartyrCount', {}, /blessed/],
+  ['SaintLifespans', { youngest: true, maxAge: 12 }, /Ulma/],
+  ['SaintLifespans', { limit: 5 }, /Malo/],
+  ['SaintCauseStages', { name: 'Kolbe' }, /1982-10-10/],
 ];
 
 const auth = 'Basic ' + Buffer.from(`${user}:${password}`).toString('base64');
