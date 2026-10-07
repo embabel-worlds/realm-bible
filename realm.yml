@@ -19,6 +19,7 @@ version: 0.1.0
 maturity: experimental
 url: https://github.com/embabel-worlds/realm-bible
 author: Rod Johnson
+category: knowledge
 tags:
   - bible
   - scripture
