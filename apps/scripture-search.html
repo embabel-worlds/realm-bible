@@ -61,7 +61,7 @@
   <h3>The data</h3>
   <p>Everything comes from <code>realm-bible</code> in this world:</p>
   <ul>
-    <li><b>Book, Passage, Verse</b> — stored in the graph: 66 books, 1,189 chapters (a <em>passage</em> is a chapter), 31,102 verses.
+    <li><b>Book, Passage, BibleVerse</b> — stored in the graph: 66 books, 1,189 chapters (a <em>passage</em> is a chapter), 31,102 verses.
       Each verse carries the King James text and the World English Bible (a modern, public-domain translation). From Theographic Bible
       Metadata (CC BY-SA 4.0) and eBible.org.</li>
     <li><b>Documents</b> — each chapter of the World English Bible is also ingested as a searchable document, chunked and embedded,
@@ -84,7 +84,7 @@
       intent: 'find the Bible chapter that narrates or contains what the reader describes'}]-&gt;(d:Document)
 WHERE 'web' IN d.tags
 WITH r, d, split(d.uri, '/')[3] AS osis
-MATCH (b:Book)&lt;-[:IN]-(p:Passage {osis: osis})&lt;-[:IN]-(v:Verse)
+MATCH (b:Book)&lt;-[:IN]-(p:Passage {osis: osis})&lt;-[:IN]-(v:BibleVerse)
 WITH r, p, b, v ORDER BY v.verse
 WITH r, p, b, collect({n: v.verse, kjv: v.text, web: v.web, ref: v.name}) AS verses
 RETURN r.rank AS rank, r.score AS fit, p.osis AS osis, p.name AS passage,
@@ -101,7 +101,7 @@ ORDER BY rank LIMIT $limit</pre>
     contains what you described. It is shown only when below 1.0. The highlighted verses are the evidence the search read — found on
     this page by locating each verse's WEB wording in that evidence.</p>
   <p><b><code>PeopleInPassage</code></b> — who a chapter mentions, when you open it. Parameter: <code>passage</code> (e.g. "Judges 4").</p>
-  <pre>MATCH (:Passage {name: $passage})&lt;-[:IN]-(v:Verse)-[:MENTIONS]-&gt;(p:BiblePerson)
+  <pre>MATCH (:Passage {name: $passage})&lt;-[:IN]-(v:BibleVerse)-[:MENTIONS]-&gt;(p:BiblePerson)
 RETURN p.displayTitle AS person, p.personLookup AS id,
        count(v) AS verses, collect(v.verse) AS verseNumbers
 ORDER BY verses DESC, person</pre>
@@ -119,7 +119,7 @@ LIMIT $limit</pre>
                in plain biblical terms … then find the chapter that narrates that event.
                Search with the restatement, not the news words'}]-&gt;(d:Document)
 WHERE 'web' IN d.tags
-…  (then Book ← Passage ← Verse, as above)</pre>
+…  (then Book ← Passage ← BibleVerse, as above)</pre>
   <p>The instruction matters more than anything else here. News English shares almost no words with Scripture: asked plainly for "the
     same kind of event", the search matched a diverted aircraft to "pray that your flight will not be in the winter". Asked to restate the
     event in biblical terms first, it finds conspiracies against a king for a foreign terror plot, and a besieged city for an airstrike.
@@ -152,7 +152,7 @@ WHERE 'web' IN d.tags
     <li>The corpus is declared, not coded: a <code>lane: documents</code> entry in the realm's <code>sources.yml</code> renders each chapter
       from the stored verses, and the appliance ingests, embeds, and re-ingests only chapters whose text changed.</li>
     <li>An agentic retrieval and the graph are one query: <code>SearchPassages</code> runs the retrieval loop as an edge
-      (<code>RELEVANT_TO {via: 'agentic-rag'}</code>) and then traverses <code>Book ← Passage ← Verse</code> in the same Cypher — elsewhere that
+      (<code>RELEVANT_TO {via: 'agentic-rag'}</code>) and then traverses <code>Book ← Passage ← BibleVerse</code> in the same Cypher — elsewhere that
       is an agent framework, a vector store and a database joined in application code.</li>
     <li>People are never stored: <code>MENTIONS</code> is a join to a published CSV, fetched when a chapter asks for it.</li>
     <li>Live news and a two-thousand-year-old text meet in one query language: the headlines are a join another realm contributes,

@@ -33,7 +33,7 @@ params:
 rules:
   - derive: "(a)-[:PARALLELS {shared: n}]->(b)"
     from: |
-      MATCH (p:Passage)<-[:IN]-(v:Verse)
+      MATCH (p:Passage)<-[:IN]-(v:BibleVerse)
       UNWIND v.people AS pid
       WITH pid, collect(DISTINCT p) AS ps
       WHERE size(ps) >= 2 AND size(ps) <= $maxSpread

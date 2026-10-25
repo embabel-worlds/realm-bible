@@ -21,7 +21,7 @@
       default: "kjv"
       description: "`kjv` (default) or `web` (World English Bible, modern)."
   cypher: |
-    MATCH (v:Verse {name: $ref})
+    MATCH (v:BibleVerse {name: $ref})
     RETURN v.name AS reference,
            CASE $translation WHEN 'web' THEN v.web ELSE v.text END AS text,
            CASE $translation WHEN 'web' THEN 'World English Bible' ELSE 'King James Version' END AS translation,
@@ -40,7 +40,7 @@
       default: "kjv"
       description: "`kjv` (default) or `web` (World English Bible, modern)."
   cypher: |
-    MATCH (p:Passage {name: $passage})<-[:IN]-(v:Verse)
+    MATCH (p:Passage {name: $passage})<-[:IN]-(v:BibleVerse)
     RETURN v.verse AS verse,
            CASE $translation WHEN 'web' THEN v.web ELSE v.text END AS text
     ORDER BY verse
@@ -61,7 +61,7 @@
       default: 100
       description: "How many verses to return."
   cypher: |
-    MATCH (b:Book)<-[:IN]-(:Passage)<-[:IN]-(v:Verse)
+    MATCH (b:Book)<-[:IN]-(:Passage)<-[:IN]-(v:BibleVerse)
     WITH b, v, CASE $translation WHEN 'web' THEN v.web ELSE v.text END AS text
     WHERE toLower(text) CONTAINS toLower($term)
     RETURN v.name AS reference, text
@@ -84,7 +84,7 @@
       default: 25
       description: "How many passages to return."
   cypher: |
-    MATCH (b:Book)<-[:IN]-(p:Passage)<-[:IN]-(v:Verse)
+    MATCH (b:Book)<-[:IN]-(p:Passage)<-[:IN]-(v:BibleVerse)
     WITH b, p, v, CASE $translation WHEN 'web' THEN v.web ELSE v.text END AS text
     WHERE toLower(text) CONTAINS toLower($term)
     // Aggregate in a WITH that keeps b and p: ordered after a RETURN that aggregates, they are out
@@ -102,7 +102,7 @@
       default: "Judges 3:21"
       description: "The verse, e.g. `Judges 3:21`."
   cypher: |
-    MATCH (v:Verse {name: $ref})
+    MATCH (v:BibleVerse {name: $ref})
     OPTIONAL MATCH (v)-[:RENDERED]->(asv:AsvVerse)
     OPTIONAL MATCH (v)-[:RENDERED]->(bbe:BbeVerse)
     OPTIONAL MATCH (v)-[:RENDERED]->(darby:DarbyVerse)
@@ -128,7 +128,7 @@
       default: ""
       description: "The verse under KJV numbering, e.g. `John 6:51`, `Psalms 23:1`. Required — empty returns nothing."
   cypher: |
-    MATCH (v:Verse {name: $ref})-[:RENDERED]->(dra:DraVerse)
+    MATCH (v:BibleVerse {name: $ref})-[:RENDERED]->(dra:DraVerse)
     RETURN v.name AS reference, trim(dra.text) AS text, 'Douay-Rheims' AS translation
 
 - name: PeopleNamed
@@ -165,7 +165,7 @@
       description: "`kjv` (default) or `web`."
   cypher: |
     MATCH (:BibleNameQuery {name: $name})-[:NAMED]->(p:BiblePerson)
-    MATCH (b:Book)<-[:IN]-(:Passage)<-[:IN]-(v:Verse)
+    MATCH (b:Book)<-[:IN]-(:Passage)<-[:IN]-(v:BibleVerse)
     WHERE p.personLookup IN v.people
     RETURN p.displayTitle AS person,
            v.name AS reference,
@@ -180,7 +180,7 @@
       default: "Judges 3"
       description: "The chapter, e.g. `2 Kings 9`."
   cypher: |
-    MATCH (:Passage {name: $passage})<-[:IN]-(v:Verse)-[:MENTIONS]->(p:BiblePerson)
+    MATCH (:Passage {name: $passage})<-[:IN]-(v:BibleVerse)-[:MENTIONS]->(p:BiblePerson)
     RETURN p.displayTitle AS person,
            p.personLookup AS id,
            count(v) AS verses,
@@ -233,7 +233,7 @@
     MATCH (c:Concept {value: $query})-[r:RELEVANT_TO {via: 'agentic-rag', intent: 'find the Bible chapter that narrates or contains what the reader describes'}]->(d:Document)
     WHERE 'web' IN d.tags
     WITH r, d, split(d.uri, '/')[3] AS osis
-    MATCH (b:Book)<-[:IN]-(p:Passage {osis: osis})<-[:IN]-(v:Verse)
+    MATCH (b:Book)<-[:IN]-(p:Passage {osis: osis})<-[:IN]-(v:BibleVerse)
     WITH r, p, b, v ORDER BY v.verse
     WITH r, p, b, collect({n: v.verse, kjv: v.text, web: v.web, ref: v.name}) AS verses
     RETURN r.rank AS rank,
@@ -296,7 +296,7 @@
     MATCH (c:Concept {value: $story})-[r:RELEVANT_TO {via: 'agentic-rag', intent: 'first restate this news event as the kind of event the Bible itself narrates, in plain biblical terms (for example: a plot against the king is uncovered; a foreign army burns a city; strangers seek refuge in a land; kings make and break a covenant; a ruler threatens to destroy a nation), then find the chapter that narrates that event. Search with the restatement, not the news words'}]->(d:Document)
     WHERE 'web' IN d.tags
     WITH r, d, split(d.uri, '/')[3] AS osis
-    MATCH (b:Book)<-[:IN]-(p:Passage {osis: osis})<-[:IN]-(v:Verse)
+    MATCH (b:Book)<-[:IN]-(p:Passage {osis: osis})<-[:IN]-(v:BibleVerse)
     WITH r, p, b, v ORDER BY v.verse
     WITH r, p, b, collect({n: v.verse, kjv: v.text, web: v.web, ref: v.name}) AS verses
     RETURN r.rank AS rank,

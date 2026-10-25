@@ -14,7 +14,7 @@ sources:
     lane: documents
     from:
       cypher: |
-        MATCH (b:Book)<-[:IN]-(p:Passage)<-[:IN]-(v:Verse)
+        MATCH (b:Book)<-[:IN]-(p:Passage)<-[:IN]-(v:BibleVerse)
         WITH b, p, v ORDER BY v.verse
         WITH b, p, collect({n: v.verse, text: v.text}) AS verses
         RETURN p.osis AS osis, p.name AS title, b.name AS book, verses
@@ -27,7 +27,9 @@ sources:
         {% for v in verses %}{{ v.n }} {{ v.text }}
         {% endfor %}
       sourceKind: bible
-      tags: [bible, kjv]
+      # `scripture` puts these chapters in the vocabulary's meaning search beside every other
+      # scripture's; a Passage's `documentUri` is this uri, which is how a hit walks back.
+      tags: [scripture, bible, kjv]
     sync:
       # The default translation is searchable from the moment the realm is installed.
       trigger: on-install
@@ -37,7 +39,7 @@ sources:
     lane: documents
     from:
       cypher: |
-        MATCH (b:Book)<-[:IN]-(p:Passage)<-[:IN]-(v:Verse)
+        MATCH (b:Book)<-[:IN]-(p:Passage)<-[:IN]-(v:BibleVerse)
         WHERE v.web IS NOT NULL
         WITH b, p, v ORDER BY v.verse
         WITH b, p, collect({n: v.verse, text: v.web}) AS verses

@@ -24,7 +24,7 @@ params:
 rules:
   - derive: "(p:TribalChapter {tribe: top.tribe, tribalCast: top.k})"
     from: |
-      MATCH (p:Passage)<-[:IN]-(v:Verse)
+      MATCH (p:Passage)<-[:IN]-(v:BibleVerse)
       UNWIND v.people AS pid
       MATCH (m:TribeMember {personLookup: pid})
       WITH p, m.tribe AS tribe, count(DISTINCT m) AS k

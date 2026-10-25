@@ -4,462 +4,858 @@
 - type: Book
   data:
     osis: Gen
+    scripture: bible
     name: Genesis
     bookOrder: 1
     testament: Old Testament
     division: Pentateuch
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: Exod
+    scripture: bible
     name: Exodus
     bookOrder: 2
     testament: Old Testament
     division: Pentateuch
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: Lev
+    scripture: bible
     name: Leviticus
     bookOrder: 3
     testament: Old Testament
     division: Pentateuch
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: Num
+    scripture: bible
     name: Numbers
     bookOrder: 4
     testament: Old Testament
     division: Pentateuch
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: Deut
+    scripture: bible
     name: Deuteronomy
     bookOrder: 5
     testament: Old Testament
     division: Pentateuch
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: Josh
+    scripture: bible
     name: Joshua
     bookOrder: 6
     testament: Old Testament
     division: Historical
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: Judg
+    scripture: bible
     name: Judges
     bookOrder: 7
     testament: Old Testament
     division: Historical
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: Ruth
+    scripture: bible
     name: Ruth
     bookOrder: 8
     testament: Old Testament
     division: Historical
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: 1Sam
+    scripture: bible
     name: 1 Samuel
     bookOrder: 9
     testament: Old Testament
     division: Historical
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: 2Sam
+    scripture: bible
     name: 2 Samuel
     bookOrder: 10
     testament: Old Testament
     division: Historical
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: 1Kgs
+    scripture: bible
     name: 1 Kings
     bookOrder: 11
     testament: Old Testament
     division: Historical
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: 2Kgs
+    scripture: bible
     name: 2 Kings
     bookOrder: 12
     testament: Old Testament
     division: Historical
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: 1Chr
+    scripture: bible
     name: 1 Chronicles
     bookOrder: 13
     testament: Old Testament
     division: Historical
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: 2Chr
+    scripture: bible
     name: 2 Chronicles
     bookOrder: 14
     testament: Old Testament
     division: Historical
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: Ezra
+    scripture: bible
     name: Ezra
     bookOrder: 15
     testament: Old Testament
     division: Historical
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: Neh
+    scripture: bible
     name: Nehemiah
     bookOrder: 16
     testament: Old Testament
     division: Historical
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: Esth
+    scripture: bible
     name: Esther
     bookOrder: 17
     testament: Old Testament
     division: Historical
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: Job
+    scripture: bible
     name: Job
     bookOrder: 18
     testament: Old Testament
     division: Poetry-Wisdom
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: Ps
+    scripture: bible
     name: Psalms
     bookOrder: 19
     testament: Old Testament
     division: Poetry-Wisdom
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: Prov
+    scripture: bible
     name: Proverbs
     bookOrder: 20
     testament: Old Testament
     division: Poetry-Wisdom
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: Eccl
+    scripture: bible
     name: Ecclesiastes
     bookOrder: 21
     testament: Old Testament
     division: Poetry-Wisdom
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: Song
+    scripture: bible
     name: Song of Solomon
     bookOrder: 22
     testament: Old Testament
     division: Poetry-Wisdom
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: Isa
+    scripture: bible
     name: Isaiah
     bookOrder: 23
     testament: Old Testament
     division: Major Prophets
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: Jer
+    scripture: bible
     name: Jeremiah
     bookOrder: 24
     testament: Old Testament
     division: Major Prophets
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: Lam
+    scripture: bible
     name: Lamentations
     bookOrder: 25
     testament: Old Testament
     division: Poetry-Wisdom
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: Ezek
+    scripture: bible
     name: Ezekiel
     bookOrder: 26
     testament: Old Testament
     division: Major Prophets
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: Dan
+    scripture: bible
     name: Daniel
     bookOrder: 27
     testament: Old Testament
     division: Major Prophets
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: Hos
+    scripture: bible
     name: Hosea
     bookOrder: 28
     testament: Old Testament
     division: Minor Prophets
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: Joel
+    scripture: bible
     name: Joel
     bookOrder: 29
     testament: Old Testament
     division: Minor Prophets
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: Amos
+    scripture: bible
     name: Amos
     bookOrder: 30
     testament: Old Testament
     division: Minor Prophets
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: Obad
+    scripture: bible
     name: Obadiah
     bookOrder: 31
     testament: Old Testament
     division: Minor Prophets
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: Jonah
+    scripture: bible
     name: Jonah
     bookOrder: 32
     testament: Old Testament
     division: Minor Prophets
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: Mic
+    scripture: bible
     name: Micah
     bookOrder: 33
     testament: Old Testament
     division: Minor Prophets
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: Nah
+    scripture: bible
     name: Nahum
     bookOrder: 34
     testament: Old Testament
     division: Minor Prophets
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: Hab
+    scripture: bible
     name: Habakkuk
     bookOrder: 35
     testament: Old Testament
     division: Minor Prophets
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: Zeph
+    scripture: bible
     name: Zephaniah
     bookOrder: 36
     testament: Old Testament
     division: Minor Prophets
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: Hag
+    scripture: bible
     name: Haggai
     bookOrder: 37
     testament: Old Testament
     division: Minor Prophets
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: Zech
+    scripture: bible
     name: Zechariah
     bookOrder: 38
     testament: Old Testament
     division: Minor Prophets
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: Mal
+    scripture: bible
     name: Malachi
     bookOrder: 39
     testament: Old Testament
     division: Minor Prophets
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: Matt
+    scripture: bible
     name: Matthew
     bookOrder: 40
     testament: New Testament
     division: Gospels
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: Mark
+    scripture: bible
     name: Mark
     bookOrder: 41
     testament: New Testament
     division: Gospels
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: Luke
+    scripture: bible
     name: Luke
     bookOrder: 42
     testament: New Testament
     division: Gospels
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: John
+    scripture: bible
     name: John
     bookOrder: 43
     testament: New Testament
     division: Gospels
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: Acts
+    scripture: bible
     name: Acts
     bookOrder: 44
     testament: New Testament
     division: Acts
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: Rom
+    scripture: bible
     name: Romans
     bookOrder: 45
     testament: New Testament
     division: Pauline Epistles
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: 1Cor
+    scripture: bible
     name: 1 Corinthians
     bookOrder: 46
     testament: New Testament
     division: Pauline Epistles
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: 2Cor
+    scripture: bible
     name: 2 Corinthians
     bookOrder: 47
     testament: New Testament
     division: Pauline Epistles
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: Gal
+    scripture: bible
     name: Galatians
     bookOrder: 48
     testament: New Testament
     division: Pauline Epistles
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: Eph
+    scripture: bible
     name: Ephesians
     bookOrder: 49
     testament: New Testament
     division: Pauline Epistles
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: Phil
+    scripture: bible
     name: Philippians
     bookOrder: 50
     testament: New Testament
     division: Pauline Epistles
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: Col
+    scripture: bible
     name: Colossians
     bookOrder: 51
     testament: New Testament
     division: Pauline Epistles
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: 1Thess
+    scripture: bible
     name: 1 Thessalonians
     bookOrder: 52
     testament: New Testament
     division: Pauline Epistles
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: 2Thess
+    scripture: bible
     name: 2 Thessalonians
     bookOrder: 53
     testament: New Testament
     division: Pauline Epistles
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: 1Tim
+    scripture: bible
     name: 1 Timothy
     bookOrder: 54
     testament: New Testament
     division: Pauline Epistles
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: 2Tim
+    scripture: bible
     name: 2 Timothy
     bookOrder: 55
     testament: New Testament
     division: Pauline Epistles
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: Titus
+    scripture: bible
     name: Titus
     bookOrder: 56
     testament: New Testament
     division: Pauline Epistles
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: Phlm
+    scripture: bible
     name: Philemon
     bookOrder: 57
     testament: New Testament
     division: Pauline Epistles
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: Heb
+    scripture: bible
     name: Hebrews
     bookOrder: 58
     testament: New Testament
     division: Pauline Epistles
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: Jas
+    scripture: bible
     name: James
     bookOrder: 59
     testament: New Testament
     division: General Epistles
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: 1Pet
+    scripture: bible
     name: 1 Peter
     bookOrder: 60
     testament: New Testament
     division: General Epistles
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: 2Pet
+    scripture: bible
     name: 2 Peter
     bookOrder: 61
     testament: New Testament
     division: General Epistles
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: 1John
+    scripture: bible
     name: 1 John
     bookOrder: 62
     testament: New Testament
     division: General Epistles
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: 2John
+    scripture: bible
     name: 2 John
     bookOrder: 63
     testament: New Testament
     division: General Epistles
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: 3John
+    scripture: bible
     name: 3 John
     bookOrder: 64
     testament: New Testament
     division: General Epistles
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: Jude
+    scripture: bible
     name: Jude
     bookOrder: 65
     testament: New Testament
     division: General Epistles
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible
 - type: Book
   data:
     osis: Rev
+    scripture: bible
     name: Revelation
     bookOrder: 66
     testament: New Testament
     division: Revelation
+  relations:
+  - predicate: IN
+    to:
+      type: BibleCanon
+      scripture: bible

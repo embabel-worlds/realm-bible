@@ -11,11 +11,12 @@ description: |
   person — there are 26 Zechariahs — so ask by name and expect every bearer.
 
   Keyless. Nothing to configure.
-version: 0.1.0
+version: 0.2.0
 # Experimental: it relies on engine features from October 2026 — finding a person by name, walking a
 # family tree in reverse and through list-valued keys, and DERIVE demands planned like queries. On an
 # older host those queries are refused. Querying the Rendering parent label (every translation at
 # once) awaits a further engine fix; the concrete translation labels work everywhere.
+# Its stored types are children of realm-scripture-vocabulary's, which must be installed first.
 maturity: experimental
 url: https://github.com/embabel-worlds/realm-bible
 author: Rod Johnson
@@ -29,9 +30,10 @@ exports:
   - bible_api
   - bible_wikipedia_summary
   - bible_getbible
+  - BibleCanon
   - Book
   - Passage
-  - Verse
+  - BibleVerse
   - BibleNameQuery
   - BibleIdQuery
   - BiblePerson

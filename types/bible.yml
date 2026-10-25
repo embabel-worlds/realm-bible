@@ -1,11 +1,17 @@
-# The Bible as a graph: three STORED types and a set of VIRTUAL ones.
+# The Bible as a graph: four STORED types and a set of VIRTUAL ones.
 #
-#   Book ◀─IN─ Passage ◀─IN─ Verse ─MENTIONS──▶ BiblePerson ─FATHER/MOTHER─▶ BiblePerson
-#                              │                     ▲
-#                              └─RENDERED──▶ AsvVerse, BbeVerse, DarbyVerse, DraVerse, YltVerse
+#   BibleCanon ◀─IN─ Book ◀─IN─ Passage ◀─IN─ BibleVerse ─MENTIONS──▶ BiblePerson ─FATHER/MOTHER─▶ BiblePerson
+#                                                 │                       ▲
+#                                                 └─RENDERED──▶ AsvVerse, BbeVerse, DarbyVerse, DraVerse, YltVerse
 #                                                    │
-#                  BibleNameQuery {name} ──NAMED─────┤
-#                  BibleRoll {scope:'all'} ──PERSON──┘   (everyone at once)
+#                                     BibleNameQuery {name} ──NAMED─────┤
+#                                     BibleRoll {scope:'all'} ──PERSON──┘   (everyone at once)
+#
+# The stored types are children of realm-scripture-vocabulary — BibleCanon a HolyBook, Book a
+# ScriptureBook, Passage a ScriptureChapter, BibleVerse a Verse — so a question asked of every
+# scripture (`MATCH (v:Verse)`) reaches the Bible, and the Quran beside it. Inside this realm, ask
+# for BibleVerse: a bare Verse is every scripture installed. The vocabulary's contract is why every
+# stored node carries `scripture: 'bible'` and every verse an `ordinal` and a `translation`.
 #
 # The stored graph is seeded from reference/ and never changes. Every verse carries the King James
 # text (`text`, the default) and the World English Bible (`web`, the modern choice), because both
@@ -14,7 +20,17 @@
 # translations are one API call per verse, so there is no such door for them — search the stored
 # KJV and WEB, then read the hits in Darby.
 
+- name: BibleCanon
+  parents: [HolyBook]
+  userAnchor: false
+  description: "The Bible as one holy book: the 66 books of the Protestant canon, in the King James Version. A single node, `scripture: 'bible'`; every Book is IN it. Not called `Bible` because that is this realm's provenance label, and a type may not share it."
+  properties:
+    scripture:
+      identity: true
+      description: "Always `bible`. Identity."
+
 - name: Book
+  parents: [ScriptureBook]
   description: "One of the 66 books, in canonical order. `osis` is the OSIS abbreviation (Gen, Judg, 1Kgs)."
   userAnchor: false
   properties:
@@ -29,7 +45,8 @@
     division: "Traditional grouping: Pentateuch, History, Wisdom, Major Prophets, Gospels, Epistles…"
 
 - name: Passage
-  description: "One CHAPTER of a book — the unit of reading, and the unit a question about a stretch of narrative is asked at. Reached from Verse via IN; itself IN a Book."
+  parents: [ScriptureChapter]
+  description: "One CHAPTER of a book — the unit of reading, and the unit a question about a stretch of narrative is asked at. Reached from BibleVerse via IN; itself IN a Book."
   userAnchor: false
   properties:
     osis:
@@ -44,8 +61,9 @@
       type: int
       description: "Number of verses in the chapter."
 
-- name: Verse
-  description: "One verse, with the King James text as `text` (the default) and the World English Bible as `web` (a modern public-domain translation). `people` lists the Theographic ids of the people the verse mentions; traverse MENTIONS to get them. Search with toLower(v.text) CONTAINS 'goat' — CONTAINS also matches `goats` and `scapegoat`."
+- name: BibleVerse
+  parents: [Verse]
+  description: "One verse of the Bible, with the King James text as `text` (the default) and the World English Bible as `web` (a modern public-domain translation). `people` lists the Theographic ids of the people the verse mentions; traverse MENTIONS to get them. Search with toLower(v.text) CONTAINS 'goat' — CONTAINS also matches `goats` and `scapegoat`."
   userAnchor: false
   properties:
     osis:
@@ -107,7 +125,7 @@
 - name: BiblePerson
   description: >-
     A person in the Bible, from Theographic Bible Metadata (CC BY-SA 4.0). Reached by name from a
-    pinned BibleNameQuery (NAMED), from a Verse that mentions them (MENTIONS), or from a child
+    pinned BibleNameQuery (NAMED), from a BibleVerse that mentions them (MENTIONS), or from a child
     (FATHER, MOTHER). `personLookup` is the identity — never `name`, which 26 Zechariahs share.
     Theographic marks much of its data `wip`; `status` says so per person, and the years are
     scholarly estimates, not facts.
@@ -135,16 +153,16 @@
       # The door is identified by the very id it fetches with, so a pin on `personLookup` names exactly
       # one door — which is what lets `MATCH (p:BiblePerson {personLookup: pid})` be answered by id.
       # MENTIONS also declares personLookup, but its door is a stored Verse holding a LIST of ids: a pin
-      # cannot name one Verse, and the engine will not look a person up through it.
+      # cannot name one BibleVerse, and the engine will not look a person up through it.
       materializedKeyField: personLookup
       producer: biblePeopleById
       description: "The one person with this Theographic id."
-    - anchorLabel: Verse
+    - anchorLabel: BibleVerse
       relationship: MENTIONS
       keyField: people
       recordKeyField: lookupQueried
       # Every BiblePerson carries its id as `personLookup`, whichever producer fetched it. Declaring
-      # that lets a query asked from the verse side — `(v:Verse)-[:MENTIONS]-(p {name:'Moses'})` —
+      # that lets a query asked from the verse side — `(v:BibleVerse)-[:MENTIONS]-(p {name:'Moses'})` —
       # fetch the Moseses by NAME and link the verses that list them, instead of binding all 31,102
       # verses and being refused. `lookupQueried` is an echo only this producer writes.
       materializedKeyField: personLookup
@@ -189,7 +207,7 @@
   properties:
     personLookup:
       identity: true
-      description: "Theographic id, e.g. `jezebel_1605`. Identity; the value a Verse's `people` list holds."
+      description: "Theographic id, e.g. `jezebel_1605`. Identity; the value a BibleVerse's `people` list holds."
     name: "The person's name."
     displayTitle: "Name with a disambiguating note where one is needed, e.g. `Zechariah (son of Jehoiada)`."
     gender: "`Male` or `Female`, where recorded."
@@ -230,9 +248,9 @@
 
 - name: AsvVerse
   parents: [Rendering]
-  description: "A verse in the American Standard Version (1901, public domain). Reached from Verse via RENDERED; fetched live."
+  description: "A verse in the American Standard Version (1901, public domain). Reached from BibleVerse via RENDERED; fetched live."
   virtualJoins:
-    - anchorLabel: Verse
+    - anchorLabel: BibleVerse
       relationship: RENDERED
       keyField: apiRef
       recordKeyField: key
@@ -248,9 +266,9 @@
 
 - name: BbeVerse
   parents: [Rendering]
-  description: "A verse in the Bible in Basic English (1949/1964, public domain) — an 850-word vocabulary, the plainest English here. Reached from Verse via RENDERED; fetched live."
+  description: "A verse in the Bible in Basic English (1949/1964, public domain) — an 850-word vocabulary, the plainest English here. Reached from BibleVerse via RENDERED; fetched live."
   virtualJoins:
-    - anchorLabel: Verse
+    - anchorLabel: BibleVerse
       relationship: RENDERED
       keyField: apiRef
       recordKeyField: key
@@ -266,9 +284,9 @@
 
 - name: DarbyVerse
   parents: [Rendering]
-  description: "A verse in the Darby Bible (1890, public domain) — close to the source languages. Reached from Verse via RENDERED; fetched live."
+  description: "A verse in the Darby Bible (1890, public domain) — close to the source languages. Reached from BibleVerse via RENDERED; fetched live."
   virtualJoins:
-    - anchorLabel: Verse
+    - anchorLabel: BibleVerse
       relationship: RENDERED
       keyField: apiRef
       recordKeyField: key
@@ -284,9 +302,9 @@
 
 - name: DraVerse
   parents: [Rendering]
-  description: "A verse in the Douay-Rheims (1899 American edition, public domain) — the Catholic translation from the Vulgate. Reached from Verse via RENDERED; fetched live."
+  description: "A verse in the Douay-Rheims (1899 American edition, public domain) — the Catholic translation from the Vulgate. Reached from BibleVerse via RENDERED; fetched live."
   virtualJoins:
-    - anchorLabel: Verse
+    - anchorLabel: BibleVerse
       relationship: RENDERED
       keyField: apiRef
       recordKeyField: key
@@ -302,9 +320,9 @@
 
 - name: YltVerse
   parents: [Rendering]
-  description: "A verse in Young's Literal Translation (1898, public domain) — word-for-word, keeping the source tenses. Reached from Verse via RENDERED; fetched live."
+  description: "A verse in Young's Literal Translation (1898, public domain) — word-for-word, keeping the source tenses. Reached from BibleVerse via RENDERED; fetched live."
   virtualJoins:
-    - anchorLabel: Verse
+    - anchorLabel: BibleVerse
       relationship: RENDERED
       keyField: apiRef
       recordKeyField: key

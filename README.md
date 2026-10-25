@@ -12,8 +12,8 @@ people of the Bible, the verses that mention them, and their parents.
 ## Shape
 
 ```
-Book ◀─IN─ Passage ◀─IN─ Verse ─MENTIONS─▶ BiblePerson ─FATHER/MOTHER/CHILD─▶ BiblePerson
-                            └─RENDERED─▶ Rendering: AsvVerse · BbeVerse · DarbyVerse · DraVerse · YltVerse
+BibleCanon ◀─IN─ Book ◀─IN─ Passage ◀─IN─ BibleVerse ─MENTIONS─▶ BiblePerson ─FATHER/MOTHER/CHILD─▶ BiblePerson
+                                                 └─RENDERED─▶ Rendering: AsvVerse · BbeVerse · DarbyVerse · DraVerse · YltVerse
 BibleNameQuery {name}        ─NAMED───▶ BiblePerson
 BibleIdQuery {personLookup}  ─WITH_ID─▶ BiblePerson
 ```
@@ -25,13 +25,31 @@ key, so a reverse walk is an exact lookup by the child's own record, not a guess
 
 | | Stored or fetched | Source |
 |---|---|---|
-| Book, Passage (= chapter), Verse with KJV `text` | stored, `reference/` | Theographic Bible Metadata |
-| Verse `web` (World English Bible) | stored, `reference/` | eBible.org |
+| BibleCanon, Book, Passage (= chapter), BibleVerse with KJV `text` | stored, `reference/` | Theographic Bible Metadata |
+| BibleVerse `web` (World English Bible) | stored, `reference/` | eBible.org |
 | BiblePerson | fetched, tabular producer over `People.csv` | Theographic Bible Metadata |
 | Asv/Bbe/Darby/Dra/YltVerse | fetched, one verse per call | bible-api.com |
 
 Two translations are stored because search has to scan text, and a producer cannot be scanned.
 The other five are fetched because nobody searches the Darby for a word.
+
+## One scripture among several
+
+The stored types are children of [realm-scripture-vocabulary](https://github.com/embabel-worlds/realm-scripture-vocabulary),
+which must be installed first: `BibleCanon` is a `HolyBook`, `Book` a `ScriptureBook`, `Passage` a
+`ScriptureChapter`, `BibleVerse` a `Verse`. So `MATCH (v:Verse)` asks every scripture installed — the
+Quran beside the Bible, with realm-quran — and `MATCH (v:BibleVerse)` (or `(v:Bible:Verse)`) asks this
+one. Every view and rule here names `BibleVerse`, never the bare parent.
+
+The KJV chapter documents are tagged `scripture`, and each `Passage` carries its document's uri as
+`documentUri`. Together these let the vocabulary's meaning-search views rank the Bible's chapters
+beside every other scripture's and walk a hit back to its verses. realm-tanakh, realm-book-of-mormon
+and realm-lds-scriptures link their verses to `BibleVerse` by `CORRESPONDS_TO`, on `osis`.
+
+Until 0.2.0 the verse type was itself called `Verse`. A node's id is derived from its type
+(`verse:<world>:<osis>` became `bibleverse:<world>:<osis>`), so an install that seeded under the old
+name gets a second set of verses on upgrade; the seeder reports the old ones and never deletes them.
+Remove them with `MATCH (v:Verse) WHERE v.id STARTS WITH 'verse:' DETACH DELETE v`.
 
 ## Search by meaning
 
@@ -226,7 +244,7 @@ The realm's own files are GPL-3.0 (`LICENSE`). The reference data and person dat
 CC BY-SA 4.0, as their source requires:
 
 - Theographic Bible Metadata, by Robert Rouse — CC BY-SA 4.0,
-  https://github.com/robertrouse/theographic-bible-metadata. The Book, Passage and Verse reference
+  https://github.com/robertrouse/theographic-bible-metadata. The Book, Passage and BibleVerse reference
   data, the KJV text as Theographic publishes it, and all person data derive from it, and are
   shared under the same licence.
 - World English Bible — public domain, via https://ebible.org.
