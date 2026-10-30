@@ -33,7 +33,9 @@ import os
 import re
 import urllib.request
 
-from common import CACHE, cite, fetch, paragraphs, passage_osis, text, write
+import yaml
+
+from common import CACHE, REF, cite, fetch, paragraphs, passage_osis, text, write
 
 UA = {"User-Agent": "Mozilla/5.0 (realm-bible build; https://github.com/embabel-worlds/realm-bible)"}
 CATECHISM_1928 = ("https://web.archive.org/web/2024id_/http://justus.anglican.org/resources/bcp/1928/Catechism.htm",
@@ -338,11 +340,39 @@ def roman_to_int(s):
     return total
 
 
+# The catechism misprints a handful of chapters — "Eccles. 17:20", where Ecclesiastes has twelve — and the words it
+# quotes after each say which verse it meant. Each is (as printed, the text that follows it, as meant); the text that
+# follows pins the one place, and a correction that no longer finds its place fails the build rather than lapsing.
+MISPRINTS = [
+    ("Gen. 23:14", ". “Is anything too hard for the Lord", "Gen. 18:14"),
+    ("Eccles. 17:20", ". “There is not a just man upon earth", "Eccles. 7:20"),
+    ("1 Cor. 21:16", ". “But if any man seem to be contentious", "1 Cor. 11:16"),
+    ("1 Pet. 14:11", ". “If any man speak", "1 Pet. 4:11"),
+    ("Titus 3:17", ". “That being justified by His grace", "Titus 3:7"),
+    # No quotation: cited beside Mark 14:25, the cup Jesus will not drink again until the kingdom — Luke 22:18.
+    ("Luke 28:18", ". IX.", "Luke 22:18"),
+]
+
+# A citation: the book, its chapter, and the verses — a list or ranges, each stopping short of a number that is the
+# next chapter ("Isa. 2:2, 66:20" is chapter 2 verse 2, then chapter 66, not verses 2 and 66).
+VERSES = r"\d+(?:[–-]\d+)?(?:, ?\d+(?:[–-]\d+)?(?![\d:]))*"
+CITATION = re.compile(r"(?:(?<=\s)|^)((?:[123] )?[A-Z][a-z]+\.?(?: of [A-Z][a-z]+)?) (\d+):(" + VERSES + ")")
+# A further chapter of the same book, after a comma or semicolon: the "66:20, 23" of "Isa. 2:2, 66:20, 23".
+SAME_BOOK = re.compile(r"[,;] ?(\d+):(" + VERSES + ")")
+
+
+def correct_misprints(s):
+    for printed, follows, meant in MISPRINTS:
+        assert s.count(printed + follows) == 1, f"the misprint {printed!r} is no longer where it was: {s.count(printed + follows)} matches"
+        s = s.replace(printed + follows, meant + follows)
+    return s
+
+
 def article_proofs():
     """{article number: [citations]} — every Scripture reference the 1877 catechism cites under each Article, in order."""
     doc = fetch_url(*ARTICLE_PROOFS, "cp1252")
     s = html.unescape(re.sub(r"<[^>]+>", " ", doc)).replace("\xa0", " ")
-    s = re.sub(r"[ \t\r\n]+", " ", s)
+    s = correct_misprints(re.sub(r"[ \t\r\n]+", " ", s))
     heads = list(re.finditer(r"\b(?:Article|ARTICLE) ([IVXL]+)\.?(?=\s+[A-Z“\"])", s))
     out = {}
     for i, h in enumerate(heads):
@@ -353,16 +383,43 @@ def article_proofs():
         # "Num. xxiii, 19" — the compiler sometimes wrote chapters in Roman numerals.
         body = re.sub(r"\b([ivxlc]+), (\d+)", lambda m: f"{roman_to_int(m.group(1))}:{m.group(2)}", body)
         seen, refs = set(), []
-        for m in re.finditer(r"(?:(?<=\s)|^)((?:[123] )?[A-Z][a-z]+\.?(?: of [A-Z][a-z]+)?) (\d+):(\d+(?:[–-]\d+)?(?:, ?\d+(?:[–-]\d+)?)*)", body):
-            c = cite(f"{m.group(1)} {m.group(2)}:{m.group(3).replace(', ', ',')}")
-            if not c or not c["osis"]:
-                continue
-            ref = f"{c['book']} {m.group(2)}:{m.group(3)}".replace("–", "-")
-            if ref not in seen:
-                seen.add(ref)
-                refs.append((ref, c))
+        for m in CITATION.finditer(body):
+            chapters = [(m.group(2), m.group(3))]
+            at = m.end()
+            while (more := SAME_BOOK.match(body, at)):
+                chapters.append((more.group(1), more.group(2)))
+                at = more.end()
+            for chapter, verses in chapters:
+                c = cite(f"{m.group(1)} {chapter}:{verses.replace(', ', ',')}")
+                if not c or not c["osis"]:
+                    break
+                ref = f"{c['book']} {chapter}:{verses}".replace("–", "-")
+                if ref not in seen:
+                    seen.add(ref)
+                    refs.append((ref, c))
         out[n] = refs
     return out
+
+
+def check_proofs(proofs):
+    """Every cited chapter and verse is one the realm's Bible has: a Passage of that chapter, a verse within it.
+
+    The seed refuses a record whose PROVED_BY names a chapter no Passage carries — the whole Article, not just the
+    edge — so a misprint left here would cost the realm its Article."""
+    with open(os.path.join(REF, "bible-02-passages.yml")) as f:
+        verses = {r["data"]["osis"]: r["data"]["verseCount"] for r in yaml.load(f, Loader=getattr(yaml, "CSafeLoader", yaml.SafeLoader))}
+    bad = []
+    for n, refs in proofs.items():
+        for ref, c in refs:
+            chapter, listed = re.search(r"(\d+):([^:]+)$", ref).groups()
+            osis = f"{c['osis']}.{chapter}"
+            if osis not in verses:
+                bad.append(f"Article {n}: {ref} — no chapter {osis}")
+                continue
+            highest = max(int(v) for v in re.findall(r"\d+", listed))
+            if highest > verses[osis]:
+                bad.append(f"Article {n}: {ref} — {osis} has {verses[osis]} verses")
+    assert not bad, "proof texts the realm's Bible does not have:\n  " + "\n  ".join(bad)
 
 
 def articles():
@@ -394,6 +451,7 @@ def articles():
                 cur["paras"].append(t)
     assert [r["number"] for r in records] == list(range(1, 40)), [r["number"] for r in records]
     proofs = article_proofs()
+    check_proofs(proofs)
     out = []
     for r in records:
         refs = proofs.get(r["number"], [])
@@ -416,7 +474,8 @@ def articles():
 # from 1571 (Articles VIII, XXI, XXXVI, XXXVII) the Prayer Book gives the original, carried as
 # `original1571`. {PD_1979} Source: https://www.bcponline.org/Misc/histdocs.html#articles .
 # Each Article is PROVED_BY the chapters that J. W.'s "A Catechism of the Thirty-Nine Articles ... with
-# Scripture Proofs" (2nd ed., 1877; public domain) cites under it — references only, not his text.
+# Scripture Proofs" (2nd ed., 1877; public domain) cites under it — references only, not his text. Where it
+# misprints a chapter (Ecclesiastes 17:20 for 7:20, and five more), the verse it quotes, or the passage it stands beside, decides; see MISPRINTS.
 # Source: https://newscriptorium.com/assets/books/anglican/39-articles/catechism39.htm .
 # Generated by scripts/anglican/build_texts.py.
 """, out)
