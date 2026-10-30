@@ -105,6 +105,14 @@ realm-research with a Brave key). Search is agentic retrieval over the WEB chapt
 APPLIANCE_URL=http://localhost:11043 APPLIANCE_USER=… APPLIANCE_PASSWORD=… node tests/scripture-search.live.mjs
 ```
 
+`tests/reference_targets.py` checks, offline, that every relation a reference record declares names a
+record the realm ships. The appliance refuses a record whole when one of its relations names nothing, so
+run it after regenerating any reference file:
+
+```bash
+python3 tests/reference_targets.py
+```
+
 `tests/views.smoke.mjs` runs every view the realm ships — each with its defaults, then varied cases
 whose answers are known — and fails on any the engine refuses or that comes back without the rows it
 should. Run it after any change to the realm: a view loads whether or not its query runs.
