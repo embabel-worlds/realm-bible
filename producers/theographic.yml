@@ -1,5 +1,5 @@
-# The people of the Bible, from Theographic Bible Metadata's People.csv (CC BY-SA 4.0): 3,069
-# people, ~1.6 MB, keyless. A published FILE, not an API, so it is a tabular producer — downloaded
+# The people of the Bible, from Theographic Bible Metadata's People.csv (CC BY-SA 4.0): about
+# 3,070 people, ~1.6 MB, keyless. A published FILE, not an API, so it is a tabular producer — downloaded
 # once per deployment on the first traversal, cached, and matched by column.
 #
 # Two producers over the one file, because a person is reached two ways. By NAME, which is not an
@@ -10,6 +10,13 @@
 # `personLookup` is the FIRST column and the file opens with a UTF-8 byte-order mark, so its header
 # arrives as "﻿personLookup" — a keyColumn that silently matches nothing if the BOM survives
 # the parse. `slug` is mid-row and cannot carry it.
+#
+# PUSHDOWN. A tabular producer applies a declared filter while it reads each row, before the row
+# becomes a record or counts against `maxRowsPerKey`. Declared on the text columns a question filters
+# people by, all exact as the file spells them: `gender` (`Male`/`Female`), `name` (case-insensitive,
+# so `toLower(p.name) CONTAINS 'zech'` is applied while reading too), and the parent ids. Numeric
+# columns (`verseCount`, the years) are not declared: the file holds them as text, and a typed
+# comparison against text would drop rows the graph's own comparison keeps.
 
 - name: biblePeopleByName
   kind: tabular
@@ -21,6 +28,11 @@
   # The file changes when Theographic publishes a revision, which is rare.
   fileCacheSeconds: 604800
   maxRowsPerKey: 50
+  pushdown:
+    - { property: gender, ops: [EQUALS, IN] }
+    - { property: name, ops: [EQUALS, CONTAINS], match: ci }
+    - { property: father, ops: [EQUALS, IN] }
+    - { property: mother, ops: [EQUALS, IN] }
   project:
     personLookup: "slug"
     name: "name"
@@ -36,7 +48,6 @@
     children: "children"
     siblings: "siblings"
     dictionary: "dictText"
-    status: "status"
   # Theographic stores a person's children as one comma-separated cell of ids. Split here, so the CHILD
   # join is keyed on a list and reaches every child, at every hop of a walk.
   compute:
@@ -51,6 +62,11 @@
   keyAs: lookupQueried
   fileCacheSeconds: 604800
   maxRowsPerKey: 1
+  pushdown:
+    - { property: gender, ops: [EQUALS, IN] }
+    - { property: name, ops: [EQUALS, CONTAINS], match: ci }
+    - { property: father, ops: [EQUALS, IN] }
+    - { property: mother, ops: [EQUALS, IN] }
   project:
     personLookup: "slug"
     name: "name"
@@ -66,7 +82,6 @@
     children: "children"
     siblings: "siblings"
     dictionary: "dictText"
-    status: "status"
   # Theographic stores a person's children as one comma-separated cell of ids. Split here, so the CHILD
   # join is keyed on a list and reaches every child, at every hop of a walk.
   compute:
@@ -75,7 +90,7 @@
 # The whole file, for questions over everyone: how many women, who has the most verses, who lived
 # longest by Theographic's estimates. No key column, so the table itself is the answer, stamped with
 # the roll's scope. It reads the file the other producers already download and cache, so sweeping
-# all 3,069 people costs one parse — the same scan a lookup by name already does. maxRowsPerKey is
+# all ~3,070 people costs one parse — the same scan a lookup by name already does. maxRowsPerKey is
 # above the file's size, so the roll is never silently cut short.
 - name: biblePeopleAll
   kind: tabular
@@ -84,6 +99,11 @@
   keyAs: rollScope
   fileCacheSeconds: 604800
   maxRowsPerKey: 5000
+  pushdown:
+    - { property: gender, ops: [EQUALS, IN] }
+    - { property: name, ops: [EQUALS, CONTAINS], match: ci }
+    - { property: father, ops: [EQUALS, IN] }
+    - { property: mother, ops: [EQUALS, IN] }
   project:
     personLookup: "slug"
     name: "name"
@@ -99,7 +119,6 @@
     children: "children"
     siblings: "siblings"
     dictionary: "dictText"
-    status: "status"
   compute:
     childIds: "[c IN split(r.children, ',') WHERE trim(c) <> '' | trim(c)]"
 
@@ -115,6 +134,11 @@
   keyAs: fatherQueried
   fileCacheSeconds: 604800
   maxRowsPerKey: 100
+  pushdown:
+    - { property: gender, ops: [EQUALS, IN] }
+    - { property: name, ops: [EQUALS, CONTAINS], match: ci }
+    - { property: father, ops: [EQUALS, IN] }
+    - { property: mother, ops: [EQUALS, IN] }
   project:
     personLookup: "slug"
     name: "name"
@@ -130,7 +154,6 @@
     children: "children"
     siblings: "siblings"
     dictionary: "dictText"
-    status: "status"
   # Theographic stores a person's children as one comma-separated cell of ids. Split here, so the CHILD
   # join is keyed on a list and reaches every child, at every hop of a walk.
   compute:
@@ -145,6 +168,11 @@
   keyAs: motherQueried
   fileCacheSeconds: 604800
   maxRowsPerKey: 100
+  pushdown:
+    - { property: gender, ops: [EQUALS, IN] }
+    - { property: name, ops: [EQUALS, CONTAINS], match: ci }
+    - { property: father, ops: [EQUALS, IN] }
+    - { property: mother, ops: [EQUALS, IN] }
   project:
     personLookup: "slug"
     name: "name"
@@ -160,7 +188,6 @@
     children: "children"
     siblings: "siblings"
     dictionary: "dictText"
-    status: "status"
   # Theographic stores a person's children as one comma-separated cell of ids. Split here, so the CHILD
   # join is keyed on a list and reaches every child, at every hop of a walk.
   compute:

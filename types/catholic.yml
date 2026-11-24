@@ -247,6 +247,8 @@
     chapter:
       type: int
       description: "Chapter number, in the Vulgate numbering the Douay-Rheims uses."
-    verse: "Verse number within the chapter, Vulgate numbering."
+    verse:
+      type: int
+      description: "Verse number within the chapter, Vulgate numbering."
     text:
       description: "The verse in the Douay-Rheims (1899 American edition, public domain), as getbible.net gives it."

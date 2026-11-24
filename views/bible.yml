@@ -171,7 +171,6 @@
            p.deathYear AS died,
            p.father AS father,
            p.mother AS mother,
-           p.status AS curation,
            left(p.dictionary, 300) AS dictionary
     ORDER BY verses DESC
 

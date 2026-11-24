@@ -112,7 +112,7 @@
     people:
       cardinality: LIST
       description: "Theographic person ids mentioned in this verse, e.g. `ehud_1039`. The key MENTIONS joins on."
-    event: "The Theographic event this verse belongs to, e.g. `Deliverance by Ehud`; empty when none is recorded."
+    event: "The Theographic event this verse belongs to, when it has one, e.g. `Deliverance by Ehud`."
 
 # ── People ────────────────────────────────────────────────────────────────────────────────────────
 
@@ -255,9 +255,15 @@
     gender:
       values: ["Male", "Female"]
       description: "`Male` or `Female`, capitalised, as Theographic records it."
-    birthYear: "Estimated year of birth, a whole year; negative is BC, e.g. `-1526`. Held as text — toInteger() before arithmetic. A scholarly estimate; empty when Theographic gives none."
-    deathYear: "Estimated year of death, a whole year; negative is BC. Held as text — toInteger() before arithmetic. A scholarly estimate; empty when Theographic gives none."
-    verseCount: "How many verses mention this person, by Theographic's tagging. Held as text — toInteger() before ordering or comparing."
+    birthYear:
+      type: int
+      description: "Estimated year of birth, a whole year; negative is BC, e.g. `-1526`. A scholarly estimate; empty when Theographic gives none."
+    deathYear:
+      type: int
+      description: "Estimated year of death, a whole year; negative is BC. A scholarly estimate; empty when Theographic gives none."
+    verseCount:
+      type: int
+      description: "How many verses mention this person, by Theographic's tagging."
     verses:
       description: "Comma-separated OSIS references of every verse that mentions this person, e.g. `Judg.3.15,Judg.3.16`."
     father: "Theographic id of the father, when recorded. The key FATHER joins on."
@@ -273,7 +279,6 @@
       description: "Easton's Bible Dictionary entry (1897, public domain) for this person, where Theographic links one; empty otherwise."
     nameQueried:
       description: "The name this record was fetched for — set only on records reached by name (NAMED)."
-    status: "Theographic's curation status for the record, where its file carries one; empty otherwise."
     lookupQueried:
       description: "The Theographic id this record was fetched for — set on records reached by id (MENTIONS, FATHER, MOTHER, CHILD)."
 
