@@ -85,8 +85,7 @@ while True:
 
 print("== L1: every view answers by name ==")
 EMPTY_BY_DESIGN = {"ReadVerseDouayRheims", "ReadDeuterocanon"}       # a required reference, empty by default
-OUTSIDE = {"TodaysHeadlines": "needs realm-research and its search key",
-           "SearchPassages": "needs the chapter documents and a model",
+OUTSIDE = {"SearchPassages": "needs the chapter documents and a model",
            "PassagesForStory": "needs the chapter documents and a model; none is a real answer"}
 for f in sorted(glob.glob(os.path.join(realm, "views", "*.yml"))):
     for v in yaml.safe_load(open(f)):

@@ -15,8 +15,6 @@ icon: "✝"
 defaultPersona: jonathon
 
 # Realm names exactly as realm.yml spells them — this realm is realm-bible.
-# Add realm-research here if you want Jonathon to reach TodaysHeadlines and
-# PassagesForStory, which are the two views that need it.
 realms: [realm-bible]
 
 # Named, not `true`: Jonathon needs memory to remember a person between

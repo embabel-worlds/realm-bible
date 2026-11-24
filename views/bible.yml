@@ -279,35 +279,11 @@
     ORDER BY rank
     LIMIT $limit
 
-# NEWS → SCRIPTURE. Two views, not one, on purpose: the app lists headlines on load (one news call)
-# and runs the agentic search only for the story a reader picks. Ten agentic runs behind a page load
-# would be ten model loops nobody asked for.
-#
-# The news comes from realm-research (NewsItem over Brave, keyed by the ResearchTopic's name), so
-# TodaysHeadlines needs that realm installed with a Brave key; without it the view has no HAS_NEWS
-# join and the app says so rather than showing an empty strip.
-
-- name: TodaysHeadlines
-  description: >-
-    Today's news stories for a topic, from realm-research's news search. At most `limit` stories
-    (the search returns ten at most); needs realm-research installed with its search key, and
-    answers nothing without it.
-  params:
-    topic:
-      type: string
-      default: "world news today"
-      description: "What to search the news for; the topic text IS the Brave query."
-    limit:
-      type: int
-      default: 8
-      description: "At most this many stories (the search returns ten at most)."
-  cypher: |
-    MATCH (t:ResearchTopic {name: $topic})-[:HAS_NEWS]->(n:NewsItem)
-    RETURN n.title AS headline,
-           n.description AS summary,
-           n.url AS url,
-           n.age AS age
-    LIMIT $limit
+# STORY → SCRIPTURE. PassagesForStory takes a news story's text and finds the chapters that tell its
+# kind of event. The headlines themselves are not this realm's: the news belongs to whichever realm
+# fetches it, and a view here naming its labels would make this realm uninstallable without it. A
+# world that composes a news realm with this one can declare a `TodaysHeadlines` view of its own,
+# and the scripture-search app shows a news strip when that view answers.
 
 - name: PassagesForStory
   description: >-

@@ -134,8 +134,8 @@ talking to known and he wants them to come to faith, and he says so once rather 
 The focus binds the chat to `realm-bible` alone, so Jonathon reaches scripture, the people in it
 and the translations, and no other realm's tools — a pastor who can also read your email is a
 different and worse idea. `builtins: true` is kept deliberately: he needs `view_run` to read a
-verse, and `memory_save` / `memory_search` to remember a person between conversations. Add
-`realm-research` to the focus's `realms` to let him reach `TodaysHeadlines` and `PassagesForStory`.
+verse, and `memory_save` / `memory_search` to remember a person between conversations. He has no
+news of his own: `PassagesForStory` finds the chapters for a story he is given.
 
 Two rules in his prompt are load-bearing. Every word of scripture comes from a `view_run` call and
 is named with its translation — he never quotes from memory, because misquoting scripture to make a

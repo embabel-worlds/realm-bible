@@ -16,7 +16,7 @@
  *
  *   APPLIANCE_URL=http://localhost:11043 APPLIANCE_USER=… APPLIANCE_PASSWORD=… node tests/views.smoke.mjs [--with-llm]
  *
- * Views that call a model or the news (SearchPassages, TodaysHeadlines, PassagesForStory) cost money and
+ * Views that call a model or the news (SearchPassages, PassagesForStory) cost money and
  * vary run to run, so they run only with --with-llm. Views fed by public services (Wikidata, getbible,
  * bible-api) can be slow on a cold cache; durations are printed, and anything over SLOW_MS is flagged.
  * Exits non-zero if any check failed.
@@ -33,7 +33,7 @@ if (!user || !password) {
 }
 const withLlm = process.argv.includes('--with-llm');
 const SLOW_MS = Number(process.env.SLOW_MS ?? 5000);
-const LLM_VIEWS = new Set(['SearchPassages', 'TodaysHeadlines', 'PassagesForStory']);
+const LLM_VIEWS = new Set(['SearchPassages', 'PassagesForStory']);
 
 /* A default that is deliberately empty (no reference, no book) answers nothing; that is the designed
  * result, not a defect. Today-dependent views may also be empty on a day with nothing to keep. */

@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="/api/v1/apps-runtime/v1/theme.css">
 <script src="/api/v1/apps-runtime/v1/embabel.js"></script>
 <script type="application/embabel-app+json">
-{"version":1,"name":"scripture-search","requires":{"lenses":[],"views":["SearchPassages","ReadPassage","PeopleInPassage","CompareTranslations","TodaysHeadlines","PassagesForStory"],"realms":["realm-bible"],"namespaces":[]}}
+{"version":1,"name":"scripture-search","requires":{"lenses":[],"views":["SearchPassages","ReadPassage","PeopleInPassage","CompareTranslations","PassagesForStory"],"realms":["realm-bible"],"namespaces":[]}}
 </script>
 <link rel="stylesheet" href="bible.css">
 <script src="bible-core.js"></script>
@@ -107,11 +107,9 @@ RETURN p.displayTitle AS person, p.personLookup AS id,
 ORDER BY verses DESC, person</pre>
   <p><b><code>CompareTranslations</code></b> — one verse in seven translations, when you click a verse. Parameter: <code>ref</code> (e.g. "Judges 4:21").
     The King James and World English come from the graph; the other five are fetched live for that verse.</p>
-  <p><b><code>TodaysHeadlines</code></b> — the news strip, once per visit. It reads realm-research's news join, which searches Brave for the
-    topic text ("world news today") and returns at most ten stories.</p>
-  <pre>MATCH (t:ResearchTopic {name: $topic})-[:HAS_NEWS]-&gt;(n:NewsItem)
-RETURN n.title AS headline, n.description AS summary, n.url AS url, n.age AS age
-LIMIT $limit</pre>
+  <p><b><code>TodaysHeadlines</code></b> — the news strip, once per visit, when the world has it. It is not this realm's: the news belongs
+    to a realm that fetches it, so a world that composes one with this realm declares the view itself, returning
+    <code>headline</code>, <code>summary</code>, <code>url</code> and <code>age</code>. Without it the strip is not shown.</p>
   <p><b><code>PassagesForStory</code></b> — when you pick a story. The same retrieval and traversal as <code>SearchPassages</code>, with the
     headline and summary as the text and a different instruction to the loop:</p>
   <pre>MATCH (c:Concept {value: $story})-[r:RELEVANT_TO {via: 'agentic-rag',
@@ -141,8 +139,7 @@ WHERE 'web' IN d.tags
     <li><b>A story with no chapter.</b> The search judged that the Bible tells no event like it, and says so rather than reaching for a verse.</li>
     <li><b>A connection that still looks loose.</b> Each chapter passed a check that it tells the same kind of event, but that check is a
       model's judgement; the evidence line under the card shows what it judged by.</li>
-    <li><b>No news strip.</b> Today's stories come from realm-research's Brave search; without that realm and its key the strip says so, and
-      everything else works.</li>
+    <li><b>No news strip.</b> The world has no <code>TodaysHeadlines</code> view, or it returned nothing; everything else works.</li>
     <li><b>Search fails outright.</b> The appliance needs an embedding model to search by meaning; without one, documents exist but cannot be
       searched this way.</li>
   </ul>
@@ -155,8 +152,8 @@ WHERE 'web' IN d.tags
       (<code>RELEVANT_TO {via: 'agentic-rag'}</code>) and then traverses <code>Book ← Passage ← BibleVerse</code> in the same Cypher — elsewhere that
       is an agent framework, a vector store and a database joined in application code.</li>
     <li>People are never stored: <code>MENTIONS</code> is a join to a published CSV, fetched when a chapter asks for it.</li>
-    <li>Live news and a two-thousand-year-old text meet in one query language: the headlines are a join another realm contributes,
-      fetched from Brave on demand, and the passage for a story is the same agentic edge pointed at it.</li>
+    <li>Live news and a two-thousand-year-old text meet in one query language: the headlines are a view another realm's data answers,
+      and the passage for a story is the same agentic edge pointed at it.</li>
     <li>This page has no backend of its own. It asks the world for five views by name when you act.</li>
   </ul>
   <p><a href="#" id="close-how">Close</a></p>
@@ -197,12 +194,7 @@ WHERE 'web' IN d.tags
     embabel.views.invoke('TodaysHeadlines', { limit: 8 })
       .then(function (res) {
         headlines = rowsOf(res);
-        if (!headlines.length) {
-          var w = warningsOf(res).map(warnText).join(' · ');
-          el.innerHTML = '<p class="note" style="text-align:center">No news came back' + (w ? ': ' + esc(w) : '') +
-            '. Today\'s stories need realm-research installed with a Brave search key.</p>';
-          return;
-        }
+        if (!headlines.length) { document.getElementById('news').hidden = true; return; }
         el.innerHTML = '<ol>' + headlines.map(function (h, i) {
           var host = '';
           try { host = new URL(h.url).hostname.replace(/^www\./, ''); } catch (e) { /* no url */ }
@@ -210,10 +202,8 @@ WHERE 'web' IN d.tags
             '<span class="age">' + esc(h.age || '') + (host ? ' · <a class="src" href="' + esc(h.url) + '" target="_blank" rel="noopener noreferrer">' + esc(host) + '</a>' : '') + '</span></li>';
         }).join('') + '</ol>';
       })
-      .catch(function (e) {
-        el.innerHTML = '<p class="note" style="text-align:center">Today\'s news could not be read: ' + esc(U.errText(e)) +
-          '. Searching Scripture still works.</p>';
-      });
+      /* No TodaysHeadlines in this world: the news is another realm's, composed in or not. */
+      .catch(function () { document.getElementById('news').hidden = true; });
   }
 
   core.wire();
