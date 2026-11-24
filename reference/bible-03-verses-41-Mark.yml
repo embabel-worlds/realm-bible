@@ -619,7 +619,7 @@
     people:
     - wife_of_simon_2943
     - mother_of_the_wife_of_simon_2111
-    - simon_2750
+    - peter_2745
     event: Peter's Mother-in-law and Others Healed
   relations:
   - predicate: IN
@@ -5817,7 +5817,7 @@
     text: And straightway he entered into a ship with his disciples, and came into the parts of Dalmanutha.
     translation: King James Version
     web: Immediately he entered into the boat with his disciples and came into the region of Dalmanutha.
-    event: Discourse with Pharisees and Saducees
+    event: Discourse with Pharisees and Sadducees
   relations:
   - predicate: IN
     to:
@@ -5836,7 +5836,7 @@
     text: And the Pharisees came forth, and began to question with him, seeking of him a sign from heaven, tempting him.
     translation: King James Version
     web: The Pharisees came out and began to question him, seeking from him a sign from heaven and testing him.
-    event: Discourse with Pharisees and Saducees
+    event: Discourse with Pharisees and Sadducees
   relations:
   - predicate: IN
     to:
@@ -5855,7 +5855,7 @@
     text: And he sighed deeply in his spirit, and saith, Why doth this generation seek after a sign? verily I say unto you, There shall no sign be given unto this generation.
     translation: King James Version
     web: He sighed deeply in his spirit and said, “Why does this generation seek a sign? Most certainly I tell you, no sign will be given to this generation.”
-    event: Discourse with Pharisees and Saducees
+    event: Discourse with Pharisees and Sadducees
   relations:
   - predicate: IN
     to:
@@ -5874,7 +5874,7 @@
     text: And he left them, and entering into the ship again departed to the other side.
     translation: King James Version
     web: He left them, and again entering into the boat, departed to the other side.
-    event: Discourse with Pharisees and Saducees
+    event: Discourse with Pharisees and Sadducees
   relations:
   - predicate: IN
     to:
@@ -5893,7 +5893,7 @@
     text: Now the disciples had forgotten to take bread, neither had they in the ship with them more than one loaf.
     translation: King James Version
     web: They forgot to take bread; and they didn’t have more than one loaf in the boat with them.
-    event: Discourse with Pharisees and Saducees
+    event: Discourse with Pharisees and Sadducees
   relations:
   - predicate: IN
     to:
@@ -5914,7 +5914,7 @@
     web: 'He warned them, saying, “Take heed: beware of the yeast of the Pharisees and the yeast of Herod.”'
     people:
     - herod_1505
-    event: Discourse with Pharisees and Saducees
+    event: Discourse with Pharisees and Sadducees
   relations:
   - predicate: IN
     to:
@@ -5933,7 +5933,7 @@
     text: And they reasoned among themselves, saying, It is because we have no bread.
     translation: King James Version
     web: They reasoned with one another, saying, “It’s because we have no bread.”
-    event: Discourse with Pharisees and Saducees
+    event: Discourse with Pharisees and Sadducees
   relations:
   - predicate: IN
     to:
@@ -5954,7 +5954,7 @@
     web: Jesus, perceiving it, said to them, “Why do you reason that it’s because you have no bread? Don’t you perceive yet or understand? Is your heart still hardened?
     people:
     - jesus_905
-    event: Discourse with Pharisees and Saducees
+    event: Discourse with Pharisees and Sadducees
   relations:
   - predicate: IN
     to:
@@ -5973,7 +5973,7 @@
     text: Having eyes, see ye not? and having ears, hear ye not? and do ye not remember?
     translation: King James Version
     web: Having eyes, don’t you see? Having ears, don’t you hear? Don’t you remember?
-    event: Discourse with Pharisees and Saducees
+    event: Discourse with Pharisees and Sadducees
   relations:
   - predicate: IN
     to:
@@ -5992,7 +5992,7 @@
     text: When I brake the five loaves among five thousand, how many baskets full of fragments took ye up? They say unto him, Twelve.
     translation: King James Version
     web: When I broke the five loaves among the five thousand, how many baskets full of broken pieces did you take up?” They told him, “Twelve.”
-    event: Discourse with Pharisees and Saducees
+    event: Discourse with Pharisees and Sadducees
   relations:
   - predicate: IN
     to:
@@ -6011,7 +6011,7 @@
     text: And when the seven among four thousand, how many baskets full of fragments took ye up? And they said, Seven.
     translation: King James Version
     web: “When the seven loaves fed the four thousand, how many baskets full of broken pieces did you take up?” They told him, “Seven.”
-    event: Discourse with Pharisees and Saducees
+    event: Discourse with Pharisees and Sadducees
   relations:
   - predicate: IN
     to:
@@ -6030,7 +6030,7 @@
     text: And he said unto them, How is it that ye do not understand?
     translation: King James Version
     web: He asked them, “Don’t you understand yet?”
-    event: Discourse with Pharisees and Saducees
+    event: Discourse with Pharisees and Sadducees
   relations:
   - predicate: IN
     to:
@@ -6417,7 +6417,7 @@
     - james_717
     - john_1677
     - jesus_905
-    event: The Transfiguation
+    event: The Transfiguration
   relations:
   - predicate: IN
     to:
@@ -6436,7 +6436,7 @@
     text: And his raiment became shining, exceeding white as snow; so as no fuller on earth can white them.
     translation: King James Version
     web: His clothing became glistening, exceedingly white, like snow, such as no launderer on earth can whiten them.
-    event: The Transfiguation
+    event: The Transfiguration
   relations:
   - predicate: IN
     to:
@@ -6459,7 +6459,7 @@
     - elijah_1131
     - moses_2108
     - jesus_905
-    event: The Transfiguation
+    event: The Transfiguration
   relations:
   - predicate: IN
     to:
@@ -6483,7 +6483,7 @@
     - moses_2108
     - elijah_1131
     - jesus_905
-    event: The Transfiguation
+    event: The Transfiguration
   relations:
   - predicate: IN
     to:
@@ -6502,7 +6502,7 @@
     text: For he wist not what to say; for they were sore afraid.
     translation: King James Version
     web: For he didn’t know what to say, for they were very afraid.
-    event: The Transfiguation
+    event: The Transfiguration
   relations:
   - predicate: IN
     to:
@@ -6523,7 +6523,7 @@
     web: A cloud came, overshadowing them, and a voice came out of the cloud, “This is my beloved Son. Listen to him.”
     people:
     - jesus_905
-    event: The Transfiguation
+    event: The Transfiguration
   relations:
   - predicate: IN
     to:
@@ -6544,7 +6544,7 @@
     web: Suddenly looking around, they saw no one with them any more, except Jesus only.
     people:
     - jesus_905
-    event: The Transfiguation
+    event: The Transfiguration
   relations:
   - predicate: IN
     to:
@@ -6565,7 +6565,7 @@
     web: As they were coming down from the mountain, he commanded them that they should tell no one what things they had seen, until after the Son of Man had risen from the dead.
     people:
     - jesus_905
-    event: The Transfiguation
+    event: The Transfiguration
   relations:
   - predicate: IN
     to:
@@ -6584,7 +6584,7 @@
     text: And they kept that saying with themselves, questioning one with another what the rising from the dead should mean.
     translation: King James Version
     web: They kept this saying to themselves, questioning what the “rising from the dead” meant.
-    event: The Transfiguation
+    event: The Transfiguration
   relations:
   - predicate: IN
     to:
@@ -6605,7 +6605,7 @@
     web: They asked him, saying, “Why do the scribes say that Elijah must come first?”
     people:
     - elijah_1131
-    event: The Transfiguation
+    event: The Transfiguration
   relations:
   - predicate: IN
     to:
@@ -6627,7 +6627,7 @@
     people:
     - elijah_1131
     - jesus_905
-    event: The Transfiguation
+    event: The Transfiguration
   relations:
   - predicate: IN
     to:
@@ -6648,7 +6648,7 @@
     web: But I tell you that Elijah has come, and they have also done to him whatever they wanted to, even as it is written about him.”
     people:
     - elijah_1131
-    event: The Transfiguation
+    event: The Transfiguration
   relations:
   - predicate: IN
     to:
@@ -13067,7 +13067,7 @@
     ordinal: 24874
     text: And Mary Magdalene and Mary the mother of Joses beheld where he was laid.
     translation: King James Version
-    web: Mary Magdalene and Mary the mother of Joses, saw where he was laid.
+    web: Mary Magdalene and Mary the mother of Joses saw where he was laid.
     people:
     - mary_1943
     - mary_1940

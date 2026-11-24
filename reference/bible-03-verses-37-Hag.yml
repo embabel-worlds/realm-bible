@@ -104,7 +104,7 @@
     ordinal: 22846
     text: Now therefore thus saith the LORD of hosts; Consider your ways.
     translation: King James Version
-    web: 'Now therefore this is what the LORD of Armies says: ‘Consider your ways.'
+    web: 'Now therefore this is what the LORD of Armies says: Consider your ways.'
     people:
     - god_1324
     event: Prophecies of Haggai
@@ -125,7 +125,7 @@
     ordinal: 22847
     text: Ye have sown much, and bring in little; ye eat, but ye have not enough; ye drink, but ye are not filled with drink; ye clothe you, but there is none warm; and he that earneth wages earneth wages to put it into a bag with holes.
     translation: King James Version
-    web: You have sown much, and bring in little. You eat, but you don’t have enough. You drink, but you aren’t filled with drink. You clothe yourselves, but no one is warm; and he who earns wages earns wages to put them into a bag with holes in it.’
+    web: You have sown much, and bring in little. You eat, but you don’t have enough. You drink, but you aren’t filled with drink. You clothe yourselves, but no one is warm; and he who earns wages earns wages to put them into a bag with holes in it.
     event: Prophecies of Haggai
   relations:
   - predicate: IN
@@ -144,7 +144,7 @@
     ordinal: 22848
     text: Thus saith the LORD of hosts; Consider your ways.
     translation: King James Version
-    web: '“This is what the LORD of Armies says: ‘Consider your ways.'
+    web: '“This is what the LORD of Armies says: Consider your ways.'
     people:
     - god_1324
     event: Prophecies of Haggai
@@ -300,7 +300,7 @@
     - joshua_893
     - josedech_815
     - god_1324
-    event: Prophecies of Haggai
+    event: Prophecies of Haggai,Temple work resumes
   relations:
   - predicate: IN
     to:
@@ -321,7 +321,7 @@
     web: in the twenty-fourth day of the month, in the sixth month, in the second year of Darius the king.
     people:
     - darius_978
-    event: Prophecies of Haggai
+    event: Prophecies of Haggai,Temple work resumes
   relations:
   - predicate: IN
     to:

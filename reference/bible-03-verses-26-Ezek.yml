@@ -1724,7 +1724,7 @@
     ordinal: 20554
     text: Therefore thus saith the Lord GOD; Because ye multiplied more than the nations that are round about you, and have not walked in my statutes, neither have kept my judgments, neither have done according to the judgments of the nations that are round about you;
     translation: King James Version
-    web: '“Therefore the Lord GOD says: ‘Because you are more turbulent than the nations that are around you, and have not walked in my statutes, neither have kept my ordinances, neither have followed the ordinances of the nations that are around you;'
+    web: '“Therefore the Lord GOD says: ‘Because you are more turbulent than the nations that are around you, and have not walked in my statutes, neither have kept my ordinances, neither have followed the ordinances of the nations that are around you;’'
     people:
     - god_1324
     event: Prophecies of Ezekiel
@@ -2757,7 +2757,7 @@
     web: In the sixth year, in the sixth month, in the fifth day of the month, as I sat in my house, and the elders of Judah sat before me, the Lord GOD’s hand fell on me there.
     people:
     - god_1324
-    event: Prophecies of Ezekiel
+    event: Prophecies of Ezekiel,The glory of the LORD leaves the Temple
   relations:
   - predicate: IN
     to:
@@ -2776,7 +2776,7 @@
     text: 'Then I beheld, and lo a likeness as the appearance of fire: from the appearance of his loins even downward, fire; and from his loins even upward, as the appearance of brightness, as the colour of amber.'
     translation: King James Version
     web: Then I saw, and behold, a likeness as the appearance of fire—from the appearance of his waist and downward, fire, and from his waist and upward, as the appearance of brightness, as it were glowing metal.
-    event: Prophecies of Ezekiel
+    event: Prophecies of Ezekiel,The glory of the LORD leaves the Temple
   relations:
   - predicate: IN
     to:
@@ -2797,7 +2797,7 @@
     web: He stretched out the form of a hand, and took me by a lock of my head; and the Spirit lifted me up between earth and the sky, and brought me in the visions of God to Jerusalem, to the door of the gate of the inner court that looks toward the north, where there was the seat of the image of jealousy, which provokes to jealousy.
     people:
     - god_1324
-    event: Prophecies of Ezekiel
+    event: Prophecies of Ezekiel,The glory of the LORD leaves the Temple
   relations:
   - predicate: IN
     to:
@@ -2818,7 +2818,7 @@
     web: Behold, the glory of the God of Israel was there, according to the appearance that I saw in the plain.
     people:
     - god_1324
-    event: Prophecies of Ezekiel
+    event: Prophecies of Ezekiel,The glory of the LORD leaves the Temple
   relations:
   - predicate: IN
     to:
@@ -3658,7 +3658,7 @@
     web: The LORD’s glory went out from over the threshold of the house and stood over the cherubim.
     people:
     - god_1324
-    event: Prophecies of Ezekiel
+    event: Prophecies of Ezekiel,The glory of the LORD leaves the Temple
   relations:
   - predicate: IN
     to:
@@ -3679,7 +3679,7 @@
     web: The cherubim lifted up their wings and mounted up from the earth in my sight when they went out, with the wheels beside them. Then they stood at the door of the east gate of the LORD’s house; and the glory of the God of Israel was over them above.
     people:
     - god_1324
-    event: Prophecies of Ezekiel
+    event: Prophecies of Ezekiel,The glory of the LORD leaves the Temple
   relations:
   - predicate: IN
     to:
@@ -4191,7 +4191,7 @@
     web: Then the cherubim lifted up their wings, and the wheels were beside them. The glory of the God of Israel was over them above.
     people:
     - god_1324
-    event: Prophecies of Ezekiel
+    event: Prophecies of Ezekiel,The glory of the LORD leaves the Temple
   relations:
   - predicate: IN
     to:
@@ -4212,7 +4212,7 @@
     web: The LORD’s glory went up from the middle of the city, and stood on the mountain which is on the east side of the city.
     people:
     - god_1324
-    event: Prophecies of Ezekiel
+    event: Prophecies of Ezekiel,The glory of the LORD leaves the Temple
   relations:
   - predicate: IN
     to:
@@ -7434,7 +7434,7 @@
     text: But he rebelled against him in sending his ambassadors into Egypt, that they might give him horses and much people. Shall he prosper? shall he escape that doeth such things? or shall he break the covenant, and be delivered?
     translation: King James Version
     web: But he rebelled against him in sending his ambassadors into Egypt, that they might give him horses and many people. Will he prosper? Will he who does such things escape? Will he break the covenant, and still escape?
-    event: Prophecies of Ezekiel
+    event: Prophecies of Ezekiel,Zedekiah rebels against Nebuchadnezzar
   relations:
   - predicate: IN
     to:
@@ -11715,7 +11715,7 @@
     web: Again, in the ninth year, in the tenth month, in the tenth day of the month, the LORD’s word came to me, saying,
     people:
     - god_1324
-    event: Prophecies of Ezekiel
+    event: Prophecies of Ezekiel,Nebuchadnezzar besieges Jerusalem
   relations:
   - predicate: IN
     to:
@@ -11734,7 +11734,7 @@
     text: 'Son of man, write thee the name of the day, even of this same day: the king of Babylon set himself against Jerusalem this same day.'
     translation: King James Version
     web: “Son of man, write the name of the day, this same day. The king of Babylon drew close to Jerusalem this same day.
-    event: Prophecies of Ezekiel
+    event: Prophecies of Ezekiel,Nebuchadnezzar besieges Jerusalem
   relations:
   - predicate: IN
     to:
@@ -14981,7 +14981,7 @@
     ordinal: 21221
     text: 'And I will set fire in Egypt: Sin shall have great pain, and No shall be rent asunder, and Noph shall have distresses daily.'
     translation: King James Version
-    web: I will set a fire in Egypt Sin will be in great anguish. No will be broken up. Memphis will have adversaries in the daytime.
+    web: I will set a fire in Egypt. Sin will be in great anguish. No will be broken up. Memphis will have adversaries in the daytime.
     event: Prophecies of Ezekiel
   relations:
   - predicate: IN
@@ -17755,7 +17755,7 @@
     ordinal: 21360
     text: 'As thou didst rejoice at the inheritance of the house of Israel, because it was desolate, so will I do unto thee: thou shalt be desolate, O mount Seir, and all Idumea, even all of it: and they shall know that I am the LORD.'
     translation: King James Version
-    web: As you rejoiced over the inheritance of the house of Israel because it was desolate, so I will do to you. You will be desolate, Mount Seir, and all Edom, even all of it. Then they will know that I am the LORD.’”
+    web: As you rejoiced over the inheritance of the house of Israel because it was desolate, so I will do to you. You will be desolate, Mount Seir, and all Edom, even all of it. Then they will know that I am the LORD.”’”
     people:
     - god_1324
     event: Prophecies of Ezekiel
@@ -18519,7 +18519,7 @@
     ordinal: 21398
     text: 'As the holy flock, as the flock of Jerusalem in her solemn feasts; so shall the waste cities be filled with flocks of men: and they shall know that I am the LORD.'
     translation: King James Version
-    web: As the flock for sacrifice, as the flock of Jerusalem in her appointed feasts, so the waste cities will be filled with flocks of men. Then they will know that I am the LORD.’”
+    web: As the flock for sacrifice, as the flock of Jerusalem in her appointed feasts, so the waste cities will be filled with flocks of men. Then they will know that I am the LORD.”’”
     people:
     - god_1324
     event: Prophecies of Ezekiel
@@ -25235,7 +25235,7 @@
     ordinal: 21738
     text: 'It was round about eighteen thousand measures: and the name of the city from that day shall be, The LORD is there.'
     translation: King James Version
-    web: “It shall be eighteen thousand reeds in circumference; and the name of the city from that day shall be, ‘The LORD is there.’
+    web: “It shall be eighteen thousand reeds in circumference; and the name of the city from that day shall be, ‘The LORD is there.’”
     people:
     - god_1324
     event: Prophecies of Ezekiel

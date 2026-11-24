@@ -19,7 +19,7 @@
     people:
     - jehoiakim_1085
     - nebuchadnezzar_2167
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Jehoiakim becomes Nebuchadnezzar's servant
   relations:
   - predicate: IN
     to:
@@ -41,7 +41,7 @@
     people:
     - jehoiakim_1085
     - god_1324
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Jehoiakim becomes Nebuchadnezzar's servant
   relations:
   - predicate: IN
     to:
@@ -63,7 +63,7 @@
     people:
     - ashpenaz_339
     - israel_682
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,First deportation to Babylon
   relations:
   - predicate: IN
     to:
@@ -82,7 +82,7 @@
     text: Children in whom was no blemish, but well favoured, and skilful in all wisdom, and cunning in knowledge, and understanding science, and such as had ability in them to stand in the king’s palace, and whom they might teach the learning and the tongue of the Chaldeans.
     translation: King James Version
     web: youths in whom was no defect, but well-favored, skillful in all wisdom, endowed with knowledge, understanding science, and who had the ability to stand in the king’s palace; and that he should teach them the learning and the language of the Chaldeans.
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,First deportation to Babylon
   relations:
   - predicate: IN
     to:
@@ -101,7 +101,7 @@
     text: 'And the king appointed them a daily provision of the king’s meat, and of the wine which he drank: so nourishing them three years, that at the end thereof they might stand before the king.'
     translation: King James Version
     web: The king appointed for them a daily portion of the king’s delicacies and of the wine which he drank, and that they should be nourished three years, that at its end they should stand before the king.
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,First deportation to Babylon
   relations:
   - predicate: IN
     to:
@@ -125,7 +125,7 @@
     - shadrach_1398
     - meshach_2092
     - azariah_545
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,First deportation to Babylon
   relations:
   - predicate: IN
     to:
@@ -149,7 +149,7 @@
     - shadrach_1398
     - meshach_2092
     - azariah_545
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,First deportation to Babylon
   relations:
   - predicate: IN
     to:
@@ -464,7 +464,7 @@
     web: In the second year of the reign of Nebuchadnezzar, Nebuchadnezzar dreamed dreams; and his spirit was troubled, and his sleep went from him.
     people:
     - nebuchadnezzar_2167
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel interprets Nebuchadnezzar's dream
   relations:
   - predicate: IN
     to:
@@ -483,7 +483,7 @@
     text: Then the king commanded to call the magicians, and the astrologers, and the sorcerers, and the Chaldeans, for to shew the king his dreams. So they came and stood before the king.
     translation: King James Version
     web: Then the king commanded that the magicians, the enchanters, the sorcerers, and the Chaldeans be called to tell the king his dreams. So they came in and stood before the king.
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel interprets Nebuchadnezzar's dream
   relations:
   - predicate: IN
     to:
@@ -502,7 +502,7 @@
     text: And the king said unto them, I have dreamed a dream, and my spirit was troubled to know the dream.
     translation: King James Version
     web: The king said to them, “I have dreamed a dream, and my spirit is troubled to know the dream.”
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel interprets Nebuchadnezzar's dream
   relations:
   - predicate: IN
     to:
@@ -521,7 +521,7 @@
     text: 'Then spake the Chaldeans to the king in Syriack, O king, live for ever: tell thy servants the dream, and we will shew the interpretation.'
     translation: King James Version
     web: Then the Chaldeans spoke to the king in the Syrian language, “O king, live forever! Tell your servants the dream, and we will show the interpretation.”
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel interprets Nebuchadnezzar's dream
   relations:
   - predicate: IN
     to:
@@ -540,7 +540,7 @@
     text: 'The king answered and said to the Chaldeans, The thing is gone from me: if ye will not make known unto me the dream, with the interpretation thereof, ye shall be cut in pieces, and your houses shall be made a dunghill.'
     translation: King James Version
     web: The king answered the Chaldeans, “The thing has gone from me. If you don’t make known to me the dream and its interpretation, you will be cut in pieces, and your houses will be made a dunghill.
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel interprets Nebuchadnezzar's dream
   relations:
   - predicate: IN
     to:
@@ -559,7 +559,7 @@
     text: 'But if ye shew the dream, and the interpretation thereof, ye shall receive of me gifts and rewards and great honour: therefore shew me the dream, and the interpretation thereof.'
     translation: King James Version
     web: But if you show the dream and its interpretation, you will receive from me gifts, rewards, and great honor. Therefore show me the dream and its interpretation.”
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel interprets Nebuchadnezzar's dream
   relations:
   - predicate: IN
     to:
@@ -578,7 +578,7 @@
     text: They answered again and said, Let the king tell his servants the dream, and we will shew the interpretation of it.
     translation: King James Version
     web: They answered the second time and said, “Let the king tell his servants the dream, and we will show the interpretation.”
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel interprets Nebuchadnezzar's dream
   relations:
   - predicate: IN
     to:
@@ -597,7 +597,7 @@
     text: The king answered and said, I know of certainty that ye would gain the time, because ye see the thing is gone from me.
     translation: King James Version
     web: The king answered, “I know of a certainty that you are trying to gain time, because you see the thing has gone from me.
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel interprets Nebuchadnezzar's dream
   relations:
   - predicate: IN
     to:
@@ -616,7 +616,7 @@
     text: 'But if ye will not make known unto me the dream, there is but one decree for you: for ye have prepared lying and corrupt words to speak before me, till the time be changed: therefore tell me the dream, and I shall know that ye can shew me the interpretation thereof.'
     translation: King James Version
     web: But if you don’t make known to me the dream, there is but one law for you; for you have prepared lying and corrupt words to speak before me, until the situation changes. Therefore tell me the dream, and I will know that you can show me its interpretation.”
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel interprets Nebuchadnezzar's dream
   relations:
   - predicate: IN
     to:
@@ -635,7 +635,7 @@
     text: 'The Chaldeans answered before the king, and said, There is not a man upon the earth that can shew the king’s matter: therefore there is no king, lord, nor ruler, that asked such things at any magician, or astrologer, or Chaldean.'
     translation: King James Version
     web: The Chaldeans answered the king and said, “There is not a man on the earth who can show the king’s matter, because no king, lord, or ruler has asked such a thing of any magician, enchanter, or Chaldean.
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel interprets Nebuchadnezzar's dream
   relations:
   - predicate: IN
     to:
@@ -654,7 +654,7 @@
     text: And it is a rare thing that the king requireth, and there is none other that can shew it before the king, except the gods, whose dwelling is not with flesh.
     translation: King James Version
     web: It is a rare thing that the king requires, and there is no other who can show it before the king except the gods, whose dwelling is not with flesh.”
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel interprets Nebuchadnezzar's dream
   relations:
   - predicate: IN
     to:
@@ -673,7 +673,7 @@
     text: For this cause the king was angry and very furious, and commanded to destroy all the wise men of Babylon.
     translation: King James Version
     web: Because of this, the king was angry and very furious, and commanded that all the wise men of Babylon be destroyed.
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel interprets Nebuchadnezzar's dream
   relations:
   - predicate: IN
     to:
@@ -694,7 +694,7 @@
     web: So the decree went out, and the wise men were to be slain. They sought Daniel and his companions to be slain.
     people:
     - daniel_975
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel interprets Nebuchadnezzar's dream
   relations:
   - predicate: IN
     to:
@@ -716,7 +716,7 @@
     people:
     - daniel_975
     - arioch_304
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel interprets Nebuchadnezzar's dream
   relations:
   - predicate: IN
     to:
@@ -738,7 +738,7 @@
     people:
     - arioch_304
     - daniel_975
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel interprets Nebuchadnezzar's dream
   relations:
   - predicate: IN
     to:
@@ -759,7 +759,7 @@
     web: Daniel went in, and desired of the king that he would appoint him a time, and he would show the king the interpretation.
     people:
     - daniel_975
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel interprets Nebuchadnezzar's dream
   relations:
   - predicate: IN
     to:
@@ -783,7 +783,7 @@
     - shadrach_1398
     - meshach_2092
     - azariah_545
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel interprets Nebuchadnezzar's dream
   relations:
   - predicate: IN
     to:
@@ -805,7 +805,7 @@
     people:
     - daniel_975
     - god_1324
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel interprets Nebuchadnezzar's dream
   relations:
   - predicate: IN
     to:
@@ -827,7 +827,7 @@
     people:
     - daniel_975
     - god_1324
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel interprets Nebuchadnezzar's dream
   relations:
   - predicate: IN
     to:
@@ -849,7 +849,7 @@
     people:
     - daniel_975
     - god_1324
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel interprets Nebuchadnezzar's dream
   relations:
   - predicate: IN
     to:
@@ -868,7 +868,7 @@
     text: 'And he changeth the times and the seasons: he removeth kings, and setteth up kings: he giveth wisdom unto the wise, and knowledge to them that know understanding:'
     translation: King James Version
     web: He changes the times and the seasons. He removes kings and sets up kings. He gives wisdom to the wise, and knowledge to those who have understanding.
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel interprets Nebuchadnezzar's dream
   relations:
   - predicate: IN
     to:
@@ -887,7 +887,7 @@
     text: 'He revealeth the deep and secret things: he knoweth what is in the darkness, and the light dwelleth with him.'
     translation: King James Version
     web: He reveals the deep and secret things. He knows what is in the darkness, and the light dwells with him.
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel interprets Nebuchadnezzar's dream
   relations:
   - predicate: IN
     to:
@@ -908,7 +908,7 @@
     web: I thank you and praise you, O God of my fathers, who have given me wisdom and might, and have now made known to me what we desired of you; for you have made known to us the king’s matter.”
     people:
     - god_1324
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel interprets Nebuchadnezzar's dream
   relations:
   - predicate: IN
     to:
@@ -930,7 +930,7 @@
     people:
     - daniel_975
     - arioch_304
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel interprets Nebuchadnezzar's dream
   relations:
   - predicate: IN
     to:
@@ -952,7 +952,7 @@
     people:
     - arioch_304
     - daniel_975
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel interprets Nebuchadnezzar's dream
   relations:
   - predicate: IN
     to:
@@ -973,7 +973,7 @@
     web: The king answered Daniel, whose name was Belteshazzar, “Are you able to make known to me the dream which I have seen, and its interpretation?”
     people:
     - daniel_975
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel interprets Nebuchadnezzar's dream
   relations:
   - predicate: IN
     to:
@@ -994,7 +994,7 @@
     web: Daniel answered before the king, and said, “The secret which the king has demanded can’t be shown to the king by wise men, enchanters, magicians, or soothsayers;
     people:
     - daniel_975
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel interprets Nebuchadnezzar's dream
   relations:
   - predicate: IN
     to:
@@ -1016,7 +1016,7 @@
     people:
     - nebuchadnezzar_2167
     - god_1324
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel interprets Nebuchadnezzar's dream
   relations:
   - predicate: IN
     to:
@@ -1035,7 +1035,7 @@
     text: 'As for thee, O king, thy thoughts came into thy mind upon thy bed, what should come to pass hereafter: and he that revealeth secrets maketh known to thee what shall come to pass.'
     translation: King James Version
     web: “As for you, O king, your thoughts came on your bed, what should happen hereafter; and he who reveals secrets has made known to you what will happen.
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel interprets Nebuchadnezzar's dream
   relations:
   - predicate: IN
     to:
@@ -1054,7 +1054,7 @@
     text: But as for me, this secret is not revealed to me for any wisdom that I have more than any living, but for their sakes that shall make known the interpretation to the king, and that thou mightest know the thoughts of thy heart.
     translation: King James Version
     web: But as for me, this secret is not revealed to me for any wisdom that I have more than any living, but to the intent that the interpretation may be made known to the king, and that you may know the thoughts of your heart.
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel interprets Nebuchadnezzar's dream
   relations:
   - predicate: IN
     to:
@@ -1073,7 +1073,7 @@
     text: Thou, O king, sawest, and behold a great image. This great image, whose brightness was excellent, stood before thee; and the form thereof was terrible.
     translation: King James Version
     web: “You, O king, saw, and behold, a great image. This image, which was mighty, and whose brightness was excellent, stood before you; and its appearance was terrifying.
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel interprets Nebuchadnezzar's dream
   relations:
   - predicate: IN
     to:
@@ -1092,7 +1092,7 @@
     text: This image’s head was of fine gold, his breast and his arms of silver, his belly and his thighs of brass,
     translation: King James Version
     web: As for this image, its head was of fine gold, its chest and its arms of silver, its belly and its thighs of bronze,
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel interprets Nebuchadnezzar's dream
   relations:
   - predicate: IN
     to:
@@ -1111,7 +1111,7 @@
     text: His legs of iron, his feet part of iron and part of clay.
     translation: King James Version
     web: its legs of iron, its feet part of iron and part of clay.
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel interprets Nebuchadnezzar's dream
   relations:
   - predicate: IN
     to:
@@ -1130,7 +1130,7 @@
     text: Thou sawest till that a stone was cut out without hands, which smote the image upon his feet that were of iron and clay, and brake them to pieces.
     translation: King James Version
     web: You saw until a stone was cut out without hands, which struck the image on its feet that were of iron and clay, and broke them in pieces.
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel interprets Nebuchadnezzar's dream
   relations:
   - predicate: IN
     to:
@@ -1149,7 +1149,7 @@
     text: 'Then was the iron, the clay, the brass, the silver, and the gold, broken to pieces together, and became like the chaff of the summer threshingfloors; and the wind carried them away, that no place was found for them: and the stone that smote the image became a great mountain, and filled the whole earth.'
     translation: King James Version
     web: Then the iron, the clay, the bronze, the silver, and the gold were broken in pieces together, and became like the chaff of the summer threshing floors. The wind carried them away, so that no place was found for them. The stone that struck the image became a great mountain and filled the whole earth.
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel interprets Nebuchadnezzar's dream
   relations:
   - predicate: IN
     to:
@@ -1168,7 +1168,7 @@
     text: This is the dream; and we will tell the interpretation thereof before the king.
     translation: King James Version
     web: “This is the dream; and we will tell its interpretation before the king.
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel interprets Nebuchadnezzar's dream
   relations:
   - predicate: IN
     to:
@@ -1189,7 +1189,7 @@
     web: You, O king, are king of kings, to whom the God of heaven has given the kingdom, the power, the strength, and the glory.
     people:
     - god_1324
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel interprets Nebuchadnezzar's dream
   relations:
   - predicate: IN
     to:
@@ -1208,7 +1208,7 @@
     text: And wheresoever the children of men dwell, the beasts of the field and the fowls of the heaven hath he given into thine hand, and hath made thee ruler over them all. Thou art this head of gold.
     translation: King James Version
     web: Wherever the children of men dwell, he has given the animals of the field and the birds of the sky into your hand, and has made you rule over them all. You are the head of gold.
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel interprets Nebuchadnezzar's dream
   relations:
   - predicate: IN
     to:
@@ -1227,7 +1227,7 @@
     text: And after thee shall arise another kingdom inferior to thee, and another third kingdom of brass, which shall bear rule over all the earth.
     translation: King James Version
     web: “After you, another kingdom will arise that is inferior to you; and another third kingdom of bronze, which will rule over all the earth.
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel interprets Nebuchadnezzar's dream
   relations:
   - predicate: IN
     to:
@@ -1246,7 +1246,7 @@
     text: 'And the fourth kingdom shall be strong as iron: forasmuch as iron breaketh in pieces and subdueth all things: and as iron that breaketh all these, shall it break in pieces and bruise.'
     translation: King James Version
     web: The fourth kingdom will be strong as iron, because iron breaks in pieces and subdues all things; and as iron that crushes all these, it will break in pieces and crush.
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel interprets Nebuchadnezzar's dream
   relations:
   - predicate: IN
     to:
@@ -1265,7 +1265,7 @@
     text: And whereas thou sawest the feet and toes, part of potters’ clay, and part of iron, the kingdom shall be divided; but there shall be in it of the strength of the iron, forasmuch as thou sawest the iron mixed with miry clay.
     translation: King James Version
     web: Whereas you saw the feet and toes, part of potters’ clay and part of iron, it will be a divided kingdom; but there will be in it of the strength of the iron, because you saw the iron mixed with miry clay.
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel interprets Nebuchadnezzar's dream
   relations:
   - predicate: IN
     to:
@@ -1284,7 +1284,7 @@
     text: And as the toes of the feet were part of iron, and part of clay, so the kingdom shall be partly strong, and partly broken.
     translation: King James Version
     web: As the toes of the feet were part of iron, and part of clay, so the kingdom will be partly strong and partly brittle.
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel interprets Nebuchadnezzar's dream
   relations:
   - predicate: IN
     to:
@@ -1303,7 +1303,7 @@
     text: 'And whereas thou sawest iron mixed with miry clay, they shall mingle themselves with the seed of men: but they shall not cleave one to another, even as iron is not mixed with clay.'
     translation: King James Version
     web: Whereas you saw the iron mixed with miry clay, they will mingle themselves with the seed of men; but they won’t cling to one another, even as iron does not mix with clay.
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel interprets Nebuchadnezzar's dream
   relations:
   - predicate: IN
     to:
@@ -1324,7 +1324,7 @@
     web: “In the days of those kings the God of heaven will set up a kingdom which will never be destroyed, nor will its sovereignty be left to another people; but it will break in pieces and consume all these kingdoms, and it will stand forever.
     people:
     - god_1324
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel interprets Nebuchadnezzar's dream
   relations:
   - predicate: IN
     to:
@@ -1345,7 +1345,7 @@
     web: Because you saw that a stone was cut out of the mountain without hands, and that it broke in pieces the iron, the bronze, the clay, the silver, and the gold, the great God has made known to the king what will happen hereafter. The dream is certain, and its interpretation sure.”
     people:
     - god_1324
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel interprets Nebuchadnezzar's dream
   relations:
   - predicate: IN
     to:
@@ -1367,7 +1367,7 @@
     people:
     - nebuchadnezzar_2167
     - daniel_975
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel interprets Nebuchadnezzar's dream
   relations:
   - predicate: IN
     to:
@@ -1389,7 +1389,7 @@
     people:
     - daniel_975
     - god_1324
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel interprets Nebuchadnezzar's dream
   relations:
   - predicate: IN
     to:
@@ -1410,7 +1410,7 @@
     web: Then the king made Daniel great and gave him many great gifts, and made him rule over the whole province of Babylon and to be chief governor over all the wise men of Babylon.
     people:
     - daniel_975
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel interprets Nebuchadnezzar's dream
   relations:
   - predicate: IN
     to:
@@ -1433,7 +1433,7 @@
     - daniel_975
     - shadrach_1398
     - meshach_2092
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel interprets Nebuchadnezzar's dream
   relations:
   - predicate: IN
     to:
@@ -2817,7 +2817,7 @@
     web: Belshazzar the king made a great feast to a thousand of his lords, and drank wine before the thousand.
     people:
     - belshazzar_437
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Fall of Babylon
   relations:
   - predicate: IN
     to:
@@ -2839,7 +2839,7 @@
     people:
     - belshazzar_437
     - nebuchadnezzar_2167
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Fall of Babylon
   relations:
   - predicate: IN
     to:
@@ -2860,7 +2860,7 @@
     web: Then they brought the golden vessels that were taken out of the temple of God’s house which was at Jerusalem; and the king and his lords, his wives and his concubines, drank from them.
     people:
     - god_1324
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Fall of Babylon
   relations:
   - predicate: IN
     to:
@@ -2879,7 +2879,7 @@
     text: They drank wine, and praised the gods of gold, and of silver, of brass, of iron, of wood, and of stone.
     translation: King James Version
     web: They drank wine, and praised the gods of gold, and of silver, of bronze, of iron, of wood, and of stone.
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Fall of Babylon
   relations:
   - predicate: IN
     to:
@@ -2898,7 +2898,7 @@
     text: 'In the same hour came forth fingers of a man’s hand, and wrote over against the candlestick upon the plaister of the wall of the king’s palace: and the king saw the part of the hand that wrote.'
     translation: King James Version
     web: In the same hour, the fingers of a man’s hand came out and wrote near the lamp stand on the plaster of the wall of the king’s palace. The king saw the part of the hand that wrote.
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Fall of Babylon
   relations:
   - predicate: IN
     to:
@@ -2917,7 +2917,7 @@
     text: Then the king’s countenance was changed, and his thoughts troubled him, so that the joints of his loins were loosed, and his knees smote one against another.
     translation: King James Version
     web: Then the king’s face was changed in him, and his thoughts troubled him; and the joints of his thighs were loosened, and his knees struck one against another.
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Fall of Babylon
   relations:
   - predicate: IN
     to:
@@ -2936,7 +2936,7 @@
     text: The king cried aloud to bring in the astrologers, the Chaldeans, and the soothsayers. And the king spake, and said to the wise men of Babylon, Whosoever shall read this writing, and shew me the interpretation thereof, shall be clothed with scarlet, and have a chain of gold about his neck, and shall be the third ruler in the kingdom.
     translation: King James Version
     web: The king cried aloud to bring in the enchanters, the Chaldeans, and the soothsayers. The king spoke and said to the wise men of Babylon, “Whoever reads this writing and shows me its interpretation shall be clothed with purple, and have a chain of gold about his neck, and shall be the third ruler in the kingdom.”
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Fall of Babylon
   relations:
   - predicate: IN
     to:
@@ -2955,7 +2955,7 @@
     text: 'Then came in all the king’s wise men: but they could not read the writing, nor make known to the king the interpretation thereof.'
     translation: King James Version
     web: Then all the king’s wise men came in; but they could not read the writing, and couldn’t make known to the king the interpretation.
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Fall of Babylon
   relations:
   - predicate: IN
     to:
@@ -2976,7 +2976,7 @@
     web: Then King Belshazzar was greatly troubled, and his face was changed in him, and his lords were perplexed.
     people:
     - belshazzar_437
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Fall of Babylon
   relations:
   - predicate: IN
     to:
@@ -2995,7 +2995,7 @@
     text: 'Now the queen, by reason of the words of the king and his lords, came into the banquet house: and the queen spake and said, O king, live for ever: let not thy thoughts trouble thee, nor let thy countenance be changed:'
     translation: King James Version
     web: The queen by reason of the words of the king and his lords came into the banquet house. The queen spoke and said, “O king, live forever; don’t let your thoughts trouble you, nor let your face be changed.
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Fall of Babylon
   relations:
   - predicate: IN
     to:
@@ -3016,7 +3016,7 @@
     web: There is a man in your kingdom in whom is the spirit of the holy gods; and in the days of your father, light and understanding and wisdom, like the wisdom of the gods, were found in him. The king, Nebuchadnezzar, your father—yes, the king, your father—made him master of the magicians, enchanters, Chaldeans, and soothsayers,
     people:
     - nebuchadnezzar_2167
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Fall of Babylon
   relations:
   - predicate: IN
     to:
@@ -3037,7 +3037,7 @@
     web: because an excellent spirit, knowledge, understanding, interpreting of dreams, showing of dark sentences, and dissolving of doubts were found in the same Daniel, whom the king named Belteshazzar. Now let Daniel be called, and he will show the interpretation.”
     people:
     - daniel_975
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Fall of Babylon
   relations:
   - predicate: IN
     to:
@@ -3058,7 +3058,7 @@
     web: Then Daniel was brought in before the king. The king spoke and said to Daniel, “Are you that Daniel of the children of the captivity of Judah, whom the king my father brought out of Judah?
     people:
     - daniel_975
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Fall of Babylon
   relations:
   - predicate: IN
     to:
@@ -3077,7 +3077,7 @@
     text: I have even heard of thee, that the spirit of the gods is in thee, and that light and understanding and excellent wisdom is found in thee.
     translation: King James Version
     web: I have heard of you, that the spirit of the gods is in you and that light, understanding, and excellent wisdom are found in you.
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Fall of Babylon
   relations:
   - predicate: IN
     to:
@@ -3096,7 +3096,7 @@
     text: 'And now the wise men, the astrologers, have been brought in before me, that they should read this writing, and make known unto me the interpretation thereof: but they could not shew the interpretation of the thing:'
     translation: King James Version
     web: Now the wise men, the enchanters, have been brought in before me, that they should read this writing, and make known to me its interpretation; but they could not show the interpretation of the thing.
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Fall of Babylon
   relations:
   - predicate: IN
     to:
@@ -3115,7 +3115,7 @@
     text: 'And I have heard of thee, that thou canst make interpretations, and dissolve doubts: now if thou canst read the writing, and make known to me the interpretation thereof, thou shalt be clothed with scarlet, and have a chain of gold about thy neck, and shalt be the third ruler in the kingdom.'
     translation: King James Version
     web: But I have heard of you, that you can give interpretations and dissolve doubts. Now if you can read the writing and make known to me its interpretation, you shall be clothed with purple, and have a chain of gold around your neck, and shall be the third ruler in the kingdom.”
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Fall of Babylon
   relations:
   - predicate: IN
     to:
@@ -3136,7 +3136,7 @@
     web: Then Daniel answered before the king, “Let your gifts be to yourself, and give your rewards to another. Nevertheless, I will read the writing to the king, and make known to him the interpretation.
     people:
     - daniel_975
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Fall of Babylon
   relations:
   - predicate: IN
     to:
@@ -3158,7 +3158,7 @@
     people:
     - nebuchadnezzar_2167
     - god_1324
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Fall of Babylon
   relations:
   - predicate: IN
     to:
@@ -3177,7 +3177,7 @@
     text: 'And for the majesty that he gave him, all people, nations, and languages, trembled and feared before him: whom he would he slew; and whom he would he kept alive; and whom he would he set up; and whom he would he put down.'
     translation: King James Version
     web: Because of the greatness that he gave him, all the peoples, nations, and languages trembled and feared before him. He killed whom he wanted to, and he kept alive whom he wanted to. He raised up whom he wanted to, and he put down whom he wanted to.
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Fall of Babylon
   relations:
   - predicate: IN
     to:
@@ -3196,7 +3196,7 @@
     text: 'But when his heart was lifted up, and his mind hardened in pride, he was deposed from his kingly throne, and they took his glory from him:'
     translation: King James Version
     web: But when his heart was lifted up, and his spirit was hardened so that he dealt proudly, he was deposed from his kingly throne, and they took his glory from him.
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Fall of Babylon
   relations:
   - predicate: IN
     to:
@@ -3217,7 +3217,7 @@
     web: He was driven from the sons of men, and his heart was made like the animals’, and his dwelling was with the wild donkeys. He was fed with grass like oxen, and his body was wet with the dew of the sky, until he knew that the Most High God rules in the kingdom of men, and that he sets up over it whomever he will.
     people:
     - god_1324
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Fall of Babylon
   relations:
   - predicate: IN
     to:
@@ -3238,7 +3238,7 @@
     web: “You, his son, Belshazzar, have not humbled your heart, though you knew all this,
     people:
     - belshazzar_437
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Fall of Babylon
   relations:
   - predicate: IN
     to:
@@ -3259,7 +3259,7 @@
     web: but have lifted up yourself against the Lord of heaven; and they have brought the vessels of his house before you, and you and your lords, your wives, and your concubines, have drunk wine from them. You have praised the gods of silver and gold, of bronze, iron, wood, and stone, which don’t see, or hear, or know; and you have not glorified the God in whose hand your breath is, and whose are all your ways.
     people:
     - god_1324
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Fall of Babylon
   relations:
   - predicate: IN
     to:
@@ -3278,7 +3278,7 @@
     text: Then was the part of the hand sent from him; and this writing was written.
     translation: King James Version
     web: Then the part of the hand was sent from before him, and this writing was inscribed.
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Fall of Babylon
   relations:
   - predicate: IN
     to:
@@ -3297,7 +3297,7 @@
     text: And this is the writing that was written, MENE, MENE, TEKEL, UPHARSIN.
     translation: King James Version
     web: '“This is the writing that was inscribed: ‘MENE, MENE, TEKEL, UPHARSIN.’'
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Fall of Babylon
   relations:
   - predicate: IN
     to:
@@ -3318,7 +3318,7 @@
     web: '“This is the interpretation of the thing: MENE: God has counted your kingdom, and brought it to an end.'
     people:
     - god_1324
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Fall of Babylon
   relations:
   - predicate: IN
     to:
@@ -3337,7 +3337,7 @@
     text: TEKEL; Thou art weighed in the balances, and art found wanting.
     translation: King James Version
     web: 'TEKEL: you are weighed in the balances, and are found wanting.'
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Fall of Babylon
   relations:
   - predicate: IN
     to:
@@ -3356,7 +3356,7 @@
     text: PERES; Thy kingdom is divided, and given to the Medes and Persians.
     translation: King James Version
     web: 'PERES: your kingdom is divided, and given to the Medes and Persians.”'
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Fall of Babylon
   relations:
   - predicate: IN
     to:
@@ -3378,7 +3378,7 @@
     people:
     - belshazzar_437
     - daniel_975
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Fall of Babylon
   relations:
   - predicate: IN
     to:
@@ -3399,7 +3399,7 @@
     web: In that night Belshazzar the Chaldean King was slain.
     people:
     - belshazzar_437
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Fall of Babylon
   relations:
   - predicate: IN
     to:
@@ -3420,7 +3420,7 @@
     web: Darius the Mede received the kingdom, being about sixty-two years old.
     people:
     - darius_980
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Fall of Babylon
   relations:
   - predicate: IN
     to:
@@ -3441,7 +3441,7 @@
     web: It pleased Darius to set over the kingdom one hundred twenty local governors, who should be throughout the whole kingdom;
     people:
     - darius_980
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel in the lions' den
   relations:
   - predicate: IN
     to:
@@ -3462,7 +3462,7 @@
     web: and over them three presidents, of whom Daniel was one, that these local governors might give account to them, and that the king should suffer no loss.
     people:
     - daniel_975
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel in the lions' den
   relations:
   - predicate: IN
     to:
@@ -3483,7 +3483,7 @@
     web: Then this Daniel was distinguished above the presidents and the local governors, because an excellent spirit was in him; and the king thought to set him over the whole realm.
     people:
     - daniel_975
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel in the lions' den
   relations:
   - predicate: IN
     to:
@@ -3504,7 +3504,7 @@
     web: Then the presidents and the local governors sought to find occasion against Daniel as touching the kingdom; but they could find no occasion or fault, because he was faithful. There wasn’t any error or fault found in him.
     people:
     - daniel_975
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel in the lions' den
   relations:
   - predicate: IN
     to:
@@ -3526,7 +3526,7 @@
     people:
     - daniel_975
     - god_1324
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel in the lions' den
   relations:
   - predicate: IN
     to:
@@ -3547,7 +3547,7 @@
     web: Then these presidents and local governors assembled together to the king, and said this to him, “King Darius, live forever!
     people:
     - darius_980
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel in the lions' den
   relations:
   - predicate: IN
     to:
@@ -3568,7 +3568,7 @@
     web: All the presidents of the kingdom, the deputies and the local governors, the counselors and the governors, have consulted together to establish a royal statute and to make a strong decree, that whoever asks a petition of any god or man for thirty days, except of you, O king, he shall be cast into the den of lions.
     people:
     - god_1324
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel in the lions' den
   relations:
   - predicate: IN
     to:
@@ -3587,7 +3587,7 @@
     text: Now, O king, establish the decree, and sign the writing, that it be not changed, according to the law of the Medes and Persians, which altereth not.
     translation: King James Version
     web: Now, O king, establish the decree and sign the writing, that it not be changed, according to the law of the Medes and Persians, which doesn’t alter.”
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel in the lions' den
   relations:
   - predicate: IN
     to:
@@ -3608,7 +3608,7 @@
     web: Therefore King Darius signed the writing and the decree.
     people:
     - darius_980
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel in the lions' den
   relations:
   - predicate: IN
     to:
@@ -3630,7 +3630,7 @@
     people:
     - daniel_975
     - god_1324
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel in the lions' den
   relations:
   - predicate: IN
     to:
@@ -3652,7 +3652,7 @@
     people:
     - daniel_975
     - god_1324
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel in the lions' den
   relations:
   - predicate: IN
     to:
@@ -3673,7 +3673,7 @@
     web: 'Then they came near, and spoke before the king concerning the king’s decree: “Haven’t you signed a decree that every man who makes a petition to any god or man within thirty days, except to you, O king, shall be cast into the den of lions?” The king answered, “This thing is true, according to the law of the Medes and Persians, which doesn’t alter.”'
     people:
     - god_1324
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel in the lions' den
   relations:
   - predicate: IN
     to:
@@ -3694,7 +3694,7 @@
     web: Then they answered and said before the king, “That Daniel, who is of the children of the captivity of Judah, doesn’t respect you, O king, nor the decree that you have signed, but makes his petition three times a day.”
     people:
     - daniel_975
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel in the lions' den
   relations:
   - predicate: IN
     to:
@@ -3715,7 +3715,7 @@
     web: Then the king, when he heard these words, was very displeased, and set his heart on Daniel to deliver him; and he labored until the going down of the sun to rescue him.
     people:
     - daniel_975
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel in the lions' den
   relations:
   - predicate: IN
     to:
@@ -3734,7 +3734,7 @@
     text: Then these men assembled unto the king, and said unto the king, Know, O king, that the law of the Medes and Persians is, That no decree nor statute which the king establisheth may be changed.
     translation: King James Version
     web: Then these men assembled together to the king, and said to the king, “Know, O king, that it is a law of the Medes and Persians, that no decree nor statute which the king establishes may be changed.”
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel in the lions' den
   relations:
   - predicate: IN
     to:
@@ -3756,7 +3756,7 @@
     people:
     - daniel_975
     - god_1324
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel in the lions' den
   relations:
   - predicate: IN
     to:
@@ -3777,7 +3777,7 @@
     web: A stone was brought, and laid on the mouth of the den; and the king sealed it with his own signet, and with the signet of his lords; that nothing might be changed concerning Daniel.
     people:
     - daniel_975
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel in the lions' den
   relations:
   - predicate: IN
     to:
@@ -3796,7 +3796,7 @@
     text: 'Then the king went to his palace, and passed the night fasting: neither were instruments of musick brought before him: and his sleep went from him.'
     translation: King James Version
     web: Then the king went to his palace, and passed the night fasting. No musical instruments were brought before him; and his sleep fled from him.
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel in the lions' den
   relations:
   - predicate: IN
     to:
@@ -3815,7 +3815,7 @@
     text: Then the king arose very early in the morning, and went in haste unto the den of lions.
     translation: King James Version
     web: Then the king arose very early in the morning, and went in haste to the den of lions.
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel in the lions' den
   relations:
   - predicate: IN
     to:
@@ -3837,7 +3837,7 @@
     people:
     - daniel_975
     - god_1324
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel in the lions' den
   relations:
   - predicate: IN
     to:
@@ -3858,7 +3858,7 @@
     web: Then Daniel said to the king, “O king, live forever!
     people:
     - daniel_975
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel in the lions' den
   relations:
   - predicate: IN
     to:
@@ -3879,7 +3879,7 @@
     web: My God has sent his angel, and has shut the lions’ mouths, and they have not hurt me, because innocence was found in me before him; and also before you, O king, I have done no harm.”
     people:
     - god_1324
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel in the lions' den
   relations:
   - predicate: IN
     to:
@@ -3901,7 +3901,7 @@
     people:
     - daniel_975
     - god_1324
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel in the lions' den
   relations:
   - predicate: IN
     to:
@@ -3922,7 +3922,7 @@
     web: The king commanded, and they brought those men who had accused Daniel, and they cast them into the den of lions—them, their children, and their wives; and the lions mauled them, and broke all their bones in pieces before they came to the bottom of the den.
     people:
     - daniel_975
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel in the lions' den
   relations:
   - predicate: IN
     to:
@@ -3943,7 +3943,7 @@
     web: 'Then King Darius wrote to all the peoples, nations, and languages who dwell in all the earth: “Peace be multiplied to you.'
     people:
     - darius_980
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel in the lions' den
   relations:
   - predicate: IN
     to:
@@ -3965,7 +3965,7 @@
     people:
     - daniel_975
     - god_1324
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel in the lions' den
   relations:
   - predicate: IN
     to:
@@ -3986,7 +3986,7 @@
     web: He delivers and rescues. He works signs and wonders in heaven and in earth, who has delivered Daniel from the power of the lions.”
     people:
     - daniel_975
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel in the lions' den
   relations:
   - predicate: IN
     to:
@@ -4009,7 +4009,7 @@
     - daniel_975
     - darius_980
     - cyrus_968
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Daniel in the lions' den
   relations:
   - predicate: IN
     to:
@@ -5122,7 +5122,7 @@
     - daniel_975
     - jeremiah_853
     - god_1324
-    event: Prophecies of Daniel
+    event: Prophecies of Daniel,Babylonian Captivity
   relations:
   - predicate: IN
     to:

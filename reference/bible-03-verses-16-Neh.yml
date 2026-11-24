@@ -19,6 +19,7 @@
     people:
     - nehemiah_2172
     - hachaliah_1336
+    event: Nehemiah mourns for Jerusalem
   relations:
   - predicate: IN
     to:
@@ -39,6 +40,7 @@
     web: Hanani, one of my brothers, came, he and certain men out of Judah; and I asked them about the Jews who had escaped, who were left of the captivity, and concerning Jerusalem.
     people:
     - hanani_1382
+    event: Nehemiah mourns for Jerusalem
   relations:
   - predicate: IN
     to:
@@ -57,6 +59,7 @@
     text: 'And they said unto me, The remnant that are left of the captivity there in the province are in great affliction and reproach: the wall of Jerusalem also is broken down, and the gates thereof are burned with fire.'
     translation: King James Version
     web: They said to me, “The remnant who are left of the captivity there in the province are in great affliction and reproach. The wall of Jerusalem is also broken down, and its gates are burned with fire.”
+    event: Nehemiah mourns for Jerusalem
   relations:
   - predicate: IN
     to:
@@ -77,6 +80,7 @@
     web: When I heard these words, I sat down and wept, and mourned several days; and I fasted and prayed before the God of heaven,
     people:
     - god_1324
+    event: Nehemiah mourns for Jerusalem
   relations:
   - predicate: IN
     to:
@@ -97,6 +101,7 @@
     web: and said, “I beg you, LORD, the God of heaven, the great and awesome God who keeps covenant and loving kindness with those who love him and keep his commandments,
     people:
     - god_1324
+    event: Nehemiah mourns for Jerusalem
   relations:
   - predicate: IN
     to:
@@ -117,6 +122,7 @@
     web: let your ear now be attentive and your eyes open, that you may listen to the prayer of your servant which I pray before you at this time, day and night, for the children of Israel your servants, while I confess the sins of the children of Israel which we have sinned against you. Yes, I and my father’s house have sinned.
     people:
     - israel_682
+    event: Nehemiah mourns for Jerusalem
   relations:
   - predicate: IN
     to:
@@ -137,6 +143,7 @@
     web: We have dealt very corruptly against you, and have not kept the commandments, nor the statutes, nor the ordinances, which you commanded your servant Moses.
     people:
     - moses_2108
+    event: Nehemiah mourns for Jerusalem
   relations:
   - predicate: IN
     to:
@@ -157,6 +164,7 @@
     web: “Remember, I beg you, the word that you commanded your servant Moses, saying, ‘If you trespass, I will scatter you among the peoples;
     people:
     - moses_2108
+    event: Nehemiah mourns for Jerusalem
   relations:
   - predicate: IN
     to:
@@ -175,6 +183,7 @@
     text: But if ye turn unto me, and keep my commandments, and do them; though there were of you cast out unto the uttermost part of the heaven, yet will I gather them from thence, and will bring them unto the place that I have chosen to set my name there.
     translation: King James Version
     web: but if you return to me, and keep my commandments and do them, though your outcasts were in the uttermost part of the heavens, yet I will gather them from there, and will bring them to the place that I have chosen, to cause my name to dwell there.’
+    event: Nehemiah mourns for Jerusalem
   relations:
   - predicate: IN
     to:
@@ -193,6 +202,7 @@
     text: Now these are thy servants and thy people, whom thou hast redeemed by thy great power, and by thy strong hand.
     translation: King James Version
     web: “Now these are your servants and your people, whom you have redeemed by your great power and by your strong hand.
+    event: Nehemiah mourns for Jerusalem
   relations:
   - predicate: IN
     to:
@@ -213,6 +223,7 @@
     web: Lord, I beg you, let your ear be attentive now to the prayer of your servant, and to the prayer of your servants who delight to fear your name; and please prosper your servant today, and grant him mercy in the sight of this man.” Now I was cup bearer to the king.
     people:
     - god_1324
+    event: Nehemiah mourns for Jerusalem
   relations:
   - predicate: IN
     to:
@@ -233,6 +244,7 @@
     web: In the month Nisan, in the twentieth year of Artaxerxes the king, when wine was before him, I picked up the wine, and gave it to the king. Now I had not been sad before in his presence.
     people:
     - artaxerxes_314
+    event: Artaxerxes sends Nehemiah to Jerusalem
   relations:
   - predicate: IN
     to:
@@ -251,6 +263,7 @@
     text: Wherefore the king said unto me, Why is thy countenance sad, seeing thou art not sick? this is nothing else but sorrow of heart. Then I was very sore afraid,
     translation: King James Version
     web: The king said to me, “Why is your face sad, since you are not sick? This is nothing else but sorrow of heart.” Then I was very much afraid.
+    event: Artaxerxes sends Nehemiah to Jerusalem
   relations:
   - predicate: IN
     to:
@@ -269,6 +282,7 @@
     text: 'And said unto the king, Let the king live for ever: why should not my countenance be sad, when the city, the place of my fathers’ sepulchres, lieth waste, and the gates thereof are consumed with fire?'
     translation: King James Version
     web: I said to the king, “Let the king live forever! Why shouldn’t my face be sad, when the city, the place of my fathers’ tombs, lies waste, and its gates have been consumed with fire?”
+    event: Artaxerxes sends Nehemiah to Jerusalem
   relations:
   - predicate: IN
     to:
@@ -289,6 +303,7 @@
     web: Then the king said to me, “What is your request?” So I prayed to the God of heaven.
     people:
     - god_1324
+    event: Artaxerxes sends Nehemiah to Jerusalem
   relations:
   - predicate: IN
     to:
@@ -307,6 +322,7 @@
     text: And I said unto the king, If it please the king, and if thy servant have found favour in thy sight, that thou wouldest send me unto Judah, unto the city of my fathers’ sepulchres, that I may build it.
     translation: King James Version
     web: I said to the king, “If it pleases the king, and if your servant has found favor in your sight, I ask that you would send me to Judah, to the city of my fathers’ tombs, that I may build it.”
+    event: Artaxerxes sends Nehemiah to Jerusalem
   relations:
   - predicate: IN
     to:
@@ -325,6 +341,7 @@
     text: And the king said unto me, (the queen also sitting by him,) For how long shall thy journey be? and when wilt thou return? So it pleased the king to send me; and I set him a time.
     translation: King James Version
     web: The king said to me (the queen was also sitting by him), “How long will your journey be? When will you return?” So it pleased the king to send me, and I set a time for him.
+    event: Artaxerxes sends Nehemiah to Jerusalem
   relations:
   - predicate: IN
     to:
@@ -343,6 +360,7 @@
     text: Moreover I said unto the king, If it please the king, let letters be given me to the governors beyond the river, that they may convey me over till I come into Judah;
     translation: King James Version
     web: Moreover I said to the king, “If it pleases the king, let letters be given me to the governors beyond the River, that they may let me pass through until I come to Judah;
+    event: Artaxerxes sends Nehemiah to Jerusalem
   relations:
   - predicate: IN
     to:
@@ -364,6 +382,7 @@
     people:
     - asaph_332
     - god_1324
+    event: Artaxerxes sends Nehemiah to Jerusalem
   relations:
   - predicate: IN
     to:
@@ -382,6 +401,7 @@
     text: Then I came to the governors beyond the river, and gave them the king’s letters. Now the king had sent captains of the army and horsemen with me.
     translation: King James Version
     web: Then I came to the governors beyond the River, and gave them the king’s letters. Now the king had sent captains of the army and horsemen with me.
+    event: Nehemiah arrives at Jerusalem
   relations:
   - predicate: IN
     to:
@@ -404,6 +424,7 @@
     - sanballat_2470
     - tobiah_2872
     - israel_682
+    event: Nehemiah arrives at Jerusalem
   relations:
   - predicate: IN
     to:
@@ -422,6 +443,7 @@
     text: So I came to Jerusalem, and was there three days.
     translation: King James Version
     web: So I came to Jerusalem, and was there three days.
+    event: Nehemiah arrives at Jerusalem
   relations:
   - predicate: IN
     to:
@@ -442,6 +464,7 @@
     web: I arose in the night, I and a few men with me. I didn’t tell anyone what my God put into my heart to do for Jerusalem. There wasn’t any animal with me except the animal that I rode on.
     people:
     - god_1324
+    event: Nehemiah arrives at Jerusalem
   relations:
   - predicate: IN
     to:
@@ -460,6 +483,7 @@
     text: And I went out by night by the gate of the valley, even before the dragon well, and to the dung port, and viewed the walls of Jerusalem, which were broken down, and the gates thereof were consumed with fire.
     translation: King James Version
     web: I went out by night by the valley gate toward the jackal’s well, then to the dung gate; and I inspected the walls of Jerusalem, which were broken down, and its gates were consumed with fire.
+    event: Nehemiah arrives at Jerusalem
   relations:
   - predicate: IN
     to:
@@ -478,6 +502,7 @@
     text: 'Then I went on to the gate of the fountain, and to the king’s pool: but there was no place for the beast that was under me to pass.'
     translation: King James Version
     web: Then I went on to the spring gate and to the king’s pool, but there was no place for the animal that was under me to pass.
+    event: Nehemiah arrives at Jerusalem
   relations:
   - predicate: IN
     to:
@@ -496,6 +521,7 @@
     text: Then went I up in the night by the brook, and viewed the wall, and turned back, and entered by the gate of the valley, and so returned.
     translation: King James Version
     web: Then I went up in the night by the brook and inspected the wall; and I turned back, and entered by the valley gate, and so returned.
+    event: Nehemiah arrives at Jerusalem
   relations:
   - predicate: IN
     to:
@@ -514,6 +540,7 @@
     text: And the rulers knew not whither I went, or what I did; neither had I as yet told it to the Jews, nor to the priests, nor to the nobles, nor to the rulers, nor to the rest that did the work.
     translation: King James Version
     web: The rulers didn’t know where I went, or what I did. I had not as yet told it to the Jews, nor to the priests, nor to the nobles, nor to the rulers, nor to the rest who did the work.
+    event: Nehemiah arrives at Jerusalem
   relations:
   - predicate: IN
     to:
@@ -532,6 +559,7 @@
     text: 'Then said I unto them, Ye see the distress that we are in, how Jerusalem lieth waste, and the gates thereof are burned with fire: come, and let us build up the wall of Jerusalem, that we be no more a reproach.'
     translation: King James Version
     web: Then I said to them, “You see the bad situation that we are in, how Jerusalem lies waste, and its gates are burned with fire. Come, let’s build up the wall of Jerusalem, that we won’t be disgraced.”
+    event: Nehemiah arrives at Jerusalem
   relations:
   - predicate: IN
     to:
@@ -552,6 +580,7 @@
     web: I told them about the hand of my God which was good on me, and also about the king’s words that he had spoken to me. They said, “Let’s rise up and build.” So they strengthened their hands for the good work.
     people:
     - god_1324
+    event: Nehemiah arrives at Jerusalem
   relations:
   - predicate: IN
     to:
@@ -574,6 +603,7 @@
     - sanballat_2470
     - tobiah_2872
     - geshem_1307
+    event: Nehemiah arrives at Jerusalem
   relations:
   - predicate: IN
     to:
@@ -594,6 +624,7 @@
     web: Then I answered them, and said to them, “The God of heaven will prosper us. Therefore we, his servants, will arise and build; but you have no portion, nor right, nor memorial in Jerusalem.”
     people:
     - god_1324
+    event: Nehemiah arrives at Jerusalem
   relations:
   - predicate: IN
     to:
@@ -614,6 +645,7 @@
     web: Then Eliashib the high priest rose up with his brothers the priests, and they built the sheep gate. They sanctified it, and set up its doors. They sanctified it even to the tower of Hammeah, to the tower of Hananel.
     people:
     - eliashib_1099
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -635,6 +667,7 @@
     people:
     - zaccur_2966
     - imri_605
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -655,6 +688,7 @@
     web: The sons of Hassenaah built the fish gate. They laid its beams, and set up its doors, its bolts, and its bars.
     people:
     - hassenaah_1449
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -682,6 +716,7 @@
     - meshezabeel_2014
     - zadok_2976
     - baana_581
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -702,6 +737,7 @@
     web: Next to them, the Tekoites made repairs; but their nobles didn’t put their necks to the Lord’s work.
     people:
     - god_1324
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -725,6 +761,7 @@
     - paseah_2282
     - meshullam_2032
     - besodeiah_485
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -746,6 +783,7 @@
     people:
     - melatiah_1986
     - jadon_688
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -768,6 +806,7 @@
     - uzziel_2934
     - harhaiah_1413
     - hananiah_1389
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -789,6 +828,7 @@
     people:
     - rephaiah_2426
     - hur_1574
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -812,6 +852,7 @@
     - harumaph_1424
     - hattush_1459
     - hashabniah_1439
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -835,6 +876,7 @@
     - harim_1417
     - hashub_1442
     - pahath-moab_2266
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -856,6 +898,7 @@
     people:
     - shallum_2524
     - halohesh_1358
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -876,6 +919,7 @@
     web: Hanun and the inhabitants of Zanoah repaired the valley gate. They built it, and set up its doors, its bolts, and its bars, and one thousand cubits of the wall to the dung gate.
     people:
     - hanun_1405
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -897,6 +941,7 @@
     people:
     - malchiah_1904
     - rechab_2404
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -919,6 +964,7 @@
     - shallun_2527
     - col-hozeh_951
     - david_994
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -941,6 +987,7 @@
     - nehemiah_2173
     - azbuk_550
     - david_994
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -963,6 +1010,7 @@
     - rehum_2415
     - bani_394
     - hashabiah_1435
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -984,6 +1032,7 @@
     people:
     - bavai_417
     - henadad_1494
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -1005,6 +1054,7 @@
     people:
     - ezer_1242
     - jeshua_897
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -1027,6 +1077,7 @@
     - baruch_407
     - zabbai_2952
     - eliashib_1099
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -1050,6 +1101,7 @@
     - urijah_2899
     - koz_1800
     - eliashib_1099
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -1068,6 +1120,7 @@
     text: And after him repaired the priests, the men of the plain.
     translation: King James Version
     web: After him, the priests, the men of the surrounding area made repairs.
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -1092,6 +1145,7 @@
     - azariah_542
     - maaseiah_1858
     - ananiah_257
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -1114,6 +1168,7 @@
     - binnui_511
     - henadad_1495
     - azariah_542
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -1137,6 +1192,7 @@
     - uzai_2910
     - pedaiah_2295
     - parosh_2275
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -1155,6 +1211,7 @@
     text: Moreover the Nethinims dwelt in Ophel, unto the place over against the water gate toward the east, and the tower that lieth out.
     translation: King James Version
     web: (Now the temple servants lived in Ophel, to the place opposite the water gate toward the east, and the tower that stands out.)
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -1173,6 +1230,7 @@
     text: After them the Tekoites repaired another piece, over against the great tower that lieth out, even unto the wall of Ophel.
     translation: King James Version
     web: After him the Tekoites repaired another portion, opposite the great tower that stands out, and to the wall of Ophel.
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -1191,6 +1249,7 @@
     text: From above the horse gate repaired the priests, every one over against his house.
     translation: King James Version
     web: Above the horse gate, the priests made repairs, everyone across from his own house.
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -1214,6 +1273,7 @@
     - immer_600
     - shemaiah_2636
     - shechaniah_2586
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -1239,6 +1299,7 @@
     - zalaph_2981
     - meshullam_2031
     - berechiah_474
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -1259,6 +1320,7 @@
     web: After him, Malchijah, one of the goldsmiths to the house of the temple servants, and of the merchants, made repairs opposite the gate of Hammiphkad and to the ascent of the corner.
     people:
     - malchiah_1905
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -1277,6 +1339,7 @@
     text: And between the going up of the corner unto the sheep gate repaired the goldsmiths and the merchants.
     translation: King James Version
     web: Between the ascent of the corner and the sheep gate, the goldsmiths and the merchants made repairs.
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -1297,6 +1360,7 @@
     web: But when Sanballat heard that we were building the wall, he was angry, and was very indignant, and mocked the Jews.
     people:
     - sanballat_2470
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -1315,6 +1379,7 @@
     text: And he spake before his brethren and the army of Samaria, and said, What do these feeble Jews? will they fortify themselves? will they sacrifice? will they make an end in a day? will they revive the stones out of the heaps of the rubbish which are burned?
     translation: King James Version
     web: He spoke before his brothers and the army of Samaria, and said, “What are these feeble Jews doing? Will they fortify themselves? Will they sacrifice? Will they finish in a day? Will they revive the stones out of the heaps of rubbish, since they are burned?”
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -1335,6 +1400,7 @@
     web: Now Tobiah the Ammonite was by him, and he said, “What they are building, if a fox climbed up it, he would break down their stone wall.”
     people:
     - tobiah_2872
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -1355,6 +1421,7 @@
     web: “Hear, our God, for we are despised. Turn back their reproach on their own head. Give them up for a plunder in a land of captivity.
     people:
     - god_1324
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -1373,6 +1440,7 @@
     text: 'And cover not their iniquity, and let not their sin be blotted out from before thee: for they have provoked thee to anger before the builders.'
     translation: King James Version
     web: Don’t cover their iniquity. Don’t let their sin be blotted out from before you; for they have insulted the builders.”
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -1391,6 +1459,7 @@
     text: 'So built we the wall; and all the wall was joined together unto the half thereof: for the people had a mind to work.'
     translation: King James Version
     web: So we built the wall; and all the wall was joined together to half its height, for the people had a mind to work.
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -1412,6 +1481,7 @@
     people:
     - sanballat_2470
     - tobiah_2872
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -1430,6 +1500,7 @@
     text: And conspired all of them together to come and to fight against Jerusalem, and to hinder it.
     translation: King James Version
     web: and they all conspired together to come and fight against Jerusalem, and to cause confusion among us.
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -1450,6 +1521,7 @@
     web: But we made our prayer to our God, and set a watch against them day and night because of them.
     people:
     - god_1324
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -1468,6 +1540,7 @@
     text: And Judah said, The strength of the bearers of burdens is decayed, and there is much rubbish; so that we are not able to build the wall.
     translation: King James Version
     web: Judah said, “The strength of the bearers of burdens is fading and there is much rubble, so that we are not able to build the wall.”
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -1486,6 +1559,7 @@
     text: And our adversaries said, They shall not know, neither see, till we come in the midst among them, and slay them, and cause the work to cease.
     translation: King James Version
     web: Our adversaries said, “They will not know or see, until we come in among them and kill them, and cause the work to cease.”
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -1504,6 +1578,7 @@
     text: And it came to pass, that when the Jews which dwelt by them came, they said unto us ten times, From all places whence ye shall return unto us they will be upon you.
     translation: King James Version
     web: When the Jews who lived by them came, they said to us ten times from all places, “Wherever you turn, they will attack us.”
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -1522,6 +1597,7 @@
     text: Therefore set I in the lower places behind the wall, and on the higher places, I even set the people after their families with their swords, their spears, and their bows.
     translation: King James Version
     web: Therefore I set guards in the lowest parts of the space behind the wall, in the open places. I set the people by family groups with their swords, their spears, and their bows.
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -1542,6 +1618,7 @@
     web: I looked, and rose up, and said to the nobles, to the rulers, and to the rest of the people, “Don’t be afraid of them! Remember the Lord, who is great and awesome, and fight for your brothers, your sons, your daughters, your wives, and your houses.”
     people:
     - god_1324
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -1562,6 +1639,7 @@
     web: When our enemies heard that it was known to us, and God had brought their counsel to nothing, all of us returned to the wall, everyone to his work.
     people:
     - god_1324
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -1580,6 +1658,7 @@
     text: And it came to pass from that time forth, that the half of my servants wrought in the work, and the other half of them held both the spears, the shields, and the bows, and the habergeons; and the rulers were behind all the house of Judah.
     translation: King James Version
     web: From that time forth, half of my servants did the work, and half of them held the spears, the shields, the bows, and the coats of mail; and the rulers were behind all the house of Judah.
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -1598,6 +1677,7 @@
     text: They which builded on the wall, and they that bare burdens, with those that laded, every one with one of his hands wrought in the work, and with the other hand held a weapon.
     translation: King James Version
     web: Those who built the wall, and those who bore burdens loaded themselves; everyone with one of his hands did the work, and with the other held his weapon.
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -1616,6 +1696,7 @@
     text: For the builders, every one had his sword girded by his side, and so builded. And he that sounded the trumpet was by me.
     translation: King James Version
     web: Among the builders, everyone wore his sword at his side, and so built. He who sounded the trumpet was by me.
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -1634,6 +1715,7 @@
     text: And I said unto the nobles, and to the rulers, and to the rest of the people, The work is great and large, and we are separated upon the wall, one far from another.
     translation: King James Version
     web: I said to the nobles, and to the rulers and to the rest of the people, “The work is great and widely spread out, and we are separated on the wall, far from one another.
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -1654,6 +1736,7 @@
     web: Wherever you hear the sound of the trumpet, rally there to us. Our God will fight for us.”
     people:
     - god_1324
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -1672,6 +1755,7 @@
     text: 'So we laboured in the work: and half of them held the spears from the rising of the morning till the stars appeared.'
     translation: King James Version
     web: So we did the work. Half of the people held the spears from the rising of the morning until the stars appeared.
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -1690,6 +1774,7 @@
     text: Likewise at the same time said I unto the people, Let every one with his servant lodge within Jerusalem, that in the night they may be a guard to us, and labour on the day.
     translation: King James Version
     web: Likewise at the same time I said to the people, “Let everyone with his servant lodge within Jerusalem, that in the night they may be a guard to us, and may labor in the day.”
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -1708,6 +1793,7 @@
     text: So neither I, nor my brethren, nor my servants, nor the men of the guard which followed me, none of us put off our clothes, saving that every one put them off for washing.
     translation: King James Version
     web: So neither I, nor my brothers, nor my servants, nor the men of the guard who followed me took off our clothes. Everyone took his weapon to the water.
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -1726,6 +1812,7 @@
     text: And there was a great cry of the people and of their wives against their brethren the Jews.
     translation: King James Version
     web: Then there arose a great cry of the people and of their wives against their brothers the Jews.
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -1744,6 +1831,7 @@
     text: 'For there were that said, We, our sons, and our daughters, are many: therefore we take up corn for them, that we may eat, and live.'
     translation: King James Version
     web: For there were some who said, “We, our sons and our daughters, are many. Let us get grain, that we may eat and live.”
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -1762,6 +1850,7 @@
     text: Some also there were that said, We have mortgaged our lands, vineyards, and houses, that we might buy corn, because of the dearth.
     translation: King James Version
     web: There were also some who said, “We are mortgaging our fields, our vineyards, and our houses. Let us get grain, because of the famine.”
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -1780,6 +1869,7 @@
     text: There were also that said, We have borrowed money for the king’s tribute, and that upon our lands and vineyards.
     translation: King James Version
     web: There were also some who said, “We have borrowed money for the king’s tribute using our fields and our vineyards as collateral.
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -1798,6 +1888,7 @@
     text: 'Yet now our flesh is as the flesh of our brethren, our children as their children: and, lo, we bring into bondage our sons and our daughters to be servants, and some of our daughters are brought unto bondage already: neither is it in our power to redeem them; for other men have our lands and vineyards.'
     translation: King James Version
     web: Yet now our flesh is as the flesh of our brothers, our children as their children. Behold, we bring our sons and our daughters into bondage to be servants, and some of our daughters have been brought into bondage. It is also not in our power to help it, because other men have our fields and our vineyards.”
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -1816,6 +1907,7 @@
     text: And I was very angry when I heard their cry and these words.
     translation: King James Version
     web: I was very angry when I heard their cry and these words.
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -1834,6 +1926,7 @@
     text: Then I consulted with myself, and I rebuked the nobles, and the rulers, and said unto them, Ye exact usury, every one of his brother. And I set a great assembly against them.
     translation: King James Version
     web: Then I consulted with myself, and contended with the nobles and the rulers, and said to them, “You exact usury, everyone of his brother.” I held a great assembly against them.
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -1852,6 +1945,7 @@
     text: And I said unto them, We after our ability have redeemed our brethren the Jews, which were sold unto the heathen; and will ye even sell your brethren? or shall they be sold unto us? Then held they their peace, and found nothing to answer.
     translation: King James Version
     web: I said to them, “We, after our ability, have redeemed our brothers the Jews that were sold to the nations; and would you even sell your brothers, and should they be sold to us?” Then they held their peace, and found not a word to say.
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -1872,6 +1966,7 @@
     web: Also I said, “The thing that you do is not good. Shouldn’t you walk in the fear of our God because of the reproach of the nations, our enemies?
     people:
     - god_1324
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -1890,6 +1985,7 @@
     text: 'I likewise, and my brethren, and my servants, might exact of them money and corn: I pray you, let us leave off this usury.'
     translation: King James Version
     web: I likewise, my brothers and my servants, lend them money and grain. Please let us stop this usury.
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -1908,6 +2004,7 @@
     text: Restore, I pray you, to them, even this day, their lands, their vineyards, their oliveyards, and their houses, also the hundredth part of the money, and of the corn, the wine, and the oil, that ye exact of them.
     translation: King James Version
     web: Please restore to them, even today, their fields, their vineyards, their olive groves, and their houses, also the hundredth part of the money, and of the grain, the new wine, and the oil, that you are charging them.”
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -1926,6 +2023,7 @@
     text: Then said they, We will restore them, and will require nothing of them; so will we do as thou sayest. Then I called the priests, and took an oath of them, that they should do according to this promise.
     translation: King James Version
     web: Then they said, “We will restore them, and will require nothing of them. We will do so, even as you say.” Then I called the priests, and took an oath of them, that they would do according to this promise.
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -1946,6 +2044,7 @@
     web: Also I shook out my lap, and said, “So may God shake out every man from his house, and from his labor, that doesn’t perform this promise; even may he be shaken out and emptied like this.” All the assembly said, “Amen,” and praised the LORD. The people did according to this promise.
     people:
     - god_1324
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -1966,6 +2065,7 @@
     web: Moreover from the time that I was appointed to be their governor in the land of Judah, from the twentieth year even to the thirty-second year of Artaxerxes the king, that is, twelve years, I and my brothers have not eaten the bread of the governor.
     people:
     - artaxerxes_314
+    event: Reign of Artaxerxes,Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -1986,6 +2086,7 @@
     web: But the former governors who were before me were supported by the people, and took bread and wine from them, plus forty shekels of silver; yes, even their servants ruled over the people, but I didn’t do so, because of the fear of God.
     people:
     - god_1324
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -2004,6 +2105,7 @@
     text: 'Yea, also I continued in the work of this wall, neither bought we any land: and all my servants were gathered thither unto the work.'
     translation: King James Version
     web: Yes, I also continued in the work of this wall. We didn’t buy any land. All my servants were gathered there to the work.
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -2022,6 +2124,7 @@
     text: Moreover there were at my table an hundred and fifty of the Jews and rulers, beside those that came unto us from among the heathen that are about us.
     translation: King James Version
     web: Moreover there were at my table, of the Jews and the rulers, one hundred fifty men, in addition to those who came to us from among the nations that were around us.
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -2040,6 +2143,7 @@
     text: 'Now that which was prepared for me daily was one ox and six choice sheep; also fowls were prepared for me, and once in ten days store of all sorts of wine: yet for all this required not I the bread of the governor, because the bondage was heavy upon this people.'
     translation: King James Version
     web: Now that which was prepared for one day was one ox and six choice sheep. Also fowls were prepared for me, and once in ten days a store of all sorts of wine. Yet for all this, I didn’t demand the governor’s pay, because the bondage was heavy on this people.
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -2060,6 +2164,7 @@
     web: Remember me, my God, for all the good that I have done for this people.
     people:
     - god_1324
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -2082,6 +2187,7 @@
     - sanballat_2470
     - tobiah_2872
     - geshem_1307
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -2103,6 +2209,7 @@
     people:
     - sanballat_2470
     - geshem_1307
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -2121,6 +2228,7 @@
     text: 'And I sent messengers unto them, saying, I am doing a great work, so that I cannot come down: why should the work cease, whilst I leave it, and come down to you?'
     translation: King James Version
     web: I sent messengers to them, saying, “I am doing a great work, so that I can’t come down. Why should the work cease while I leave it and come down to you?”
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -2139,6 +2247,7 @@
     text: Yet they sent unto me four times after this sort; and I answered them after the same manner.
     translation: King James Version
     web: They sent to me four times like this; and I answered them the same way.
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -2159,6 +2268,7 @@
     web: Then Sanballat sent his servant to me the same way the fifth time with an open letter in his hand,
     people:
     - sanballat_2470
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -2179,6 +2289,7 @@
     web: in which was written, “It is reported among the nations, and Gashmu says it, that you and the Jews intend to rebel. Because of that, you are building the wall. You would be their king, according to these words.
     people:
     - geshem_1307
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -2197,6 +2308,7 @@
     text: 'And thou hast also appointed prophets to preach of thee at Jerusalem, saying, There is a king in Judah: and now shall it be reported to the king according to these words. Come now therefore, and let us take counsel together.'
     translation: King James Version
     web: You have also appointed prophets to proclaim of you at Jerusalem, saying, ‘There is a king in Judah!’ Now it will be reported to the king according to these words. Come now therefore, and let’s take counsel together.”
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -2215,6 +2327,7 @@
     text: Then I sent unto him, saying, There are no such things done as thou sayest, but thou feignest them out of thine own heart.
     translation: King James Version
     web: Then I sent to him, saying, “There are no such things done as you say, but you imagine them out of your own heart.”
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -2235,6 +2348,7 @@
     web: For they all would have made us afraid, saying, “Their hands will be weakened from the work, that it not be done.” But now, strengthen my hands.
     people:
     - god_1324
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -2258,6 +2372,7 @@
     - delaiah_1003
     - mehetabeel_1979
     - god_1324
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -2276,6 +2391,7 @@
     text: And I said, Should such a man as I flee? and who is there, that, being as I am, would go into the temple to save his life? I will not go in.
     translation: King James Version
     web: I said, “Should a man like me flee? Who is there that, being such as I, would go into the temple to save his life? I will not go in.”
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -2298,6 +2414,7 @@
     - tobiah_2872
     - sanballat_2470
     - god_1324
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -2316,6 +2433,7 @@
     text: Therefore was he hired, that I should be afraid, and do so, and sin, and that they might have matter for an evil report, that they might reproach me.
     translation: King James Version
     web: He was hired so that I would be afraid, do so, and sin, and that they might have material for an evil report, that they might reproach me.
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -2339,6 +2457,7 @@
     - sanballat_2470
     - noadiah_2209
     - god_1324
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -2357,6 +2476,7 @@
     text: So the wall was finished in the twenty and fifth day of the month Elul, in fifty and two days.
     translation: King James Version
     web: So the wall was finished in the twenty-fifth day of Elul, in fifty-two days.
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -2377,6 +2497,7 @@
     web: When all our enemies heard of it, all the nations that were around us were afraid, and they lost their confidence; for they perceived that this work was done by our God.
     people:
     - god_1324
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -2397,6 +2518,7 @@
     web: Moreover in those days the nobles of Judah sent many letters to Tobiah, and Tobiah’s letters came to them.
     people:
     - tobiah_2872
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -2422,6 +2544,7 @@
     - daughter_of_meshullam_987
     - meshullam_2031
     - berechiah_474
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -2442,6 +2565,7 @@
     web: Also they spoke of his good deeds before me, and reported my words to him. Tobiah sent letters to put me in fear.
     people:
     - tobiah_2872
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -3929,6 +4053,7 @@
     - ezra_1245
     - moses_2108
     - god_1324
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -3949,6 +4074,7 @@
     web: Ezra the priest brought the law before the assembly, both men and women, and all who could hear with understanding, on the first day of the seventh month.
     people:
     - ezra_1245
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -3967,6 +4093,7 @@
     text: And he read therein before the street that was before the water gate from the morning until midday, before the men and the women, and those that could understand; and the ears of all the people were attentive unto the book of the law.
     translation: King James Version
     web: He read from it before the wide place that was in front of the water gate from early morning until midday, in the presence of the men and the women, and of those who could understand. The ears of all the people were attentive to the book of the law.
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -4000,6 +4127,7 @@
     - hashbadana_1441
     - zechariah_3021
     - meshullam_2033
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -4020,6 +4148,7 @@
     web: Ezra opened the book in the sight of all the people (for he was above all the people), and when he opened it, all the people stood up.
     people:
     - ezra_1245
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -4041,6 +4170,7 @@
     people:
     - ezra_1245
     - god_1324
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -4073,6 +4203,7 @@
     - jozabad_1744
     - hanan_1374
     - pelaiah_2302
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -4093,6 +4224,7 @@
     web: They read in the book, in the law of God, distinctly; and they gave the sense, so that they understood the reading.
     people:
     - god_1324
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -4115,6 +4247,7 @@
     - nehemiah_2172
     - ezra_1245
     - god_1324
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -4135,6 +4268,7 @@
     web: Then he said to them, “Go your way. Eat the fat, drink the sweet, and send portions to him for whom nothing is prepared, for today is holy to our Lord. Don’t be grieved, for the joy of the LORD is your strength.”
     people:
     - god_1324
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -4153,6 +4287,7 @@
     text: So the Levites stilled all the people, saying, Hold your peace, for the day is holy; neither be ye grieved.
     translation: King James Version
     web: So the Levites calmed all the people, saying, “Hold your peace, for the day is holy. Don’t be grieved.”
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -4171,6 +4306,7 @@
     text: And all the people went their way to eat, and to drink, and to send portions, and to make great mirth, because they had understood the words that were declared unto them.
     translation: King James Version
     web: All the people went their way to eat, to drink, to send portions, and to celebrate, because they had understood the words that were declared to them.
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -4191,6 +4327,7 @@
     web: On the second day, the heads of fathers’ households of all the people, the priests, and the Levites were gathered together to Ezra the scribe, to study the words of the law.
     people:
     - ezra_1245
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -4213,6 +4350,7 @@
     - moses_2108
     - israel_682
     - god_1324
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -4231,6 +4369,7 @@
     text: And that they should publish and proclaim in all their cities, and in Jerusalem, saying, Go forth unto the mount, and fetch olive branches, and pine branches, and myrtle branches, and palm branches, and branches of thick trees, to make booths, as it is written.
     translation: King James Version
     web: and that they should publish and proclaim in all their cities and in Jerusalem, saying, “Go out to the mountain, and get olive branches, branches of wild olive, myrtle branches, palm branches, and branches of thick trees, to make temporary shelters, as it is written.”
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -4252,6 +4391,7 @@
     people:
     - ephraim_1206
     - god_1324
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -4274,6 +4414,7 @@
     - joshua_1727
     - nun_2214
     - israel_682
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -4294,6 +4435,7 @@
     web: Also day by day, from the first day to the last day, he read in the book of the law of God. They kept the feast seven days; and on the eighth day was a solemn assembly, according to the ordinance.
     people:
     - god_1324
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -4314,6 +4456,7 @@
     web: Now in the twenty-fourth day of this month the children of Israel were assembled with fasting, with sackcloth, and dirt on them.
     people:
     - israel_682
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -4332,6 +4475,7 @@
     text: And the seed of Israel separated themselves from all strangers, and stood and confessed their sins, and the iniquities of their fathers.
     translation: King James Version
     web: The offspring of Israel separated themselves from all foreigners and stood and confessed their sins and the iniquities of their fathers.
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -4352,6 +4496,7 @@
     web: They stood up in their place, and read in the book of the law of the LORD their God a fourth part of the day; and a fourth part they confessed and worshiped the LORD their God.
     people:
     - god_1324
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -4379,6 +4524,7 @@
     - sherebiah_2667
     - chenani_934
     - god_1324
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -4407,6 +4553,7 @@
     - shebaniah_2573
     - pethahiah_2321
     - god_1324
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -4427,6 +4574,7 @@
     web: You are the LORD, even you alone. You have made heaven, the heaven of heavens, with all their army, the earth and all things that are on it, the seas and all that is in them, and you preserve them all. The army of heaven worships you.
     people:
     - god_1324
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -4448,6 +4596,7 @@
     people:
     - abraham_58
     - god_1324
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -4466,6 +4615,7 @@
     text: 'And foundest his heart faithful before thee, and madest a covenant with him to give the land of the Canaanites, the Hittites, the Amorites, and the Perizzites, and the Jebusites, and the Girgashites, to give it, I say, to his seed, and hast performed thy words; for thou art righteous:'
     translation: King James Version
     web: found his heart faithful before you, and made a covenant with him to give the land of the Canaanite, the Hittite, the Amorite, the Perizzite, the Jebusite, and the Girgashite, to give it to his offspring, and have performed your words, for you are righteous.
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -4484,6 +4634,7 @@
     text: And didst see the affliction of our fathers in Egypt, and heardest their cry by the Red sea;
     translation: King James Version
     web: “You saw the affliction of our fathers in Egypt, and heard their cry by the Red Sea,
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -4504,6 +4655,7 @@
     web: and showed signs and wonders against Pharaoh, against all his servants, and against all the people of his land, for you knew that they dealt proudly against them, and made a name for yourself, as it is today.
     people:
     - pharaoh_2331
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -4522,6 +4674,7 @@
     text: And thou didst divide the sea before them, so that they went through the midst of the sea on the dry land; and their persecutors thou threwest into the deeps, as a stone into the mighty waters.
     translation: King James Version
     web: You divided the sea before them, so that they went through the middle of the sea on the dry land; and you cast their pursuers into the depths, as a stone into the mighty waters.
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -4540,6 +4693,7 @@
     text: Moreover thou leddest them in the day by a cloudy pillar; and in the night by a pillar of fire, to give them light in the way wherein they should go.
     translation: King James Version
     web: Moreover, in a pillar of cloud you led them by day; and in a pillar of fire by night, to give them light in the way in which they should go.
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -4558,6 +4712,7 @@
     text: 'Thou camest down also upon mount Sinai, and spakest with them from heaven, and gavest them right judgments, and true laws, good statutes and commandments:'
     translation: King James Version
     web: “You also came down on Mount Sinai, and spoke with them from heaven, and gave them right ordinances and true laws, good statutes and commandments,
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -4578,6 +4733,7 @@
     web: and made known to them your holy Sabbath, and commanded them commandments, statutes, and a law, by Moses your servant,
     people:
     - moses_2108
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -4596,6 +4752,7 @@
     text: And gavest them bread from heaven for their hunger, and broughtest forth water for them out of the rock for their thirst, and promisedst them that they should go in to possess the land which thou hadst sworn to give them.
     translation: King James Version
     web: and gave them bread from the sky for their hunger, and brought water out of the rock for them for their thirst, and commanded them that they should go in to possess the land which you had sworn to give them.
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -4614,6 +4771,7 @@
     text: But they and our fathers dealt proudly, and hardened their necks, and hearkened not to thy commandments,
     translation: King James Version
     web: “But they and our fathers behaved proudly, hardened their neck, didn’t listen to your commandments,
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -4634,6 +4792,7 @@
     web: and refused to obey. They weren’t mindful of your wonders that you did among them, but hardened their neck, and in their rebellion appointed a captain to return to their bondage. But you are a God ready to pardon, gracious and merciful, slow to anger, and abundant in loving kindness, and didn’t forsake them.
     people:
     - god_1324
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -4654,6 +4813,7 @@
     web: Yes, when they had made themselves a molded calf, and said, ‘This is your God who brought you up out of Egypt,’ and had committed awful blasphemies,
     people:
     - god_1324
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -4672,6 +4832,7 @@
     text: 'Yet thou in thy manifold mercies forsookest them not in the wilderness: the pillar of the cloud departed not from them by day, to lead them in the way; neither the pillar of fire by night, to shew them light, and the way wherein they should go.'
     translation: King James Version
     web: yet you in your manifold mercies didn’t forsake them in the wilderness. The pillar of cloud didn’t depart from over them by day, to lead them in the way; neither did the pillar of fire by night, to show them light, and the way in which they should go.
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -4690,6 +4851,7 @@
     text: Thou gavest also thy good spirit to instruct them, and withheldest not thy manna from their mouth, and gavest them water for their thirst.
     translation: King James Version
     web: You gave also your good Spirit to instruct them, and didn’t withhold your manna from their mouth, and gave them water for their thirst.
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -4708,6 +4870,7 @@
     text: Yea, forty years didst thou sustain them in the wilderness, so that they lacked nothing; their clothes waxed not old, and their feet swelled not.
     translation: King James Version
     web: “Yes, forty years you sustained them in the wilderness. They lacked nothing. Their clothes didn’t grow old, and their feet didn’t swell.
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -4729,6 +4892,7 @@
     people:
     - sihon_2739
     - og_2238
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -4747,6 +4911,7 @@
     text: Their children also multipliedst thou as the stars of heaven, and broughtest them into the land, concerning which thou hadst promised to their fathers, that they should go in to possess it.
     translation: King James Version
     web: You also multiplied their children as the stars of the sky, and brought them into the land concerning which you said to their fathers that they should go in to possess it.
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -4765,6 +4930,7 @@
     text: So the children went in and possessed the land, and thou subduedst before them the inhabitants of the land, the Canaanites, and gavest them into their hands, with their kings, and the people of the land, that they might do with them as they would.
     translation: King James Version
     web: “So the children went in and possessed the land; and you subdued before them the inhabitants of the land, the Canaanites, and gave them into their hands, with their kings and the peoples of the land, that they might do with them as they pleased.
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -4783,6 +4949,7 @@
     text: 'And they took strong cities, and a fat land, and possessed houses full of all goods, wells digged, vineyards, and oliveyards, and fruit trees in abundance: so they did eat, and were filled, and became fat, and delighted themselves in thy great goodness.'
     translation: King James Version
     web: They took fortified cities and a rich land, and possessed houses full of all good things, cisterns dug out, vineyards, olive groves, and fruit trees in abundance. So they ate, were filled, became fat, and delighted themselves in your great goodness.
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -4801,6 +4968,7 @@
     text: Nevertheless they were disobedient, and rebelled against thee, and cast thy law behind their backs, and slew thy prophets which testified against them to turn them to thee, and they wrought great provocations.
     translation: King James Version
     web: “Nevertheless they were disobedient and rebelled against you, cast your law behind their back, killed your prophets that testified against them to turn them again to you, and they committed awful blasphemies.
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -4819,6 +4987,7 @@
     text: 'Therefore thou deliveredst them into the hand of their enemies, who vexed them: and in the time of their trouble, when they cried unto thee, thou heardest them from heaven; and according to thy manifold mercies thou gavest them saviours, who saved them out of the hand of their enemies.'
     translation: King James Version
     web: Therefore you delivered them into the hand of their adversaries, who distressed them. In the time of their trouble, when they cried to you, you heard from heaven; and according to your manifold mercies you gave them saviors who saved them out of the hands of their adversaries.
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -4837,6 +5006,7 @@
     text: 'But after they had rest, they did evil again before thee: therefore leftest thou them in the hand of their enemies, so that they had the dominion over them: yet when they returned, and cried unto thee, thou heardest them from heaven; and many times didst thou deliver them according to thy mercies;'
     translation: King James Version
     web: But after they had rest, they did evil again before you; therefore you left them in the hands of their enemies, so that they had the dominion over them; yet when they returned and cried to you, you heard from heaven; and many times you delivered them according to your mercies,
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -4855,6 +5025,7 @@
     text: 'And testifiedst against them, that thou mightest bring them again unto thy law: yet they dealt proudly, and hearkened not unto thy commandments, but sinned against thy judgments, (which if a man do, he shall live in them;) and withdrew the shoulder, and hardened their neck, and would not hear.'
     translation: King James Version
     web: and testified against them, that you might bring them again to your law. Yet they were arrogant, and didn’t listen to your commandments, but sinned against your ordinances (which if a man does, he shall live in them), turned their backs, stiffened their neck, and would not hear.
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -4873,6 +5044,7 @@
     text: 'Yet many years didst thou forbear them, and testifiedst against them by thy spirit in thy prophets: yet would they not give ear: therefore gavest thou them into the hand of the people of the lands.'
     translation: King James Version
     web: Yet many years you put up with them, and testified against them by your Spirit through your prophets. Yet they would not listen. Therefore you gave them into the hand of the peoples of the lands.
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -4893,6 +5065,7 @@
     web: “Nevertheless in your manifold mercies you didn’t make a full end of them, nor forsake them; for you are a gracious and merciful God.
     people:
     - god_1324
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -4913,6 +5086,7 @@
     web: Now therefore, our God, the great, the mighty, and the awesome God, who keeps covenant and loving kindness, don’t let all the travail seem little before you that has come on us, on our kings, on our princes, on our priests, on our prophets, on our fathers, and on all your people, since the time of the kings of Assyria to this day.
     people:
     - god_1324
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -4931,6 +5105,7 @@
     text: 'Howbeit thou art just in all that is brought upon us; for thou hast done right, but we have done wickedly:'
     translation: King James Version
     web: However you are just in all that has come on us; for you have dealt truly, but we have done wickedly.
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -4949,6 +5124,7 @@
     text: Neither have our kings, our princes, our priests, nor our fathers, kept thy law, nor hearkened unto thy commandments and thy testimonies, wherewith thou didst testify against them.
     translation: King James Version
     web: Also our kings, our princes, our priests, and our fathers have not kept your law, nor listened to your commandments and your testimonies with which you testified against them.
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -4967,6 +5143,7 @@
     text: For they have not served thee in their kingdom, and in thy great goodness that thou gavest them, and in the large and fat land which thou gavest before them, neither turned they from their wicked works.
     translation: King James Version
     web: For they have not served you in their kingdom, and in your great goodness that you gave them, and in the large and rich land which you gave before them. They didn’t turn from their wicked works.
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -4985,6 +5162,7 @@
     text: 'Behold, we are servants this day, and for the land that thou gavest unto our fathers to eat the fruit thereof and the good thereof, behold, we are servants in it:'
     translation: King James Version
     web: “Behold, we are servants today, and as for the land that you gave to our fathers to eat its fruit and its good, behold, we are servants in it.
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -5003,6 +5181,7 @@
     text: 'And it yieldeth much increase unto the kings whom thou hast set over us because of our sins: also they have dominion over our bodies, and over our cattle, at their pleasure, and we are in great distress.'
     translation: King James Version
     web: It yields much increase to the kings whom you have set over us because of our sins. Also they have power over our bodies and over our livestock, at their pleasure, and we are in great distress.
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -5021,6 +5200,7 @@
     text: And because of all this we make a sure covenant, and write it; and our princes, Levites, and priests, seal unto it.
     translation: King James Version
     web: Yet for all this, we make a sure covenant, and write it; and our princes, our Levites, and our priests, seal it.”
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -5043,6 +5223,7 @@
     - nehemiah_2172
     - hachaliah_1336
     - zidkijah_3077
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -5065,6 +5246,7 @@
     - seraiah_2498
     - azariah_543
     - jeremiah_854
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -5087,6 +5269,7 @@
     - pashur_2284
     - amariah_204
     - malchijah_1913
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -5109,6 +5292,7 @@
     - hattush_1460
     - shebaniah_2574
     - malluch_1921
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -5131,6 +5315,7 @@
     - rehum_2413
     - meremoth_2006
     - obadiah_2225
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -5153,6 +5338,7 @@
     - daniel_974
     - ginnethon_1321
     - baruch_408
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -5175,6 +5361,7 @@
     - meshullam_2034
     - abijah_37
     - miniamin_2077
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -5197,6 +5384,7 @@
     - moadiah_1874
     - bilgah_501
     - shemaiah_2638
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -5221,6 +5409,7 @@
     - binnui_512
     - henadad_1493
     - kadmiel_1767
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -5245,6 +5434,7 @@
     - kelita_1772
     - pelaiah_2302
     - hanan_1374
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -5267,6 +5457,7 @@
     - micha_2056
     - rehob_2411
     - hashabiah_1434
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -5289,6 +5480,7 @@
     - zaccur_2967
     - sherebiah_2668
     - shebaniah_2575
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -5311,6 +5503,7 @@
     - hodijah_1546
     - bani_395
     - beninu_457
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -5335,6 +5528,7 @@
     - elam_1053
     - zatthu_2985
     - bani_397
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -5357,6 +5551,7 @@
     - bunni_527
     - azgad_553
     - bebai_422
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -5379,6 +5574,7 @@
     - adonijah_99
     - bigvai_498
     - adin_87
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -5401,6 +5597,7 @@
     - ater_357
     - hizkijah_1536
     - azzur_572
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -5423,6 +5620,7 @@
     - hodijah_1547
     - hashum_1448
     - bezai_489
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -5445,6 +5643,7 @@
     - hariph_1419
     - anathoth_263
     - nebai_2163
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -5467,6 +5666,7 @@
     - magpiash_1883
     - meshullam_2035
     - hezir_1517
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -5489,6 +5689,7 @@
     - meshezabeel_2015
     - zadok_2978
     - jaddua_686
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -5511,6 +5712,7 @@
     - pelatiah_2306
     - hanan_1375
     - anaiah_251
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -5533,6 +5735,7 @@
     - hoshea_1561
     - hananiah_1392
     - hashub_1444
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -5555,6 +5758,7 @@
     - hallohesh_1357
     - pileha_2358
     - shobek_2721
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -5577,6 +5781,7 @@
     - rehum_2416
     - hashabnah_1438
     - maaseiah_1861
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -5599,6 +5804,7 @@
     - ahijah_140
     - hanan_1376
     - anan_255
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -5621,6 +5827,7 @@
     - malluch_1922
     - harim_1418
     - baanah_586
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -5641,6 +5848,7 @@
     web: The rest of the people, the priests, the Levites, the gatekeepers, the singers, the temple servants, and all those who had separated themselves from the peoples of the lands to the law of God, their wives, their sons, and their daughters—everyone who had knowledge and understanding—
     people:
     - god_1324
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -5662,6 +5870,7 @@
     people:
     - moses_2108
     - god_1324
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -5680,6 +5889,7 @@
     text: 'And that we would not give our daughters unto the people of the land, nor take their daughters for our sons:'
     translation: King James Version
     web: and that we would not give our daughters to the peoples of the land, nor take their daughters for our sons;
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -5698,6 +5908,7 @@
     text: 'And if the people of the land bring ware or any victuals on the sabbath day to sell, that we would not buy it of them on the sabbath, or on the holy day: and that we would leave the seventh year, and the exaction of every debt.'
     translation: King James Version
     web: and if the peoples of the land bring wares or any grain on the Sabbath day to sell, that we would not buy from them on the Sabbath, or on a holy day; and that we would forego the seventh year crops and the exaction of every debt.
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -5718,6 +5929,7 @@
     web: 'Also we made ordinances for ourselves, to charge ourselves yearly with the third part of a shekel for the service of the house of our God:'
     people:
     - god_1324
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -5738,6 +5950,7 @@
     web: for the show bread, for the continual meal offering, for the continual burnt offering, for the Sabbaths, for the new moons, for the set feasts, for the holy things, for the sin offerings to make atonement for Israel, and for all the work of the house of our God.
     people:
     - god_1324
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -5758,6 +5971,7 @@
     web: We, the priests, the Levites, and the people, cast lots for the wood offering, to bring it into the house of our God, according to our fathers’ houses, at times appointed year by year, to burn on the LORD our God’s altar, as it is written in the law;
     people:
     - god_1324
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -5778,6 +5992,7 @@
     web: and to bring the first fruits of our ground and the first fruits of all fruit of all kinds of trees, year by year, to the LORD’s house;
     people:
     - god_1324
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -5798,6 +6013,7 @@
     web: also the firstborn of our sons and of our livestock, as it is written in the law, and the firstborn of our herds and of our flocks, to bring to the house of our God, to the priests who minister in the house of our God;
     people:
     - god_1324
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -5818,6 +6034,7 @@
     web: and that we should bring the first fruits of our dough, our wave offerings, the fruit of all kinds of trees, and the new wine and the oil, to the priests, to the rooms of the house of our God; and the tithes of our ground to the Levites; for they, the Levites, take the tithes in all our farming villages.
     people:
     - god_1324
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -5835,10 +6052,11 @@
     ordinal: 12588
     text: 'And the priest the son of Aaron shall be with the Levites, when the Levites take tithes: and the Levites shall bring up the tithe of the tithes unto the house of our God, to the chambers, into the treasure house.'
     translation: King James Version
-    web: The priest, the descendent of Aaron, shall be with the Levites when the Levites take tithes. The Levites shall bring up the tithe of the tithes to the house of our God, to the rooms, into the treasure house.
+    web: The priest, the descendant of Aaron, shall be with the Levites when the Levites take tithes. The Levites shall bring up the tithe of the tithes to the house of our God, to the rooms, into the treasure house.
     people:
     - aaron_1
     - god_1324
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -5861,6 +6079,7 @@
     - israel_682
     - levi_1820
     - god_1324
+    event: Ezra reads the Law
   relations:
   - predicate: IN
     to:
@@ -7239,6 +7458,7 @@
     text: And at the dedication of the wall of Jerusalem they sought the Levites out of all their places, to bring them to Jerusalem, to keep the dedication with gladness, both with thanksgivings, and with singing, with cymbals, psalteries, and with harps.
     translation: King James Version
     web: At the dedication of the wall of Jerusalem, they sought the Levites out of all their places, to bring them to Jerusalem to keep the dedication with gladness, both with giving thanks and with singing, with cymbals, stringed instruments, and with harps.
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -7257,6 +7477,7 @@
     text: And the sons of the singers gathered themselves together, both out of the plain country round about Jerusalem, and from the villages of Netophathi;
     translation: King James Version
     web: The sons of the singers gathered themselves together, both out of the plain around Jerusalem and from the villages of the Netophathites;
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -7275,6 +7496,7 @@
     text: 'Also from the house of Gilgal, and out of the fields of Geba and Azmaveth: for the singers had builded them villages round about Jerusalem.'
     translation: King James Version
     web: also from Beth Gilgal and out of the fields of Geba and Azmaveth, for the singers had built themselves villages around Jerusalem.
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -7293,6 +7515,7 @@
     text: And the priests and the Levites purified themselves, and purified the people, and the gates, and the wall.
     translation: King James Version
     web: The priests and the Levites purified themselves; and they purified the people, the gates, and the wall.
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -7311,6 +7534,7 @@
     text: 'Then I brought up the princes of Judah upon the wall, and appointed two great companies of them that gave thanks, whereof one went on the right hand upon the wall toward the dung gate:'
     translation: King James Version
     web: Then I brought the princes of Judah up on the wall, and appointed two great companies who gave thanks and went in procession. One went on the right hand on the wall toward the dung gate;
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -7331,6 +7555,7 @@
     web: and after them went Hoshaiah, with half of the princes of Judah,
     people:
     - hoshaiah_1556
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -7353,6 +7578,7 @@
     - azariah_543
     - ezra_1246
     - meshullam_2034
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -7376,6 +7602,7 @@
     - benjamin_461
     - shemaiah_2638
     - jeremiah_854
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -7402,6 +7629,7 @@
     - michaiah_2057
     - zaccur_2965
     - asaph_330
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -7432,6 +7660,7 @@
     - david_994
     - ezra_1245
     - god_1324
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -7452,6 +7681,7 @@
     web: By the spring gate, and straight before them, they went up by the stairs of David’s city, at the ascent of the wall, above David’s house, even to the water gate eastward.
     people:
     - david_994
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -7470,6 +7700,7 @@
     text: And the other company of them that gave thanks went over against them, and I after them, and the half of the people upon the wall, from beyond the tower of the furnaces even unto the broad wall;
     translation: King James Version
     web: The other company of those who gave thanks went to meet them, and I after them, with the half of the people on the wall above the tower of the furnaces, even to the wide wall,
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -7490,6 +7721,7 @@
     web: and above the gate of Ephraim, and by the old gate, and by the fish gate, the tower of Hananel, and the tower of Hammeah, even to the sheep gate; and they stood still in the gate of the guard.
     people:
     - ephraim_1206
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -7510,6 +7742,7 @@
     web: So the two companies of those who gave thanks in God’s house stood, and I and the half of the rulers with me;
     people:
     - god_1324
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -7536,6 +7769,7 @@
     - elioenai_1141
     - zechariah_3027
     - hananiah_1394
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -7564,6 +7798,7 @@
     - elam_1054
     - ezer_1243
     - jezrahiah_1611
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -7584,6 +7819,7 @@
     web: They offered great sacrifices that day, and rejoiced, for God had made them rejoice with great joy; and the women and the children also rejoiced, so that the joy of Jerusalem was heard even far away.
     people:
     - god_1324
+    event: Nehemiah rebuilds the wall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -7751,6 +7987,7 @@
     - eliashib_1101
     - tobiah_2872
     - god_1324
+    event: Nehemiah goes back to Artaxerxes
   relations:
   - predicate: IN
     to:
@@ -7769,6 +8006,7 @@
     text: And he had prepared for him a great chamber, where aforetime they laid the meat offerings, the frankincense, and the vessels, and the tithes of the corn, the new wine, and the oil, which was commanded to be given to the Levites, and the singers, and the porters; and the offerings of the priests.
     translation: King James Version
     web: had prepared for him a great room, where previously they laid the meal offerings, the frankincense, the vessels, and the tithes of the grain, the new wine, and the oil, which were given by commandment to the Levites, the singers, and the gatekeepers; and the wave offerings for the priests.
+    event: Nehemiah goes back to Artaxerxes
   relations:
   - predicate: IN
     to:
@@ -7789,6 +8027,7 @@
     web: But in all this, I was not at Jerusalem; for in the thirty-second year of Artaxerxes king of Babylon I went to the king; and after some days I asked leave of the king,
     people:
     - artaxerxes_314
+    event: Nehemiah goes back to Artaxerxes
   relations:
   - predicate: IN
     to:
@@ -7808,9 +8047,11 @@
     translation: King James Version
     web: and I came to Jerusalem, and understood the evil that Eliashib had done for Tobiah, in preparing him a room in the courts of God’s house.
     people:
+    - nehemiah_2172
     - eliashib_1101
     - tobiah_2872
     - god_1324
+    event: Nehemiah goes back to Artaxerxes,Nehemiah's reforms
   relations:
   - predicate: IN
     to:
@@ -7830,7 +8071,9 @@
     translation: King James Version
     web: It grieved me severely. Therefore I threw all Tobiah’s household stuff out of the room.
     people:
+    - nehemiah_2172
     - tobiah_2872
+    event: Nehemiah's reforms
   relations:
   - predicate: IN
     to:
@@ -7850,7 +8093,9 @@
     translation: King James Version
     web: Then I commanded, and they cleansed the rooms. I brought into them the vessels of God’s house, with the meal offerings and the frankincense again.
     people:
+    - nehemiah_2172
     - god_1324
+    event: Nehemiah's reforms
   relations:
   - predicate: IN
     to:
@@ -7869,6 +8114,9 @@
     text: 'And I perceived that the portions of the Levites had not been given them: for the Levites and the singers, that did the work, were fled every one to his field.'
     translation: King James Version
     web: I perceived that the portions of the Levites had not been given them, so that the Levites and the singers, who did the work, had each fled to his field.
+    people:
+    - nehemiah_2172
+    event: Nehemiah's reforms
   relations:
   - predicate: IN
     to:
@@ -7888,7 +8136,9 @@
     translation: King James Version
     web: Then I contended with the rulers, and said, “Why is God’s house forsaken?” I gathered them together, and set them in their place.
     people:
+    - nehemiah_2172
     - god_1324
+    event: Nehemiah's reforms
   relations:
   - predicate: IN
     to:
@@ -7907,6 +8157,7 @@
     text: Then brought all Judah the tithe of the corn and the new wine and the oil unto the treasuries.
     translation: King James Version
     web: Then all Judah brought the tithe of the grain, the new wine, and the oil to the treasuries.
+    event: Nehemiah's reforms
   relations:
   - predicate: IN
     to:
@@ -7926,12 +8177,14 @@
     translation: King James Version
     web: 'I made treasurers over the treasuries, Shelemiah the priest, and Zadok the scribe, and of the Levites, Pedaiah: and next to them was Hanan the son of Zaccur, the son of Mattaniah; for they were counted faithful, and their business was to distribute to their brothers.'
     people:
+    - nehemiah_2172
     - shelemiah_2597
     - zadok_2979
     - pedaiah_2298
     - hanan_1377
     - zaccur_2968
     - mattaniah_1960
+    event: Nehemiah's reforms
   relations:
   - predicate: IN
     to:
@@ -7951,7 +8204,9 @@
     translation: King James Version
     web: Remember me, my God, concerning this, and don’t wipe out my good deeds that I have done for the house of my God, and for its observances.
     people:
+    - nehemiah_2172
     - god_1324
+    event: Nehemiah's reforms
   relations:
   - predicate: IN
     to:
@@ -7970,6 +8225,9 @@
     text: 'In those days saw I in Judah some treading wine presses on the sabbath, and bringing in sheaves, and lading asses; as also wine, grapes, and figs, and all manner of burdens, which they brought into Jerusalem on the sabbath day: and I testified against them in the day wherein they sold victuals.'
     translation: King James Version
     web: In those days I saw some men treading wine presses on the Sabbath in Judah, bringing in sheaves, and loading donkeys with wine, grapes, figs, and all kinds of burdens which they brought into Jerusalem on the Sabbath day; and I testified against them in the day in which they sold food.
+    people:
+    - nehemiah_2172
+    event: Nehemiah's reforms
   relations:
   - predicate: IN
     to:
@@ -7988,6 +8246,7 @@
     text: There dwelt men of Tyre also therein, which brought fish, and all manner of ware, and sold on the sabbath unto the children of Judah, and in Jerusalem.
     translation: King James Version
     web: Some men of Tyre also lived there, who brought in fish and all kinds of wares, and sold on the Sabbath to the children of Judah, and in Jerusalem.
+    event: Nehemiah's reforms
   relations:
   - predicate: IN
     to:
@@ -8006,6 +8265,9 @@
     text: Then I contended with the nobles of Judah, and said unto them, What evil thing is this that ye do, and profane the sabbath day?
     translation: King James Version
     web: Then I contended with the nobles of Judah, and said to them, “What evil thing is this that you do, and profane the Sabbath day?
+    people:
+    - nehemiah_2172
+    event: Nehemiah's reforms
   relations:
   - predicate: IN
     to:
@@ -8026,6 +8288,7 @@
     web: Didn’t your fathers do this, and didn’t our God bring all this evil on us and on this city? Yet you bring more wrath on Israel by profaning the Sabbath.”
     people:
     - god_1324
+    event: Nehemiah's reforms
   relations:
   - predicate: IN
     to:
@@ -8044,6 +8307,9 @@
     text: 'And it came to pass, that when the gates of Jerusalem began to be dark before the sabbath, I commanded that the gates should be shut, and charged that they should not be opened till after the sabbath: and some of my servants set I at the gates, that there should no burden be brought in on the sabbath day.'
     translation: King James Version
     web: It came to pass that when the gates of Jerusalem began to be dark before the Sabbath, I commanded that the doors should be shut, and commanded that they should not be opened until after the Sabbath. I set some of my servants over the gates, so that no burden should be brought in on the Sabbath day.
+    people:
+    - nehemiah_2172
+    event: Nehemiah's reforms
   relations:
   - predicate: IN
     to:
@@ -8062,6 +8328,7 @@
     text: So the merchants and sellers of all kind of ware lodged without Jerusalem once or twice.
     translation: King James Version
     web: So the merchants and sellers of all kinds of wares camped outside of Jerusalem once or twice.
+    event: Nehemiah's reforms
   relations:
   - predicate: IN
     to:
@@ -8080,6 +8347,9 @@
     text: Then I testified against them, and said unto them, Why lodge ye about the wall? if ye do so again, I will lay hands on you. From that time forth came they no more on the sabbath.
     translation: King James Version
     web: Then I testified against them, and said to them, “Why do you stay around the wall? If you do so again, I will lay hands on you.” From that time on, they didn’t come on the Sabbath.
+    people:
+    - nehemiah_2172
+    event: Nehemiah's reforms
   relations:
   - predicate: IN
     to:
@@ -8099,7 +8369,9 @@
     translation: King James Version
     web: I commanded the Levites that they should purify themselves, and that they should come and keep the gates, to sanctify the Sabbath day. Remember me for this also, my God, and spare me according to the greatness of your loving kindness.
     people:
+    - nehemiah_2172
     - god_1324
+    event: Nehemiah's reforms
   relations:
   - predicate: IN
     to:
@@ -8119,7 +8391,9 @@
     translation: King James Version
     web: In those days I also saw the Jews who had married women of Ashdod, of Ammon, and of Moab;
     people:
+    - nehemiah_2172
     - moab_2103
+    event: Nehemiah's reforms
   relations:
   - predicate: IN
     to:
@@ -8138,6 +8412,7 @@
     text: And their children spake half in the speech of Ashdod, and could not speak in the Jews’ language, but according to the language of each people.
     translation: King James Version
     web: and their children spoke half in the speech of Ashdod, and could not speak in the Jews’ language, but according to the language of each people.
+    event: Nehemiah's reforms
   relations:
   - predicate: IN
     to:
@@ -8157,7 +8432,9 @@
     translation: King James Version
     web: I contended with them, cursed them, struck certain of them, plucked off their hair, and made them swear by God, “You shall not give your daughters to their sons, nor take their daughters for your sons, or for yourselves.
     people:
+    - nehemiah_2172
     - god_1324
+    event: Nehemiah's reforms
   relations:
   - predicate: IN
     to:
@@ -8179,6 +8456,7 @@
     people:
     - solomon_2762
     - god_1324
+    event: Nehemiah's reforms
   relations:
   - predicate: IN
     to:
@@ -8199,6 +8477,7 @@
     web: Shall we then listen to you to do all this great evil, to trespass against our God in marrying foreign women?”
     people:
     - god_1324
+    event: Nehemiah's reforms
   relations:
   - predicate: IN
     to:
@@ -8222,6 +8501,8 @@
     - joiada_1680
     - eliashib_1100
     - sanballat_2470
+    - nehemiah_2172
+    event: Nehemiah's reforms
   relations:
   - predicate: IN
     to:
@@ -8241,7 +8522,9 @@
     translation: King James Version
     web: Remember them, my God, because they have defiled the priesthood and the covenant of the priesthood and of the Levites.
     people:
+    - nehemiah_2172
     - god_1324
+    event: Nehemiah's reforms
   relations:
   - predicate: IN
     to:
@@ -8260,6 +8543,9 @@
     text: Thus cleansed I them from all strangers, and appointed the wards of the priests and the Levites, every one in his business;
     translation: King James Version
     web: Thus I cleansed them from all foreigners and appointed duties for the priests and for the Levites, everyone in his work;
+    people:
+    - nehemiah_2172
+    event: Nehemiah's reforms
   relations:
   - predicate: IN
     to:
@@ -8279,7 +8565,9 @@
     translation: King James Version
     web: and for the wood offering, at appointed times, and for the first fruits. Remember me, my God, for good.
     people:
+    - nehemiah_2172
     - god_1324
+    event: Nehemiah's reforms
   relations:
   - predicate: IN
     to:

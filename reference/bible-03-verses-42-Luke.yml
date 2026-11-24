@@ -534,7 +534,7 @@
     people:
     - gabriel_1261
     - god_1324
-    event: The Annuciation
+    event: The Annunciation
   relations:
   - predicate: IN
     to:
@@ -557,7 +557,7 @@
     - joseph_1715
     - david_994
     - mary_1938
-    event: Espousal of Mary,The Annuciation
+    event: Espousal of Mary,The Annunciation
   relations:
   - predicate: IN
     to:
@@ -578,7 +578,7 @@
     web: Having come in, the angel said to her, “Rejoice, you highly favored one! The Lord is with you. Blessed are you among women!”
     people:
     - jesus_905
-    event: The Annuciation
+    event: The Annunciation
   relations:
   - predicate: IN
     to:
@@ -597,7 +597,7 @@
     text: And when she saw him, she was troubled at his saying, and cast in her mind what manner of salutation this should be.
     translation: King James Version
     web: But when she saw him, she was greatly troubled at the saying, and considered what kind of salutation this might be.
-    event: The Annuciation
+    event: The Annunciation
   relations:
   - predicate: IN
     to:
@@ -619,7 +619,7 @@
     people:
     - mary_1938
     - god_1324
-    event: The Annuciation
+    event: The Annunciation
   relations:
   - predicate: IN
     to:
@@ -640,7 +640,7 @@
     web: Behold, you will conceive in your womb and give birth to a son, and shall name him ‘Jesus.’
     people:
     - jesus_905
-    event: The Annuciation
+    event: The Annunciation
   relations:
   - predicate: IN
     to:
@@ -663,7 +663,7 @@
     - david_994
     - god_1324
     - jesus_905
-    event: The Annuciation
+    event: The Annunciation
   relations:
   - predicate: IN
     to:
@@ -684,7 +684,7 @@
     web: and he will reign over the house of Jacob forever. There will be no end to his Kingdom.”
     people:
     - israel_682
-    event: The Annuciation
+    event: The Annunciation
   relations:
   - predicate: IN
     to:
@@ -705,7 +705,7 @@
     web: Mary said to the angel, “How can this be, seeing I am a virgin?”
     people:
     - mary_1938
-    event: The Annuciation
+    event: The Annunciation
   relations:
   - predicate: IN
     to:
@@ -728,7 +728,7 @@
     - god_1324
     - holy_spirit_7400
     - jesus_905
-    event: The Annuciation
+    event: The Annunciation
   relations:
   - predicate: IN
     to:
@@ -749,7 +749,7 @@
     web: Behold, Elizabeth your relative also has conceived a son in her old age; and this is the sixth month with her who was called barren.
     people:
     - elisabeth_1152
-    event: The Annuciation
+    event: The Annunciation
   relations:
   - predicate: IN
     to:
@@ -770,7 +770,7 @@
     web: For nothing spoken by God is impossible.”
     people:
     - god_1324
-    event: The Annuciation
+    event: The Annunciation
   relations:
   - predicate: IN
     to:
@@ -792,7 +792,7 @@
     people:
     - mary_1938
     - jesus_905
-    event: The Annuciation
+    event: The Annunciation
   relations:
   - predicate: IN
     to:
@@ -2070,7 +2070,7 @@
     web: When eight days were fulfilled for the circumcision of the child, his name was called Jesus, which was given by the angel before he was conceived in the womb.
     people:
     - jesus_905
-    event: Jesus Circumsized
+    event: Jesus Circumcised
   relations:
   - predicate: IN
     to:
@@ -4313,7 +4313,7 @@
     people:
     - wife_of_simon_2943
     - mother_of_the_wife_of_simon_2111
-    - simon_2750
+    - peter_2745
     event: Peter's Mother-in-law and Others Healed
   relations:
   - predicate: IN
@@ -4493,7 +4493,7 @@
     translation: King James Version
     web: He entered into one of the boats, which was Simon’s, and asked him to put out a little from the land. He sat down and taught the multitudes from the boat.
     people:
-    - simon_2750
+    - peter_2745
     event: Fishers of Men
   relations:
   - predicate: IN
@@ -6908,6 +6908,8 @@
     text: And one of the Pharisees desired him that he would eat with him. And he went into the Pharisee’s house, and sat down to meat.
     translation: King James Version
     web: One of the Pharisees invited him to eat with him. He entered into the Pharisee’s house and sat at the table.
+    people:
+    - simon_2751
     event: Anointed by a Sinner Woman
   relations:
   - predicate: IN
@@ -6927,6 +6929,8 @@
     text: And, behold, a woman in the city, which was a sinner, when she knew that Jesus sat at meat in the Pharisee’s house, brought an alabaster box of ointment,
     translation: King James Version
     web: Behold, a woman in the city who was a sinner, when she knew that he was reclining in the Pharisee’s house, brought an alabaster jar of ointment.
+    people:
+    - simon_2751
     event: Anointed by a Sinner Woman
   relations:
   - predicate: IN
@@ -6965,6 +6969,8 @@
     text: 'Now when the Pharisee which had bidden him saw it, he spake within himself, saying, This man, if he were a prophet, would have known who and what manner of woman this is that toucheth him: for she is a sinner.'
     translation: King James Version
     web: Now when the Pharisee who had invited him saw it, he said to himself, “This man, if he were a prophet, would have perceived who and what kind of woman this is who touches him, that she is a sinner.”
+    people:
+    - simon_2751
     event: Anointed by a Sinner Woman
   relations:
   - predicate: IN
@@ -6986,7 +6992,7 @@
     web: Jesus answered him, “Simon, I have something to tell you.” He said, “Teacher, say on.”
     people:
     - jesus_905
-    - simon_2750
+    - simon_2751
     event: Anointed by a Sinner Woman
   relations:
   - predicate: IN
@@ -7045,7 +7051,7 @@
     translation: King James Version
     web: Simon answered, “He, I suppose, to whom he forgave the most.” He said to him, “You have judged correctly.”
     people:
-    - simon_2750
+    - simon_2751
     event: Anointed by a Sinner Woman
   relations:
   - predicate: IN
@@ -7066,7 +7072,7 @@
     translation: King James Version
     web: Turning to the woman, he said to Simon, “Do you see this woman? I entered into your house, and you gave me no water for my feet, but she has wet my feet with her tears, and wiped them with the hair of her head.
     people:
-    - simon_2750
+    - simon_2751
     event: Anointed by a Sinner Woman
   relations:
   - predicate: IN
@@ -8844,7 +8850,7 @@
     - peter_2745
     - john_1677
     - james_717
-    event: The Transfiguation
+    event: The Transfiguration
   relations:
   - predicate: IN
     to:
@@ -8863,7 +8869,7 @@
     text: And as he prayed, the fashion of his countenance was altered, and his raiment was white and glistering.
     translation: King James Version
     web: As he was praying, the appearance of his face was altered, and his clothing became white and dazzling.
-    event: The Transfiguation
+    event: The Transfiguration
   relations:
   - predicate: IN
     to:
@@ -8885,7 +8891,7 @@
     people:
     - moses_2108
     - elijah_1131
-    event: The Transfiguation
+    event: The Transfiguration
   relations:
   - predicate: IN
     to:
@@ -8904,7 +8910,7 @@
     text: Who appeared in glory, and spake of his decease which he should accomplish at Jerusalem.
     translation: King James Version
     web: who appeared in glory and spoke of his departure, which he was about to accomplish at Jerusalem.
-    event: The Transfiguation
+    event: The Transfiguration
   relations:
   - predicate: IN
     to:
@@ -8925,7 +8931,7 @@
     web: Now Peter and those who were with him were heavy with sleep, but when they were fully awake, they saw his glory, and the two men who stood with him.
     people:
     - peter_2745
-    event: The Transfiguation
+    event: The Transfiguration
   relations:
   - predicate: IN
     to:
@@ -8949,7 +8955,7 @@
     - moses_2108
     - elijah_1131
     - jesus_905
-    event: The Transfiguation
+    event: The Transfiguration
   relations:
   - predicate: IN
     to:
@@ -8968,7 +8974,7 @@
     text: 'While he thus spake, there came a cloud, and overshadowed them: and they feared as they entered into the cloud.'
     translation: King James Version
     web: While he said these things, a cloud came and overshadowed them, and they were afraid as they entered into the cloud.
-    event: The Transfiguation
+    event: The Transfiguration
   relations:
   - predicate: IN
     to:
@@ -8989,7 +8995,7 @@
     web: A voice came out of the cloud, saying, “This is my beloved Son. Listen to him!”
     people:
     - jesus_905
-    event: The Transfiguation
+    event: The Transfiguration
   relations:
   - predicate: IN
     to:
@@ -9010,7 +9016,7 @@
     web: When the voice came, Jesus was found alone. They were silent, and told no one in those days any of the things which they had seen.
     people:
     - jesus_905
-    event: The Transfiguation
+    event: The Transfiguration
   relations:
   - predicate: IN
     to:
@@ -13275,7 +13281,7 @@
     ordinal: 25553
     text: O Jerusalem, Jerusalem, which killest the prophets, and stonest them that are sent unto thee; how often would I have gathered thy children together, as a hen doth gather her brood under her wings, and ye would not!
     translation: King James Version
-    web: “Jerusalem, Jerusalem, you who kills the prophets and stones those who are sent to her! How often I wanted to gather your children together, like a hen gathers her own brood under her wings, and you refused!
+    web: “Jerusalem, Jerusalem, the city that kills the prophets and stones those who are sent to her! How often I wanted to gather your children together, like a hen gathers her own brood under her wings, and you refused!
     people:
     - josiah_1731
     event: Teaching and Healing in Perea to Jerusalem
@@ -16832,7 +16838,7 @@
     text: And Jesus entered and passed through Jericho.
     translation: King James Version
     web: He entered and was passing through Jericho.
-    event: Zaccheus Converted and Parable of the Pounds
+    event: Zacchaeus Converted and Parable of the Pounds
   relations:
   - predicate: IN
     to:
@@ -16853,7 +16859,7 @@
     web: There was a man named Zacchaeus. He was a chief tax collector, and he was rich.
     people:
     - zacchaeus_2961
-    event: Zaccheus Converted and Parable of the Pounds
+    event: Zacchaeus Converted and Parable of the Pounds
   relations:
   - predicate: IN
     to:
@@ -16874,7 +16880,7 @@
     web: He was trying to see who Jesus was, and couldn’t because of the crowd, because he was short.
     people:
     - jesus_905
-    event: Zaccheus Converted and Parable of the Pounds
+    event: Zacchaeus Converted and Parable of the Pounds
   relations:
   - predicate: IN
     to:
@@ -16893,7 +16899,7 @@
     text: 'And he ran before, and climbed up into a sycomore tree to see him: for he was to pass that way.'
     translation: King James Version
     web: He ran on ahead and climbed up into a sycamore tree to see him, for he was going to pass that way.
-    event: Zaccheus Converted and Parable of the Pounds
+    event: Zacchaeus Converted and Parable of the Pounds
   relations:
   - predicate: IN
     to:
@@ -16915,7 +16921,7 @@
     people:
     - zacchaeus_2961
     - jesus_905
-    event: Zaccheus Converted and Parable of the Pounds
+    event: Zacchaeus Converted and Parable of the Pounds
   relations:
   - predicate: IN
     to:
@@ -16934,7 +16940,7 @@
     text: And he made haste, and came down, and received him joyfully.
     translation: King James Version
     web: He hurried, came down, and received him joyfully.
-    event: Zaccheus Converted and Parable of the Pounds
+    event: Zacchaeus Converted and Parable of the Pounds
   relations:
   - predicate: IN
     to:
@@ -16953,7 +16959,7 @@
     text: And when they saw it, they all murmured, saying, That he was gone to be guest with a man that is a sinner.
     translation: King James Version
     web: When they saw it, they all murmured, saying, “He has gone in to lodge with a man who is a sinner.”
-    event: Zaccheus Converted and Parable of the Pounds
+    event: Zacchaeus Converted and Parable of the Pounds
   relations:
   - predicate: IN
     to:
@@ -16975,7 +16981,7 @@
     people:
     - zacchaeus_2961
     - jesus_905
-    event: Zaccheus Converted and Parable of the Pounds
+    event: Zacchaeus Converted and Parable of the Pounds
   relations:
   - predicate: IN
     to:
@@ -16997,7 +17003,7 @@
     people:
     - abraham_58
     - jesus_905
-    event: Zaccheus Converted and Parable of the Pounds
+    event: Zacchaeus Converted and Parable of the Pounds
   relations:
   - predicate: IN
     to:
@@ -17018,7 +17024,7 @@
     web: For the Son of Man came to seek and to save that which was lost.”
     people:
     - jesus_905
-    event: Zaccheus Converted and Parable of the Pounds
+    event: Zacchaeus Converted and Parable of the Pounds
   relations:
   - predicate: IN
     to:
@@ -17039,7 +17045,7 @@
     web: As they heard these things, he went on and told a parable, because he was near Jerusalem, and they supposed that God’s Kingdom would be revealed immediately.
     people:
     - god_1324
-    event: Zaccheus Converted and Parable of the Pounds
+    event: Zacchaeus Converted and Parable of the Pounds
   relations:
   - predicate: IN
     to:
@@ -17058,7 +17064,7 @@
     text: He said therefore, A certain nobleman went into a far country to receive for himself a kingdom, and to return.
     translation: King James Version
     web: He said therefore, “A certain nobleman went into a far country to receive for himself a kingdom and to return.
-    event: Zaccheus Converted and Parable of the Pounds
+    event: Zacchaeus Converted and Parable of the Pounds
   relations:
   - predicate: IN
     to:
@@ -17077,7 +17083,7 @@
     text: And he called his ten servants, and delivered them ten pounds, and said unto them, Occupy till I come.
     translation: King James Version
     web: He called ten servants of his and gave them ten mina coins, and told them, ‘Conduct business until I come.’
-    event: Zaccheus Converted and Parable of the Pounds
+    event: Zacchaeus Converted and Parable of the Pounds
   relations:
   - predicate: IN
     to:
@@ -17096,7 +17102,7 @@
     text: But his citizens hated him, and sent a message after him, saying, We will not have this man to reign over us.
     translation: King James Version
     web: But his citizens hated him, and sent an envoy after him, saying, ‘We don’t want this man to reign over us.’
-    event: Zaccheus Converted and Parable of the Pounds
+    event: Zacchaeus Converted and Parable of the Pounds
   relations:
   - predicate: IN
     to:
@@ -17115,7 +17121,7 @@
     text: And it came to pass, that when he was returned, having received the kingdom, then he commanded these servants to be called unto him, to whom he had given the money, that he might know how much every man had gained by trading.
     translation: King James Version
     web: “When he had come back again, having received the kingdom, he commanded these servants, to whom he had given the money, to be called to him, that he might know what they had gained by conducting business.
-    event: Zaccheus Converted and Parable of the Pounds
+    event: Zacchaeus Converted and Parable of the Pounds
   relations:
   - predicate: IN
     to:
@@ -17136,7 +17142,7 @@
     web: The first came before him, saying, ‘Lord, your mina has made ten more minas.’
     people:
     - jesus_905
-    event: Zaccheus Converted and Parable of the Pounds
+    event: Zacchaeus Converted and Parable of the Pounds
   relations:
   - predicate: IN
     to:
@@ -17155,7 +17161,7 @@
     text: 'And he said unto him, Well, thou good servant: because thou hast been faithful in a very little, have thou authority over ten cities.'
     translation: King James Version
     web: “He said to him, ‘Well done, you good servant! Because you were found faithful with very little, you shall have authority over ten cities.’
-    event: Zaccheus Converted and Parable of the Pounds
+    event: Zacchaeus Converted and Parable of the Pounds
   relations:
   - predicate: IN
     to:
@@ -17176,7 +17182,7 @@
     web: “The second came, saying, ‘Your mina, Lord, has made five minas.’
     people:
     - jesus_905
-    event: Zaccheus Converted and Parable of the Pounds
+    event: Zacchaeus Converted and Parable of the Pounds
   relations:
   - predicate: IN
     to:
@@ -17195,7 +17201,7 @@
     text: And he said likewise to him, Be thou also over five cities.
     translation: King James Version
     web: “So he said to him, ‘And you are to be over five cities.’
-    event: Zaccheus Converted and Parable of the Pounds
+    event: Zacchaeus Converted and Parable of the Pounds
   relations:
   - predicate: IN
     to:
@@ -17216,7 +17222,7 @@
     web: Another came, saying, ‘Lord, behold, your mina, which I kept laid away in a handkerchief,
     people:
     - jesus_905
-    event: Zaccheus Converted and Parable of the Pounds
+    event: Zacchaeus Converted and Parable of the Pounds
   relations:
   - predicate: IN
     to:
@@ -17235,7 +17241,7 @@
     text: 'For I feared thee, because thou art an austere man: thou takest up that thou layedst not down, and reapest that thou didst not sow.'
     translation: King James Version
     web: for I feared you, because you are an exacting man. You take up that which you didn’t lay down, and reap that which you didn’t sow.’
-    event: Zaccheus Converted and Parable of the Pounds
+    event: Zacchaeus Converted and Parable of the Pounds
   relations:
   - predicate: IN
     to:
@@ -17254,7 +17260,7 @@
     text: 'And he saith unto him, Out of thine own mouth will I judge thee, thou wicked servant. Thou knewest that I was an austere man, taking up that I laid not down, and reaping that I did not sow:'
     translation: King James Version
     web: “He said to him, ‘Out of your own mouth I will judge you, you wicked servant! You knew that I am an exacting man, taking up that which I didn’t lay down and reaping that which I didn’t sow.
-    event: Zaccheus Converted and Parable of the Pounds
+    event: Zacchaeus Converted and Parable of the Pounds
   relations:
   - predicate: IN
     to:
@@ -17273,7 +17279,7 @@
     text: Wherefore then gavest not thou my money into the bank, that at my coming I might have required mine own with usury?
     translation: King James Version
     web: Then why didn’t you deposit my money in the bank, and at my coming, I might have earned interest on it?’
-    event: Zaccheus Converted and Parable of the Pounds
+    event: Zacchaeus Converted and Parable of the Pounds
   relations:
   - predicate: IN
     to:
@@ -17292,7 +17298,7 @@
     text: And he said unto them that stood by, Take from him the pound, and give it to him that hath ten pounds.
     translation: King James Version
     web: He said to those who stood by, ‘Take the mina away from him and give it to him who has the ten minas.’
-    event: Zaccheus Converted and Parable of the Pounds
+    event: Zacchaeus Converted and Parable of the Pounds
   relations:
   - predicate: IN
     to:
@@ -17313,7 +17319,7 @@
     web: “They said to him, ‘Lord, he has ten minas!’
     people:
     - jesus_905
-    event: Zaccheus Converted and Parable of the Pounds
+    event: Zacchaeus Converted and Parable of the Pounds
   relations:
   - predicate: IN
     to:
@@ -17332,7 +17338,7 @@
     text: For I say unto you, That unto every one which hath shall be given; and from him that hath not, even that he hath shall be taken away from him.
     translation: King James Version
     web: ‘For I tell you that to everyone who has, will more be given; but from him who doesn’t have, even that which he has will be taken away from him.
-    event: Zaccheus Converted and Parable of the Pounds
+    event: Zacchaeus Converted and Parable of the Pounds
   relations:
   - predicate: IN
     to:
@@ -17351,7 +17357,7 @@
     text: But those mine enemies, which would not that I should reign over them, bring hither, and slay them before me.
     translation: King James Version
     web: But bring those enemies of mine who didn’t want me to reign over them here, and kill them before me.’”
-    event: Zaccheus Converted and Parable of the Pounds
+    event: Zacchaeus Converted and Parable of the Pounds
   relations:
   - predicate: IN
     to:
@@ -17370,7 +17376,7 @@
     text: And when he had thus spoken, he went before, ascending up to Jerusalem.
     translation: King James Version
     web: Having said these things, he went on ahead, going up to Jerusalem.
-    event: Zaccheus Converted and Parable of the Pounds
+    event: Zacchaeus Converted and Parable of the Pounds
   relations:
   - predicate: IN
     to:

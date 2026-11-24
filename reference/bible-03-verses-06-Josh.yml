@@ -1147,7 +1147,7 @@
     ordinal: 5908
     text: And it came to pass, when the people removed from their tents, to pass over Jordan, and the priests bearing the ark of the covenant before the people;
     translation: King James Version
-    web: When the people moved from their tents to pass over the Jordan, the priests who bore the ark of the covenant being before the people,
+    web: When the people moved from their tents to pass over the Jordan, the priests who bore the ark of the covenant went before the people.
     event: Crossing the Jordan into Canaan
   relations:
   - predicate: IN
@@ -1166,7 +1166,7 @@
     ordinal: 5909
     text: And as they that bare the ark were come unto Jordan, and the feet of the priests that bare the ark were dipped in the brim of the water, (for Jordan overfloweth all his banks all the time of harvest,)
     translation: King James Version
-    web: and when those who bore the ark had come to the Jordan, and the feet of the priests who bore the ark had dipped in the edge of the water (for the Jordan overflows all its banks all the time of harvest),
+    web: When those who bore the ark had come to the Jordan, and the feet of the priests who bore the ark had dipped in the edge of the water (for the Jordan overflows all its banks all the time of harvest),
     event: Crossing the Jordan into Canaan
   relations:
   - predicate: IN
@@ -9059,7 +9059,7 @@
     ordinal: 6294
     text: 'But the mountain shall be thine; for it is a wood, and thou shalt cut it down: and the outgoings of it shall be thine: for thou shalt drive out the Canaanites, though they have iron chariots, and though they be strong.'
     translation: King James Version
-    web: but the hill country shall be yours. Although it is a forest, you shall cut it down, and it’s farthest extent shall be yours; for you shall drive out the Canaanites, though they have chariots of iron, and though they are strong.”
+    web: but the hill country shall be yours. Although it is a forest, you shall cut it down, and its farthest extent shall be yours; for you shall drive out the Canaanites, though they have chariots of iron, and though they are strong.”
   relations:
   - predicate: IN
     to:
@@ -13287,7 +13287,7 @@
     - joshua_1727
     - nun_2214
     - god_1324
-    event: Death of Joshua
+    event: Death of Joshua,Birth of Joshua,Lifetime of Joshua
   relations:
   - predicate: IN
     to:

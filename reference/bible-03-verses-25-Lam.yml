@@ -412,7 +412,7 @@
     ordinal: 20333
     text: 'Let all their wickedness come before thee; and do unto them, as thou hast done unto me for all my transgressions: for my sighs are many, and my heart is faint.'
     translation: King James Version
-    web: “Let all their wickedness come before you. Do to them as you have done to me for all my transgressions. For my sighs are many, and my heart is faint.
+    web: “Let all their wickedness come before you. Do to them as you have done to me for all my transgressions. For my sighs are many, and my heart is faint.”
   relations:
   - predicate: IN
     to:
@@ -833,7 +833,7 @@
     ordinal: 20355
     text: 'Thou hast called as in a solemn day my terrors round about, so that in the day of the LORD’S anger none escaped nor remained: those that I have swaddled and brought up hath mine enemy consumed.'
     translation: King James Version
-    web: “You have called, as in the day of a solemn assembly, my terrors on every side. There was no one that escaped or remained in the day of the LORD’s anger. My enemy has consumed those whom I have cared for and brought up.
+    web: “You have called, as in the day of a solemn assembly, my terrors on every side. There was no one that escaped or remained in the day of the LORD’s anger. My enemy has consumed those whom I have cared for and brought up.”
     people:
     - god_1324
   relations:
@@ -2329,7 +2329,7 @@
     ordinal: 20436
     text: 'They cried unto them, Depart ye; it is unclean; depart, depart, touch not: when they fled away and wandered, they said among the heathen, They shall no more sojourn there.'
     translation: King James Version
-    web: “Go away!” they cried to them. “Unclean! Go away! Go away! Don’t touch! When they fled away and wandered, men said among the nations, “They can’t live here any more.”
+    web: “Go away!” they cried to them. “Unclean! Go away! Go away! Don’t touch!” When they fled away and wandered, men said among the nations, “They can’t live here any more.”
   relations:
   - predicate: IN
     to:

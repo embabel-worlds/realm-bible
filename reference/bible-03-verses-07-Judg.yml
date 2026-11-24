@@ -883,7 +883,7 @@
     - joshua_1727
     - nun_2214
     - god_1324
-    event: Death of Joshua,Lifetime of Joshua
+    event: Death of Joshua,Lifetime of Joshua,Birth of Joshua
   relations:
   - predicate: IN
     to:
@@ -4121,7 +4121,7 @@
     ordinal: 6706
     text: And thou shalt hear what they say; and afterward shall thine hands be strengthened to go down unto the host. Then went he down with Phurah his servant unto the outside of the armed men that were in the host.
     translation: King James Version
-    web: You will hear what they say; and afterward your hands will be strengthened to go down into the camp.” Then went he down with Purah his servant to the outermost part of the armed men who were in the camp.
+    web: You will hear what they say; and afterward your hands will be strengthened to go down into the camp.” Then he went down with Purah his servant to the outermost part of the armed men who were in the camp.
     people:
     - phurah_2353
     event: Deliverance by Gideon
@@ -9649,7 +9649,7 @@
     people:
     - dagon_969
     - samson_2468
-    event: Sampson destroys Temple of Dagon
+    event: Samson destroys Temple of Dagon
   relations:
   - predicate: IN
     to:
@@ -9668,7 +9668,7 @@
     text: 'And when the people saw him, they praised their god: for they said, Our god hath delivered into our hands our enemy, and the destroyer of our country, which slew many of us.'
     translation: King James Version
     web: When the people saw him, they praised their god; for they said, “Our god has delivered our enemy and the destroyer of our country, who has slain many of us, into our hand.”
-    event: Sampson destroys Temple of Dagon
+    event: Samson destroys Temple of Dagon
   relations:
   - predicate: IN
     to:
@@ -9689,7 +9689,7 @@
     web: When their hearts were merry, they said, “Call for Samson, that he may entertain us.” They called for Samson out of the prison; and he performed before them. They set him between the pillars;
     people:
     - samson_2468
-    event: Sampson destroys Temple of Dagon
+    event: Samson destroys Temple of Dagon
   relations:
   - predicate: IN
     to:
@@ -9710,7 +9710,7 @@
     web: and Samson said to the boy who held him by the hand, “Allow me to feel the pillars on which the house rests, that I may lean on them.”
     people:
     - samson_2468
-    event: Sampson destroys Temple of Dagon
+    event: Samson destroys Temple of Dagon
   relations:
   - predicate: IN
     to:
@@ -9731,7 +9731,7 @@
     web: Now the house was full of men and women; and all the lords of the Philistines were there; and there were on the roof about three thousand men and women, who saw while Samson performed.
     people:
     - samson_2468
-    event: Sampson destroys Temple of Dagon
+    event: Samson destroys Temple of Dagon
   relations:
   - predicate: IN
     to:
@@ -9753,7 +9753,7 @@
     people:
     - samson_2468
     - god_1324
-    event: Sampson destroys Temple of Dagon
+    event: Samson destroys Temple of Dagon
   relations:
   - predicate: IN
     to:
@@ -9774,7 +9774,7 @@
     web: Samson took hold of the two middle pillars on which the house rested and leaned on them, the one with his right hand and the other with his left.
     people:
     - samson_2468
-    event: Sampson destroys Temple of Dagon
+    event: Samson destroys Temple of Dagon
   relations:
   - predicate: IN
     to:
@@ -9795,7 +9795,7 @@
     web: Samson said, “Let me die with the Philistines!” He bowed himself with all his might; and the house fell on the lords, and on all the people who were in it. So the dead that he killed at his death were more than those who he killed in his life.
     people:
     - samson_2468
-    event: Sampson destroys Temple of Dagon
+    event: Samson destroys Temple of Dagon
   relations:
   - predicate: IN
     to:
@@ -9816,7 +9816,7 @@
     web: Then his brothers and all the house of his father came down and took him, and brought him up and buried him between Zorah and Eshtaol in the burial site of Manoah his father. He judged Israel twenty years.
     people:
     - manoah_1933
-    event: Sampson destroys Temple of Dagon,Judgeship of Samson
+    event: Samson destroys Temple of Dagon,Judgeship of Samson
   relations:
   - predicate: IN
     to:

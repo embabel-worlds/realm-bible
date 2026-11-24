@@ -3485,7 +3485,7 @@
     web: But one stood up in the council, a Pharisee named Gamaliel, a teacher of the law, honored by all the people, and commanded to put the apostles out for a little while.
     people:
     - gamaliel_1277
-    event: Gamaliel advises the counsel and Apostles freed
+    event: Gamaliel advises the council and Apostles freed
   relations:
   - predicate: IN
     to:
@@ -3504,7 +3504,7 @@
     text: And said unto them, Ye men of Israel, take heed to yourselves what ye intend to do as touching these men.
     translation: King James Version
     web: He said to them, “You men of Israel, be careful concerning these men, what you are about to do.
-    event: Gamaliel advises the counsel and Apostles freed
+    event: Gamaliel advises the council and Apostles freed
   relations:
   - predicate: IN
     to:
@@ -3525,7 +3525,7 @@
     web: For before these days Theudas rose up, making himself out to be somebody; to whom a number of men, about four hundred, joined themselves. He was slain; and all, as many as obeyed him, were dispersed and came to nothing.
     people:
     - theudas_2850
-    event: Gamaliel advises the counsel and Apostles freed
+    event: Gamaliel advises the council and Apostles freed
   relations:
   - predicate: IN
     to:
@@ -3546,7 +3546,7 @@
     web: After this man, Judas of Galilee rose up in the days of the enrollment, and drew away some people after him. He also perished, and all, as many as obeyed him, were scattered abroad.
     people:
     - judas_1757
-    event: Gamaliel advises the counsel and Apostles freed
+    event: Gamaliel advises the council and Apostles freed
   relations:
   - predicate: IN
     to:
@@ -3565,7 +3565,7 @@
     text: 'And now I say unto you, Refrain from these men, and let them alone: for if this counsel or this work be of men, it will come to nought:'
     translation: King James Version
     web: Now I tell you, withdraw from these men and leave them alone. For if this counsel or this work is of men, it will be overthrown.
-    event: Gamaliel advises the counsel and Apostles freed
+    event: Gamaliel advises the council and Apostles freed
   relations:
   - predicate: IN
     to:
@@ -3586,7 +3586,7 @@
     web: But if it is of God, you will not be able to overthrow it, and you would be found even to be fighting against God!”
     people:
     - god_1324
-    event: Gamaliel advises the counsel and Apostles freed
+    event: Gamaliel advises the council and Apostles freed
   relations:
   - predicate: IN
     to:
@@ -3607,7 +3607,7 @@
     web: They agreed with him. Summoning the apostles, they beat them and commanded them not to speak in the name of Jesus, and let them go.
     people:
     - jesus_905
-    event: Gamaliel advises the counsel and Apostles freed
+    event: Gamaliel advises the council and Apostles freed
   relations:
   - predicate: IN
     to:
@@ -3626,7 +3626,7 @@
     text: And they departed from the presence of the council, rejoicing that they were counted worthy to suffer shame for his name.
     translation: King James Version
     web: They therefore departed from the presence of the council, rejoicing that they were counted worthy to suffer dishonor for Jesus’ name.
-    event: Gamaliel advises the counsel and Apostles freed
+    event: Gamaliel advises the council and Apostles freed
   relations:
   - predicate: IN
     to:
@@ -3647,7 +3647,7 @@
     web: Every day, in the temple and at home, they never stopped teaching and preaching Jesus, the Christ.
     people:
     - jesus_905
-    event: Gamaliel advises the counsel and Apostles freed
+    event: Gamaliel advises the council and Apostles freed
   relations:
   - predicate: IN
     to:
@@ -7058,7 +7058,7 @@
     ordinal: 27266
     text: 'He lodgeth with one Simon a tanner, whose house is by the sea side: he shall tell thee what thou oughtest to do.'
     translation: King James Version
-    web: He is staying with a tanner named Simon, whose house is by the seaside.
+    web: He is staying with a tanner named Simon, whose house is by the seaside.”
     people:
     - simon_2753
     event: Peter meets Cornelius

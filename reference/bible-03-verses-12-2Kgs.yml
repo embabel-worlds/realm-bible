@@ -2638,7 +2638,7 @@
     ordinal: 9661
     text: And his servants came near, and spake unto him, and said, My father, if the prophet had bid thee do some great thing, wouldest thou not have done it? how much rather then, when he saith to thee, Wash, and be clean?
     translation: King James Version
-    web: His servants came near and spoke to him, and said, “My father, if the prophet had asked you do some great thing, wouldn’t you have done it? How much rather then, when he says to you, ‘Wash, and be clean’?”
+    web: His servants came near and spoke to him, and said, “My father, if the prophet had asked you to do some great thing, wouldn’t you have done it? How much rather then, when he says to you, ‘Wash, and be clean’?”
     event: Prophecies of Elijah
   relations:
   - predicate: IN
@@ -2657,7 +2657,7 @@
     ordinal: 9662
     text: 'Then went he down, and dipped himself seven times in Jordan, according to the saying of the man of God: and his flesh came again like unto the flesh of a little child, and he was clean.'
     translation: King James Version
-    web: Then went he down and dipped himself seven times in the Jordan, according to the saying of the man of God; and his flesh was restored like the flesh of a little child, and he was clean.
+    web: Then he went down and dipped himself seven times in the Jordan, according to the saying of the man of God; and his flesh was restored like the flesh of a little child, and he was clean.
     people:
     - god_1324
     event: Prophecies of Elijah
@@ -5020,7 +5020,7 @@
     ordinal: 9775
     text: So there went one on horseback to meet him, and said, Thus saith the king, Is it peace? And Jehu said, What hast thou to do with peace? turn thee behind me. And the watchman told, saying, The messenger came to them, but he cometh not again.
     translation: King James Version
-    web: So one went on horseback to meet him, and said, “the king says, ‘Is it peace?’” Jehu said, “What do you have to do with peace? Fall in behind me!” The watchman said, “The messenger came to them, but he isn’t coming back.”
+    web: So one went on horseback to meet him, and said, “The king says, ‘Is it peace?’” Jehu said, “What do you have to do with peace? Fall in behind me!” The watchman said, “The messenger came to them, but he isn’t coming back.”
     people:
     - jehu_817
     event: Reign of Jehu
@@ -7371,7 +7371,7 @@
     people:
     - joash_1633
     - jeroboam_873
-    event: Reign of Jehoash,Death of Jehoahash
+    event: Reign of Jehoash,Death of Jehoash
   relations:
   - predicate: IN
     to:
@@ -11628,7 +11628,7 @@
     ordinal: 10083
     text: This is the word that the LORD hath spoken concerning him; The virgin the daughter of Zion hath despised thee, and laughed thee to scorn; the daughter of Jerusalem hath shaken her head at thee.
     translation: King James Version
-    web: 'This is the word that the LORD has spoken concerning him: ‘The virgin daughter of Zion has despised you and ridiculed you. The daughter of Jerusalem has shaken her head at you.'
+    web: 'This is the word that the LORD has spoken concerning him: The virgin daughter of Zion has despised you and ridiculed you. The daughter of Jerusalem has shaken her head at you.'
     people:
     - god_1324
     event: Reign of Hezekiah
@@ -14085,7 +14085,7 @@
     - jehoahaz_2516
     - hamutal_1368
     - jeremiah_848
-    event: Reign of Johoahaz (Shallum)
+    event: Reign of Jehoahaz (Shallum)
   relations:
   - predicate: IN
     to:
@@ -14106,7 +14106,7 @@
     web: He did that which was evil in the LORD’s sight, according to all that his fathers had done.
     people:
     - god_1324
-    event: Reign of Johoahaz (Shallum)
+    event: Reign of Jehoahaz (Shallum)
   relations:
   - predicate: IN
     to:
@@ -14127,7 +14127,7 @@
     web: Pharaoh Necoh put him in bonds at Riblah in the land of Hamath, that he might not reign in Jerusalem; and put the land to a tribute of one hundred talents of silver and a talent of gold.
     people:
     - pharaoh-nechoh_2337
-    event: Reign of Johoahaz (Shallum)
+    event: Reign of Jehoahaz (Shallum)
   relations:
   - predicate: IN
     to:
@@ -14151,7 +14151,7 @@
     - jehoiakim_1085
     - josiah_1730
     - jehoahaz_2516
-    event: Reign of Johoahaz (Shallum)
+    event: Reign of Jehoahaz (Shallum)
   relations:
   - predicate: IN
     to:
@@ -14173,7 +14173,7 @@
     people:
     - jehoiakim_1085
     - pharaoh-nechoh_2337
-    event: Reign of Johoahaz (Shallum)
+    event: Reign of Jehoahaz (Shallum)
   relations:
   - predicate: IN
     to:
@@ -14239,7 +14239,7 @@
     people:
     - nebuchadnezzar_2167
     - jehoiakim_1085
-    event: Reign of Jehoiakim
+    event: Reign of Jehoiakim,Jehoiakim becomes Nebuchadnezzar's servant
   relations:
   - predicate: IN
     to:
@@ -14260,7 +14260,7 @@
     web: The LORD sent against him bands of the Chaldeans, bands of the Syrians, bands of the Moabites, and bands of the children of Ammon, and sent them against Judah to destroy it, according to the LORD’s word which he spoke by his servants the prophets.
     people:
     - god_1324
-    event: Reign of Jehoiakim
+    event: Reign of Jehoiakim,Chaldean raiders take captives from Judah
   relations:
   - predicate: IN
     to:
@@ -14346,7 +14346,7 @@
     people:
     - jehoiakim_1085
     - jehoiachin_791
-    event: Reign of Jehoiakim
+    event: Reign of Jehoiakim,Death of Jehoiakim
   relations:
   - predicate: IN
     to:
@@ -14365,7 +14365,7 @@
     text: 'And the king of Egypt came not again any more out of his land: for the king of Babylon had taken from the river of Egypt unto the river Euphrates all that pertained to the king of Egypt.'
     translation: King James Version
     web: The king of Egypt didn’t come out of his land any more; for the king of Babylon had taken, from the brook of Egypt to the river Euphrates, all that belonged to the king of Egypt.
-    event: Reign of Jehoiakim
+    event: Reign of Jehoiakim,Nebuchadnezzar defeats Pharaoh-nechoh at Carchemish
   relations:
   - predicate: IN
     to:
@@ -14430,7 +14430,7 @@
     web: At that time the servants of Nebuchadnezzar king of Babylon came up to Jerusalem, and the city was besieged.
     people:
     - nebuchadnezzar_2167
-    event: Reign of Jeconiah
+    event: Reign of Jeconiah,Second deportation to Babylon
   relations:
   - predicate: IN
     to:
@@ -14451,7 +14451,7 @@
     web: Nebuchadnezzar king of Babylon came to the city while his servants were besieging it,
     people:
     - nebuchadnezzar_2167
-    event: Reign of Jeconiah
+    event: Reign of Jeconiah,Second deportation to Babylon
   relations:
   - predicate: IN
     to:
@@ -14472,7 +14472,7 @@
     web: and Jehoiachin the king of Judah went out to the king of Babylon—he, his mother, his servants, his princes, and his officers; and the king of Babylon captured him in the eighth year of his reign.
     people:
     - jehoiachin_791
-    event: Reign of Jeconiah
+    event: Reign of Jeconiah,Second deportation to Babylon
   relations:
   - predicate: IN
     to:
@@ -14494,7 +14494,7 @@
     people:
     - solomon_2762
     - god_1324
-    event: Reign of Jeconiah
+    event: Reign of Jeconiah,Second deportation to Babylon
   relations:
   - predicate: IN
     to:
@@ -14513,7 +14513,7 @@
     text: 'And he carried away all Jerusalem, and all the princes, and all the mighty men of valour, even ten thousand captives, and all the craftsmen and smiths: none remained, save the poorest sort of the people of the land.'
     translation: King James Version
     web: He carried away all Jerusalem, and all the princes, and all the mighty men of valor, even ten thousand captives, and all the craftsmen and the smiths. No one remained except the poorest people of the land.
-    event: Reign of Jeconiah
+    event: Reign of Jeconiah,Second deportation to Babylon
   relations:
   - predicate: IN
     to:
@@ -14534,7 +14534,7 @@
     web: He carried away Jehoiachin to Babylon, with the king’s mother, the king’s wives, his officers, and the chief men of the land. He carried them into captivity from Jerusalem to Babylon.
     people:
     - jehoiachin_791
-    event: Reign of Jeconiah
+    event: Reign of Jeconiah,Second deportation to Babylon
   relations:
   - predicate: IN
     to:
@@ -14553,7 +14553,7 @@
     text: And all the men of might, even seven thousand, and craftsmen and smiths a thousand, all that were strong and apt for war, even them the king of Babylon brought captive to Babylon.
     translation: King James Version
     web: All the men of might, even seven thousand, and the craftsmen and the smiths one thousand, all of them strong and fit for war, even them the king of Babylon brought captive to Babylon.
-    event: Reign of Jeconiah
+    event: Reign of Jeconiah,Second deportation to Babylon
   relations:
   - predicate: IN
     to:
@@ -14641,7 +14641,7 @@
     people:
     - zedekiah_1950
     - god_1324
-    event: Reign of Zedekiah
+    event: Reign of Zedekiah,Zedekiah rebels against Nebuchadnezzar
   relations:
   - predicate: IN
     to:
@@ -14662,7 +14662,7 @@
     web: In the ninth year of his reign, in the tenth month, in the tenth day of the month, Nebuchadnezzar king of Babylon came, he and all his army, against Jerusalem, and encamped against it; and they built forts against it around it.
     people:
     - nebuchadnezzar_2167
-    event: Reign of Zedekiah
+    event: Reign of Zedekiah,Nebuchadnezzar besieges Jerusalem
   relations:
   - predicate: IN
     to:
@@ -14683,7 +14683,7 @@
     web: So the city was besieged until the eleventh year of King Zedekiah.
     people:
     - zedekiah_1950
-    event: Reign of Zedekiah
+    event: Reign of Zedekiah,Nebuchadnezzar besieges Jerusalem
   relations:
   - predicate: IN
     to:
@@ -14702,7 +14702,7 @@
     text: And on the ninth day of the fourth month the famine prevailed in the city, and there was no bread for the people of the land.
     translation: King James Version
     web: On the ninth day of the fourth month, the famine was severe in the city, so that there was no bread for the people of the land.
-    event: Reign of Zedekiah
+    event: Reign of Zedekiah,Fall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -14721,7 +14721,7 @@
     text: 'And the city was broken up, and all the men of war fled by night by the way of the gate between two walls, which is by the king’s garden: (now the Chaldees were against the city round about:) and the king went the way toward the plain.'
     translation: King James Version
     web: Then a breach was made in the city, and all the men of war fled by night by the way of the gate between the two walls, which was by the king’s garden (now the Chaldeans were against the city around it); and the king went by the way of the Arabah.
-    event: Reign of Zedekiah
+    event: Reign of Zedekiah,Fall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -14740,7 +14740,7 @@
     text: 'And the army of the Chaldees pursued after the king, and overtook him in the plains of Jericho: and all his army were scattered from him.'
     translation: King James Version
     web: But the Chaldean army pursued the king, and overtook him in the plains of Jericho; and all his army was scattered from him.
-    event: Reign of Zedekiah
+    event: Reign of Zedekiah,Fall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -14759,7 +14759,7 @@
     text: So they took the king, and brought him up to the king of Babylon to Riblah; and they gave judgment upon him.
     translation: King James Version
     web: Then they captured the king and carried him up to the king of Babylon to Riblah; and they passed judgment on him.
-    event: Reign of Zedekiah
+    event: Reign of Zedekiah,Fall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -14780,7 +14780,7 @@
     web: They killed Zedekiah’s sons before his eyes, then put out Zedekiah’s eyes, bound him in fetters, and carried him to Babylon.
     people:
     - zedekiah_1950
-    event: Reign of Zedekiah
+    event: Reign of Zedekiah,Fall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -14802,6 +14802,7 @@
     people:
     - nebuchadnezzar_2167
     - nebuzar-adan_2169
+    event: Fall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -14822,6 +14823,7 @@
     web: He burned the LORD’s house, the king’s house, and all the houses of Jerusalem. He burned every great house with fire.
     people:
     - god_1324
+    event: Fall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -14840,6 +14842,7 @@
     text: And all the army of the Chaldees, that were with the captain of the guard, brake down the walls of Jerusalem round about.
     translation: King James Version
     web: All the army of the Chaldeans, who were with the captain of the guard, broke down the walls around Jerusalem.
+    event: Fall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -14860,6 +14863,7 @@
     web: Nebuzaradan the captain of the guard carried away captive the rest of the people who were left in the city and those who had deserted to the king of Babylon—all the rest of the multitude.
     people:
     - nebuzar-adan_2169
+    event: Third deportation to Babylon
   relations:
   - predicate: IN
     to:
@@ -14878,6 +14882,7 @@
     text: But the captain of the guard left of the poor of the land to be vinedressers and husbandmen.
     translation: King James Version
     web: But the captain of the guard left some of the poorest of the land to work the vineyards and fields.
+    event: Third deportation to Babylon
   relations:
   - predicate: IN
     to:
@@ -14898,6 +14903,7 @@
     web: The Chaldeans broke up the pillars of bronze that were in the LORD’s house and the bases and the bronze sea that were in the LORD’s house, and carried the bronze pieces to Babylon.
     people:
     - god_1324
+    event: Fall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -14916,6 +14922,7 @@
     text: And the pots, and the shovels, and the snuffers, and the spoons, and all the vessels of brass wherewith they ministered, took they away.
     translation: King James Version
     web: They took away the pots, the shovels, the snuffers, the spoons, and all the vessels of bronze with which they ministered.
+    event: Fall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -14934,6 +14941,7 @@
     text: And the firepans, and the bowls, and such things as were of gold, in gold, and of silver, in silver, the captain of the guard took away.
     translation: King James Version
     web: The captain of the guard took away the fire pans, the basins, that which was of gold, for gold, and that which was of silver, for silver.
+    event: Fall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -14955,6 +14963,7 @@
     people:
     - solomon_2762
     - god_1324
+    event: Fall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -14973,6 +14982,7 @@
     text: 'The height of the one pillar was eighteen cubits, and the chapiter upon it was brass: and the height of the chapiter three cubits; and the wreathen work, and pomegranates upon the chapiter round about, all of brass: and like unto these had the second pillar with wreathen work.'
     translation: King James Version
     web: The height of the one pillar was eighteen cubits, and a capital of bronze was on it. The height of the capital was three cubits, with network and pomegranates on the capital around it, all of bronze; and the second pillar with its network was like these.
+    event: Fall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -14994,6 +15004,7 @@
     people:
     - seraiah_2494
     - zephaniah_3039
+    event: Third deportation to Babylon
   relations:
   - predicate: IN
     to:
@@ -15012,6 +15023,7 @@
     text: 'And out of the city he took an officer that was set over the men of war, and five men of them that were in the king’s presence, which were found in the city, and the principal scribe of the host, which mustered the people of the land, and threescore men of the people of the land that were found in the city:'
     translation: King James Version
     web: and out of the city he took an officer who was set over the men of war; and five men of those who saw the king’s face, who were found in the city; and the scribe, the captain of the army, who mustered the people of the land, and sixty men of the people of the land who were found in the city.
+    event: Third deportation to Babylon
   relations:
   - predicate: IN
     to:
@@ -15032,6 +15044,7 @@
     web: Nebuzaradan the captain of the guard took them, and brought them to the king of Babylon to Riblah.
     people:
     - nebuzar-adan_2169
+    event: Third deportation to Babylon
   relations:
   - predicate: IN
     to:
@@ -15050,6 +15063,7 @@
     text: And the king of Babylon smote them, and slew them at Riblah in the land of Hamath. So Judah was carried away out of their land.
     translation: King James Version
     web: The king of Babylon attacked them and put them to death at Riblah in the land of Hamath. So Judah was carried away captive out of his land.
+    event: Third deportation to Babylon
   relations:
   - predicate: IN
     to:
@@ -15073,6 +15087,7 @@
     - gedaliah_1287
     - ahikam_141
     - shaphan_2550
+    event: Gedaliah is made governor
   relations:
   - predicate: IN
     to:
@@ -15100,6 +15115,7 @@
     - seraiah_2495
     - tanhumeth_2824
     - jezaniah_667
+    event: Gedaliah is made governor
   relations:
   - predicate: IN
     to:
@@ -15120,6 +15136,7 @@
     web: Gedaliah swore to them and to their men, and said to them, “Don’t be afraid because of the servants of the Chaldeans. Dwell in the land and serve the king of Babylon, and it will be well with you.”
     people:
     - gedaliah_1287
+    event: Gedaliah is made governor
   relations:
   - predicate: IN
     to:
@@ -15143,6 +15160,7 @@
     - nethaniah_2198
     - elishama_1157
     - gedaliah_1287
+    event: Ishmael kills Gedaliah
   relations:
   - predicate: IN
     to:
@@ -15161,6 +15179,7 @@
     text: 'And all the people, both small and great, and the captains of the armies, arose, and came to Egypt: for they were afraid of the Chaldees.'
     translation: King James Version
     web: All the people, both small and great, and the captains of the forces arose and came to Egypt; for they were afraid of the Chaldeans.
+    event: The remnant flees to Egypt
   relations:
   - predicate: IN
     to:
@@ -15182,6 +15201,7 @@
     people:
     - jehoiachin_791
     - evil-merodach_1233
+    event: Jeconiah released from prison
   relations:
   - predicate: IN
     to:
@@ -15200,6 +15220,7 @@
     text: And he spake kindly to him, and set his throne above the throne of the kings that were with him in Babylon;
     translation: King James Version
     web: and he spoke kindly to him and set his throne above the throne of the kings who were with him in Babylon,
+    event: Jeconiah released from prison
   relations:
   - predicate: IN
     to:
@@ -15218,6 +15239,7 @@
     text: 'And changed his prison garments: and he did eat bread continually before him all the days of his life.'
     translation: King James Version
     web: and changed his prison garments. Jehoiachin ate bread before him continually all the days of his life;
+    event: Jeconiah released from prison
   relations:
   - predicate: IN
     to:
@@ -15236,6 +15258,7 @@
     text: And his allowance was a continual allowance given him of the king, a daily rate for every day, all the days of his life.
     translation: King James Version
     web: and for his allowance, there was a continual allowance given him from the king, every day a portion, all the days of his life.
+    event: Jeconiah released from prison
   relations:
   - predicate: IN
     to:

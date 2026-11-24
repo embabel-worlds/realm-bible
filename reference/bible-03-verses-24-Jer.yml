@@ -6908,7 +6908,7 @@
     ordinal: 19292
     text: This is thy lot, the portion of thy measures from me, saith the LORD; because thou hast forgotten me, and trusted in falsehood.
     translation: King James Version
-    web: This is your lot, the portion measured to you from me,” says the LORD, “because you have forgotten me, and trusted in falsehood.”
+    web: This is your lot, the portion measured to you from me,” says the LORD, “because you have forgotten me, and trusted in falsehood.
     people:
     - god_1324
     event: Prophecies of Jeremiah
@@ -7124,7 +7124,7 @@
     ordinal: 19303
     text: Why shouldest thou be as a man astonied, as a mighty man that cannot save? yet thou, O LORD, art in the midst of us, and we are called by thy name; leave us not.
     translation: King James Version
-    web: Why should you be like a scared man, as a mighty man who can’t save? Yet you, LORD, are in the middle of us, and we are called by your name. Don’t leave us.
+    web: Why should you be like a scared man, as a mighty man who can’t save? Yet you, LORD, are in the middle of us, and we are called by your name. Don’t leave us.”
     people:
     - god_1324
     event: Prophecies of Jeremiah
@@ -9106,7 +9106,7 @@
     ordinal: 19402
     text: I will scatter them as with an east wind before the enemy; I will shew them the back, and not the face, in the day of their calamity.
     translation: King James Version
-    web: I will scatter them as with an east wind before the enemy. I will show them the back, and not the face, in the day of their calamity.
+    web: I will scatter them as with an east wind before the enemy. I will show them the back, and not the face, in the day of their calamity.”
     event: Prophecies of Jeremiah
   relations:
   - predicate: IN
@@ -10545,7 +10545,7 @@
     ordinal: 19472
     text: But thine eyes and thine heart are not but for thy covetousness, and for to shed innocent blood, and for oppression, and for violence, to do it.
     translation: King James Version
-    web: But your eyes and your heart are only for your covetousness, for shedding innocent blood, for oppression, and for doing violence.”
+    web: “But your eyes and your heart are only for your covetousness, for shedding innocent blood, for oppression, and for doing violence.”
     event: Prophecies of Jeremiah
   relations:
   - predicate: IN
@@ -10569,7 +10569,7 @@
     - jehoiakim_1085
     - josiah_1730
     - god_1324
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Death of Jehoiakim
   relations:
   - predicate: IN
     to:
@@ -10588,7 +10588,7 @@
     text: He shall be buried with the burial of an ass, drawn and cast forth beyond the gates of Jerusalem.
     translation: King James Version
     web: He will be buried with the burial of a donkey, drawn and cast out beyond the gates of Jerusalem.”
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Death of Jehoiakim
   relations:
   - predicate: IN
     to:
@@ -11057,7 +11057,7 @@
     ordinal: 19497
     text: 'Wherefore their way shall be unto them as slippery ways in the darkness: they shall be driven on, and fall therein: for I will bring evil upon them, even the year of their visitation, saith the LORD.'
     translation: King James Version
-    web: Therefore their way will be to them as slippery places in the darkness. They will be driven on, and fall therein; for I will bring evil on them, even the year of their visitation,” says the LORD.
+    web: “Therefore their way will be to them as slippery places in the darkness. They will be driven on, and fall therein; for I will bring evil on them, even the year of their visitation,” says the LORD.
     people:
     - god_1324
     event: Prophecies of Jeremiah
@@ -11865,7 +11865,7 @@
     - jehoiakim_1085
     - josiah_1730
     - nebuchadnezzar_2167
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Reign of Nebuchadnezzar
   relations:
   - predicate: IN
     to:
@@ -12072,7 +12072,7 @@
     text: And this whole land shall be a desolation, and an astonishment; and these nations shall serve the king of Babylon seventy years.
     translation: King James Version
     web: This whole land will be a desolation, and an astonishment; and these nations will serve the king of Babylon seventy years.
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Babylonian Captivity
   relations:
   - predicate: IN
     to:
@@ -12093,7 +12093,7 @@
     web: “It will happen, when seventy years are accomplished, that I will punish the king of Babylon and that nation,” says the LORD, “for their iniquity. I will make the land of the Chaldeans desolate forever.
     people:
     - god_1324
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Babylonian Captivity
   relations:
   - predicate: IN
     to:
@@ -12451,7 +12451,7 @@
     ordinal: 19565
     text: Therefore prophesy thou against them all these words, and say unto them, The LORD shall roar from on high, and utter his voice from his holy habitation; he shall mightily roar upon his habitation; he shall give a shout, as they that tread the grapes, against all the inhabitants of the earth.
     translation: King James Version
-    web: “Therefore prophesy against them all these words, and tell them, “‘The LORD will roar from on high, and utter his voice from his holy habitation. He will mightily roar against his fold. He will give a shout, as those who tread grapes, against all the inhabitants of the earth.
+    web: “Therefore prophesy against them all these words, and tell them, ‘The LORD will roar from on high, and utter his voice from his holy habitation. He will mightily roar against his fold. He will give a shout, as those who tread grapes, against all the inhabitants of the earth.
     people:
     - god_1324
     event: Prophecies of Jeremiah
@@ -12472,7 +12472,7 @@
     ordinal: 19566
     text: A noise shall come even to the ends of the earth; for the LORD hath a controversy with the nations, he will plead with all flesh; he will give them that are wicked to the sword, saith the LORD.
     translation: King James Version
-    web: A noise will come even to the end of the earth; for the LORD has a controversy with the nations. He will enter into judgment with all flesh. As for the wicked, he will give them to the sword,”’ says the LORD.”
+    web: A noise will come even to the end of the earth; for the LORD has a controversy with the nations. He will enter into judgment with all flesh. As for the wicked, he will give them to the sword,’ says the LORD.”
     people:
     - god_1324
     event: Prophecies of Jeremiah
@@ -14168,7 +14168,7 @@
     web: For the LORD says, “After seventy years are accomplished for Babylon, I will visit you and perform my good word toward you, in causing you to return to this place.
     people:
     - god_1324
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Babylonian Captivity
   relations:
   - predicate: IN
     to:
@@ -15979,7 +15979,7 @@
     - zedekiah_1950
     - nebuchadnezzar_2167
     - god_1324
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Reign of Nebuchadnezzar
   relations:
   - predicate: IN
     to:
@@ -17835,7 +17835,7 @@
     web: “I will give Zedekiah king of Judah and his princes into the hands of their enemies, into the hands of those who seek their life and into the hands of the king of Babylon’s army, who has gone away from you.
     people:
     - zedekiah_1950
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Chaldeans withdraw from Jerusalem
   relations:
   - predicate: IN
     to:
@@ -17856,7 +17856,7 @@
     web: Behold, I will command,” says the LORD, “and cause them to return to this city. They will fight against it, take it, and burn it with fire. I will make the cities of Judah a desolation, without inhabitant.”
     people:
     - god_1324
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Chaldeans withdraw from Jerusalem
   relations:
   - predicate: IN
     to:
@@ -18940,7 +18940,7 @@
     - jehoiakim_1085
     - david_994
     - god_1324
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Death of Jehoiakim
   relations:
   - predicate: IN
     to:
@@ -19098,8 +19098,8 @@
     translation: King James Version
     web: Pharaoh’s army had come out of Egypt; and when the Chaldeans who were besieging Jerusalem heard news of them, they withdrew from Jerusalem.
     people:
-    - pharaoh_2331
-    event: Prophecies of Jeremiah
+    - pharaoh_2336
+    event: Prophecies of Jeremiah,Chaldeans withdraw from Jerusalem
   relations:
   - predicate: IN
     to:
@@ -19121,7 +19121,7 @@
     people:
     - jeremiah_853
     - god_1324
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Chaldeans withdraw from Jerusalem
   relations:
   - predicate: IN
     to:
@@ -19141,9 +19141,9 @@
     translation: King James Version
     web: '“The LORD, the God of Israel, says, ‘You shall tell the king of Judah, who sent you to me to inquire of me: “Behold, Pharaoh’s army, which has come out to help you, will return to Egypt into their own land.'
     people:
-    - pharaoh_2331
+    - pharaoh_2336
     - god_1324
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Chaldeans withdraw from Jerusalem
   relations:
   - predicate: IN
     to:
@@ -19162,7 +19162,7 @@
     text: And the Chaldeans shall come again, and fight against this city, and take it, and burn it with fire.
     translation: King James Version
     web: The Chaldeans will come again, and fight against this city. They will take it and burn it with fire.”’
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Chaldeans withdraw from Jerusalem
   relations:
   - predicate: IN
     to:
@@ -19183,7 +19183,7 @@
     web: “The LORD says, ‘Don’t deceive yourselves, saying, “The Chaldeans will surely depart from us;” for they will not depart.
     people:
     - god_1324
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Chaldeans withdraw from Jerusalem
   relations:
   - predicate: IN
     to:
@@ -19202,7 +19202,7 @@
     text: For though ye had smitten the whole army of the Chaldeans that fight against you, and there remained but wounded men among them, yet should they rise up every man in his tent, and burn this city with fire.
     translation: King James Version
     web: For though you had struck the whole army of the Chaldeans who fight against you, and only wounded men remained among them, they would each rise up in his tent and burn this city with fire.’”
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Chaldeans withdraw from Jerusalem
   relations:
   - predicate: IN
     to:
@@ -19222,8 +19222,8 @@
     translation: King James Version
     web: When the army of the Chaldeans had withdrawn from Jerusalem for fear of Pharaoh’s army,
     people:
-    - pharaoh_2331
-    event: Prophecies of Jeremiah
+    - pharaoh_2336
+    event: Prophecies of Jeremiah,Chaldeans withdraw from Jerusalem
   relations:
   - predicate: IN
     to:
@@ -20068,7 +20068,7 @@
     people:
     - zedekiah_1950
     - nebuchadnezzar_2167
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Nebuchadnezzar besieges Jerusalem
   relations:
   - predicate: IN
     to:
@@ -20089,7 +20089,7 @@
     web: In the eleventh year of Zedekiah, in the fourth month, the ninth day of the month, a breach was made in the city.
     people:
     - zedekiah_1950
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Fall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -20114,7 +20114,7 @@
     - sarsechim_2475
     - rab-saris_2383
     - rab-mag_2381
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Fall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -20135,7 +20135,7 @@
     web: When Zedekiah the king of Judah and all the men of war saw them, then they fled and went out of the city by night, by the way of the king’s garden, through the gate between the two walls; and he went out toward the Arabah.
     people:
     - zedekiah_1950
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Fall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -20157,7 +20157,7 @@
     people:
     - zedekiah_1950
     - nebuchadnezzar_2167
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Fall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -20178,7 +20178,7 @@
     web: Then the king of Babylon killed Zedekiah’s sons in Riblah before his eyes. The king of Babylon also killed all the nobles of Judah.
     people:
     - zedekiah_1950
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Fall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -20199,7 +20199,7 @@
     web: Moreover he put out Zedekiah’s eyes and bound him in fetters, to carry him to Babylon.
     people:
     - zedekiah_3029
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Fall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -20218,7 +20218,7 @@
     text: And the Chaldeans burned the king’s house, and the houses of the people, with fire, and brake down the walls of Jerusalem.
     translation: King James Version
     web: The Chaldeans burned the king’s house and the people’s houses with fire and broke down the walls of Jerusalem.
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Fall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -20239,7 +20239,7 @@
     web: Then Nebuzaradan the captain of the guard carried away captive into Babylon the rest of the people who remained in the city, the deserters also who fell away to him, and the rest of the people who remained.
     people:
     - nebuzar-adan_2169
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Third deportation to Babylon
   relations:
   - predicate: IN
     to:
@@ -20260,7 +20260,7 @@
     web: But Nebuzaradan the captain of the guard left of the poor of the people, who had nothing, in the land of Judah, and gave them vineyards and fields at the same time.
     people:
     - nebuzar-adan_2169
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Third deportation to Babylon
   relations:
   - predicate: IN
     to:
@@ -20460,7 +20460,7 @@
     - jeremiah_853
     - nebuzar-adan_2169
     - god_1324
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Gedaliah is made governor
   relations:
   - predicate: IN
     to:
@@ -20482,7 +20482,7 @@
     people:
     - jeremiah_853
     - god_1324
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Gedaliah is made governor
   relations:
   - predicate: IN
     to:
@@ -20503,7 +20503,7 @@
     web: and the LORD has brought it, and done according as he spoke. Because you have sinned against the LORD, and have not obeyed his voice, therefore this thing has come on you.
     people:
     - god_1324
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Gedaliah is made governor
   relations:
   - predicate: IN
     to:
@@ -20522,7 +20522,7 @@
     text: 'And now, behold, I loose thee this day from the chains which were upon thine hand. If it seem good unto thee to come with me into Babylon, come; and I will look well unto thee: but if it seem ill unto thee to come with me into Babylon, forbear: behold, all the land is before thee: whither it seemeth good and convenient for thee to go, thither go.'
     translation: King James Version
     web: Now, behold, I release you today from the chains which are on your hand. If it seems good to you to come with me into Babylon, come, and I will take care of you; but if it seems bad to you to come with me into Babylon, don’t. Behold, all the land is before you. Where it seems good and right to you to go, go there.”
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Gedaliah is made governor
   relations:
   - predicate: IN
     to:
@@ -20545,7 +20545,7 @@
     - gedaliah_1287
     - ahikam_141
     - shaphan_2550
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Gedaliah is made governor
   relations:
   - predicate: IN
     to:
@@ -20568,7 +20568,7 @@
     - jeremiah_853
     - gedaliah_1287
     - ahikam_141
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Gedaliah is made governor
   relations:
   - predicate: IN
     to:
@@ -20590,7 +20590,7 @@
     people:
     - gedaliah_1287
     - ahikam_141
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Gedaliah is made governor
   relations:
   - predicate: IN
     to:
@@ -20620,7 +20620,7 @@
     - tanhumeth_2824
     - ephai_1200
     - jezaniah_667
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Gedaliah is made governor
   relations:
   - predicate: IN
     to:
@@ -20643,7 +20643,7 @@
     - gedaliah_1287
     - ahikam_141
     - shaphan_2550
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Gedaliah is made governor
   relations:
   - predicate: IN
     to:
@@ -20662,7 +20662,7 @@
     text: 'As for me, behold, I will dwell at Mizpah to serve the Chaldeans, which will come unto us: but ye, gather ye wine, and summer fruits, and oil, and put them in your vessels, and dwell in your cities that ye have taken.'
     translation: King James Version
     web: As for me, behold, I will dwell at Mizpah, to stand before the Chaldeans who will come to us; but you, gather wine and summer fruits and oil, and put them in your vessels, and dwell in your cities that you have taken.”
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Gedaliah is made governor
   relations:
   - predicate: IN
     to:
@@ -20687,7 +20687,7 @@
     - gedaliah_1287
     - ahikam_141
     - shaphan_2550
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Gedaliah is made governor
   relations:
   - predicate: IN
     to:
@@ -20708,7 +20708,7 @@
     web: then all the Jews returned out of all places where they were driven, and came to the land of Judah, to Gedaliah, to Mizpah, and gathered very much wine and summer fruits.
     people:
     - gedaliah_1287
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Gedaliah is made governor
   relations:
   - predicate: IN
     to:
@@ -20731,7 +20731,7 @@
     - johanan_1666
     - kareah_919
     - gedaliah_1287
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Ishmael kills Gedaliah
   relations:
   - predicate: IN
     to:
@@ -20756,7 +20756,7 @@
     - nethaniah_2198
     - gedaliah_1287
     - ahikam_141
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Ishmael kills Gedaliah
   relations:
   - predicate: IN
     to:
@@ -20781,7 +20781,7 @@
     - gedaliah_1287
     - ishmael_631
     - nethaniah_2198
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Ishmael kills Gedaliah
   relations:
   - predicate: IN
     to:
@@ -20806,7 +20806,7 @@
     - johanan_1666
     - kareah_919
     - ishmael_631
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Ishmael kills Gedaliah
   relations:
   - predicate: IN
     to:
@@ -20831,7 +20831,7 @@
     - elishama_1157
     - gedaliah_1287
     - ahikam_141
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Ishmael kills Gedaliah
   relations:
   - predicate: IN
     to:
@@ -20856,7 +20856,7 @@
     - gedaliah_1287
     - ahikam_141
     - shaphan_2550
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Ishmael kills Gedaliah
   relations:
   - predicate: IN
     to:
@@ -20878,7 +20878,7 @@
     people:
     - ishmael_631
     - gedaliah_1287
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Ishmael kills Gedaliah
   relations:
   - predicate: IN
     to:
@@ -20899,7 +20899,7 @@
     web: The second day after he had killed Gedaliah, and no man knew it,
     people:
     - gedaliah_1287
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Ishmael kills Gedaliah
   relations:
   - predicate: IN
     to:
@@ -20920,7 +20920,7 @@
     web: men came from Shechem, from Shiloh, and from Samaria, even eighty men, having their beards shaved and their clothes torn, and having cut themselves, with meal offerings and frankincense in their hand, to bring them to the LORD’s house.
     people:
     - god_1324
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Ishmael kills Gedaliah
   relations:
   - predicate: IN
     to:
@@ -20944,7 +20944,7 @@
     - nethaniah_2198
     - gedaliah_1287
     - ahikam_141
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Ishmael kills Gedaliah
   relations:
   - predicate: IN
     to:
@@ -20966,7 +20966,7 @@
     people:
     - ishmael_631
     - nethaniah_2198
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Ishmael kills Gedaliah
   relations:
   - predicate: IN
     to:
@@ -20987,7 +20987,7 @@
     web: But ten men were found among those who said to Ishmael, “Don’t kill us; for we have stores hidden in the field, of wheat, and of barley, and of oil, and of honey.” So he stopped, and didn’t kill them among their brothers.
     people:
     - ishmael_631
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Ishmael kills Gedaliah
   relations:
   - predicate: IN
     to:
@@ -21012,7 +21012,7 @@
     - asa_318
     - baasha_589
     - nethaniah_2198
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Ishmael kills Gedaliah
   relations:
   - predicate: IN
     to:
@@ -21037,7 +21037,7 @@
     - gedaliah_1287
     - ahikam_141
     - nethaniah_2198
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Ishmael kills Gedaliah
   relations:
   - predicate: IN
     to:
@@ -21061,7 +21061,7 @@
     - kareah_919
     - ishmael_631
     - nethaniah_2198
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Ishmael kills Gedaliah
   relations:
   - predicate: IN
     to:
@@ -21083,7 +21083,7 @@
     people:
     - ishmael_631
     - nethaniah_2198
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Ishmael kills Gedaliah
   relations:
   - predicate: IN
     to:
@@ -21106,7 +21106,7 @@
     - ishmael_631
     - johanan_1666
     - kareah_919
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Ishmael kills Gedaliah
   relations:
   - predicate: IN
     to:
@@ -21129,7 +21129,7 @@
     - ishmael_631
     - johanan_1666
     - kareah_919
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Ishmael kills Gedaliah
   relations:
   - predicate: IN
     to:
@@ -21152,7 +21152,7 @@
     - ishmael_631
     - nethaniah_2198
     - johanan_1666
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Ishmael kills Gedaliah
   relations:
   - predicate: IN
     to:
@@ -21178,7 +21178,7 @@
     - nethaniah_2198
     - gedaliah_1287
     - ahikam_141
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,The remnant flees to Egypt
   relations:
   - predicate: IN
     to:
@@ -21199,7 +21199,7 @@
     web: They departed and lived in Geruth Chimham, which is by Bethlehem, to go to enter into Egypt
     people:
     - chimham_941
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,The remnant flees to Egypt
   relations:
   - predicate: IN
     to:
@@ -21223,7 +21223,7 @@
     - nethaniah_2198
     - gedaliah_1287
     - ahikam_141
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,The remnant flees to Egypt
   relations:
   - predicate: IN
     to:
@@ -21247,7 +21247,7 @@
     - kareah_919
     - jezaniah_667
     - hoshaiah_1557
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,The remnant flees to Egypt
   relations:
   - predicate: IN
     to:
@@ -21269,7 +21269,7 @@
     people:
     - jeremiah_853
     - god_1324
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,The remnant flees to Egypt
   relations:
   - predicate: IN
     to:
@@ -21290,7 +21290,7 @@
     web: that the LORD your God may show us the way in which we should walk, and the things that we should do.”
     people:
     - god_1324
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,The remnant flees to Egypt
   relations:
   - predicate: IN
     to:
@@ -21312,7 +21312,7 @@
     people:
     - jeremiah_853
     - god_1324
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,The remnant flees to Egypt
   relations:
   - predicate: IN
     to:
@@ -21334,7 +21334,7 @@
     people:
     - jeremiah_853
     - god_1324
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,The remnant flees to Egypt
   relations:
   - predicate: IN
     to:
@@ -21355,7 +21355,7 @@
     web: Whether it is good, or whether it is bad, we will obey the voice of the LORD our God, to whom we send you; that it may be well with us, when we obey the voice of the LORD our God.”
     people:
     - god_1324
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,The remnant flees to Egypt
   relations:
   - predicate: IN
     to:
@@ -21377,7 +21377,7 @@
     people:
     - jeremiah_853
     - god_1324
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,The remnant flees to Egypt
   relations:
   - predicate: IN
     to:
@@ -21399,7 +21399,7 @@
     people:
     - johanan_1666
     - kareah_919
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,The remnant flees to Egypt
   relations:
   - predicate: IN
     to:
@@ -21420,7 +21420,7 @@
     web: 'and said to them, “The LORD, the God of Israel, to whom you sent me to present your supplication before him, says:'
     people:
     - god_1324
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,The remnant flees to Egypt
   relations:
   - predicate: IN
     to:
@@ -21439,7 +21439,7 @@
     text: 'If ye will still abide in this land, then will I build you, and not pull you down, and I will plant you, and not pluck you up: for I repent me of the evil that I have done unto you.'
     translation: King James Version
     web: ‘If you will still live in this land, then I will build you, and not pull you down, and I will plant you, and not pluck you up; for I grieve over the distress that I have brought on you.
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,The remnant flees to Egypt
   relations:
   - predicate: IN
     to:
@@ -21460,7 +21460,7 @@
     web: Don’t be afraid of the king of Babylon, of whom you are afraid. Don’t be afraid of him,’ says the LORD, ‘for I am with you to save you, and to deliver you from his hand.
     people:
     - god_1324
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,The remnant flees to Egypt
   relations:
   - predicate: IN
     to:
@@ -21479,7 +21479,7 @@
     text: And I will shew mercies unto you, that he may have mercy upon you, and cause you to return to your own land.
     translation: King James Version
     web: I will grant you mercy, that he may have mercy on you, and cause you to return to your own land.
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,The remnant flees to Egypt
   relations:
   - predicate: IN
     to:
@@ -21500,7 +21500,7 @@
     web: “‘But if you say, “We will not dwell in this land,” so that you don’t obey the LORD your God’s voice,
     people:
     - god_1324
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,The remnant flees to Egypt
   relations:
   - predicate: IN
     to:
@@ -21519,7 +21519,7 @@
     text: 'Saying, No; but we will go into the land of Egypt, where we shall see no war, nor hear the sound of the trumpet, nor have hunger of bread; and there will we dwell:'
     translation: King James Version
     web: saying, “No, but we will go into the land of Egypt, where we will see no war, nor hear the sound of the trumpet, nor have hunger of bread; and there we will dwell;”’
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,The remnant flees to Egypt
   relations:
   - predicate: IN
     to:
@@ -21540,7 +21540,7 @@
     web: now therefore hear the LORD’s word, O remnant of Judah! The LORD of Armies, the God of Israel, says, ‘If you indeed set your faces to enter into Egypt, and go to live there,
     people:
     - god_1324
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,The remnant flees to Egypt
   relations:
   - predicate: IN
     to:
@@ -21559,7 +21559,7 @@
     text: Then it shall come to pass, that the sword, which ye feared, shall overtake you there in the land of Egypt, and the famine, whereof ye were afraid, shall follow close after you there in Egypt; and there ye shall die.
     translation: King James Version
     web: then it will happen that the sword, which you fear, will overtake you there in the land of Egypt; and the famine, about which you are afraid, will follow close behind you there in Egypt; and you will die there.
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,The remnant flees to Egypt
   relations:
   - predicate: IN
     to:
@@ -21578,7 +21578,7 @@
     text: 'So shall it be with all the men that set their faces to go into Egypt to sojourn there; they shall die by the sword, by the famine, and by the pestilence: and none of them shall remain or escape from the evil that I will bring upon them.'
     translation: King James Version
     web: So will it be with all the men who set their faces to go into Egypt to live there. They will die by the sword, by the famine, and by the pestilence. None of them will remain or escape from the evil that I will bring on them.’
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,The remnant flees to Egypt
   relations:
   - predicate: IN
     to:
@@ -21599,7 +21599,7 @@
     web: 'For the LORD of Armies, the God of Israel, says: ‘As my anger and my wrath has been poured out on the inhabitants of Jerusalem, so my wrath will be poured out on you, when you enter into Egypt; and you will be an object of horror, an astonishment, a curse, and a reproach; and you will see this place no more.’'
     people:
     - god_1324
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,The remnant flees to Egypt
   relations:
   - predicate: IN
     to:
@@ -21620,7 +21620,7 @@
     web: “The LORD has spoken concerning you, remnant of Judah, ‘Don’t go into Egypt!’ Know certainly that I have testified to you today.
     people:
     - god_1324
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,The remnant flees to Egypt
   relations:
   - predicate: IN
     to:
@@ -21641,7 +21641,7 @@
     web: For you have dealt deceitfully against your own souls; for you sent me to the LORD your God, saying, ‘Pray for us to the LORD our God; and according to all that the LORD our God says, so declare to us, and we will do it.’
     people:
     - god_1324
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,The remnant flees to Egypt
   relations:
   - predicate: IN
     to:
@@ -21662,7 +21662,7 @@
     web: I have declared it to you today; but you have not obeyed the LORD your God’s voice in anything for which he has sent me to you.
     people:
     - god_1324
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,The remnant flees to Egypt
   relations:
   - predicate: IN
     to:
@@ -21681,7 +21681,7 @@
     text: Now therefore know certainly that ye shall die by the sword, by the famine, and by the pestilence, in the place whither ye desire to go and to sojourn.
     translation: King James Version
     web: Now therefore know certainly that you will die by the sword, by the famine, and by the pestilence in the place where you desire to go to live.”
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,The remnant flees to Egypt
   relations:
   - predicate: IN
     to:
@@ -21703,7 +21703,7 @@
     people:
     - jeremiah_853
     - god_1324
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,The remnant flees to Egypt
   relations:
   - predicate: IN
     to:
@@ -21729,7 +21729,7 @@
     - kareah_919
     - jeremiah_853
     - god_1324
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,The remnant flees to Egypt
   relations:
   - predicate: IN
     to:
@@ -21751,7 +21751,7 @@
     people:
     - baruch_410
     - neriah_2186
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,The remnant flees to Egypt
   relations:
   - predicate: IN
     to:
@@ -21774,7 +21774,7 @@
     - johanan_1666
     - kareah_919
     - god_1324
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,The remnant flees to Egypt
   relations:
   - predicate: IN
     to:
@@ -21796,7 +21796,7 @@
     people:
     - johanan_1666
     - kareah_919
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,The remnant flees to Egypt
   relations:
   - predicate: IN
     to:
@@ -21823,7 +21823,7 @@
     - jeremiah_853
     - baruch_410
     - neriah_2186
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,The remnant flees to Egypt
   relations:
   - predicate: IN
     to:
@@ -21844,7 +21844,7 @@
     web: They came into the land of Egypt, for they didn’t obey the LORD’s voice; and they came to Tahpanhes.
     people:
     - god_1324
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,The remnant flees to Egypt
   relations:
   - predicate: IN
     to:
@@ -22722,10 +22722,11 @@
     translation: King James Version
     web: 'Of Egypt: concerning the army of Pharaoh Necoh king of Egypt, which was by the river Euphrates in Carchemish, which Nebuchadnezzar king of Babylon struck in the fourth year of Jehoiakim the son of Josiah, king of Judah.'
     people:
+    - pharaoh-nechoh_2337
     - nebuchadnezzar_2167
     - jehoiakim_1085
     - josiah_1730
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Nebuchadnezzar defeats Pharaoh-nechoh at Carchemish
   relations:
   - predicate: IN
     to:
@@ -24953,7 +24954,7 @@
     ordinal: 20157
     text: 'Their tents and their flocks shall they take away: they shall take to themselves their curtains, and all their vessels, and their camels; and they shall cry unto them, Fear is on every side.'
     translation: King James Version
-    web: They will take their tents and their flocks. they will carry away for themselves their curtains, all their vessels, and their camels; and they will cry to them, ‘Terror on every side!’
+    web: They will take their tents and their flocks. They will carry away for themselves their curtains, all their vessels, and their camels; and they will cry to them, ‘Terror on every side!’
     event: Prophecies of Jeremiah
   relations:
   - predicate: IN
@@ -25036,7 +25037,7 @@
     ordinal: 20161
     text: 'And Hazor shall be a dwelling for dragons, and a desolation for ever: there shall no man abide there, nor any son of man dwell in it.'
     translation: King James Version
-    web: Hazor will be a dwelling place of jackals, a desolation forever. No man will dwell there, neither will any son of man live therein.”
+    web: “Hazor will be a dwelling place of jackals, a desolation forever. No man will dwell there, neither will any son of man live therein.”
     event: Prophecies of Jeremiah
   relations:
   - predicate: IN
@@ -27272,7 +27273,7 @@
     - neriah_2186
     - maaseiah_1868
     - zedekiah_1950
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Zedekiah goes to Babylon
   relations:
   - predicate: IN
     to:
@@ -27293,7 +27294,7 @@
     web: Jeremiah wrote in a book all the evil that should come on Babylon, even all these words that are written concerning Babylon.
     people:
     - jeremiah_853
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Zedekiah goes to Babylon
   relations:
   - predicate: IN
     to:
@@ -27315,7 +27316,7 @@
     people:
     - jeremiah_853
     - seraiah_2500
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Zedekiah goes to Babylon
   relations:
   - predicate: IN
     to:
@@ -27336,7 +27337,7 @@
     web: and say, ‘LORD, you have spoken concerning this place, to cut it off, that no one will dwell in it, neither man nor animal, but that it will be desolate forever.’
     people:
     - god_1324
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Zedekiah goes to Babylon
   relations:
   - predicate: IN
     to:
@@ -27355,7 +27356,7 @@
     text: 'And it shall be, when thou hast made an end of reading this book, that thou shalt bind a stone to it, and cast it into the midst of Euphrates:'
     translation: King James Version
     web: It will be, when you have finished reading this book, that you shall bind a stone to it, and cast it into the middle of the Euphrates.
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Zedekiah goes to Babylon
   relations:
   - predicate: IN
     to:
@@ -27376,7 +27377,7 @@
     web: Then you shall say, ‘Thus will Babylon sink, and will not rise again because of the evil that I will bring on her; and they will be weary.’” Thus far are the words of Jeremiah.
     people:
     - jeremiah_853
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Zedekiah goes to Babylon
   relations:
   - predicate: IN
     to:
@@ -27443,7 +27444,7 @@
     people:
     - zedekiah_1950
     - god_1324
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Zedekiah rebels against Nebuchadnezzar
   relations:
   - predicate: IN
     to:
@@ -27464,7 +27465,7 @@
     web: In the ninth year of his reign, in the tenth month, in the tenth day of the month, Nebuchadnezzar king of Babylon came, he and all his army, against Jerusalem, and encamped against it; and they built forts against it round about.
     people:
     - nebuchadnezzar_2167
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Nebuchadnezzar besieges Jerusalem
   relations:
   - predicate: IN
     to:
@@ -27485,7 +27486,7 @@
     web: So the city was besieged to the eleventh year of King Zedekiah.
     people:
     - zedekiah_1950
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Nebuchadnezzar besieges Jerusalem
   relations:
   - predicate: IN
     to:
@@ -27504,7 +27505,7 @@
     text: And in the fourth month, in the ninth day of the month, the famine was sore in the city, so that there was no bread for the people of the land.
     translation: King James Version
     web: In the fourth month, in the ninth day of the month, the famine was severe in the city, so that there was no bread for the people of the land.
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Fall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -27523,7 +27524,7 @@
     text: Then the city was broken up, and all the men of war fled, and went forth out of the city by night by the way of the gate between the two walls, which was by the king’s garden; (now the Chaldeans were by the city round about:) and they went by the way of the plain.
     translation: King James Version
     web: Then a breach was made in the city, and all the men of war fled, and went out of the city by night by the way of the gate between the two walls, which was by the king’s garden. Now the Chaldeans were against the city all around. The men of war went toward the Arabah,
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Fall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -27544,7 +27545,7 @@
     web: but the army of the Chaldeans pursued the king, and overtook Zedekiah in the plains of Jericho; and all his army was scattered from him.
     people:
     - zedekiah_1950
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Fall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -27563,7 +27564,7 @@
     text: Then they took the king, and carried him up unto the king of Babylon to Riblah in the land of Hamath; where he gave judgment upon him.
     translation: King James Version
     web: Then they took the king, and carried him up to the king of Babylon to Riblah in the land of Hamath; and he pronounced judgment on him.
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Fall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -27584,7 +27585,7 @@
     web: The king of Babylon killed the sons of Zedekiah before his eyes. He also killed all the princes of Judah in Riblah.
     people:
     - zedekiah_1950
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Fall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -27605,7 +27606,7 @@
     web: He put out the eyes of Zedekiah; and the king of Babylon bound him in fetters, and carried him to Babylon, and put him in prison until the day of his death.
     people:
     - zedekiah_1950
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Fall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -27627,7 +27628,7 @@
     people:
     - nebuchadnezzar_2167
     - nebuzar-adan_2169
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Fall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -27648,7 +27649,7 @@
     web: He burned the LORD’s house, and the king’s house; and all the houses of Jerusalem, even every great house, he burned with fire.
     people:
     - god_1324
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Fall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -27667,7 +27668,7 @@
     text: And all the army of the Chaldeans, that were with the captain of the guard, brake down all the walls of Jerusalem round about.
     translation: King James Version
     web: All the army of the Chaldeans, who were with the captain of the guard, broke down all the walls of Jerusalem all around.
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Fall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -27688,7 +27689,7 @@
     web: Then Nebuzaradan the captain of the guard carried away captive of the poorest of the people, and the rest of the people who were left in the city, and those who fell away, who defected to the king of Babylon, and the rest of the multitude.
     people:
     - nebuzar-adan_2169
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Third deportation to Babylon
   relations:
   - predicate: IN
     to:
@@ -27709,7 +27710,7 @@
     web: But Nebuzaradan the captain of the guard left of the poorest of the land to be vineyard keepers and farmers.
     people:
     - nebuzar-adan_2169
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Third deportation to Babylon
   relations:
   - predicate: IN
     to:
@@ -27730,7 +27731,7 @@
     web: The Chaldeans broke the pillars of bronze that were in the LORD’s house and the bases and the bronze sea that were in the LORD’s house in pieces, and carried all of their bronze to Babylon.
     people:
     - god_1324
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Fall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -27749,7 +27750,7 @@
     text: The caldrons also, and the shovels, and the snuffers, and the bowls, and the spoons, and all the vessels of brass wherewith they ministered, took they away.
     translation: King James Version
     web: They also took away the pots, the shovels, the snuffers, the basins, the spoons, and all the vessels of bronze with which they ministered.
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Fall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -27768,7 +27769,7 @@
     text: And the basons, and the firepans, and the bowls, and the caldrons, and the candlesticks, and the spoons, and the cups; that which was of gold in gold, and that which was of silver in silver, took the captain of the guard away.
     translation: King James Version
     web: The captain of the guard took away the cups, the fire pans, the basins, the pots, the lamp stands, the spoons, and the bowls; that which was of gold, as gold, and that which was of silver, as silver.
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Fall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -27790,7 +27791,7 @@
     people:
     - solomon_2762
     - god_1324
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Fall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -27809,7 +27810,7 @@
     text: 'And concerning the pillars, the height of one pillar was eighteen cubits; and a fillet of twelve cubits did compass it; and the thickness thereof was four fingers: it was hollow.'
     translation: King James Version
     web: As for the pillars, the height of the one pillar was eighteen cubits; and a line of twelve cubits encircled it; and its thickness was four fingers. It was hollow.
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Fall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -27828,7 +27829,7 @@
     text: And a chapiter of brass was upon it; and the height of one chapiter was five cubits, with network and pomegranates upon the chapiters round about, all of brass. The second pillar also and the pomegranates were like unto these.
     translation: King James Version
     web: A capital of bronze was on it; and the height of the one capital was five cubits, with network and pomegranates on the capital all around, all of bronze. The second pillar also had the same, with pomegranates.
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Fall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -27847,7 +27848,7 @@
     text: And there were ninety and six pomegranates on a side; and all the pomegranates upon the network were an hundred round about.
     translation: King James Version
     web: There were ninety-six pomegranates on the sides; all the pomegranates were one hundred on the network all around.
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Fall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -27869,7 +27870,7 @@
     people:
     - seraiah_2494
     - zephaniah_3039
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Third deportation to Babylon
   relations:
   - predicate: IN
     to:
@@ -27888,7 +27889,7 @@
     text: He took also out of the city an eunuch, which had the charge of the men of war; and seven men of them that were near the king’s person, which were found in the city; and the principal scribe of the host, who mustered the people of the land; and threescore men of the people of the land, that were found in the midst of the city.
     translation: King James Version
     web: and out of the city he took an officer who was set over the men of war; and seven men of those who saw the king’s face, who were found in the city; and the scribe of the captain of the army, who mustered the people of the land; and sixty men of the people of the land, who were found in the middle of the city.
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Third deportation to Babylon
   relations:
   - predicate: IN
     to:
@@ -27909,7 +27910,7 @@
     web: Nebuzaradan the captain of the guard took them, and brought them to the king of Babylon to Riblah.
     people:
     - nebuzar-adan_2169
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Third deportation to Babylon
   relations:
   - predicate: IN
     to:
@@ -27928,7 +27929,7 @@
     text: And the king of Babylon smote them, and put them to death in Riblah in the land of Hamath. Thus Judah was carried away captive out of his own land.
     translation: King James Version
     web: The king of Babylon struck them, and put them to death at Riblah in the land of Hamath. So Judah was carried away captive out of his land.
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Third deportation to Babylon
   relations:
   - predicate: IN
     to:
@@ -27949,7 +27950,7 @@
     web: 'This is the number of the people whom Nebuchadnezzar carried away captive: in the seventh year, three thousand twenty-three Jews;'
     people:
     - nebuchadnezzar_2167
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Chaldean raiders take captives from Judah
   relations:
   - predicate: IN
     to:
@@ -27992,7 +27993,7 @@
     people:
     - nebuchadnezzar_2167
     - nebuzar-adan_2169
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Nebuzar-adan carries away 745 Jews
   relations:
   - predicate: IN
     to:
@@ -28014,7 +28015,7 @@
     people:
     - jehoiachin_791
     - evil-merodach_1233
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Jeconiah released from prison
   relations:
   - predicate: IN
     to:
@@ -28033,7 +28034,7 @@
     text: And spake kindly unto him, and set his throne above the throne of the kings that were with him in Babylon,
     translation: King James Version
     web: He spoke kindly to him, and set his throne above the throne of the kings who were with him in Babylon,
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Jeconiah released from prison
   relations:
   - predicate: IN
     to:
@@ -28052,7 +28053,7 @@
     text: 'And changed his prison garments: and he did continually eat bread before him all the days of his life.'
     translation: King James Version
     web: and changed his prison garments. Jehoiachin ate bread before him continually all the days of his life.
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Jeconiah released from prison
   relations:
   - predicate: IN
     to:
@@ -28071,7 +28072,7 @@
     text: And for his diet, there was a continual diet given him of the king of Babylon, every day a portion until the day of his death, all the days of his life.
     translation: King James Version
     web: For his allowance, there was a continual allowance given him by the king of Babylon, every day a portion until the day of his death, all the days of his life.
-    event: Prophecies of Jeremiah
+    event: Prophecies of Jeremiah,Jeconiah released from prison
   relations:
   - predicate: IN
     to:

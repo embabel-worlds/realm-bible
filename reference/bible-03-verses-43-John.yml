@@ -3328,7 +3328,7 @@
     ordinal: 26208
     text: And as he was now going down, his servants met him, and told him, saying, Thy son liveth.
     translation: King James Version
-    web: As he was going down, his servants met him and reported, saying “Your child lives!”
+    web: As he was going down, his servants met him and reported, saying, “Your child lives!”
     event: Jesus visits Galilee
   relations:
   - predicate: IN
@@ -9714,7 +9714,7 @@
     - lazarus_1812
     - mary_1939
     - martha_1937
-    event: Lazarus Raised form the Dead
+    event: Lazarus Raised from the Dead
   relations:
   - predicate: IN
     to:
@@ -9737,7 +9737,7 @@
     - mary_1939
     - lazarus_1812
     - jesus_905
-    event: Lazarus Raised form the Dead
+    event: Lazarus Raised from the Dead
   relations:
   - predicate: IN
     to:
@@ -9758,7 +9758,7 @@
     web: The sisters therefore sent to him, saying, “Lord, behold, he for whom you have great affection is sick.”
     people:
     - jesus_905
-    event: Lazarus Raised form the Dead
+    event: Lazarus Raised from the Dead
   relations:
   - predicate: IN
     to:
@@ -9780,7 +9780,7 @@
     people:
     - god_1324
     - jesus_905
-    event: Lazarus Raised form the Dead
+    event: Lazarus Raised from the Dead
   relations:
   - predicate: IN
     to:
@@ -9803,7 +9803,7 @@
     - martha_1937
     - lazarus_1812
     - jesus_905
-    event: Lazarus Raised form the Dead
+    event: Lazarus Raised from the Dead
   relations:
   - predicate: IN
     to:
@@ -9822,7 +9822,7 @@
     text: When he had heard therefore that he was sick, he abode two days still in the same place where he was.
     translation: King James Version
     web: When therefore he heard that he was sick, he stayed two days in the place where he was.
-    event: Lazarus Raised form the Dead
+    event: Lazarus Raised from the Dead
   relations:
   - predicate: IN
     to:
@@ -9841,7 +9841,7 @@
     text: Then after that saith he to his disciples, Let us go into Judaea again.
     translation: King James Version
     web: Then after this he said to the disciples, “Let’s go into Judea again.”
-    event: Lazarus Raised form the Dead
+    event: Lazarus Raised from the Dead
   relations:
   - predicate: IN
     to:
@@ -9860,7 +9860,7 @@
     text: His disciples say unto him, Master, the Jews of late sought to stone thee; and goest thou thither again?
     translation: King James Version
     web: The disciples asked him, “Rabbi, the Jews were just trying to stone you. Are you going there again?”
-    event: Lazarus Raised form the Dead
+    event: Lazarus Raised from the Dead
   relations:
   - predicate: IN
     to:
@@ -9881,7 +9881,7 @@
     web: Jesus answered, “Aren’t there twelve hours of daylight? If a man walks in the day, he doesn’t stumble, because he sees the light of this world.
     people:
     - jesus_905
-    event: Lazarus Raised form the Dead
+    event: Lazarus Raised from the Dead
   relations:
   - predicate: IN
     to:
@@ -9900,7 +9900,7 @@
     text: But if a man walk in the night, he stumbleth, because there is no light in him.
     translation: King James Version
     web: But if a man walks in the night, he stumbles, because the light isn’t in him.”
-    event: Lazarus Raised form the Dead
+    event: Lazarus Raised from the Dead
   relations:
   - predicate: IN
     to:
@@ -9921,7 +9921,7 @@
     web: He said these things, and after that, he said to them, “Our friend Lazarus has fallen asleep, but I am going so that I may awake him out of sleep.”
     people:
     - lazarus_1812
-    event: Lazarus Raised form the Dead
+    event: Lazarus Raised from the Dead
   relations:
   - predicate: IN
     to:
@@ -9942,7 +9942,7 @@
     web: The disciples therefore said, “Lord, if he has fallen asleep, he will recover.”
     people:
     - jesus_905
-    event: Lazarus Raised form the Dead
+    event: Lazarus Raised from the Dead
   relations:
   - predicate: IN
     to:
@@ -9963,7 +9963,7 @@
     web: Now Jesus had spoken of his death, but they thought that he spoke of taking rest in sleep.
     people:
     - jesus_905
-    event: Lazarus Raised form the Dead
+    event: Lazarus Raised from the Dead
   relations:
   - predicate: IN
     to:
@@ -9985,7 +9985,7 @@
     people:
     - lazarus_1812
     - jesus_905
-    event: Lazarus Raised form the Dead
+    event: Lazarus Raised from the Dead
   relations:
   - predicate: IN
     to:
@@ -10004,7 +10004,7 @@
     text: And I am glad for your sakes that I was not there, to the intent ye may believe; nevertheless let us go unto him.
     translation: King James Version
     web: I am glad for your sakes that I was not there, so that you may believe. Nevertheless, let’s go to him.”
-    event: Lazarus Raised form the Dead
+    event: Lazarus Raised from the Dead
   relations:
   - predicate: IN
     to:
@@ -10025,7 +10025,7 @@
     web: Thomas therefore, who is called Didymus, said to his fellow disciples, “Let’s also go, that we may die with him.”
     people:
     - thomas_2851
-    event: Lazarus Raised form the Dead
+    event: Lazarus Raised from the Dead
   relations:
   - predicate: IN
     to:
@@ -10046,7 +10046,7 @@
     web: So when Jesus came, he found that he had been in the tomb four days already.
     people:
     - jesus_905
-    event: Lazarus Raised form the Dead
+    event: Lazarus Raised from the Dead
   relations:
   - predicate: IN
     to:
@@ -10065,7 +10065,7 @@
     text: 'Now Bethany was nigh unto Jerusalem, about fifteen furlongs off:'
     translation: King James Version
     web: Now Bethany was near Jerusalem, about fifteen stadia away.
-    event: Lazarus Raised form the Dead
+    event: Lazarus Raised from the Dead
   relations:
   - predicate: IN
     to:
@@ -10087,7 +10087,7 @@
     people:
     - martha_1937
     - mary_1939
-    event: Lazarus Raised form the Dead
+    event: Lazarus Raised from the Dead
   relations:
   - predicate: IN
     to:
@@ -10110,7 +10110,7 @@
     - martha_1937
     - mary_1939
     - jesus_905
-    event: Lazarus Raised form the Dead
+    event: Lazarus Raised from the Dead
   relations:
   - predicate: IN
     to:
@@ -10132,7 +10132,7 @@
     people:
     - martha_1937
     - jesus_905
-    event: Lazarus Raised form the Dead
+    event: Lazarus Raised from the Dead
   relations:
   - predicate: IN
     to:
@@ -10153,7 +10153,7 @@
     web: Even now I know that whatever you ask of God, God will give you.”
     people:
     - god_1324
-    event: Lazarus Raised form the Dead
+    event: Lazarus Raised from the Dead
   relations:
   - predicate: IN
     to:
@@ -10174,7 +10174,7 @@
     web: Jesus said to her, “Your brother will rise again.”
     people:
     - jesus_905
-    event: Lazarus Raised form the Dead
+    event: Lazarus Raised from the Dead
   relations:
   - predicate: IN
     to:
@@ -10195,7 +10195,7 @@
     web: Martha said to him, “I know that he will rise again in the resurrection at the last day.”
     people:
     - martha_1937
-    event: Lazarus Raised form the Dead
+    event: Lazarus Raised from the Dead
   relations:
   - predicate: IN
     to:
@@ -10216,7 +10216,7 @@
     web: Jesus said to her, “I am the resurrection and the life. He who believes in me will still live, even if he dies.
     people:
     - jesus_905
-    event: Lazarus Raised form the Dead
+    event: Lazarus Raised from the Dead
   relations:
   - predicate: IN
     to:
@@ -10235,7 +10235,7 @@
     text: And whosoever liveth and believeth in me shall never die. Believest thou this?
     translation: King James Version
     web: Whoever lives and believes in me will never die. Do you believe this?”
-    event: Lazarus Raised form the Dead
+    event: Lazarus Raised from the Dead
   relations:
   - predicate: IN
     to:
@@ -10257,7 +10257,7 @@
     people:
     - god_1324
     - jesus_905
-    event: Lazarus Raised form the Dead
+    event: Lazarus Raised from the Dead
   relations:
   - predicate: IN
     to:
@@ -10278,7 +10278,7 @@
     web: When she had said this, she went away and called Mary, her sister, secretly, saying, “The Teacher is here and is calling you.”
     people:
     - mary_1939
-    event: Lazarus Raised form the Dead
+    event: Lazarus Raised from the Dead
   relations:
   - predicate: IN
     to:
@@ -10297,7 +10297,7 @@
     text: As soon as she heard that, she arose quickly, and came unto him.
     translation: King James Version
     web: When she heard this, she arose quickly and went to him.
-    event: Lazarus Raised form the Dead
+    event: Lazarus Raised from the Dead
   relations:
   - predicate: IN
     to:
@@ -10319,7 +10319,7 @@
     people:
     - martha_1937
     - jesus_905
-    event: Lazarus Raised form the Dead
+    event: Lazarus Raised from the Dead
   relations:
   - predicate: IN
     to:
@@ -10340,7 +10340,7 @@
     web: Then the Jews who were with her in the house and were consoling her, when they saw Mary, that she rose up quickly and went out, followed her, saying, “She is going to the tomb to weep there.”
     people:
     - mary_1939
-    event: Lazarus Raised form the Dead
+    event: Lazarus Raised from the Dead
   relations:
   - predicate: IN
     to:
@@ -10362,7 +10362,7 @@
     people:
     - mary_1939
     - jesus_905
-    event: Lazarus Raised form the Dead
+    event: Lazarus Raised from the Dead
   relations:
   - predicate: IN
     to:
@@ -10383,7 +10383,7 @@
     web: When Jesus therefore saw her weeping, and the Jews weeping who came with her, he groaned in the spirit and was troubled,
     people:
     - jesus_905
-    event: Lazarus Raised form the Dead
+    event: Lazarus Raised from the Dead
   relations:
   - predicate: IN
     to:
@@ -10404,7 +10404,7 @@
     web: and said, “Where have you laid him?” They told him, “Lord, come and see.”
     people:
     - jesus_905
-    event: Lazarus Raised form the Dead
+    event: Lazarus Raised from the Dead
   relations:
   - predicate: IN
     to:
@@ -10425,7 +10425,7 @@
     web: Jesus wept.
     people:
     - jesus_905
-    event: Lazarus Raised form the Dead
+    event: Lazarus Raised from the Dead
   relations:
   - predicate: IN
     to:
@@ -10444,7 +10444,7 @@
     text: Then said the Jews, Behold how he loved him!
     translation: King James Version
     web: The Jews therefore said, “See how much affection he had for him!”
-    event: Lazarus Raised form the Dead
+    event: Lazarus Raised from the Dead
   relations:
   - predicate: IN
     to:
@@ -10463,7 +10463,7 @@
     text: And some of them said, Could not this man, which opened the eyes of the blind, have caused that even this man should not have died?
     translation: King James Version
     web: Some of them said, “Couldn’t this man, who opened the eyes of him who was blind, have also kept this man from dying?”
-    event: Lazarus Raised form the Dead
+    event: Lazarus Raised from the Dead
   relations:
   - predicate: IN
     to:
@@ -10484,7 +10484,7 @@
     web: Jesus therefore, again groaning in himself, came to the tomb. Now it was a cave, and a stone lay against it.
     people:
     - jesus_905
-    event: Lazarus Raised form the Dead
+    event: Lazarus Raised from the Dead
   relations:
   - predicate: IN
     to:
@@ -10506,7 +10506,7 @@
     people:
     - martha_1937
     - jesus_905
-    event: Lazarus Raised form the Dead
+    event: Lazarus Raised from the Dead
   relations:
   - predicate: IN
     to:
@@ -10528,7 +10528,7 @@
     people:
     - god_1324
     - jesus_905
-    event: Lazarus Raised form the Dead
+    event: Lazarus Raised from the Dead
   relations:
   - predicate: IN
     to:
@@ -10550,7 +10550,7 @@
     people:
     - god_1324
     - jesus_905
-    event: Lazarus Raised form the Dead
+    event: Lazarus Raised from the Dead
   relations:
   - predicate: IN
     to:
@@ -10569,7 +10569,7 @@
     text: 'And I knew that thou hearest me always: but because of the people which stand by I said it, that they may believe that thou hast sent me.'
     translation: King James Version
     web: I know that you always listen to me, but because of the multitude standing around I said this, that they may believe that you sent me.”
-    event: Lazarus Raised form the Dead
+    event: Lazarus Raised from the Dead
   relations:
   - predicate: IN
     to:
@@ -10590,7 +10590,7 @@
     web: When he had said this, he cried with a loud voice, “Lazarus, come out!”
     people:
     - lazarus_1812
-    event: Lazarus Raised form the Dead
+    event: Lazarus Raised from the Dead
   relations:
   - predicate: IN
     to:
@@ -10611,7 +10611,7 @@
     web: He who was dead came out, bound hand and foot with wrappings, and his face was wrapped around with a cloth. Jesus said to them, “Free him, and let him go.”
     people:
     - jesus_905
-    event: Lazarus Raised form the Dead
+    event: Lazarus Raised from the Dead
   relations:
   - predicate: IN
     to:
@@ -10633,7 +10633,7 @@
     people:
     - mary_1939
     - jesus_905
-    event: Lazarus Raised form the Dead
+    event: Lazarus Raised from the Dead
   relations:
   - predicate: IN
     to:
@@ -10654,7 +10654,7 @@
     web: But some of them went away to the Pharisees and told them the things which Jesus had done.
     people:
     - jesus_905
-    event: Lazarus Raised form the Dead
+    event: Lazarus Raised from the Dead
   relations:
   - predicate: IN
     to:

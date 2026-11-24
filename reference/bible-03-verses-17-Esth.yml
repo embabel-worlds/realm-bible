@@ -18,6 +18,7 @@
     web: Now in the days of Ahasuerus (this is Ahasuerus who reigned from India even to Ethiopia, over one hundred twenty-seven provinces),
     people:
     - ahasuerus_117
+    event: Reign of Darius (Ahasuerus),Ahasuerus feasts and Vashti is deposed
   relations:
   - predicate: IN
     to:
@@ -38,6 +39,7 @@
     web: in those days, when the King Ahasuerus sat on the throne of his kingdom, which was in Susa the palace,
     people:
     - ahasuerus_117
+    event: Reign of Darius (Ahasuerus),Ahasuerus feasts and Vashti is deposed
   relations:
   - predicate: IN
     to:
@@ -56,6 +58,7 @@
     text: 'In the third year of his reign, he made a feast unto all his princes and his servants; the power of Persia and Media, the nobles and princes of the provinces, being before him:'
     translation: King James Version
     web: in the third year of his reign, he made a feast for all his princes and his servants; the army of Persia and Media, the nobles and princes of the provinces being before him.
+    event: Ahasuerus feasts and Vashti is deposed
   relations:
   - predicate: IN
     to:
@@ -74,6 +77,7 @@
     text: When he shewed the riches of his glorious kingdom and the honour of his excellent majesty many days, even an hundred and fourscore days.
     translation: King James Version
     web: He displayed the riches of his glorious kingdom and the honor of his excellent majesty many days, even one hundred eighty days.
+    event: Ahasuerus feasts and Vashti is deposed
   relations:
   - predicate: IN
     to:
@@ -92,6 +96,7 @@
     text: And when these days were expired, the king made a feast unto all the people that were present in Shushan the palace, both unto great and small, seven days, in the court of the garden of the king’s palace;
     translation: King James Version
     web: When these days were fulfilled, the king made a seven day feast for all the people who were present in Susa the palace, both great and small, in the court of the garden of the king’s palace.
+    event: Ahasuerus feasts and Vashti is deposed
   relations:
   - predicate: IN
     to:
@@ -110,6 +115,7 @@
     text: 'Where were white, green, and blue, hangings, fastened with cords of fine linen and purple to silver rings and pillars of marble: the beds were of gold and silver, upon a pavement of red, and blue, and white, and black, marble.'
     translation: King James Version
     web: There were hangings of white and blue material, fastened with cords of fine linen and purple to silver rings and marble pillars. The couches were of gold and silver, on a pavement of red, white, yellow, and black marble.
+    event: Ahasuerus feasts and Vashti is deposed
   relations:
   - predicate: IN
     to:
@@ -128,6 +134,7 @@
     text: And they gave them drink in vessels of gold, (the vessels being diverse one from another,) and royal wine in abundance, according to the state of the king.
     translation: King James Version
     web: They gave them drinks in golden vessels of various kinds, including royal wine in abundance, according to the bounty of the king.
+    event: Ahasuerus feasts and Vashti is deposed
   relations:
   - predicate: IN
     to:
@@ -146,6 +153,7 @@
     text: 'And the drinking was according to the law; none did compel: for so the king had appointed to all the officers of his house, that they should do according to every man’s pleasure.'
     translation: King James Version
     web: In accordance with the law, the drinking was not compulsory; for so the king had instructed all the officials of his house, that they should do according to every man’s pleasure.
+    event: Ahasuerus feasts and Vashti is deposed
   relations:
   - predicate: IN
     to:
@@ -167,6 +175,7 @@
     people:
     - vashti_2937
     - ahasuerus_117
+    event: Ahasuerus feasts and Vashti is deposed
   relations:
   - predicate: IN
     to:
@@ -184,7 +193,7 @@
     ordinal: 12713
     text: On the seventh day, when the heart of the king was merry with wine, he commanded Mehuman, Biztha, Harbona, Bigtha, and Abagtha, Zethar, and Carcas, the seven chamberlains that served in the presence of Ahasuerus the king,
     translation: King James Version
-    web: On the seventh day, when the heart of the king was merry with wine, he commanded Mehuman, Biztha, Harbona, Bigtha, and Abagtha, Zethar, and Carcass, the seven eunuchs who served in the presence of Ahasuerus the king,
+    web: On the seventh day, when the heart of the king was merry with wine, he commanded Mehuman, Biztha, Harbona, Bigtha, and Abagtha, Zethar, and Karkas, the seven eunuchs who served in the presence of Ahasuerus the king,
     people:
     - mehuman_1984
     - biztha_517
@@ -194,6 +203,7 @@
     - zethar_3058
     - carcas_918
     - ahasuerus_117
+    event: Ahasuerus feasts and Vashti is deposed
   relations:
   - predicate: IN
     to:
@@ -214,6 +224,7 @@
     web: to bring Vashti the queen before the king wearing the royal crown, to show the people and the princes her beauty; for she was beautiful.
     people:
     - vashti_2937
+    event: Ahasuerus feasts and Vashti is deposed
   relations:
   - predicate: IN
     to:
@@ -234,6 +245,7 @@
     web: But the queen Vashti refused to come at the king’s commandment by the eunuchs. Therefore the king was very angry, and his anger burned in him.
     people:
     - vashti_2937
+    event: Ahasuerus feasts and Vashti is deposed
   relations:
   - predicate: IN
     to:
@@ -252,6 +264,7 @@
     text: 'Then the king said to the wise men, which knew the times, (for so was the king’s manner toward all that knew law and judgment:'
     translation: King James Version
     web: Then the king said to the wise men, who knew the times (for it was the king’s custom to consult those who knew law and judgment;
+    event: Ahasuerus feasts and Vashti is deposed
   relations:
   - predicate: IN
     to:
@@ -278,6 +291,7 @@
     - meres_2008
     - marsena_1936
     - memucan_1995
+    event: Ahasuerus feasts and Vashti is deposed
   relations:
   - predicate: IN
     to:
@@ -299,6 +313,7 @@
     people:
     - vashti_2937
     - ahasuerus_117
+    event: Ahasuerus feasts and Vashti is deposed
   relations:
   - predicate: IN
     to:
@@ -321,6 +336,7 @@
     - memucan_1995
     - vashti_2937
     - ahasuerus_117
+    event: Ahasuerus feasts and Vashti is deposed
   relations:
   - predicate: IN
     to:
@@ -342,6 +358,7 @@
     people:
     - ahasuerus_117
     - vashti_2937
+    event: Ahasuerus feasts and Vashti is deposed
   relations:
   - predicate: IN
     to:
@@ -360,6 +377,7 @@
     text: Likewise shall the ladies of Persia and Media say this day unto all the king’s princes, which have heard of the deed of the queen. Thus shall there arise too much contempt and wrath.
     translation: King James Version
     web: Today, the princesses of Persia and Media who have heard of the queen’s deed will tell all the king’s princes. This will cause much contempt and wrath.
+    event: Ahasuerus feasts and Vashti is deposed
   relations:
   - predicate: IN
     to:
@@ -381,6 +399,7 @@
     people:
     - vashti_2937
     - ahasuerus_117
+    event: Ahasuerus feasts and Vashti is deposed
   relations:
   - predicate: IN
     to:
@@ -399,6 +418,7 @@
     text: And when the king’s decree which he shall make shall be published throughout all his empire, (for it is great,) all the wives shall give to their husbands honour, both to great and small.
     translation: King James Version
     web: When the king’s decree which he shall make is published throughout all his kingdom (for it is great), all the wives will give their husbands honor, both great and small.”
+    event: Ahasuerus feasts and Vashti is deposed
   relations:
   - predicate: IN
     to:
@@ -419,6 +439,7 @@
     web: 'This advice pleased the king and the princes, and the king did according to the word of Memucan:'
     people:
     - memucan_1995
+    event: Ahasuerus feasts and Vashti is deposed
   relations:
   - predicate: IN
     to:
@@ -437,6 +458,7 @@
     text: For he sent letters into all the king’s provinces, into every province according to the writing thereof, and to every people after their language, that every man should bear rule in his own house, and that it should be published according to the language of every people.
     translation: King James Version
     web: for he sent letters into all the king’s provinces, into every province according to its writing, and to every people in their language, that every man should rule his own house, speaking in the language of his own people.
+    event: Ahasuerus feasts and Vashti is deposed
   relations:
   - predicate: IN
     to:
@@ -458,6 +480,7 @@
     people:
     - ahasuerus_117
     - vashti_2937
+    event: Esther is made queen
   relations:
   - predicate: IN
     to:
@@ -476,6 +499,7 @@
     text: 'Then said the king’s servants that ministered unto him, Let there be fair young virgins sought for the king:'
     translation: King James Version
     web: Then the king’s servants who served him said, “Let beautiful young virgins be sought for the king.
+    event: Esther is made queen
   relations:
   - predicate: IN
     to:
@@ -496,6 +520,7 @@
     web: Let the king appoint officers in all the provinces of his kingdom, that they may gather together all the beautiful young virgins to the citadel of Susa, to the women’s house, to the custody of Hegai the king’s eunuch, keeper of the women. Let cosmetics be given them;
     people:
     - hegai_1477
+    event: Esther is made queen
   relations:
   - predicate: IN
     to:
@@ -516,6 +541,7 @@
     web: and let the maiden who pleases the king be queen instead of Vashti.” The thing pleased the king, and he did so.
     people:
     - vashti_2937
+    event: Esther is made queen
   relations:
   - predicate: IN
     to:
@@ -539,6 +565,7 @@
     - jair_710
     - shimei_2696
     - kish_1787
+    event: Esther is made queen
   relations:
   - predicate: IN
     to:
@@ -560,6 +587,7 @@
     people:
     - jehoiachin_791
     - nebuchadnezzar_2167
+    event: Esther is made queen
   relations:
   - predicate: IN
     to:
@@ -581,6 +609,7 @@
     people:
     - esther_1343
     - mordecai_2107
+    event: Esther is made queen
   relations:
   - predicate: IN
     to:
@@ -602,6 +631,7 @@
     people:
     - hegai_1477
     - esther_1343
+    event: Esther is made queen
   relations:
   - predicate: IN
     to:
@@ -620,6 +650,7 @@
     text: 'And the maiden pleased him, and she obtained kindness of him; and he speedily gave her her things for purification, with such things as belonged to her, and seven maidens, which were meet to be given her, out of the king’s house: and he preferred her and her maids unto the best place of the house of the women.'
     translation: King James Version
     web: The maiden pleased him, and she obtained kindness from him. He quickly gave her cosmetics and her portions of food, and the seven choice maidens who were to be given her out of the king’s house. He moved her and her maidens to the best place in the women’s house.
+    event: Esther is made queen
   relations:
   - predicate: IN
     to:
@@ -641,6 +672,7 @@
     people:
     - esther_1343
     - mordecai_2107
+    event: Esther is made queen
   relations:
   - predicate: IN
     to:
@@ -662,6 +694,7 @@
     people:
     - mordecai_2107
     - esther_1343
+    event: Esther is made queen
   relations:
   - predicate: IN
     to:
@@ -682,6 +715,7 @@
     web: Each young woman’s turn came to go in to King Ahasuerus after her purification for twelve months (for so were the days of their purification accomplished, six months with oil of myrrh, and six months with sweet fragrances and with preparations for beautifying women).
     people:
     - ahasuerus_117
+    event: Esther is made queen
   relations:
   - predicate: IN
     to:
@@ -700,6 +734,7 @@
     text: Then thus came every maiden unto the king; whatsoever she desired was given her to go with her out of the house of the women unto the king’s house.
     translation: King James Version
     web: 'The young woman then came to the king like this: whatever she desired was given her to go with her out of the women’s house to the king’s house.'
+    event: Esther is made queen
   relations:
   - predicate: IN
     to:
@@ -720,6 +755,7 @@
     web: In the evening she went, and on the next day she returned into the second women’s house, to the custody of Shaashgaz, the king’s eunuch, who kept the concubines. She came in to the king no more, unless the king delighted in her, and she was called by name.
     people:
     - shaashgaz_2508
+    event: Esther is made queen
   relations:
   - predicate: IN
     to:
@@ -743,6 +779,7 @@
     - abihail_32
     - mordecai_2107
     - hegai_1477
+    event: Esther is made queen
   relations:
   - predicate: IN
     to:
@@ -764,6 +801,7 @@
     people:
     - esther_1343
     - ahasuerus_117
+    event: Esther is made queen
   relations:
   - predicate: IN
     to:
@@ -785,6 +823,7 @@
     people:
     - esther_1343
     - vashti_2937
+    event: Esther is made queen
   relations:
   - predicate: IN
     to:
@@ -805,6 +844,7 @@
     web: Then the king made a great feast for all his princes and his servants, even Esther’s feast; and he proclaimed a holiday in the provinces, and gave gifts according to the king’s bounty.
     people:
     - esther_1343
+    event: Esther is made queen
   relations:
   - predicate: IN
     to:
@@ -825,6 +865,7 @@
     web: When the virgins were gathered together the second time, Mordecai was sitting in the king’s gate.
     people:
     - mordecai_2107
+    event: Esther is made queen
   relations:
   - predicate: IN
     to:
@@ -846,6 +887,7 @@
     people:
     - esther_1343
     - mordecai_2107
+    event: Esther is made queen
   relations:
   - predicate: IN
     to:
@@ -869,6 +911,7 @@
     - bigthana_495
     - teresh_2842
     - ahasuerus_117
+    event: Mordecai uncovers a plot against the king
   relations:
   - predicate: IN
     to:
@@ -890,6 +933,7 @@
     people:
     - mordecai_2107
     - esther_1343
+    event: Mordecai uncovers a plot against the king
   relations:
   - predicate: IN
     to:
@@ -908,6 +952,7 @@
     text: 'And when inquisition was made of the matter, it was found out; therefore they were both hanged on a tree: and it was written in the book of the chronicles before the king.'
     translation: King James Version
     web: When this matter was investigated, and it was found to be so, they were both hanged on a gallows; and it was written in the book of the chronicles in the king’s presence.
+    event: Mordecai uncovers a plot against the king
   relations:
   - predicate: IN
     to:
@@ -930,6 +975,7 @@
     - ahasuerus_117
     - haman_1360
     - hammedatha_1362
+    event: Haman plots to destroy the Jews
   relations:
   - predicate: IN
     to:
@@ -951,6 +997,7 @@
     people:
     - haman_1360
     - mordecai_2107
+    event: Haman plots to destroy the Jews
   relations:
   - predicate: IN
     to:
@@ -971,6 +1018,7 @@
     web: Then the king’s servants who were in the king’s gate said to Mordecai, “Why do you disobey the king’s commandment?”
     people:
     - mordecai_2107
+    event: Haman plots to destroy the Jews
   relations:
   - predicate: IN
     to:
@@ -992,6 +1040,7 @@
     people:
     - haman_1360
     - mordecai_2107
+    event: Haman plots to destroy the Jews
   relations:
   - predicate: IN
     to:
@@ -1013,6 +1062,7 @@
     people:
     - haman_1360
     - mordecai_2107
+    event: Haman plots to destroy the Jews
   relations:
   - predicate: IN
     to:
@@ -1035,6 +1085,7 @@
     - mordecai_2107
     - haman_1360
     - ahasuerus_117
+    event: Haman plots to destroy the Jews
   relations:
   - predicate: IN
     to:
@@ -1056,6 +1107,7 @@
     people:
     - ahasuerus_117
     - haman_1360
+    event: Haman plots to destroy the Jews
   relations:
   - predicate: IN
     to:
@@ -1077,6 +1129,7 @@
     people:
     - haman_1360
     - ahasuerus_117
+    event: Haman plots to destroy the Jews
   relations:
   - predicate: IN
     to:
@@ -1095,6 +1148,7 @@
     text: 'If it please the king, let it be written that they may be destroyed: and I will pay ten thousand talents of silver to the hands of those that have the charge of the business, to bring it into the king’s treasuries.'
     translation: King James Version
     web: If it pleases the king, let it be written that they be destroyed; and I will pay ten thousand talents of silver into the hands of those who are in charge of the king’s business, to bring it into the king’s treasuries.”
+    event: Haman plots to destroy the Jews
   relations:
   - predicate: IN
     to:
@@ -1116,6 +1170,7 @@
     people:
     - haman_1360
     - hammedatha_1362
+    event: Haman plots to destroy the Jews
   relations:
   - predicate: IN
     to:
@@ -1136,6 +1191,7 @@
     web: The king said to Haman, “The silver is given to you, the people also, to do with them as it seems good to you.”
     people:
     - haman_1360
+    event: Haman plots to destroy the Jews
   relations:
   - predicate: IN
     to:
@@ -1157,6 +1213,7 @@
     people:
     - haman_1360
     - ahasuerus_117
+    event: Haman plots to destroy the Jews
   relations:
   - predicate: IN
     to:
@@ -1175,6 +1232,7 @@
     text: And the letters were sent by posts into all the king’s provinces, to destroy, to kill, and to cause to perish, all Jews, both young and old, little children and women, in one day, even upon the thirteenth day of the twelfth month, which is the month Adar, and to take the spoil of them for a prey.
     translation: King James Version
     web: Letters were sent by couriers into all the king’s provinces, to destroy, to kill, and to cause to perish, all Jews, both young and old, little children and women, in one day, even on the thirteenth day of the twelfth month, which is the month Adar, and to plunder their possessions.
+    event: Haman plots to destroy the Jews
   relations:
   - predicate: IN
     to:
@@ -1193,6 +1251,7 @@
     text: The copy of the writing for a commandment to be given in every province was published unto all people, that they should be ready against that day.
     translation: King James Version
     web: A copy of the letter, that the decree should be given out in every province, was published to all the peoples, that they should be ready against that day.
+    event: Haman plots to destroy the Jews
   relations:
   - predicate: IN
     to:
@@ -1213,6 +1272,7 @@
     web: The couriers went out in haste by the king’s commandment, and the decree was given out in the citadel of Susa. The king and Haman sat down to drink; but the city of Susa was perplexed.
     people:
     - haman_1360
+    event: Haman plots to destroy the Jews
   relations:
   - predicate: IN
     to:
@@ -1233,6 +1293,7 @@
     web: Now when Mordecai found out all that was done, Mordecai tore his clothes and put on sackcloth with ashes, and went out into the middle of the city, and wailed loudly and bitterly.
     people:
     - mordecai_2107
+    event: Haman plots to destroy the Jews
   relations:
   - predicate: IN
     to:
@@ -1251,6 +1312,7 @@
     text: 'And came even before the king’s gate: for none might enter into the king’s gate clothed with sackcloth.'
     translation: King James Version
     web: He came even before the king’s gate, for no one is allowed inside the king’s gate clothed with sackcloth.
+    event: Haman plots to destroy the Jews
   relations:
   - predicate: IN
     to:
@@ -1269,6 +1331,7 @@
     text: And in every province, whithersoever the king’s commandment and his decree came, there was great mourning among the Jews, and fasting, and weeping, and wailing; and many lay in sackcloth and ashes.
     translation: King James Version
     web: In every province, wherever the king’s commandment and his decree came, there was great mourning among the Jews, and fasting, and weeping, and wailing; and many lay in sackcloth and ashes.
+    event: Haman plots to destroy the Jews
   relations:
   - predicate: IN
     to:
@@ -1290,6 +1353,7 @@
     people:
     - esther_1343
     - mordecai_2107
+    event: Haman plots to destroy the Jews
   relations:
   - predicate: IN
     to:
@@ -1312,6 +1376,7 @@
     - esther_1343
     - hatach_1452
     - mordecai_2107
+    event: Haman plots to destroy the Jews
   relations:
   - predicate: IN
     to:
@@ -1333,6 +1398,7 @@
     people:
     - hatach_1452
     - mordecai_2107
+    event: Haman plots to destroy the Jews
   relations:
   - predicate: IN
     to:
@@ -1354,6 +1420,7 @@
     people:
     - mordecai_2107
     - haman_1360
+    event: Haman plots to destroy the Jews
   relations:
   - predicate: IN
     to:
@@ -1374,6 +1441,7 @@
     web: He also gave him the copy of the writing of the decree that was given out in Susa to destroy them, to show it to Esther, and to declare it to her, and to urge her to go in to the king to make supplication to him, and to make request before him for her people.
     people:
     - esther_1343
+    event: Haman plots to destroy the Jews
   relations:
   - predicate: IN
     to:
@@ -1396,6 +1464,7 @@
     - hatach_1452
     - esther_1343
     - mordecai_2107
+    event: Haman plots to destroy the Jews
   relations:
   - predicate: IN
     to:
@@ -1418,6 +1487,7 @@
     - esther_1343
     - hatach_1452
     - mordecai_2107
+    event: Haman plots to destroy the Jews
   relations:
   - predicate: IN
     to:
@@ -1436,6 +1506,7 @@
     text: 'All the king’s servants, and the people of the king’s provinces, do know, that whosoever, whether man or woman, shall come unto the king into the inner court, who is not called, there is one law of his to put him to death, except such to whom the king shall hold out the golden sceptre, that he may live: but I have not been called to come in unto the king these thirty days.'
     translation: King James Version
     web: “All the king’s servants and the people of the king’s provinces know that whoever, whether man or woman, comes to the king into the inner court without being called, there is one law for him, that he be put to death, except those to whom the king might hold out the golden scepter, that he may live. I have not been called to come in to the king these thirty days.”
+    event: Haman plots to destroy the Jews
   relations:
   - predicate: IN
     to:
@@ -1457,6 +1528,7 @@
     people:
     - mordecai_2107
     - esther_1343
+    event: Haman plots to destroy the Jews
   relations:
   - predicate: IN
     to:
@@ -1478,6 +1550,7 @@
     people:
     - mordecai_2107
     - esther_1343
+    event: Haman plots to destroy the Jews
   relations:
   - predicate: IN
     to:
@@ -1496,6 +1569,7 @@
     text: 'For if thou altogether holdest thy peace at this time, then shall there enlargement and deliverance arise to the Jews from another place; but thou and thy father’s house shall be destroyed: and who knoweth whether thou art come to the kingdom for such a time as this?'
     translation: King James Version
     web: For if you remain silent now, then relief and deliverance will come to the Jews from another place, but you and your father’s house will perish. Who knows if you haven’t come to the kingdom for such a time as this?”
+    event: Haman plots to destroy the Jews
   relations:
   - predicate: IN
     to:
@@ -1517,6 +1591,7 @@
     people:
     - esther_1343
     - mordecai_2107
+    event: Haman plots to destroy the Jews
   relations:
   - predicate: IN
     to:
@@ -1535,6 +1610,7 @@
     text: 'Go, gather together all the Jews that are present in Shushan, and fast ye for me, and neither eat nor drink three days, night or day: I also and my maidens will fast likewise; and so will I go in unto the king, which is not according to the law: and if I perish, I perish.'
     translation: King James Version
     web: “Go, gather together all the Jews who are present in Susa, and fast for me, and neither eat nor drink three days, night or day. I and my maidens will also fast the same way. Then I will go in to the king, which is against the law; and if I perish, I perish.”
+    event: Haman plots to destroy the Jews
   relations:
   - predicate: IN
     to:
@@ -1556,6 +1632,7 @@
     people:
     - mordecai_2107
     - esther_1343
+    event: Haman plots to destroy the Jews
   relations:
   - predicate: IN
     to:
@@ -1576,6 +1653,8 @@
     web: Now on the third day, Esther put on her royal clothing and stood in the inner court of the king’s house, next to the king’s house. The king sat on his royal throne in the royal house, next to the entrance of the house.
     people:
     - esther_1343
+    - ahasuerus_117
+    event: Esther goes before the king
   relations:
   - predicate: IN
     to:
@@ -1595,7 +1674,9 @@
     translation: King James Version
     web: When the king saw Esther the queen standing in the court, she obtained favor in his sight; and the king held out to Esther the golden scepter that was in his hand. So Esther came near and touched the top of the scepter.
     people:
+    - ahasuerus_117
     - esther_1343
+    event: Esther goes before the king
   relations:
   - predicate: IN
     to:
@@ -1615,7 +1696,9 @@
     translation: King James Version
     web: Then the king asked her, “What would you like, queen Esther? What is your request? It shall be given you even to the half of the kingdom.”
     people:
+    - ahasuerus_117
     - esther_1343
+    event: Esther goes before the king
   relations:
   - predicate: IN
     to:
@@ -1636,7 +1719,9 @@
     web: Esther said, “If it seems good to the king, let the king and Haman come today to the banquet that I have prepared for him.”
     people:
     - esther_1343
+    - ahasuerus_117
     - haman_1360
+    event: Esther goes before the king
   relations:
   - predicate: IN
     to:
@@ -1656,8 +1741,10 @@
     translation: King James Version
     web: Then the king said, “Bring Haman quickly, so that it may be done as Esther has said.” So the king and Haman came to the banquet that Esther had prepared.
     people:
+    - ahasuerus_117
     - haman_1360
     - esther_1343
+    event: Esther goes before the king
   relations:
   - predicate: IN
     to:
@@ -1677,7 +1764,9 @@
     translation: King James Version
     web: The king said to Esther at the banquet of wine, “What is your petition? It shall be granted you. What is your request? Even to the half of the kingdom it shall be performed.”
     people:
+    - ahasuerus_117
     - esther_1343
+    event: Esther goes before the king
   relations:
   - predicate: IN
     to:
@@ -1698,6 +1787,7 @@
     web: Then Esther answered and said, “My petition and my request is this.
     people:
     - esther_1343
+    event: Esther goes before the king
   relations:
   - predicate: IN
     to:
@@ -1717,7 +1807,9 @@
     translation: King James Version
     web: If I have found favor in the sight of the king, and if it pleases the king to grant my petition and to perform my request, let the king and Haman come to the banquet that I will prepare for them, and I will do tomorrow as the king has said.”
     people:
+    - ahasuerus_117
     - haman_1360
+    event: Esther goes before the king
   relations:
   - predicate: IN
     to:
@@ -1739,6 +1831,7 @@
     people:
     - haman_1360
     - mordecai_2107
+    event: Esther goes before the king
   relations:
   - predicate: IN
     to:
@@ -1760,6 +1853,7 @@
     people:
     - haman_1360
     - zeresh_3049
+    event: Esther goes before the king
   relations:
   - predicate: IN
     to:
@@ -1780,6 +1874,8 @@
     web: Haman recounted to them the glory of his riches, the multitude of his children, all the things in which the king had promoted him, and how he had advanced him above the princes and servants of the king.
     people:
     - haman_1360
+    - ahasuerus_117
+    event: Esther goes before the king
   relations:
   - predicate: IN
     to:
@@ -1801,6 +1897,8 @@
     people:
     - haman_1360
     - esther_1343
+    - ahasuerus_117
+    event: Esther goes before the king
   relations:
   - predicate: IN
     to:
@@ -1821,6 +1919,7 @@
     web: Yet all this avails me nothing, so long as I see Mordecai the Jew sitting at the king’s gate.”
     people:
     - mordecai_2107
+    event: Esther goes before the king
   relations:
   - predicate: IN
     to:
@@ -1841,8 +1940,10 @@
     web: Then Zeresh his wife and all his friends said to him, “Let a gallows be made fifty cubits high, and in the morning speak to the king about hanging Mordecai on it. Then go in merrily with the king to the banquet.” This pleased Haman, so he had the gallows made.
     people:
     - zeresh_3049
+    - ahasuerus_117
     - mordecai_2107
     - haman_1360
+    event: Esther goes before the king
   relations:
   - predicate: IN
     to:
@@ -1861,6 +1962,7 @@
     text: On that night could not the king sleep, and he commanded to bring the book of records of the chronicles; and they were read before the king.
     translation: King James Version
     web: On that night, the king couldn’t sleep. He commanded the book of records of the chronicles to be brought, and they were read to the king.
+    event: Ahasuerus honors Mordecai
   relations:
   - predicate: IN
     to:
@@ -1884,6 +1986,7 @@
     - bigthana_495
     - teresh_2842
     - ahasuerus_117
+    event: Ahasuerus honors Mordecai
   relations:
   - predicate: IN
     to:
@@ -1904,6 +2007,7 @@
     web: The king said, “What honor and dignity has been given to Mordecai for this?” Then the king’s servants who attended him said, “Nothing has been done for him.”
     people:
     - mordecai_2107
+    event: Ahasuerus honors Mordecai
   relations:
   - predicate: IN
     to:
@@ -1925,6 +2029,7 @@
     people:
     - haman_1360
     - mordecai_2107
+    event: Ahasuerus honors Mordecai
   relations:
   - predicate: IN
     to:
@@ -1945,6 +2050,7 @@
     web: The king’s servants said to him, “Behold, Haman stands in the court.” The king said, “Let him come in.”
     people:
     - haman_1360
+    event: Ahasuerus honors Mordecai
   relations:
   - predicate: IN
     to:
@@ -1965,6 +2071,7 @@
     web: So Haman came in. The king said to him, “What shall be done to the man whom the king delights to honor?” Now Haman said in his heart, “Who would the king delight to honor more than myself?”
     people:
     - haman_1360
+    event: Ahasuerus honors Mordecai
   relations:
   - predicate: IN
     to:
@@ -1985,6 +2092,7 @@
     web: Haman said to the king, “For the man whom the king delights to honor,
     people:
     - haman_1360
+    event: Ahasuerus honors Mordecai
   relations:
   - predicate: IN
     to:
@@ -2003,6 +2111,7 @@
     text: 'Let the royal apparel be brought which the king useth to wear, and the horse that the king rideth upon, and the crown royal which is set upon his head:'
     translation: King James Version
     web: let royal clothing be brought which the king uses to wear, and the horse that the king rides on, and on the head of which a royal crown is set.
+    event: Ahasuerus honors Mordecai
   relations:
   - predicate: IN
     to:
@@ -2021,6 +2130,7 @@
     text: And let this apparel and horse be delivered to the hand of one of the king’s most noble princes, that they may array the man withal whom the king delighteth to honour, and bring him on horseback through the street of the city, and proclaim before him, Thus shall it be done to the man whom the king delighteth to honour.
     translation: King James Version
     web: Let the clothing and the horse be delivered to the hand of one of the king’s most noble princes, that they may array the man whom the king delights to honor with them, and have him ride on horseback through the city square, and proclaim before him, ‘Thus it shall be done to the man whom the king delights to honor!’”
+    event: Ahasuerus honors Mordecai
   relations:
   - predicate: IN
     to:
@@ -2042,6 +2152,7 @@
     people:
     - haman_1360
     - mordecai_2107
+    event: Ahasuerus honors Mordecai
   relations:
   - predicate: IN
     to:
@@ -2063,6 +2174,7 @@
     people:
     - haman_1360
     - mordecai_2107
+    event: Ahasuerus honors Mordecai
   relations:
   - predicate: IN
     to:
@@ -2084,6 +2196,7 @@
     people:
     - mordecai_2107
     - haman_1360
+    event: Ahasuerus honors Mordecai
   relations:
   - predicate: IN
     to:
@@ -2106,6 +2219,7 @@
     - haman_1360
     - zeresh_3049
     - mordecai_2107
+    event: Ahasuerus honors Mordecai
   relations:
   - predicate: IN
     to:
@@ -2127,6 +2241,7 @@
     people:
     - haman_1360
     - esther_1343
+    event: Ahasuerus honors Mordecai
   relations:
   - predicate: IN
     to:
@@ -2148,6 +2263,7 @@
     people:
     - haman_1360
     - esther_1343
+    event: Haman is hanged
   relations:
   - predicate: IN
     to:
@@ -2168,6 +2284,7 @@
     web: The king said again to Esther on the second day at the banquet of wine, “What is your petition, queen Esther? It shall be granted you. What is your request? Even to the half of the kingdom it shall be performed.”
     people:
     - esther_1343
+    event: Haman is hanged
   relations:
   - predicate: IN
     to:
@@ -2188,6 +2305,7 @@
     web: Then Esther the queen answered, “If I have found favor in your sight, O king, and if it pleases the king, let my life be given me at my petition, and my people at my request.
     people:
     - esther_1343
+    event: Haman is hanged
   relations:
   - predicate: IN
     to:
@@ -2206,6 +2324,7 @@
     text: For we are sold, I and my people, to be destroyed, to be slain, and to perish. But if we had been sold for bondmen and bondwomen, I had held my tongue, although the enemy could not countervail the king’s damage.
     translation: King James Version
     web: For we are sold, I and my people, to be destroyed, to be slain, and to perish. But if we had been sold for male and female slaves, I would have held my peace, although the adversary could not have compensated for the king’s loss.”
+    event: Haman is hanged
   relations:
   - predicate: IN
     to:
@@ -2227,6 +2346,7 @@
     people:
     - ahasuerus_117
     - esther_1343
+    event: Haman is hanged
   relations:
   - predicate: IN
     to:
@@ -2248,6 +2368,7 @@
     people:
     - esther_1343
     - haman_1360
+    event: Haman is hanged
   relations:
   - predicate: IN
     to:
@@ -2269,6 +2390,7 @@
     people:
     - haman_1360
     - esther_1343
+    event: Haman is hanged
   relations:
   - predicate: IN
     to:
@@ -2290,6 +2412,7 @@
     people:
     - haman_1360
     - esther_1343
+    event: Haman is hanged
   relations:
   - predicate: IN
     to:
@@ -2312,6 +2435,7 @@
     - harbonah_1411
     - haman_1360
     - mordecai_2107
+    event: Haman is hanged
   relations:
   - predicate: IN
     to:
@@ -2333,6 +2457,7 @@
     people:
     - haman_1360
     - mordecai_2107
+    event: Haman is hanged
   relations:
   - predicate: IN
     to:
@@ -2356,6 +2481,7 @@
     - haman_1360
     - esther_1343
     - mordecai_2107
+    event: Haman is hanged
   relations:
   - predicate: IN
     to:
@@ -2378,6 +2504,7 @@
     - haman_1360
     - mordecai_2107
     - esther_1343
+    event: Haman is hanged
   relations:
   - predicate: IN
     to:
@@ -2399,6 +2526,7 @@
     people:
     - esther_1343
     - haman_1360
+    event: The Jews defeat their enemies
   relations:
   - predicate: IN
     to:
@@ -2419,6 +2547,7 @@
     web: Then the king held out to Esther the golden scepter. So Esther arose, and stood before the king.
     people:
     - esther_1343
+    event: The Jews defeat their enemies
   relations:
   - predicate: IN
     to:
@@ -2440,6 +2569,7 @@
     people:
     - haman_1360
     - hammedatha_1362
+    event: The Jews defeat their enemies
   relations:
   - predicate: IN
     to:
@@ -2458,6 +2588,7 @@
     text: For how can I endure to see the evil that shall come unto my people? or how can I endure to see the destruction of my kindred?
     translation: King James Version
     web: For how can I endure to see the evil that would come to my people? How can I endure to see the destruction of my relatives?”
+    event: The Jews defeat their enemies
   relations:
   - predicate: IN
     to:
@@ -2481,6 +2612,7 @@
     - esther_1343
     - mordecai_2107
     - haman_1360
+    event: The Jews defeat their enemies
   relations:
   - predicate: IN
     to:
@@ -2499,6 +2631,7 @@
     text: 'Write ye also for the Jews, as it liketh you, in the king’s name, and seal it with the king’s ring: for the writing which is written in the king’s name, and sealed with the king’s ring, may no man reverse.'
     translation: King James Version
     web: Write also to the Jews as it pleases you, in the king’s name, and seal it with the king’s ring; for the writing which is written in the king’s name, and sealed with the king’s ring, may not be reversed by any man.”
+    event: The Jews defeat their enemies
   relations:
   - predicate: IN
     to:
@@ -2519,6 +2652,7 @@
     web: Then the king’s scribes were called at that time, in the third month, which is the month Sivan, on the twenty-third day of the month; and it was written according to all that Mordecai commanded to the Jews, and to the local governors, and the governors and princes of the provinces which are from India to Ethiopia, one hundred twenty-seven provinces, to every province according to its writing, and to every people in their language, and to the Jews in their writing, and in their language.
     people:
     - mordecai_2107
+    event: The Jews defeat their enemies
   relations:
   - predicate: IN
     to:
@@ -2537,6 +2671,7 @@
     text: 'And he wrote in the king Ahasuerus’ name, and sealed it with the king’s ring, and sent letters by posts on horseback, and riders on mules, camels, and young dromedaries:'
     translation: King James Version
     web: He wrote in the name of King Ahasuerus, and sealed it with the king’s ring, and sent letters by courier on horseback, riding on royal horses that were bred from swift steeds.
+    event: The Jews defeat their enemies
   relations:
   - predicate: IN
     to:
@@ -2555,6 +2690,7 @@
     text: Wherein the king granted the Jews which were in every city to gather themselves together, and to stand for their life, to destroy, to slay, and to cause to perish, all the power of the people and province that would assault them, both little ones and women, and to take the spoil of them for a prey,
     translation: King James Version
     web: In those letters, the king granted the Jews who were in every city to gather themselves together and to defend their lives—to destroy, to kill, and to cause to perish all the power of the people and province that would assault them, their little ones and women, and to plunder their possessions,
+    event: The Jews defeat their enemies
   relations:
   - predicate: IN
     to:
@@ -2575,6 +2711,7 @@
     web: on one day in all the provinces of King Ahasuerus, on the thirteenth day of the twelfth month, which is the month Adar.
     people:
     - ahasuerus_117
+    event: The Jews defeat their enemies
   relations:
   - predicate: IN
     to:
@@ -2593,6 +2730,7 @@
     text: The copy of the writing for a commandment to be given in every province was published unto all people, and that the Jews should be ready against that day to avenge themselves on their enemies.
     translation: King James Version
     web: A copy of the letter, that the decree should be given out in every province, was published to all the peoples, that the Jews should be ready for that day to avenge themselves on their enemies.
+    event: The Jews defeat their enemies
   relations:
   - predicate: IN
     to:
@@ -2611,6 +2749,7 @@
     text: So the posts that rode upon mules and camels went out, being hastened and pressed on by the king’s commandment. And the decree was given at Shushan the palace.
     translation: King James Version
     web: So the couriers who rode on royal horses went out, hastened and pressed on by the king’s commandment. The decree was given out in the citadel of Susa.
+    event: The Jews defeat their enemies
   relations:
   - predicate: IN
     to:
@@ -2631,6 +2770,7 @@
     web: Mordecai went out of the presence of the king in royal clothing of blue and white, and with a great crown of gold, and with a robe of fine linen and purple; and the city of Susa shouted and was glad.
     people:
     - mordecai_2107
+    event: The Jews defeat their enemies
   relations:
   - predicate: IN
     to:
@@ -2649,6 +2789,7 @@
     text: The Jews had light, and gladness, and joy, and honour.
     translation: King James Version
     web: The Jews had light, gladness, joy, and honor.
+    event: The Jews defeat their enemies
   relations:
   - predicate: IN
     to:
@@ -2667,6 +2808,7 @@
     text: And in every province, and in every city, whithersoever the king’s commandment and his decree came, the Jews had joy and gladness, a feast and a good day. And many of the people of the land became Jews; for the fear of the Jews fell upon them.
     translation: King James Version
     web: In every province and in every city, wherever the king’s commandment and his decree came, the Jews had gladness, joy, a feast and a holiday. Many from among the peoples of the land became Jews, for the fear of the Jews had fallen on them.
+    event: The Jews defeat their enemies
   relations:
   - predicate: IN
     to:
@@ -2685,6 +2827,7 @@
     text: Now in the twelfth month, that is, the month Adar, on the thirteenth day of the same, when the king’s commandment and his decree drew near to be put in execution, in the day that the enemies of the Jews hoped to have power over them, (though it was turned to the contrary, that the Jews had rule over them that hated them;)
     translation: King James Version
     web: Now in the twelfth month, which is the month Adar, on the thirteenth day of the month, when the king’s commandment and his decree came near to be put in execution, on the day that the enemies of the Jews hoped to conquer them, (but it turned out that the opposite happened, that the Jews conquered those who hated them),
+    event: The Jews defeat their enemies
   relations:
   - predicate: IN
     to:
@@ -2705,6 +2848,7 @@
     web: the Jews gathered themselves together in their cities throughout all the provinces of the King Ahasuerus, to lay hands on those who wanted to harm them. No one could withstand them, because the fear of them had fallen on all the people.
     people:
     - ahasuerus_117
+    event: The Jews defeat their enemies
   relations:
   - predicate: IN
     to:
@@ -2725,6 +2869,7 @@
     web: All the princes of the provinces, the local governors, the governors, and those who did the king’s business helped the Jews, because the fear of Mordecai had fallen on them.
     people:
     - mordecai_2107
+    event: The Jews defeat their enemies
   relations:
   - predicate: IN
     to:
@@ -2745,6 +2890,7 @@
     web: For Mordecai was great in the king’s house, and his fame went out throughout all the provinces, for the man Mordecai grew greater and greater.
     people:
     - mordecai_2107
+    event: The Jews defeat their enemies
   relations:
   - predicate: IN
     to:
@@ -2763,6 +2909,7 @@
     text: Thus the Jews smote all their enemies with the stroke of the sword, and slaughter, and destruction, and did what they would unto those that hated them.
     translation: King James Version
     web: The Jews struck all their enemies with the stroke of the sword, and with slaughter and destruction, and did what they wanted to those who hated them.
+    event: The Jews defeat their enemies
   relations:
   - predicate: IN
     to:
@@ -2781,6 +2928,7 @@
     text: And in Shushan the palace the Jews slew and destroyed five hundred men.
     translation: King James Version
     web: In the citadel of Susa, the Jews killed and destroyed five hundred men.
+    event: The Jews defeat their enemies
   relations:
   - predicate: IN
     to:
@@ -2803,6 +2951,7 @@
     - parshandatha_2277
     - dalphon_971
     - aspatha_347
+    event: The Jews defeat their enemies
   relations:
   - predicate: IN
     to:
@@ -2825,6 +2974,7 @@
     - poratha_2366
     - adalia_77
     - aridatha_300
+    event: The Jews defeat their enemies
   relations:
   - predicate: IN
     to:
@@ -2848,6 +2998,7 @@
     - arisai_305
     - aridai_299
     - vajezatha_2935
+    event: The Jews defeat their enemies
   relations:
   - predicate: IN
     to:
@@ -2869,6 +3020,7 @@
     people:
     - haman_1360
     - hammedatha_1362
+    event: The Jews defeat their enemies
   relations:
   - predicate: IN
     to:
@@ -2887,6 +3039,7 @@
     text: On that day the number of those that were slain in Shushan the palace was brought before the king.
     translation: King James Version
     web: On that day, the number of those who were slain in the citadel of Susa was brought before the king.
+    event: The Jews defeat their enemies
   relations:
   - predicate: IN
     to:
@@ -2908,6 +3061,7 @@
     people:
     - esther_1343
     - haman_1360
+    event: The Jews defeat their enemies
   relations:
   - predicate: IN
     to:
@@ -2929,6 +3083,7 @@
     people:
     - esther_1343
     - haman_1360
+    event: The Jews defeat their enemies
   relations:
   - predicate: IN
     to:
@@ -2949,6 +3104,7 @@
     web: The king commanded this to be done. A decree was given out in Susa; and they hanged Haman’s ten sons.
     people:
     - haman_1360
+    event: The Jews defeat their enemies
   relations:
   - predicate: IN
     to:
@@ -2967,6 +3123,7 @@
     text: For the Jews that were in Shushan gathered themselves together on the fourteenth day also of the month Adar, and slew three hundred men at Shushan; but on the prey they laid not their hand.
     translation: King James Version
     web: The Jews who were in Susa gathered themselves together on the fourteenth day also of the month Adar, and killed three hundred men in Susa; but they didn’t lay their hand on the plunder.
+    event: The Jews defeat their enemies
   relations:
   - predicate: IN
     to:
@@ -2985,6 +3142,7 @@
     text: But the other Jews that were in the king’s provinces gathered themselves together, and stood for their lives, and had rest from their enemies, and slew of their foes seventy and five thousand, but they laid not their hands on the prey,
     translation: King James Version
     web: The other Jews who were in the king’s provinces gathered themselves together, defended their lives, had rest from their enemies, and killed seventy-five thousand of those who hated them; but they didn’t lay their hand on the plunder.
+    event: The Jews defeat their enemies
   relations:
   - predicate: IN
     to:
@@ -3003,6 +3161,7 @@
     text: On the thirteenth day of the month Adar; and on the fourteenth day of the same rested they, and made it a day of feasting and gladness.
     translation: King James Version
     web: This was done on the thirteenth day of the month Adar; and on the fourteenth day of that month they rested and made it a day of feasting and gladness.
+    event: The Jews defeat their enemies
   relations:
   - predicate: IN
     to:
@@ -3021,6 +3180,7 @@
     text: But the Jews that were at Shushan assembled together on the thirteenth day thereof, and on the fourteenth thereof; and on the fifteenth day of the same they rested, and made it a day of feasting and gladness.
     translation: King James Version
     web: But the Jews who were in Susa assembled together on the thirteenth and on the fourteenth days of the month; and on the fifteenth day of that month, they rested, and made it a day of feasting and gladness.
+    event: The Jews defeat their enemies
   relations:
   - predicate: IN
     to:
@@ -3039,6 +3199,7 @@
     text: Therefore the Jews of the villages, that dwelt in the unwalled towns, made the fourteenth day of the month Adar a day of gladness and feasting, and a good day, and of sending portions one to another.
     translation: King James Version
     web: Therefore the Jews of the villages, who live in the unwalled towns, make the fourteenth day of the month Adar a day of gladness and feasting, a holiday, and a day of sending presents of food to one another.
+    event: The Jews defeat their enemies
   relations:
   - predicate: IN
     to:
@@ -3060,6 +3221,7 @@
     people:
     - mordecai_2107
     - ahasuerus_117
+    event: The Jews defeat their enemies
   relations:
   - predicate: IN
     to:
@@ -3078,6 +3240,7 @@
     text: To stablish this among them, that they should keep the fourteenth day of the month Adar, and the fifteenth day of the same, yearly,
     translation: King James Version
     web: to enjoin them that they should keep the fourteenth and fifteenth days of the month Adar yearly,
+    event: The Jews defeat their enemies
   relations:
   - predicate: IN
     to:
@@ -3096,6 +3259,7 @@
     text: 'As the days wherein the Jews rested from their enemies, and the month which was turned unto them from sorrow to joy, and from mourning into a good day: that they should make them days of feasting and joy, and of sending portions one to another, and gifts to the poor.'
     translation: King James Version
     web: as the days in which the Jews had rest from their enemies, and the month which was turned to them from sorrow to gladness, and from mourning into a holiday; that they should make them days of feasting and gladness, and of sending presents of food to one another, and gifts to the needy.
+    event: The Jews defeat their enemies
   relations:
   - predicate: IN
     to:
@@ -3116,6 +3280,7 @@
     web: The Jews accepted the custom that they had begun, as Mordecai had written to them,
     people:
     - mordecai_2107
+    event: The Jews defeat their enemies
   relations:
   - predicate: IN
     to:
@@ -3137,6 +3302,7 @@
     people:
     - haman_1360
     - hammedatha_1362
+    event: The Jews defeat their enemies
   relations:
   - predicate: IN
     to:
@@ -3157,6 +3323,7 @@
     web: but when this became known to the king, he commanded by letters that his wicked plan, which he had planned against the Jews, should return on his own head, and that he and his sons should be hanged on the gallows.
     people:
     - esther_1343
+    event: The Jews defeat their enemies
   relations:
   - predicate: IN
     to:
@@ -3175,6 +3342,7 @@
     text: Wherefore they called these days Purim after the name of Pur. Therefore for all the words of this letter, and of that which they had seen concerning this matter, and which had come unto them,
     translation: King James Version
     web: Therefore they called these days “Purim”, from the word “Pur.” Therefore because of all the words of this letter, and of that which they had seen concerning this matter, and that which had come to them,
+    event: The Jews defeat their enemies
   relations:
   - predicate: IN
     to:
@@ -3193,6 +3361,7 @@
     text: The Jews ordained, and took upon them, and upon their seed, and upon all such as joined themselves unto them, so as it should not fail, that they would keep these two days according to their writing, and according to their appointed time every year;
     translation: King James Version
     web: the Jews established and imposed on themselves, on their descendants, and on all those who joined themselves to them, so that it should not fail that they would keep these two days according to what was written and according to its appointed time every year;
+    event: The Jews defeat their enemies
   relations:
   - predicate: IN
     to:
@@ -3211,6 +3380,7 @@
     text: And that these days should be remembered and kept throughout every generation, every family, every province, and every city; and that these days of Purim should not fail from among the Jews, nor the memorial of them perish from their seed.
     translation: King James Version
     web: and that these days should be remembered and kept throughout every generation, every family, every province, and every city; and that these days of Purim should not fail from among the Jews, nor their memory perish from their offspring.
+    event: The Jews defeat their enemies
   relations:
   - predicate: IN
     to:
@@ -3233,6 +3403,7 @@
     - esther_1343
     - abihail_32
     - mordecai_2107
+    event: The Jews defeat their enemies
   relations:
   - predicate: IN
     to:
@@ -3253,6 +3424,7 @@
     web: He sent letters to all the Jews in the hundred twenty-seven provinces of the kingdom of Ahasuerus with words of peace and truth,
     people:
     - ahasuerus_117
+    event: The Jews defeat their enemies
   relations:
   - predicate: IN
     to:
@@ -3274,6 +3446,7 @@
     people:
     - mordecai_2107
     - esther_1343
+    event: The Jews defeat their enemies
   relations:
   - predicate: IN
     to:
@@ -3294,6 +3467,7 @@
     web: The commandment of Esther confirmed these matters of Purim; and it was written in the book.
     people:
     - esther_1343
+    event: The Jews defeat their enemies
   relations:
   - predicate: IN
     to:
@@ -3314,6 +3488,7 @@
     web: King Ahasuerus laid a tribute on the land and on the islands of the sea.
     people:
     - ahasuerus_117
+    event: The Jews defeat their enemies
   relations:
   - predicate: IN
     to:
@@ -3334,6 +3509,7 @@
     web: Aren’t all the acts of his power and of his might, and the full account of the greatness of Mordecai, to which the king advanced him, written in the book of the chronicles of the kings of Media and Persia?
     people:
     - mordecai_2107
+    event: The Jews defeat their enemies
   relations:
   - predicate: IN
     to:
@@ -3355,6 +3531,7 @@
     people:
     - mordecai_2107
     - ahasuerus_117
+    event: The Jews defeat their enemies
   relations:
   - predicate: IN
     to:

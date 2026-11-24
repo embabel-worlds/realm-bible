@@ -51,7 +51,9 @@ def fetch() -> None:
     web = SOURCE / "engwebp_vpl.txt"
     if not web.exists():
         print("downloading WEB")
-        with urllib.request.urlopen(WEB_VPL) as response:
+        # eBible refuses a request without a User-Agent (HTTP 403).
+        request = urllib.request.Request(WEB_VPL, headers={"User-Agent": "realm-bible build_reference"})
+        with urllib.request.urlopen(request) as response:
             web.write_bytes(zipfile.ZipFile(io.BytesIO(response.read())).read("engwebp_vpl.txt"))
 
 

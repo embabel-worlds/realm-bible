@@ -112,7 +112,7 @@
     people:
       cardinality: LIST
       description: "Theographic person ids mentioned in this verse, e.g. `ehud_1039`. The key MENTIONS joins on."
-    event: "The Theographic event this verse belongs to, when it has one, e.g. `Deliverance by Ehud`."
+    event: "The Theographic event(s) this verse belongs to, comma-separated when several, e.g. `Deliverance by Ehud`; empty when none is recorded."
 
 # ── People ────────────────────────────────────────────────────────────────────────────────────────
 

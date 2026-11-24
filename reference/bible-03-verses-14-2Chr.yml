@@ -16295,6 +16295,7 @@
     web: Nebuchadnezzar king of Babylon came up against him, and bound him in fetters to carry him to Babylon.
     people:
     - nebuchadnezzar_2167
+    event: Jehoiakim becomes Nebuchadnezzar's servant
   relations:
   - predicate: IN
     to:
@@ -16316,6 +16317,7 @@
     people:
     - nebuchadnezzar_2167
     - god_1324
+    event: Jehoiakim becomes Nebuchadnezzar's servant
   relations:
   - predicate: IN
     to:
@@ -16380,6 +16382,7 @@
     - nebuchadnezzar_2167
     - zedekiah_1950
     - god_1324
+    event: Second deportation to Babylon
   relations:
   - predicate: IN
     to:
@@ -16442,6 +16445,7 @@
     people:
     - nebuchadnezzar_2167
     - god_1324
+    event: Zedekiah rebels against Nebuchadnezzar
   relations:
   - predicate: IN
     to:
@@ -16520,6 +16524,7 @@
     text: 'Therefore he brought upon them the king of the Chaldees, who slew their young men with the sword in the house of their sanctuary, and had no compassion upon young man or maiden, old man, or him that stooped for age: he gave them all into his hand.'
     translation: King James Version
     web: Therefore he brought on them the king of the Chaldeans, who killed their young men with the sword in the house of their sanctuary, and had no compassion on young man or virgin, old man or infirm. He gave them all into his hand.
+    event: Fall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -16540,6 +16545,7 @@
     web: All the vessels of God’s house, great and small, and the treasures of the LORD’s house, and the treasures of the king and of his princes, all these he brought to Babylon.
     people:
     - god_1324
+    event: Fall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -16560,6 +16566,7 @@
     web: They burned God’s house, broke down the wall of Jerusalem, burned all its palaces with fire, and destroyed all of its valuable vessels.
     people:
     - god_1324
+    event: Fall of Jerusalem
   relations:
   - predicate: IN
     to:
@@ -16578,6 +16585,7 @@
     text: 'And them that had escaped from the sword carried he away to Babylon; where they were servants to him and his sons until the reign of the kingdom of Persia:'
     translation: King James Version
     web: He carried those who had escaped from the sword away to Babylon, and they were servants to him and his sons until the reign of the kingdom of Persia,
+    event: Babylonian Captivity,Third deportation to Babylon
   relations:
   - predicate: IN
     to:
@@ -16599,6 +16607,7 @@
     people:
     - jeremiah_853
     - god_1324
+    event: Babylonian Captivity
   relations:
   - predicate: IN
     to:
@@ -16621,6 +16630,7 @@
     - cyrus_968
     - jeremiah_853
     - god_1324
+    event: Cyrus decrees the rebuilding of the Temple
   relations:
   - predicate: IN
     to:
@@ -16642,6 +16652,7 @@
     people:
     - cyrus_968
     - god_1324
+    event: Cyrus decrees the rebuilding of the Temple
   relations:
   - predicate: IN
     to:
