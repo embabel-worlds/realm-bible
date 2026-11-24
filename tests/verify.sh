@@ -71,17 +71,24 @@ def calls(r):
         if isinstance(v, int): return v
     return "not reported (envelope keys: %s)" % sorted(r)
 
-# The stored reference is written in the background after the world loads, and a view over a type
-# still being written says so in its warnings (SEEDING). Nothing below is meaningful until it is done.
+# The stored reference is written in the background after the realm reports active, and a view read
+# before it is done answers from a half-written graph: a missing node is no row, a missing edge a
+# relationship the schema does not have yet. Nothing below is meaningful until every stored type
+# holds what reference/ declares, so wait for exactly that, type by type.
 import time
-PROBES = ["ReadVerse", "Prayers", "DailyOffice", "FindSaint", "TodayInTheChurch", "PsalterPsalm", "ArticlesOfReligion"]
+stored = {}
+for f in sorted(glob.glob(os.path.join(realm, "reference", "*.yml"))):
+    for rec in yaml.safe_load(open(f)) or []:
+        if isinstance(rec, dict) and rec.get("type"): stored[rec["type"]] = stored.get(rec["type"], 0) + 1
 deadline = time.time() + 1800
 while True:
-    seeding = [p for p in PROBES if "SEEDING" in json.dumps(view(p).get("warnings") or [])]
-    if not seeding: break
+    short = {t: (kg("MATCH (x:%s) RETURN count(x) AS n" % t) or [{"n": 0}])[0]["n"] for t in stored}
+    short = {t: "%d/%d" % (got, stored[t]) for t, got in short.items() if got != stored[t]}
+    if not short: break
     if time.time() > deadline:
-        print("  FAIL the reference seed was still running after 30 minutes: %s" % seeding); fail = 1; break
-    print("  wait the reference seed is still writing what %s read" % ", ".join(seeding)); time.sleep(30)
+        print("  FAIL the reference seed was still short after 30 minutes: %s" % short); fail = 1; break
+    print("  wait the reference seed is still writing: %s" % ", ".join("%s %s" % kv for kv in sorted(short.items())[:8]))
+    time.sleep(30)
 
 print("== L1: every view answers by name ==")
 EMPTY_BY_DESIGN = set()
@@ -130,10 +137,6 @@ at_most("  ...at most five fetched", 5, calls(r))
 
 print("== L2: the graph against its sources ==")
 # The stored reference loaded whole, type by type: every view over stored data stands on it.
-stored = {}
-for f in sorted(glob.glob(os.path.join(realm, "reference", "*.yml"))):
-    for rec in yaml.safe_load(open(f)) or []:
-        if isinstance(rec, dict) and rec.get("type"): stored[rec["type"]] = stored.get(rec["type"], 0) + 1
 for t, n in sorted(stored.items()):
     check("stored %s = reference/" % t, n, kg("MATCH (x:%s) RETURN count(x) AS n" % t)[0]["n"])
 verses = table("Verses")
