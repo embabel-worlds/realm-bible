@@ -11,7 +11,7 @@
           { "name": "reference", "in": "path", "required": true, "schema": { "type": "string" },
             "description": "A human reference such as `Judges 3:21`. OSIS (`Judg.3.21`) is NOT accepted." },
           { "name": "translation", "in": "query", "required": false, "schema": { "type": "string" },
-            "description": "Translation id: kjv, web, asv, bbe, darby, dra, ylt. Default web." }
+            "description": "Translation id: kjv, web, asv, bbe, darby, dra. Default web." }
         ],
         "responses": { "200": { "description": "the passage" }, "404": { "description": "no such verse in this translation" } }
       }

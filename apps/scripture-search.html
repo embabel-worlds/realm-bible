@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Scripture Search</title>
-<meta name="description" content="Find a Bible passage by describing it in your own words — searched by meaning over the World English Bible, read in the King James or the World English Bible, with the people in each chapter and any verse in seven translations.">
+<meta name="description" content="Find a Bible passage by describing it in your own words — searched by meaning over the World English Bible, read in the King James or the World English Bible, with the people in each chapter and any verse in six translations.">
 <link rel="stylesheet" href="/api/v1/apps-runtime/v1/theme.css">
 <script src="/api/v1/apps-runtime/v1/embabel.js"></script>
 <script type="application/embabel-app+json">
@@ -70,7 +70,7 @@
       inside the retrieval.</li>
     <li><b>BiblePerson</b> — fetched, not stored, from Theographic's <code>People.csv</code> the first time a chapter's people are asked for.
       Theographic marks much of its data unfinished; a person's tags can be wrong.</li>
-    <li><b>Five older translations</b> (ASV, Basic English, Darby, Douay-Rheims, Young's Literal) — fetched live from bible-api.com,
+    <li><b>Four older translations</b> (ASV, Basic English, Darby, Douay-Rheims) — fetched live from bible-api.com,
       one verse at a time, only when you open a verse.</li>
   </ul>
 
@@ -105,7 +105,7 @@ ORDER BY rank LIMIT $limit</pre>
 RETURN p.displayTitle AS person, p.personLookup AS id,
        count(v) AS verses, collect(v.verse) AS verseNumbers
 ORDER BY verses DESC, person</pre>
-  <p><b><code>CompareTranslations</code></b> — one verse in seven translations, when you click a verse. Parameter: <code>ref</code> (e.g. "Judges 4:21").
+  <p><b><code>CompareTranslations</code></b> — one verse in six translations, when you click a verse. Parameter: <code>ref</code> (e.g. "Judges 4:21").
     The King James and World English come from the graph; the other five are fetched live for that verse.</p>
   <p><b><code>TodaysHeadlines</code></b> — the news strip, once per visit, when the world has it. It is not this realm's: the news belongs
     to a realm that fetches it, so a world that composes one with this realm declares the view itself, returning
@@ -134,7 +134,7 @@ WHERE 'web' IN d.tags
     <li><b>No highlighted verses on a result.</b> The matched excerpt could not be lined up with single verses; the first verses of the
       chapter are shown instead, and the whole chapter is in the reader.</li>
     <li><b>"People" is empty.</b> Theographic tags no one in that chapter — common in law, poetry and genealogy-free prophecy — not an error.</li>
-    <li><b>Fewer than seven translations.</b> Young's Literal is New Testament only on its source, so an Old Testament verse has six. A missing
+    <li><b>Fewer than six translations.</b> A missing
       ASV, Basic English, Darby or Douay-Rheims row means that fetch failed; its reason is shown.</li>
     <li><b>A story with no chapter.</b> The search judged that the Bible tells no event like it, and says so rather than reaching for a verse.</li>
     <li><b>A connection that still looks loose.</b> Each chapter passed a check that it tells the same kind of event, but that check is a

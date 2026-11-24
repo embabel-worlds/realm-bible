@@ -1,6 +1,6 @@
 /*
  * The shared core of realm-bible's apps: passage search, the reader, the people in a chapter, and one verse
- * across seven translations. Every edition's page (scripture-search.html, catholic.html, …) loads this and
+ * across six translations. Every edition's page (scripture-search.html, catholic.html, …) loads this and
  * wires its own front page around it, so a fix to the reader reaches every edition at once.
  *
  * A classic script, not a module, because the pages run as plain <script> includes; it defines one global,
@@ -76,7 +76,6 @@
     for (var i = from; i <= to && verses.length < 200; i++) verses.push(i);
     return { passage: m[1].trim(), verses: verses };
   }
-  var NT = /^(Matthew|Mark|Luke|John|Acts|Romans|1 Corinthians|2 Corinthians|Galatians|Ephesians|Philippians|Colossians|1 Thessalonians|2 Thessalonians|1 Timothy|2 Timothy|Titus|Philemon|Hebrews|James|1 Peter|2 Peter|1 John|2 John|3 John|Jude|Revelation) /;
 
   function BibleCore(opts) {
     var stateEl = opts.state, resultsEl = opts.results, readerEl = opts.reader;
@@ -243,24 +242,22 @@
       readerEl.querySelectorAll('p.picked').forEach(function (p) { p.classList.remove('picked'); });
       para.classList.add('picked');
       var box = document.getElementById('compare');
-      box.innerHTML = '<div class="compare"><h3>' + esc(ref) + ' in seven translations</h3><p class="note">Fetching the five older translations…</p></div>';
+      box.innerHTML = '<div class="compare"><h3>' + esc(ref) + ' in six translations</h3><p class="note">Fetching the four older translations…</p></div>';
       var cached = compareCache[ref];
-      /* No shared state bar: its generic "Partial result" would announce the expected YLT gap on every Old
-         Testament verse, after the panel has already said why. Missing translations are named in the panel. */
+      /* No shared state bar: its generic "Partial result" says only that something fell short; the panel
+         names which translations are missing. */
       var p = cached ? Promise.resolve(cached) : embabel.views.invoke('CompareTranslations', { ref: ref })
         .then(function (res) { var packed = { rows: rowsOf(res), warnings: warningsOf(res) }; compareCache[ref] = packed; return packed; });
       p.then(function (packed) {
         /* Which translations should be here, named — the envelope's warning says only "PARTIAL", not which
-           source fell short, so the rows decide. The YLT gap on an Old Testament verse is expected. */
+           source fell short, so the rows decide. */
         var got = packed.rows.map(function (r) { return r.translation; }).join(' | ');
-        var nt = NT.test(ref);
-        var expected = ['American Standard Version', 'Bible in Basic English', 'Darby', 'Douay-Rheims'].concat(nt ? ["Young's Literal"] : []);
+        var expected = ['American Standard Version', 'Bible in Basic English', 'Darby', 'Douay-Rheims'];
         var missing = expected.filter(function (name) { return got.indexOf(name) < 0; });
         box.innerHTML = '<div class="compare"><h3>' + esc(ref) + ' in ' + packed.rows.length + ' translations</h3>' +
           packed.rows.map(function (r) {
             return '<div class="tr"><div class="name">' + esc(r.translation) + '</div><div class="text scripture">' + sacred(esc(r.text)) + '</div></div>';
           }).join('') +
-          (nt ? '' : '<p class="note">Young\'s Literal is New Testament only at its source, so an Old Testament verse has no YLT row.</p>') +
           (missing.length ? problem('Could not be fetched this time: ' + missing.join(', ') + '.') : '') + '</div>';
       }).catch(function (e) {
         box.innerHTML = problem('Could not compare translations: ' + errText(e));

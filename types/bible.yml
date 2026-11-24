@@ -2,7 +2,7 @@
 #
 #   BibleCanon ◀─IN─ Book ◀─IN─ Passage ◀─IN─ BibleVerse ─MENTIONS──▶ BiblePerson ─FATHER/MOTHER─▶ BiblePerson
 #                                                 │                       ▲
-#                                                 └─RENDERED──▶ AsvVerse, BbeVerse, DarbyVerse, DraVerse, YltVerse
+#                                                 └─RENDERED──▶ AsvVerse, BbeVerse, DarbyVerse, DraVerse
 #                                                    │
 #                                     BibleNameQuery {name} ──NAMED─────┤
 #                                     BibleRoll {scope:'all'} ──PERSON──┘   (everyone at once)
@@ -294,8 +294,8 @@
   visibility: internal
   userAnchor: false
   description: >-
-    One verse in one of the five fetched translations, identified by `key`, the reference it was
-    fetched for (`Judges3:21`). Parent of AsvVerse, BbeVerse, DarbyVerse, DraVerse and YltVerse, so
+    One verse in one of the four fetched translations, identified by `key`, the reference it was
+    fetched for (`Judges3:21`). Parent of AsvVerse, BbeVerse, DarbyVerse and DraVerse, so
     a query can treat them alike.
   properties:
     key:
@@ -304,8 +304,8 @@
     text:
       description: "The verse in this translation, with the source's own whitespace (trim() it for display)."
     translation:
-      values: ["asv", "bbe", "darby", "dra", "ylt"]
-      description: "bible-api's translation id, lower case: asv, bbe, darby, dra or ylt."
+      values: ["asv", "bbe", "darby", "dra"]
+      description: "bible-api's translation id, lower case: asv, bbe, darby or dra."
     translationName:
       description: "The translation's full name as bible-api gives it, e.g. `American Standard Version (1901)`."
 
@@ -399,29 +399,5 @@
     text:
       description: "The verse in this translation, with the source's own whitespace (trim() it for display)."
     translation: "Always `dra`."
-    translationName:
-      description: "The translation's full name as bible-api gives it."
-
-- name: YltVerse
-  parents: [Rendering]
-  description: >-
-    One verse in Young's Literal Translation (1898, public domain) — word-for-word, keeping the
-    source tenses — identified by `key`, the reference fetched (`John3:16`). New Testament only: an
-    Old Testament verse has none. Reached from BibleVerse via RENDERED; fetched live, cached
-    forever.
-  virtualJoins:
-    - anchorLabel: BibleVerse
-      relationship: RENDERED
-      keyField: apiRef
-      recordKeyField: key
-      producer: yltVerse
-      description: "This verse in Young's Literal Translation."
-  properties:
-    key:
-      identity: true
-      description: "The reference fetched, e.g. `Judges3:21`."
-    text:
-      description: "The verse in this translation, with the source's own whitespace (trim() it for display)."
-    translation: "Always `ylt`."
     translationName:
       description: "The translation's full name as bible-api gives it."

@@ -9,7 +9,7 @@
 # spaces removed. bible-api parses that form, and answers OSIS (`Judg.3.21`) with 404; the engine
 # refuses a key containing whitespace as a path segment, so `Judges 3:21` itself cannot be sent. The whole response is ONE object, so `records` is `$` and every
 # projection is a top-level read. The text arrives with the source's own whitespace — leading
-# newlines, and deep indentation in YLT — so views trim() it.
+# newlines and deep indentation — so views trim() it.
 #
 # bible-api maps the Douay-Rheims onto KJV numbering itself: its "Psalms 23:1" is the Vulgate's
 # Psalm 22, "The Lord ruleth me". Nothing here renumbers.
@@ -72,24 +72,6 @@
   records: "$"
   keyArgs: [reference]
   args: { translation: dra }
-  echoKeyAs: key
-  maxKeysPerCall: 1
-  project:
-    text: text
-    translation: translation_id
-    translationName: translation_name
-  pushdown: []
-  cache: { kind: immutable }
-
-# bible-api carries Young's Literal Translation for the NEW TESTAMENT ONLY. An Old Testament
-# verse is a 404 — no rendering, not an empty one.
-
-- name: yltVerse
-  kind: remote
-  operation: verseInTranslation
-  records: "$"
-  keyArgs: [reference]
-  args: { translation: ylt }
   echoKeyAs: key
   maxKeysPerCall: 1
   project:

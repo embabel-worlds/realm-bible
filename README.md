@@ -6,14 +6,14 @@
 > translation at once) awaits a further engine fix; the concrete translation labels work everywhere.
 
 The Bible as a queryable graph: search verses in the King James Version (default) or the World
-English Bible (modern), read a chapter, compare a verse across seven translations, and find the
+English Bible (modern), read a chapter, compare a verse across six translations, and find the
 people of the Bible, the verses that mention them, and their parents.
 
 ## Shape
 
 ```
 BibleCanon ◀─IN─ Book ◀─IN─ Passage ◀─IN─ BibleVerse ─MENTIONS─▶ BiblePerson ─FATHER/MOTHER/CHILD─▶ BiblePerson
-                                                 └─RENDERED─▶ Rendering: AsvVerse · BbeVerse · DarbyVerse · DraVerse · YltVerse
+                                                 └─RENDERED─▶ Rendering: AsvVerse · BbeVerse · DarbyVerse · DraVerse
 BibleNameQuery {name}        ─NAMED───▶ BiblePerson
 BibleIdQuery {personLookup}  ─WITH_ID─▶ BiblePerson
 ```
@@ -28,7 +28,7 @@ key, so a reverse walk is an exact lookup by the child's own record, not a guess
 | BibleCanon, Book, Passage (= chapter), BibleVerse with KJV `text` | stored, `reference/` | Theographic Bible Metadata |
 | BibleVerse `web` (World English Bible) | stored, `reference/` | eBible.org |
 | BiblePerson | fetched, tabular producer over `People.csv` | Theographic Bible Metadata |
-| Asv/Bbe/Darby/Dra/YltVerse | fetched, one verse per call | bible-api.com |
+| Asv/Bbe/Darby/DraVerse | fetched, one verse per call | bible-api.com |
 
 Two translations are stored because search has to scan text, and a producer cannot be scanned.
 The other five are fetched because nobody searches the Darby for a word.
@@ -95,8 +95,7 @@ parallels find Ezra 2 ↔ Nehemiah 7, 2 Samuel 23 ↔ 1 Chronicles 11 and Mark 3
 
 `apps/scripture-search.html` — search for a passage the way you remember it ("bears eat boys who
 mocked a prophet" finds 2 Kings 2), read it in KJV or WEB, see who is in it, compare a verse across
-seven translations, and find Scripture that tells the same kind of event as today's news (needs
-realm-research with a Brave key). Search is agentic retrieval over the WEB chapters. The page's own
+six translations, and find Scripture that tells the same kind of event as a news story. Search is agentic retrieval over the WEB chapters. The page's own
 "How it works" shows every query it runs.
 
 `tests/scripture-search.live.mjs` drives the app in a real browser against a live appliance:
@@ -231,7 +230,6 @@ Things to know:
 - **bible-api is rate-limited** (about 15 requests per 30 seconds) and a remote producer cannot be
   paced, so only `CompareTranslations` reaches it, one verse at a time. Fetched verses are cached
   forever.
-- **Young's Literal is New Testament only** on bible-api. An Old Testament verse has no YLT row.
 - **Romans 16:26–27 have no WEB text**; the WEB numbers the end of Romans differently.
 - **The Douay-Rheims arrives in KJV numbering**: bible-api maps it, so its "Psalm 23" is the
   Vulgate's Psalm 22.
@@ -256,7 +254,7 @@ CC BY-SA 4.0, as their source requires:
   data, the KJV text as Theographic publishes it, and all person data derive from it, and are
   shared under the same licence.
 - World English Bible — public domain, via https://ebible.org.
-- ASV, BBE, Darby, Douay-Rheims and YLT — public domain, served by https://bible-api.com.
+- ASV, BBE, Darby and Douay-Rheims — public domain, served by https://bible-api.com.
 - Easton's Bible Dictionary (1897), quoted in `BiblePerson.dictionary` — public domain.
 - The General Roman Calendar data is computed by romcal (MIT, https://github.com/romcal/romcal).
 - The Baltimore Catechism No. 2 (1885), via Project Gutenberg eBook #14552 — public domain.

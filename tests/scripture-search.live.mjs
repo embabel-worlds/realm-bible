@@ -84,13 +84,12 @@ try {
   const jaelVerses = await page.locator('#reader p.person').count();
   check(`Jael highlights her ${telling.jael} verses`, jaelVerses === telling.jael, `${jaelVerses}`);
 
-  /* One verse in seven translations; an Old Testament verse has six, and the YLT gap is not an error. */
+  /* One verse in six translations. */
   await peg().click();
   await page.locator('#compare .tr').first().waitFor({ timeout: 20000 });
   const translations = await page.locator('#compare .tr').count();
-  check(`${first}:${telling.peg} in six translations (no YLT for the Old Testament)`, translations === 6, `${translations}`);
-  check('the expected YLT gap is explained, not reported as a failure',
-    (await page.locator('#compare .problem').count()) === 0 && /New Testament only/.test(await page.locator('#compare').textContent()));
+  check(`${first}:${telling.peg} in six translations`, translations === 6, `${translations}`);
+  check('no translation reported missing', (await page.locator('#compare .problem').count()) === 0);
   check('and the page-wide state bar does not announce it either',
     !/Partial result/.test(await page.locator('#state').evaluate((el) => (el.shadowRoot ? el.shadowRoot.textContent : el.textContent) || '')));
 

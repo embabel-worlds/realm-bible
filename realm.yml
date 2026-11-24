@@ -3,8 +3,8 @@ description: |
   Every verse of the Bible in the King James and World English Bible, with its people and older translations.
   Every verse, chapter and book of the 66 is stored, with two texts on each verse: the King
   James Version, which is the default, and the World English Bible, a modern public-domain
-  translation. Both are searchable. Five older translations (ASV, Basic English, Darby, Douay-Rheims,
-  Young's Literal) are fetched live for any verse you want to compare.
+  translation. Both are searchable. Four older translations (ASV, Basic English, Darby,
+  Douay-Rheims) are fetched live for any verse you want to compare.
 
   The people come from Theographic Bible Metadata: about 3,070 of them, joined to the
   verses that mention them and to their fathers and mothers. A name is not a
@@ -49,7 +49,6 @@ exports:
   - BbeVerse
   - DarbyVerse
   - DraVerse
-  - YltVerse
   - LiturgicalDay
   - Celebration
   - RosaryMystery

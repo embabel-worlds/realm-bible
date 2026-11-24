@@ -177,12 +177,12 @@
   params:
     book:
       type: string
-      default: ""
-      description: "Tobit, Judith, Esther, Wisdom, Sirach, Baruch, Daniel, `1 Maccabees` or `2 Maccabees`. Required."
+      default: "Tobit"
+      description: "Tobit, Judith, Esther, Wisdom, Sirach, Baruch, Daniel, `1 Maccabees` or `2 Maccabees`, exactly."
     chapter:
       type: int
-      default: 0
-      description: "Chapter. Esther from 11, Daniel from 13. Required."
+      default: 1
+      description: "Chapter, Vulgate numbering; Esther from 11, Daniel from 13."
     verse:
       type: int
       default: 0

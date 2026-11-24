@@ -84,7 +84,7 @@ while True:
     print("  wait the reference seed is still writing what %s read" % ", ".join(seeding)); time.sleep(30)
 
 print("== L1: every view answers by name ==")
-EMPTY_BY_DESIGN = {"ReadVerseDouayRheims", "ReadDeuterocanon"}       # a required reference, empty by default
+EMPTY_BY_DESIGN = set()
 OUTSIDE = {"SearchPassages": "needs the chapter documents and a model",
            "PassagesForStory": "needs the chapter documents and a model; none is a real answer"}
 for f in sorted(glob.glob(os.path.join(realm, "views", "*.yml"))):
@@ -96,6 +96,14 @@ for f in sorted(glob.glob(os.path.join(realm, "views", "*.yml"))):
             print("  note %-28s %s, %d rows — %s" % (n, r.get("status"), len(rows), OUTSIDE[n]))
         elif r.get("status") != "SUCCEEDED":
             print("  FAIL %s: %s %s" % (n, r.get("status"), str(r.get("error") or r)[:600])); fail = 1
+            if "VIEW_QUERY_INVALID" in json.dumps(r):
+                # The view's refusal says only that the query is invalid; the same query run directly,
+                # with its defaults written in, names the defect.
+                q = v.get("cypher", "")
+                for pn, spec in sorted((v.get("params") or {}).items(), key=lambda kv: -len(kv[0])):
+                    q = q.replace("$" + pn, json.dumps(spec.get("default")).replace('"', "'"))
+                d = post("/api/v1/admin/kg/execute", {"cypher": q})
+                print("       why: %s" % str(d.get("error") or d.get("message") or "the query ran directly: %d rows" % len(d.get("rows") or []))[:900])
         elif not rows and n not in EMPTY_BY_DESIGN:
             print("  FAIL %s answered no rows on its defaults" % n); fail = 1
         else:
@@ -115,7 +123,7 @@ r = kg_full("MATCH (:BibleRoll)-[:PERSON]->(p:BiblePerson) WHERE p.gender = 'Fem
 check("the women, gender pushed into the read = the file", sum(1 for p in people if p["gender"] == "Female"), (r.get("rows") or [{}])[0].get("n"))
 at_most("  ...one read of the file", 1, calls(r))
 r = view("CompareTranslations", {"ref": "John 11:35"})
-check("CompareTranslations John 11:35: seven translations", 7, len(r.get("data") or []))
+check("CompareTranslations John 11:35: six translations", 6, len(r.get("data") or []))
 if len(r.get("data") or []) != 7:
     print("       got: %s; warnings: %s" % ([x.get("translation") for x in r.get("data") or []], str(r.get("warnings"))[:400]))
 at_most("  ...at most five fetched", 5, calls(r))

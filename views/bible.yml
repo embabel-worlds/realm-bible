@@ -108,10 +108,9 @@
 
 - name: CompareTranslations
   description: >-
-    One verse side by side in seven translations: KJV, WEB and five older ones. The King James and
-    World English are stored; the ASV, Basic English, Darby, Douay-Rheims and Young's Literal are
-    fetched live, one call each. Young's Literal is New Testament only, so an Old Testament verse
-    has no YLT row. One verse only.
+    One verse side by side in six translations: KJV, WEB and four older ones. The King James and
+    World English are stored; the ASV, Basic English, Darby and Douay-Rheims are fetched live, one
+    call each, and a translation whose fetch fails has no row. One verse only.
   params:
     ref:
       type: string
@@ -123,15 +122,13 @@
     OPTIONAL MATCH (v)-[:RENDERED]->(bbe:BbeVerse)
     OPTIONAL MATCH (v)-[:RENDERED]->(darby:DarbyVerse)
     OPTIONAL MATCH (v)-[:RENDERED]->(dra:DraVerse)
-    OPTIONAL MATCH (v)-[:RENDERED]->(ylt:YltVerse)
     UNWIND [
       {translation: 'King James Version (default)', text: v.text},
       {translation: 'World English Bible (modern)', text: v.web},
       {translation: 'American Standard Version', text: trim(asv.text)},
       {translation: 'Bible in Basic English', text: trim(bbe.text)},
       {translation: 'Darby', text: trim(darby.text)},
-      {translation: 'Douay-Rheims', text: trim(dra.text)},
-      {translation: "Young's Literal", text: trim(ylt.text)}
+      {translation: 'Douay-Rheims', text: trim(dra.text)}
     ] AS r
     WITH r WHERE r.text IS NOT NULL
     RETURN r.translation AS translation, r.text AS text
@@ -141,12 +138,12 @@
     One verse in the Douay-Rheims, the Catholic translation from the Vulgate. Fetched live under the
     stored reference, which is KJV numbering: bible-api maps the Psalms itself, so `Psalms 23:1`
     returns the Vulgate's Psalm 22, "The Lord ruleth me". Not the deuterocanon — Tobit, Sirach and
-    the rest are ReadDeuterocanon. Required: empty returns nothing.
+    the rest are ReadDeuterocanon. One verse only, named exactly.
   params:
     ref:
       type: string
-      default: ""
-      description: "The verse under KJV numbering, e.g. `John 6:51`, `Psalms 23:1`. Required — empty returns nothing."
+      default: "John 6:51"
+      description: "The verse under KJV numbering, exactly as the stored reference writes it, e.g. `John 6:51`, `Psalms 23:1`."
   cypher: |
     MATCH (v:BibleVerse {name: $ref})-[:RENDERED]->(dra:DraVerse)
     RETURN v.name AS reference, trim(dra.text) AS text, 'Douay-Rheims' AS translation
