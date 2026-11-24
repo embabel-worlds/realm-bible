@@ -48,8 +48,11 @@ def kg_full(cypher, fresh=False):
     body = {"cypher": cypher}
     if fresh: body["ai"] = {"fresh": True}
     r = post("/api/v1/admin/kg/execute", body)
-    if r.get("error"):
-        raise SystemExit("  FAIL query REFUSED: %s\n    %s" % (str(r["error"])[:200], cypher))
+    if fresh and (r.get("error") or r.get("code")):
+        print("  note a cold read was refused (%s); read warm instead" % str(r.get("message") or r.get("error"))[:300])
+        r = post("/api/v1/admin/kg/execute", {"cypher": cypher})
+    if r.get("error") or r.get("code"):
+        raise SystemExit("  FAIL query REFUSED: %s\n    %s" % (str(r.get("error") or r.get("message") or r)[:400], cypher))
     return r
 def kg(cypher): return kg_full(cypher).get("rows") or []
 def view(name, args=None):
@@ -68,6 +71,18 @@ def calls(r):
         if isinstance(v, int): return v
     return "not reported (envelope keys: %s)" % sorted(r)
 
+# The stored reference is written in the background after the world loads, and a view over a type
+# still being written says so in its warnings (SEEDING). Nothing below is meaningful until it is done.
+import time
+PROBES = ["ReadVerse", "Prayers", "DailyOffice", "FindSaint", "TodayInTheChurch", "PsalterPsalm", "ArticlesOfReligion"]
+deadline = time.time() + 1800
+while True:
+    seeding = [p for p in PROBES if "SEEDING" in json.dumps(view(p).get("warnings") or [])]
+    if not seeding: break
+    if time.time() > deadline:
+        print("  FAIL the reference seed was still running after 30 minutes: %s" % seeding); fail = 1; break
+    print("  wait the reference seed is still writing what %s read" % ", ".join(seeding)); time.sleep(30)
+
 print("== L1: every view answers by name ==")
 EMPTY_BY_DESIGN = {"ReadVerseDouayRheims", "ReadDeuterocanon"}       # a required reference, empty by default
 OUTSIDE = {"TodaysHeadlines": "needs realm-research and its search key",
@@ -81,11 +96,13 @@ for f in sorted(glob.glob(os.path.join(realm, "views", "*.yml"))):
         if n in OUTSIDE and (r.get("status") != "SUCCEEDED" or not rows):
             print("  note %-28s %s, %d rows — %s" % (n, r.get("status"), len(rows), OUTSIDE[n]))
         elif r.get("status") != "SUCCEEDED":
-            print("  FAIL %s: %s %s" % (n, r.get("status"), str(r.get("error") or r)[:200])); fail = 1
+            print("  FAIL %s: %s %s" % (n, r.get("status"), str(r.get("error") or r)[:600])); fail = 1
         elif not rows and n not in EMPTY_BY_DESIGN:
             print("  FAIL %s answered no rows on its defaults" % n); fail = 1
         else:
             print("  ok   %-28s %d rows" % (n, len(rows)))
+        for w in r.get("warnings") or []:
+            print("       warning: %s" % str(w)[:300])
 
 print("== L3: cost and pushdown, read cold ==")
 people = table("People")
@@ -100,9 +117,18 @@ check("the women, gender pushed into the read = the file", sum(1 for p in people
 at_most("  ...one read of the file", 1, calls(r))
 r = view("CompareTranslations", {"ref": "John 11:35"})
 check("CompareTranslations John 11:35: seven translations", 7, len(r.get("data") or []))
+if len(r.get("data") or []) != 7:
+    print("       got: %s; warnings: %s" % ([x.get("translation") for x in r.get("data") or []], str(r.get("warnings"))[:400]))
 at_most("  ...at most five fetched", 5, calls(r))
 
 print("== L2: the graph against its sources ==")
+# The stored reference loaded whole, type by type: every view over stored data stands on it.
+stored = {}
+for f in sorted(glob.glob(os.path.join(realm, "reference", "*.yml"))):
+    for rec in yaml.safe_load(open(f)) or []:
+        if isinstance(rec, dict) and rec.get("type"): stored[rec["type"]] = stored.get(rec["type"], 0) + 1
+for t, n in sorted(stored.items()):
+    check("stored %s = reference/" % t, n, kg("MATCH (x:%s) RETURN count(x) AS n" % t)[0]["n"])
 verses = table("Verses")
 web = {}
 books = sorted(table("Books"), key=lambda b: int(b["bookOrder"]))
