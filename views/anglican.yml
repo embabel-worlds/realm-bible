@@ -3,7 +3,11 @@
 # Prayer Book's own tables and rules, so these views only read stored rows.
 
 - name: DailyOffice
-  description: Morning or Evening Prayer on a date (2025–2030) by the Episcopal Church's 1979 Book of Common Prayer — the day in the church year, any Holy Day kept, season, customary colour, the appointed psalms and lessons (with the chapters they are in), the collect in Rite One and Rite Two, and the suggested canticles.
+  description: >-
+    Morning or Evening Prayer on a date by the 1979 Book of Common Prayer. The day in the church
+    year, any Holy Day kept, season, customary colour, the appointed psalms and lessons, the collect
+    in Rite One and Rite Two, and the suggested canticles. Dates 2025–2030 only; the Episcopal
+    Church's calendar, not another province's.
   params:
     date:
       type: string
@@ -25,7 +29,10 @@
            c.key AS collectKey, c.name AS collectName, c.rite1 AS collectRiteOne, c.rite2 AS collectRiteTwo
 
 - name: OfficePsalmChapters
-  description: The chapters of Psalms appointed at an office, joined to the realm's Bible — so a day's psalms can be read in the King James or World English Bible.
+  description: >-
+    The Psalms chapters appointed at an office, joined to the realm's Bible. So a day's psalms can
+    be read in the King James or World English Bible; whole chapters only — a psalm appointed in
+    part is listed as its chapter.
   params:
     date:
       type: string
@@ -41,7 +48,9 @@
     ORDER BY psalm
 
 - name: ChurchYear
-  description: The Sundays, Holy Days and other feasts between two dates in the 1979 Prayer Book's calendar, with season and customary colour — and, if asked, the weekdays' optional commemorations.
+  description: >-
+    Sundays, Holy Days and feasts between two dates, by the 1979 Prayer Book. With season
+    and customary colour; weekdays' optional commemorations only when asked. Dates 2025–2030 only.
   params:
     from:
       type: string
@@ -64,7 +73,10 @@
     ORDER BY date
 
 - name: Collects
-  description: The collects of the church year whose name matches — a Sunday, a season, a Proper, a Holy Day — each in Rite One (traditional) and Rite Two (contemporary), with any alternatives.
+  description: >-
+    Collects of the church year whose name matches, in Rite One and Rite Two. A Sunday, a season, a
+    Proper, a Holy Day, with any alternatives; matched by part of the name, and only the 1979 Prayer
+    Book's collects.
   params:
     name:
       type: string
@@ -79,7 +91,9 @@
     ORDER BY kind DESC, name
 
 - name: CollectOfTheDay
-  description: The collect appointed for a date (2025–2030) — the Sunday's through the week, or the Holy Day's — in Rite One and Rite Two.
+  description: >-
+    The collect appointed for a date, in Rite One and Rite Two. The Sunday's through the week, or
+    the Holy Day's; dates 2025–2030 only.
   params:
     date:
       type: string
@@ -91,7 +105,10 @@
            c.rite1Alternatives AS riteOneAlternatives, c.rite2Alternatives AS riteTwoAlternatives
 
 - name: Canticles
-  description: The canticles of Morning and Evening Prayer — the Song of Zechariah, the Magnificat, the Te Deum and the rest — by name, Latin title or number, with their full text and the Scripture each is taken from.
+  description: >-
+    The canticles of Morning and Evening Prayer, with text and source. The Song of Zechariah, the
+    Magnificat, the Te Deum and the rest — by part of the English or Latin name; only the Prayer
+    Book's twenty-one.
   params:
     name:
       type: string
@@ -105,7 +122,10 @@
     ORDER BY number
 
 - name: PsalterPsalm
-  description: A psalm in the 1979 Prayer Book's own Psalter — the translation the Office sings — verse by verse, with its Latin incipit.
+  description: >-
+    One psalm in the 1979 Prayer Book's own Psalter, verse by verse. The translation the Office
+    sings, with its Latin incipit; one psalm only, Hebrew numbering — for the King James,
+    ReadPassage.
   params:
     number:
       type: int
@@ -116,7 +136,9 @@
     RETURN p.number AS number, p.name AS name, p.latin AS latin, p.verses AS verses
 
 - name: OutlineOfTheFaith
-  description: An Outline of the Faith, the 1979 Prayer Book's catechism — question and answer, in the book's order — for one section (e.g. `The Sacraments`, `The Holy Spirit`), or the list of its sections when none is given. Search it, and every other catechism, with CatechismSearch.
+  description: >-
+    An Outline of the Faith, the 1979 Prayer Book's catechism, by section. Question and answer in
+    the book's order for the sections whose title contains the text given, or the list of sections when none is given — not the text of any other catechism. Search it, and every other catechism, with CatechismSearch.
   params:
     section:
       type: string
@@ -133,7 +155,10 @@
     ORDER BY partNumber
 
 - name: ArticlesOfReligion
-  description: The Articles of Religion (the Thirty-Nine Articles) — one by number, with its text as the Episcopal Church established it in 1801, the 1571 text where that differs, and its Scripture proofs; or, with number 0, the list of all thirty-nine titles.
+  description: >-
+    One of the Articles of Religion by number, or the list of all thirty-nine. With its text as the
+    Episcopal Church established it in 1801, the 1571 text where that differs, and its Scripture
+    proofs; number 0 lists titles only, without text.
   params:
     number:
       type: int
@@ -151,12 +176,15 @@
     ORDER BY number
 
 - name: ArticlesSearch
-  description: The Articles of Religion whose title or text contains a word or phrase — e.g. `justification`, `predestination`, `sacraments` — with the Scripture proofs of each.
+  description: >-
+    Articles of Religion whose title or text contains a word or phrase. Partial and
+    case-insensitive, over the 1801 and 1571 texts — e.g. `justification`, `predestination` — with
+    the Scripture proofs of each; only the Thirty-Nine Articles.
   params:
     term:
       type: string
       default: "faith"
-      description: "A word or phrase, matched case-insensitively."
+      description: "A word or phrase; a partial match, ignoring case."
   cypher: |
     MATCH (a:ArticleOfReligion)
     WHERE toLower(a.title) CONTAINS toLower($term) OR toLower(a.text) CONTAINS toLower($term)
@@ -165,7 +193,10 @@
     ORDER BY number
 
 - name: ArticleProofChapters
-  description: The chapters of Scripture an Article of Religion is proved by, joined to the realm's Bible, with how many proofs fall in each.
+  description: >-
+    The Scripture chapters an Article of Religion cites as proofs, in the Bible. One row per
+    chapter, in book order; only the proofs a public-domain catechism of the Articles (1877) cites,
+    and a proof outside the 66 books is not joined.
   params:
     number:
       type: int
@@ -177,7 +208,10 @@
     ORDER BY book, chapter
 
 - name: PrayerBookPrayers
-  description: The Prayers and Thanksgivings of the 1979 Prayer Book — for the world, the Church, the nation, the sick, families, the departed, and thanksgivings — matched by name or heading.
+  description: >-
+    The Prayers and Thanksgivings of the 1979 Prayer Book, by name or heading. For the world, the
+    Church, the nation, the sick, families, the departed, and thanksgivings; matched by part of the
+    name or heading, and only this section of the Prayer Book.
   params:
     name:
       type: string

@@ -2,7 +2,11 @@
 # "today" is where the reader is, and the app does.
 
 - name: TodayInTheChurch
-  description: What the Church celebrates on a date in the General Roman Calendar — the day's principal celebration, any optional memorials beside it with the saints each honours (name and Wikidata entity, for SaintLife), the liturgical colour, season and lectionary cycles. Stored, so it answers at once. The universal calendar only; a country's own calendar may differ.
+  description: >-
+    What the Church celebrates on a date in the General Roman Calendar. The day's principal
+    celebration, any optional memorials beside it with the saints each honours (name and Wikidata
+    entity, for SaintLife), the colour, season and lectionary cycles. Stored, so it answers at once.
+    The universal calendar only (2025–2030); a country's own calendar may differ.
   params:
     date:
       type: string
@@ -23,7 +27,9 @@
            collect({id: c.celebrationId, name: c.name, rank: c.rank, optional: c.optional, colours: c.colours, saints: saints}) AS celebrations
 
 - name: FeastsInRange
-  description: The solemnities and feasts (and, if asked, memorials) between two dates — the coming week's calendar, or a month's. Sundays included.
+  description: >-
+    Solemnities, Sundays and feasts between two dates in the General Roman Calendar. Memorials only
+    when `maxRank` asks for them; the universal calendar only (2025–2030), not a country's own.
   params:
     from:
       type: string
@@ -46,7 +52,10 @@
     ORDER BY date, c.rankOrder
 
 - name: RosaryToday
-  description: The mysteries of the Rosary prayed on a date — the set for that day of the week, each mystery with the Scripture it meditates and the fruit asked for, and the passage's verses in the King James Version.
+  description: >-
+    The Rosary mysteries prayed on a date, with their Scripture and fruits. The set for that day of
+    the week, each mystery with the passage it meditates and its verses in the King James Version.
+    Dates 2025–2030 only.
   params:
     date:
       type: string
@@ -61,7 +70,10 @@
     ORDER BY number
 
 - name: Prayers
-  description: The traditional prayers — Our Father, Hail Mary, Glory Be, the Fatima Prayer, Hail Holy Queen, the Apostles' Creed, the Angelus, the Memorare, and others — in their long-established English forms.
+  description: >-
+    Traditional Catholic prayers in their long-established English forms. The Our Father, Hail Mary,
+    Glory Be, the Fatima Prayer, Hail Holy Queen, the Apostles' Creed, the Angelus, the Memorare and
+    others; only those the realm holds, matched by part of the name.
   params:
     name:
       type: string
@@ -74,7 +86,10 @@
     ORDER BY name
 
 - name: CatechismLesson
-  description: One lesson (or part) of a catechism, question by question, in the book's order.
+  description: >-
+    One lesson of a catechism, question by question, in the book's order. One lesson only, by
+    number; the catechisms held are public domain — the Catechism of the Catholic Church is not
+    carried (CatechismOnTopic links it).
   params:
     catechism:
       type: string
@@ -91,12 +106,15 @@
     ORDER BY number
 
 - name: CatechismSearch
-  description: Catechism questions and answers containing a word or phrase, across every catechism the realm holds, in each book's order.
+  description: >-
+    Catechism questions and answers containing a word, across every catechism held. Partial and
+    case-insensitive; at most `limit` entries, in each book's order. Not the Catechism of the
+    Catholic Church, whose text is not carried.
   params:
     term:
       type: string
       default: "grace"
-      description: "A word or phrase, matched case-insensitively in the question or the answer."
+      description: "A word or phrase; a partial match, ignoring case, in the question or the answer."
     catechism:
       type: string
       default: ""
@@ -104,7 +122,7 @@
     limit:
       type: int
       default: 25
-      description: "How many entries to return."
+      description: "At most this many entries."
   cypher: |
     MATCH (e:CatechismEntry)
     WHERE ($catechism = '' OR e.catechismId = $catechism)
@@ -115,7 +133,11 @@
     LIMIT $limit
 
 - name: CatechismOnTopic
-  description: What the catechisms say on a topic — the matching questions and answers of the public-domain catechisms the realm holds, and where the Catechism of the Catholic Church treats it (paragraph numbers with links to the official text on vatican.va; the CCC's own text is not carried).
+  description: >-
+    What the catechisms say on a topic, with where the CCC treats it. The matching questions and
+    answers of the public-domain catechisms held, and the Catechism of the Catholic Church's
+    paragraph numbers with links to vatican.va — not its text, which is copyright. At most `limit`
+    answers.
   params:
     topic:
       type: string
@@ -128,7 +150,7 @@
     limit:
       type: int
       default: 12
-      description: "How many catechism answers to return."
+      description: "At most this many catechism answers."
   cypher: |
     WITH [w IN split(toLower(trim($topic)), ' ') WHERE w <> ''] AS words
     OPTIONAL MATCH (t:CccTopic) WHERE all(w IN words WHERE toLower(t.topic) CONTAINS w)
@@ -147,7 +169,11 @@
 # and the Song of the Three) is not reached here — Daniel 3 is read through ReadPassage.
 
 - name: ReadDeuterocanon
-  description: One verse of the deuterocanon in the Douay-Rheims — Tobit, Judith, Wisdom, Sirach, Baruch, 1 and 2 Maccabees, or Esther 11–16 and Daniel 13–14 (Susanna, Bel and the Dragon). Vulgate numbering. Fetched live; the first read of a book takes about a second.
+  description: >-
+    One verse of the deuterocanon in the Douay-Rheims, or a whole chapter. Tobit, Judith, Wisdom,
+    Sirach, Baruch, 1 and 2 Maccabees, or Esther 11–16 and Daniel 13–14 (Susanna, Bel and the
+    Dragon); Vulgate numbering. Fetched live; the first read of a book takes about a second. Not the
+    66 books, which are ReadVerse.
   params:
     book:
       type: string
@@ -168,7 +194,9 @@
     ORDER BY v.verse
 
 - name: ReadDeuterocanonPassage
-  description: A whole chapter of the deuterocanon in the Douay-Rheims, verse by verse. Fetched live; the first read of a book takes about a second.
+  description: >-
+    A whole chapter of the deuterocanon in the Douay-Rheims, verse by verse. One chapter only,
+    Vulgate numbering; fetched live, the first read of a book taking about a second.
   params:
     book:
       type: string
@@ -185,16 +213,19 @@
     ORDER BY verse
 
 - name: SearchDeuterocanon
-  description: Deuterocanon verses in the Douay-Rheims containing a word or phrase, case-insensitively, in book order. Reads all nine books; the first search fetches any not yet read (about a second each), later ones are immediate.
+  description: >-
+    Deuterocanon verses in the Douay-Rheims containing a word or phrase. Partial and
+    case-insensitive, in book order, at most `limit`. Reads all nine books; the first search fetches
+    any not yet read (about a second each), later ones are immediate.
   params:
     term:
       type: string
       default: "friend"
-      description: "A word or phrase — the Douay-Rheims's own wording (`charity`, `thou`)."
+      description: "A word or phrase in the Douay-Rheims's own wording (`charity`, `thou`); a partial match, ignoring case."
     limit:
       type: int
       default: 25
-      description: "How many verses to return."
+      description: "At most this many verses."
   cypher: |
     MATCH (b:DeuterocanonBook)-[:VERSES]->(v:DeuterocanonVerse)
     WHERE v.chapter >= b.fromChapter AND toLower(v.text) CONTAINS toLower($term)

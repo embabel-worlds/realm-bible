@@ -6,7 +6,15 @@
 # (scripts/saints/calendar-saints.json). The keys arrive in one VALUES clause per request.
 #
 # Wikidata asks for a descriptive User-Agent with a contact URL, and the public endpoint is shared:
-# batches stay modest and answers are cached for a week, misses included.
+# batches stay modest and answers are cached, misses included.
+#
+# PUSHDOWN. Every producer here declares `pushdown: []`, on purpose. Each is addressed by an entity
+# IRI (or the roll's one scope) and returns aggregated rows — GROUP BY with SAMPLE and MIN — so a
+# filter on a returned field (a stage, a year, a fame) would have to be a HAVING over the aggregate,
+# and the views' filters are on exactly those. More to the point, each answer is one cached read the
+# views share: the whole roll of ~7,700 causes is one QLever call a month, and every view of it —
+# by year, by stage, martyrs — reads that one cached answer. A pushed filter would key a separate
+# read per window, each a cold call to a shared public endpoint. The graph applies the filters.
 
 # ── A saint's card ───────────────────────────────────────────────────────────────────────────
 # One row per saint: GROUP BY with SAMPLE, because a saint with two recorded birthplaces (or two
@@ -50,6 +58,7 @@
     maxKeysPerCall: 25
     timeoutSeconds: 60
     userAgent: "EmbabelRealmBible/0.1 (https://github.com/embabel-worlds/realm-bible)"
+  pushdown: []
   cache: { kind: ttl, seconds: 2592000, negativeTtlSeconds: 604800 }
 
 # ── What a saint is patron of ────────────────────────────────────────────────────────────────
@@ -83,6 +92,7 @@
     maxKeysPerCall: 5
     timeoutSeconds: 60
     userAgent: "EmbabelRealmBible/0.1 (https://github.com/embabel-worlds/realm-bible)"
+  pushdown: []
   cache: { kind: ttl, seconds: 2592000, negativeTtlSeconds: 604800 }
 
 # The three saint producers cache for 30 days: a saint's card, patronage and country change on
@@ -166,6 +176,7 @@
     maxKeysPerCall: 1
     timeoutSeconds: 60
     userAgent: "EmbabelRealmBible/0.1 (https://github.com/embabel-worlds/realm-bible)"
+  pushdown: []
   cache: { kind: ttl, seconds: 2592000, negativeTtlSeconds: 604800 }
 
 # ── How many saints a country has ────────────────────────────────────────────────────────────
@@ -214,6 +225,7 @@
     maxKeysPerCall: 10
     timeoutSeconds: 90
     userAgent: "EmbabelRealmBible/0.1 (https://github.com/embabel-worlds/realm-bible)"
+  pushdown: []
   cache: { kind: ttl, seconds: 2592000, negativeTtlSeconds: 604800 }
 
 # ── Every cause: the whole roll of saints, blessed, venerable and servants of God ─────────────
@@ -368,6 +380,7 @@
     timeoutSeconds: 90
     maxRows: 15000
     userAgent: "EmbabelRealmBible/0.1 (https://github.com/embabel-worlds/realm-bible)"
+  pushdown: []
   cache: { kind: ttl, seconds: 2592000, negativeTtlSeconds: 604800 }
 
 # ── A saint's life, from Wikipedia ────────────────────────────────────────────────────────────
@@ -387,4 +400,5 @@
     extract: extract
     thumbnail: thumbnail.source
     pageUrl: content_urls.desktop.page
+  pushdown: []
   cache: { kind: ttl, seconds: 604800, negativeTtlSeconds: 86400 }

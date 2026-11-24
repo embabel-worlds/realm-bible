@@ -10,12 +10,15 @@
 # the stored `name` holds. OSIS (`Judg.3.21`) is the identity underneath.
 
 - name: ReadVerse
-  description: One verse by reference, in the King James Version by default or the World English Bible — with the people it mentions.
+  description: >-
+    One Bible verse by reference, in the King James or World English Bible. With the Theographic ids
+    of the people it mentions and its event. Only the one verse, matched exactly by reference (KJV
+    numbering); the five older translations are CompareTranslations.
   params:
     ref:
       type: string
       default: "John 3:16"
-      description: "The verse, e.g. `Judges 3:21`, `1 Kings 16:31`."
+      description: "The verse exactly as the stored reference writes it (KJV numbering), e.g. `Judges 3:21`, `1 Kings 16:31`."
     translation:
       type: string
       default: "kjv"
@@ -29,12 +32,15 @@
            v.event AS event
 
 - name: ReadPassage
-  description: A whole chapter, verse by verse, in the King James Version by default or the World English Bible.
+  description: >-
+    A whole Bible chapter, verse by verse, in the King James or World English Bible. One chapter
+    only, named exactly (`Judges 3`); KJV chapter numbering, and the 66 books only — the
+    deuterocanon is ReadDeuterocanonPassage.
   params:
     passage:
       type: string
       default: "Judges 3"
-      description: "The chapter, e.g. `Judges 3`, `Song of Solomon 2`."
+      description: "The chapter exactly as named, e.g. `Judges 3`, `Song of Solomon 2`."
     translation:
       type: string
       default: "kjv"
@@ -46,12 +52,15 @@
     ORDER BY verse
 
 - name: SearchVerses
-  description: Verses whose text contains a word or phrase, case-insensitively, in canonical order. Matches inside words — `goat` also finds `goats` and `scapegoat`.
+  description: >-
+    Bible verses containing a word or phrase, in canonical order. Partial and case-insensitive: it
+    matches inside words, so `goat` also finds `goats` and `scapegoat`. Searches one stored
+    translation (KJV or WEB), not the five fetched ones; at most `limit` verses.
   params:
     term:
       type: string
       default: "goat"
-      description: "The word or phrase to find."
+      description: "The word or phrase to find. A partial match, ignoring case: any verse whose text contains it, inside longer words too."
     translation:
       type: string
       default: "kjv"
@@ -59,7 +68,7 @@
     limit:
       type: int
       default: 100
-      description: "How many verses to return."
+      description: "At most this many verses, in canonical order."
   cypher: |
     MATCH (b:Book)<-[:IN]-(:Passage)<-[:IN]-(v:BibleVerse)
     WITH b, v, CASE $translation WHEN 'web' THEN v.web ELSE v.text END AS text
@@ -69,12 +78,15 @@
     LIMIT $limit
 
 - name: PassagesMentioning
-  description: The chapters that mention a word or phrase most often, ranked by how many of their verses contain it.
+  description: >-
+    Bible chapters ranked by how many of their verses contain a word or phrase. Partial and
+    case-insensitive, in one stored translation; each chapter lists at most ten matching verse
+    numbers, and at most `limit` chapters come back.
   params:
     term:
       type: string
       default: "goat"
-      description: "The word or phrase to find."
+      description: "The word or phrase to find. A partial match, ignoring case: a verse counts when its text contains it."
     translation:
       type: string
       default: "kjv"
@@ -82,7 +94,7 @@
     limit:
       type: int
       default: 25
-      description: "How many passages to return."
+      description: "At most this many chapters."
   cypher: |
     MATCH (b:Book)<-[:IN]-(p:Passage)<-[:IN]-(v:BibleVerse)
     WITH b, p, v, CASE $translation WHEN 'web' THEN v.web ELSE v.text END AS text
@@ -95,12 +107,16 @@
     LIMIT $limit
 
 - name: CompareTranslations
-  description: One verse side by side in all seven translations — the stored King James and World English, and five older ones fetched live. Young's Literal is New Testament only, so an Old Testament verse has no YLT row.
+  description: >-
+    One verse side by side in seven translations: KJV, WEB and five older ones. The King James and
+    World English are stored; the ASV, Basic English, Darby, Douay-Rheims and Young's Literal are
+    fetched live, one call each. Young's Literal is New Testament only, so an Old Testament verse
+    has no YLT row. One verse only.
   params:
     ref:
       type: string
       default: "Judges 3:21"
-      description: "The verse, e.g. `Judges 3:21`."
+      description: "The verse exactly as the stored reference writes it (KJV numbering), e.g. `Judges 3:21`."
   cypher: |
     MATCH (v:BibleVerse {name: $ref})
     OPTIONAL MATCH (v)-[:RENDERED]->(asv:AsvVerse)
@@ -121,7 +137,11 @@
     RETURN r.translation AS translation, r.text AS text
 
 - name: ReadVerseDouayRheims
-  description: One verse in the Douay-Rheims, the Catholic translation from the Vulgate, fetched live — under the stored reference, which is KJV numbering. bible-api maps the Psalms itself, so `Psalms 23:1` returns the Vulgate's Psalm 22, "The Lord ruleth me". For Tobit, Sirach and the other deuterocanonical books use ReadDeuterocanon.
+  description: >-
+    One verse in the Douay-Rheims, the Catholic translation from the Vulgate. Fetched live under the
+    stored reference, which is KJV numbering: bible-api maps the Psalms itself, so `Psalms 23:1`
+    returns the Vulgate's Psalm 22, "The Lord ruleth me". Not the deuterocanon — Tobit, Sirach and
+    the rest are ReadDeuterocanon. Required: empty returns nothing.
   params:
     ref:
       type: string
@@ -132,12 +152,15 @@
     RETURN v.name AS reference, trim(dra.text) AS text, 'Douay-Rheims' AS translation
 
 - name: PeopleNamed
-  description: Everyone in the Bible who bore a name, from Theographic. A name is not a person — there are 26 Zechariahs — so read displayTitle to tell them apart; most-mentioned first.
+  description: >-
+    Everyone in the Bible who bore a name, from Theographic, most-mentioned first. A name is not a
+    person — there are 26 Zechariahs — so read displayTitle to tell them apart. Matched on the whole
+    name, ignoring case; not part of a name.
   params:
     name:
       type: string
       default: "Jezebel"
-      description: "The name, matched case-insensitively."
+      description: "The whole name, matched ignoring case, e.g. `Jezebel`; not part of a name."
   cypher: |
     MATCH (:BibleNameQuery {name: $name})-[:NAMED]->(p:BiblePerson)
     RETURN p.personLookup AS id,
@@ -153,12 +176,15 @@
     ORDER BY verses DESC
 
 - name: VersesAboutPerson
-  description: Every verse that mentions a person, in canonical order — by name, so every bearer of the name is included and labelled.
+  description: >-
+    Every verse that mentions a person, by name, in canonical order. Every bearer of the name is
+    included and labelled, so a common name returns several people's verses; only verses Theographic
+    tags with the person, not every verse the name appears in.
   params:
     name:
       type: string
       default: "Jezebel"
-      description: "The name, matched case-insensitively."
+      description: "The whole name, matched ignoring case, e.g. `Jezebel`; not part of a name."
     translation:
       type: string
       default: "kjv"
@@ -173,12 +199,14 @@
     ORDER BY person, b.bookOrder, v.chapter, v.verse
 
 - name: PeopleInPassage
-  description: The people a chapter mentions, and in how many of its verses — the cast of a passage.
+  description: >-
+    The people a chapter mentions, and in how many of its verses. One chapter, named exactly; only
+    the people Theographic tags in its verses, most-mentioned first.
   params:
     passage:
       type: string
       default: "Judges 3"
-      description: "The chapter, e.g. `2 Kings 9`."
+      description: "The chapter exactly as named, e.g. `2 Kings 9`."
   cypher: |
     MATCH (:Passage {name: $passage})<-[:IN]-(v:BibleVerse)-[:MENTIONS]->(p:BiblePerson)
     RETURN p.displayTitle AS person,
@@ -188,12 +216,14 @@
     ORDER BY verses DESC, person
 
 - name: Parents
-  description: The father and mother of everyone who bore a name, where Theographic records them.
+  description: >-
+    Father and mother of everyone who bore a name, where Theographic records them. Every bearer
+    of the name; a parent Theographic does not record is empty, not unknown to Scripture.
   params:
     name:
       type: string
       default: "Solomon"
-      description: "The name, matched case-insensitively."
+      description: "The whole name, matched ignoring case, e.g. `Solomon`; not part of a name."
   cypher: |
     MATCH (:BibleNameQuery {name: $name})-[:NAMED]->(p:BiblePerson)
     OPTIONAL MATCH (p)-[:FATHER]->(f:BiblePerson)
@@ -203,7 +233,11 @@
            m.displayTitle AS mother
 
 - name: SearchPassages
-  description: The chapters that narrate or contain what the reader describes, in their own words — found by an agentic search over the World English Bible that reformulates, reads and judges each candidate, returned with each chapter's verses in both the King James and the World English Bible so either can be shown. Only chapters judged to fit come back, so fewer than the limit is normal.
+  description: >-
+    Bible chapters that tell what the reader describes, by agentic search. It searches the World
+    English Bible's chapters, reformulates, reads and judges each candidate, and returns each kept
+    chapter's verses in the King James and the World English Bible. Only chapters judged to fit come
+    back, so fewer than the limit is normal. Several model calls per question.
   params:
     query:
       type: string
@@ -255,7 +289,10 @@
 # join and the app says so rather than showing an empty strip.
 
 - name: TodaysHeadlines
-  description: Today's news stories, from realm-research's Brave news search — the stories Scripture Search finds passages for. Needs realm-research.
+  description: >-
+    Today's news stories for a topic, from realm-research's news search. At most `limit` stories
+    (the search returns ten at most); needs realm-research installed with its search key, and
+    answers nothing without it.
   params:
     topic:
       type: string
@@ -264,7 +301,7 @@
     limit:
       type: int
       default: 8
-      description: "How many stories (Brave returns at most 10)."
+      description: "At most this many stories (the search returns ten at most)."
   cypher: |
     MATCH (t:ResearchTopic {name: $topic})-[:HAS_NEWS]->(n:NewsItem)
     RETURN n.title AS headline,
@@ -274,7 +311,11 @@
     LIMIT $limit
 
 - name: PassagesForStory
-  description: The Bible chapters whose story or teaching speaks most directly to a news story — an agentic search over the World English Bible that keeps only chapters it judges to fit, with each chapter's verses in the King James and the World English Bible. Fewer than the limit, or none, is a real answer.
+  description: >-
+    Bible chapters whose story or teaching speaks to a news story, agentic search. It restates
+    the event in biblical terms, searches the World English Bible and keeps only chapters it judges
+    to fit, with each chapter's verses in the King James and World English. Fewer than the limit, or
+    none, is a real answer.
   params:
     story:
       type: string
@@ -314,7 +355,10 @@
 # every surface.
 
 - name: TribeOf
-  description: The tribe of Israel each bearer of a name descends from, through the father (rules/tribes.yml). No row means Theographic does not link that person's father chain to a son of Israel.
+  description: >-
+    The tribe of Israel each bearer of a name descends from, through the father. Derived by
+    rules/tribes.yml; no row means Theographic does not link that person's father chain to a son of
+    Israel, not that they had no tribe.
   params:
     name:
       type: string
@@ -325,14 +369,20 @@
     RETURN t.displayTitle AS person, t.tribe AS tribe
 
 - name: TribeCensus
-  description: How many people Theographic links to each tribe by descent (rules/tribes.yml) — a count of linked records, not a population.
+  description: >-
+    How many people Theographic links to each tribe by descent through the father. A count of linked
+    records, not a population: only people whose father chain Theographic records back to a son of
+    Israel.
   cypher: |
     MATCH (t:TribeMember)
     RETURN t.tribe AS tribe, count(*) AS people
     ORDER BY people DESC
 
 - name: ParallelTellings
-  description: Chapters in other books that share a cast with this one — parallel tellings and copied lists (rules/parallels.yml).
+  description: >-
+    Chapters in other books that share a cast with this one. Parallel tellings and copied lists
+    (rules/parallels.yml); only chapters sharing several Theographic-tagged people, so a parallel
+    told with different names is not found.
   params:
     passage:
       type: string
@@ -344,7 +394,9 @@
     ORDER BY sharedPeople DESC
 
 - name: TribalChapters
-  description: Chapters whose cast is mostly one tribe, strongest first (rules/tribal-chapters.yml, stacked on rules/tribes.yml).
+  description: >-
+    Chapters whose cast is mostly one tribe, strongest first. Derived by rules/tribal-chapters.yml,
+    stacked on rules/tribes.yml; only people whose tribe can be derived count toward the cast.
   params:
     tribe:
       type: string
@@ -356,12 +408,15 @@
     ORDER BY members DESC, passage
 
 - name: GreatestHouses
-  description: The fathers with the most descendants through the male line among Israel's descendants (rules/progenitors.yml), largest first.
+  description: >-
+    Fathers with the most descendants through the male line, largest first. Among Israel's
+    descendants as Theographic links them (rules/progenitors.yml); at most `limit` fathers, and only
+    descent Theographic records.
   params:
     limit:
       type: int
       default: 15
-      description: "How many fathers to return."
+      description: "At most this many fathers."
   cypher: |
     MATCH (p:Progenitor)
     RETURN p.displayTitle AS father, p.descendants AS descendants
@@ -369,7 +424,10 @@
     LIMIT $limit
 
 - name: GenerationFromAdam
-  description: How many generations each bearer of a name stands from Adam through the male line (rules/generations.yml). No row means Theographic does not link that person's father chain back to Adam.
+  description: >-
+    How many generations each bearer of a name stands from Adam, father to son. Derived by
+    rules/generations.yml; no row means Theographic does not link that person's father chain back to
+    Adam.
   params:
     name:
       type: string

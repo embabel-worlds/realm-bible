@@ -16,6 +16,10 @@
 #
 # Cache is `immutable`: a translation of a verse never changes, and the publisher's rate limit is
 # the scarce thing.
+#
+# `pushdown: []` on every one: each is addressed by one key (a verse, or a whole deuterocanonical
+# book) and the source takes no filter beside it — the answer is the one record, or the book's
+# verses entire. A WHERE on the text is the graph's, over at most one book.
 
 - name: asvVerse
   kind: remote
@@ -29,6 +33,7 @@
     text: text
     translation: translation_id
     translationName: translation_name
+  pushdown: []
   cache: { kind: immutable }
 
 - name: bbeVerse
@@ -43,6 +48,7 @@
     text: text
     translation: translation_id
     translationName: translation_name
+  pushdown: []
   cache: { kind: immutable }
 
 - name: darbyVerse
@@ -57,6 +63,7 @@
     text: text
     translation: translation_id
     translationName: translation_name
+  pushdown: []
   cache: { kind: immutable }
 
 - name: draVerse
@@ -71,6 +78,7 @@
     text: text
     translation: translation_id
     translationName: translation_name
+  pushdown: []
   cache: { kind: immutable }
 
 # bible-api carries Young's Literal Translation for the NEW TESTAMENT ONLY. An Old Testament
@@ -88,6 +96,7 @@
     text: text
     translation: translation_id
     translationName: translation_name
+  pushdown: []
   cache: { kind: immutable }
 
 # The deuterocanon in the Douay-Rheims, a whole book per call from getbible.net, keyed by
@@ -107,4 +116,5 @@
     chapter: chapter
     verse: verse
     text: text
+  pushdown: []
   cache: { kind: immutable }

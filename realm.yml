@@ -1,22 +1,28 @@
 name: realm-bible
 description: |
-  The Bible as a graph you can query. Every verse, chapter and book is stored,
-  with two texts on each verse: the King James Version, which is the default,
-  and the World English Bible, a modern public-domain translation. Both are
-  searchable. Five older translations (ASV, Basic English, Darby, Douay-Rheims,
+  Every verse of the Bible in the King James and World English Bible, with its people and older translations.
+  Every verse, chapter and book of the 66 is stored, with two texts on each verse: the King
+  James Version, which is the default, and the World English Bible, a modern public-domain
+  translation. Both are searchable. Five older translations (ASV, Basic English, Darby, Douay-Rheims,
   Young's Literal) are fetched live for any verse you want to compare.
 
-  The people come from Theographic Bible Metadata: 3,069 of them, joined to the
+  The people come from Theographic Bible Metadata: about 3,070 of them, joined to the
   verses that mention them and to their fathers and mothers. A name is not a
   person — there are 26 Zechariahs — so ask by name and expect every bearer.
 
+  Catholic and Anglican editions sit beside it: the General Roman Calendar, the Rosary, the
+  deuterocanon in the Douay-Rheims and the saints from Wikidata; the 1979 Book of Common Prayer's
+  Daily Office, collects, Psalter and the Articles of Religion.
+
   Keyless. Nothing to configure.
-version: 0.2.0
+version: 0.2.1
 # Experimental: it relies on engine features from October 2026 — finding a person by name, walking a
 # family tree in reverse and through list-valued keys, and DERIVE demands planned like queries. On an
 # older host those queries are refused. Querying the Rendering parent label (every translation at
 # once) awaits a further engine fix; the concrete translation labels work everywhere.
 # Its stored types are children of realm-scripture-vocabulary's, which must be installed first.
+requires:
+  scripture-vocabulary: "[0.3.0,1.0.0)"
 maturity: experimental
 url: https://github.com/embabel-worlds/realm-bible
 author: Rod Johnson

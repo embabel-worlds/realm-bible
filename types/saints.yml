@@ -10,7 +10,10 @@
 # (calendar ids), which CalendarSaint.saintId matches.
 
 - name: CalendarSaint
-  description: "A saint (or blessed, or Our Lady) honoured in the General Roman Calendar, with the Wikidata entity that is them. `saintId` is the calendar's id, as listed in a Celebration's `saints`."
+  description: >-
+    One saint (or blessed, or Our Lady) honoured in the General Roman Calendar, identified by
+    `saintId` — the calendar's own id, as a Celebration's `saints` lists it — with the Wikidata
+    entity that is them (`wd`). CARD fetches their Wikidata card.
   userAnchor: false
   properties:
     saintId:
@@ -19,8 +22,11 @@
     qid: "Wikidata QID, e.g. `Q181715`."
     wd: "Wikidata entity IRI — the key CARD fetches with."
     label: "Wikidata's English label, e.g. `Thérèse of Lisieux`."
-    matched: "`search` (Wikidata's entity search, checked) or `curated` (set by hand)."
-    canonization: "The calendar's level: saint, blessed — or empty for a feast of Our Lady or of an event."
+    matched:
+      values: ["search", "curated"]
+      description: "How the Wikidata entity was matched: `search` (Wikidata's entity search, then checked) or `curated` (set by hand)."
+    canonization:
+      description: "The calendar's level, lower case: `saint` or `blessed`; empty for a feast of Our Lady or of an event."
 
 - name: SaintQuery
   visibility: internal
@@ -35,28 +41,34 @@
 
 - name: SaintCard
   description: >-
-    What Wikidata records about a saint: dates, birth/death/burial places with coordinates and
-    countries, image, canonization status, religious order, feast day, and the English Wikipedia
-    article (LIFE fetches its summary). Fetched live; CC0. Dates are Wikidata's and may be traditional
-    or approximate for early saints.
+    One saint's card as Wikidata records it, identified by `wd`, the entity IRI: dates, birth, death
+    and burial places with coordinates and countries, image, canonization status, religious order,
+    feast day, and the English Wikipedia article (LIFE fetches its summary). Fetched live, CC0,
+    cached 30 days. Dates may be traditional or approximate for early saints.
   properties:
     wd:
       identity: true
       description: "Wikidata entity IRI. Identity."
-    wdLabel: "English label."
+    wdLabel:
+      description: "Wikidata's English label for the saint, e.g. `Thérèse of Lisieux`."
     wdDescription: "One-line English description."
-    birthDate: "Date of birth (P569), ISO timestamp — approximate for early saints."
-    deathDate: "Date of death (P570)."
+    birthDate:
+      description: "Date of birth (P569), ISO date-time in UTC as Wikidata stores it, e.g. `1873-01-02T00:00:00Z`; approximate for early saints."
+    deathDate:
+      description: "Date of death (P570), ISO date-time in UTC as Wikidata stores it; approximate for early saints. The traditional feast is often this day."
     birthPlace: "Place of birth (P19)."
     birthCoord: "Its coordinates, WKT `Point(lon lat)`."
-    birthCountry: "Its country (P17)."
+    birthCountry:
+      description: "The country (P17) of the place of birth, as Wikidata's English label."
     deathPlace: "Place of death (P20)."
     deathCoord: "Its coordinates, WKT `Point(lon lat)`."
-    deathCountry: "Its country."
+    deathCountry:
+      description: "The country (P17) of the place of death, as Wikidata's English label, e.g. `France`."
     burialPlace: "Place of burial (P119)."
     burialCoord: "Its coordinates, WKT `Point(lon lat)`."
     image: "Wikimedia Commons image (P18), a URL."
-    canonization: "Canonization status (P411), e.g. `Catholic saint`."
+    canonization:
+      description: "Canonization status (P411) as Wikidata labels it, e.g. `Catholic saint`, `blessed`, `Venerable`, `Servant of God`."
     religiousOrder: "Religious order (P611), e.g. `Order of Discalced Carmelites`."
     feastDay: "Feast day (P841) as Wikidata records it — the calendar's own date is on Celebration."
     article: "English Wikipedia article title, spaces as underscores, e.g. `Teresa_of_Ávila`."
@@ -76,7 +88,11 @@
       description: "The card for one entity — `MATCH (c:SaintCard {wd: $wd})`."
 
 - name: SaintPatronage
-  description: "Something a saint is patron of — a city, a country, a trade, a cause — as Wikidata records it on the patronised thing (P417). Buildings dedicated to the saint — churches, convents, chapels — are excluded."
+  description: >-
+    One thing a saint is patron of — a city, a country, a trade, a cause — identified by `patronKey`
+    (`<saint IRI>|<thing IRI>`), as Wikidata records it on the patronised thing (P417). Buildings
+    dedicated to the saint (churches, convents, chapels) are excluded; at most 400 per request.
+    Fetched live, cached 30 days.
   properties:
     patronKey:
       identity: true
@@ -94,7 +110,10 @@
       description: "What the saint is patron of: `(c:SaintCard)-[:PATRON_OF]->(p:SaintPatronage)`."
 
 - name: SaintLife
-  description: "The opening of the saint's English Wikipedia article — Wikipedia's own summary — fetched live, never stored. Text is CC BY-SA 4.0: show `pageUrl` with it."
+  description: >-
+    One saint's life in brief: the opening of their English Wikipedia article, identified by `key`,
+    the article title it was fetched by. Fetched live, never stored, cached a week. Text is CC BY-SA
+    4.0: show `pageUrl` with it.
   properties:
     key:
       identity: true
@@ -112,7 +131,9 @@
       description: "The saint's life in brief: `(c:SaintCard)-[:LIFE]->(l:SaintLife)`."
 
 - name: Country
-  description: "A country, by ISO 3166-1 alpha-2 code, with its Wikidata entity — the start of `SAINTS`."
+  description: >-
+    One country, identified by its ISO 3166-1 alpha-2 code `iso2` (`IE`), with its Wikidata entity —
+    where SAINTS and SAINT_COUNT start.
   userAnchor: false
   properties:
     iso2:
@@ -123,7 +144,18 @@
     name: "English name."
 
 - name: CountrySaint
-  description: "A saint, blessed, venerable or servant of God whose citizenship or birthplace Wikidata places in a country, fetched live (CC0)."
+  description: >-
+    One saint, blessed, venerable or servant of God whose citizenship or birthplace Wikidata places
+    in a country, identified by `memberKey` (`<country IRI>|<person IRI>`), with Catholic evidence
+    for their cause. At most the 600 most famous per country (by Wikipedia sitelinks);
+    CountrySaintCount counts them all. Fetched live, CC0, cached 30 days.
+  examples:
+    - q: "the most famous saints of Ireland"
+      cypher: |
+        MATCH (:Country {iso2: 'IE'})-[:SAINTS]->(s:CountrySaint)
+        RETURN s.wdLabel AS name, s.canonization AS status, s.fame AS fame
+        ORDER BY fame DESC
+        LIMIT 10
   properties:
     memberKey:
       identity: true
@@ -132,9 +164,12 @@
     wd: "The person's entity IRI — fetch the full card with `MATCH (c:SaintCard {wd: …})`."
     wdLabel: "English label."
     wdDescription: "One-line description."
-    canonization: "Canonization status, e.g. `Catholic saint`, `Blessed`, `Venerable`, `Servant of God`."
-    birthDate: "Date of birth."
-    deathDate: "Date of death."
+    canonization:
+      description: "The person's highest canonization status, as Wikidata labels it, e.g. `Catholic saint`, `blessed`, `Venerable`, `Servant of God`."
+    birthDate:
+      description: "Date of birth, ISO date-time in UTC as Wikidata stores it; empty when Wikidata has none."
+    deathDate:
+      description: "Date of death, ISO date-time in UTC as Wikidata stores it; empty when Wikidata has none."
     feastDay: "Feast day as Wikidata records it."
     article: "English Wikipedia article title, spaces as underscores."
     fame:
@@ -149,7 +184,10 @@
       description: "The saints and blessed of a country: `MATCH (:Country {iso2: 'IE'})-[:SAINTS]->(s:CountrySaint)`."
 
 - name: CountrySaintCount
-  description: "How many saints, blessed, venerable and servants of God a country has — citizenship or birthplace, Catholic evidence as for CountrySaint — counted on Wikidata, uncapped. Fetched live (CC0), cached 30 days."
+  description: >-
+    One country's count of saints, blessed, venerable and servants of God, identified by `countKey`
+    (`<country IRI>|count`) — citizenship or birthplace, Catholic evidence as for CountrySaint —
+    counted on Wikidata, uncapped. Fetched live (CC0), cached 30 days.
   properties:
     countKey:
       identity: true
@@ -157,7 +195,7 @@
     country: "The country's entity IRI."
     total:
       type: int
-      description: "Saints, blessed, venerable and servants of God together."
+      description: "Number of people (a count, no unit): saints, blessed, venerable and servants of God together."
     canonized:
       type: int
       description: "Those with a saint-level status (canonized saint, or a saint of the undivided Church)."
@@ -173,20 +211,28 @@
   visibility: internal
   userAnchor: false
   description: >-
-    The roll of saints, as a door onto every saint, blessed, venerable and servant of God at once.
-    One scope, 'all', which is the default — so a bare MATCH (r:SaintRoll) means everyone. It is
-    not stored and does not need to exist.
+    The roll of saints as a door with one key: `scope`, always 'all' — so a bare MATCH
+    (r:SaintRoll)-[:CAUSE]->(s:SaintCause) means every saint, blessed, venerable and servant of God
+    at once. It is not stored and does not need to exist.
   properties:
-    scope: { metadata: { identity: "true", default: "all" } }
+    scope:
+      metadata: { identity: "true", default: "all" }
+      description: "The roll's one key, always `all`: everyone on the roll."
 
 - name: SaintCause
   description: >-
-    One person on the roll of saints — a saint, blessed, venerable or servant of God, with
-    Catholic evidence as for CountrySaint — and how far their cause has gone: the date of each
-    stage Wikidata records, their birth and death, and whether they died a martyr. Everyone at
-    once, for questions over all of them: canonizations per year, the most recent martyr, who
-    lived longest. Fetched live (CC0), cached 30 days. Dates are what Wikidata records: about 1 in
-    9 saints has a canonization date, so a count by year counts what is dated, and says so.
+    One person on the roll of saints, identified by `causeKey` (`all|<person IRI>`) — a saint,
+    blessed, venerable or servant of God with Catholic evidence — and how far their cause has gone:
+    the date of each stage Wikidata records, birth and death, and whether they died a martyr.
+    Everyone at once (~7,700); fetched live, cached 30 days. About 1 in 9 saints has a canonization
+    date, so a count by year counts what is dated.
+  examples:
+    - q: "how many people were canonized each year since 2000"
+      cypher: |
+        MATCH (:SaintRoll)-[:CAUSE]->(s:SaintCause)
+        WHERE s.canonizationYear >= 2000
+        RETURN s.canonizationYear AS year, count(s) AS canonized
+        ORDER BY year
   properties:
     causeKey:
       identity: true
@@ -195,13 +241,22 @@
     wd: "The person's entity IRI — the full card is `MATCH (c:SaintCard {wd: …})`."
     name: "English label, e.g. `Maximilian Kolbe`."
     description: "Wikidata's one-line English description."
-    stage: "How far the cause has gone, in plain words: `saint`, `blessed`, `venerable`, `servant of God`, or `other`. Filter on this, not `status`."
-    status: "Wikidata's own label for the highest status, e.g. `Catholic saint`, `canonized saint`, `saint` (a saint of the undivided Church), `blessed`, `Venerable`."
-    kind: "`person`; `biblical figure` (Adam, Sarah — lifespans as Scripture gives them); `existence disputed` (legendary); or `group or other` (the Martyrs of Otranto as one entry). Questions about lifespans should keep to `person`."
-    servantOfGodDate: "When the cause opened and they were named a servant of God, ISO timestamp."
-    venerableDate: "When they were declared venerable (heroic virtue, or martyrdom accepted)."
-    beatificationDate: "When they were beatified."
-    canonizationDate: "When they were canonized."
+    stage:
+      values: ["saint", "blessed", "venerable", "servant of God", "other"]
+      description: "How far the cause has gone, exactly: `saint`, `blessed`, `venerable`, `servant of God` or `other`. Filter on this, not `status`."
+    status:
+      description: "Wikidata's own label for the highest status, e.g. `Catholic saint`, `canonized saint`, `saint` (of the undivided Church), `blessed`, `Venerable`; open-ended — filter on `stage`."
+    kind:
+      values: ["person", "biblical figure", "existence disputed", "group or other"]
+      description: "`person`, `biblical figure` (Adam, Sarah), `existence disputed` (legendary) or `group or other` (the Martyrs of Otranto). Lifespan questions keep to `person`."
+    servantOfGodDate:
+      description: "When the cause opened and they were named a servant of God: ISO date-time in UTC as Wikidata stores it; empty when undated."
+    venerableDate:
+      description: "When they were declared venerable (heroic virtue, or martyrdom accepted): ISO date-time in UTC; empty when undated."
+    beatificationDate:
+      description: "When they were beatified: ISO date-time in UTC, from the statement or the beatification event; empty when undated."
+    canonizationDate:
+      description: "When they were canonized: ISO date-time in UTC, from the statement or the canonization event; empty when undated."
     servantOfGodYear: { type: int, description: "Year of servantOfGodDate." }
     venerableYear: { type: int, description: "Year of venerableDate." }
     beatificationYear: { type: int, description: "Year of beatificationDate." }
@@ -224,7 +279,11 @@
       description: "Everyone on the roll: `MATCH (:SaintRoll)-[:CAUSE]->(s:SaintCause)`."
 
 - name: ScriptureSaint
-  description: "A saint who is also a person of Scripture: the Wikidata saint and the Theographic person who is them, matched by hand (Peter is `peter_2745`, Mary the mother of Jesus `mary_1938`). The bridge from the calendar's saints to the verses that name them."
+  description: >-
+    One saint who is also a person of Scripture, identified by `qid` (the Wikidata QID, `Q33923`):
+    the Wikidata saint and the Theographic person who is them, matched by hand (Peter is
+    `peter_2745`, Mary the mother of Jesus `mary_1938`). The bridge from the calendar's saints to
+    the verses that name them.
   userAnchor: false
   properties:
     qid:

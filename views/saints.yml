@@ -3,7 +3,11 @@
 # or Wikipedia on first use and caches for a week.
 
 - name: SaintsOfTheDay
-  description: The saints the calendar honours on a date, each with Wikidata's card — dates, birth, death and burial places with coordinates for a map, image, religious order, canonization — fetched live. Pair with TodayInTheChurch, which answers at once.
+  description: >-
+    The saints the calendar honours on a date, each with Wikidata's card. Dates, birth, death and
+    burial places with coordinates for a map, image, religious order, canonization — fetched live.
+    Only the General Roman Calendar's saints (2025–2030); a feast of the Lord or a weekday has none.
+    Pair with TodayInTheChurch, which answers at once.
   params:
     date:
       type: string
@@ -22,7 +26,11 @@
     ORDER BY c.rankOrder, saint
 
 - name: FindSaint
-  description: Find a saint by name among the General Roman Calendar's saints and the saints of Scripture — their Wikidata entity (for SaintLife and SaintPatronOf), canonization, and the calendar's id. Matches part of a name, with or without accents (`Therese`, `Thérèse`, `Francis`). A saint the universal calendar does not keep may be found through SaintsOfCountry.
+  description: >-
+    A saint by name among the General Roman Calendar's saints. Their Wikidata entity (for SaintLife
+    and SaintPatronOf), canonization, and the calendar's id. Matches part of a name, with or without
+    accents (`Therese`, `Thérèse`); at most ten. A saint the universal calendar does not keep is not
+    here — try SaintsOfCountry or SaintCauseStages.
   params:
     name:
       type: string
@@ -37,7 +45,10 @@
     LIMIT 10
 
 - name: SaintLife
-  description: One saint's life — Wikidata's card (places with coordinates, dates, image, order) and the opening of their Wikipedia article (CC BY-SA 4.0, shown with its link), fetched live — by Wikidata entity.
+  description: >-
+    One saint's life: Wikidata's card and the opening of their Wikipedia article. Places with
+    coordinates, dates, image, order, and Wikipedia's summary (CC BY-SA 4.0, shown with its link),
+    fetched live — by Wikidata entity only, not by name (FindSaint finds the entity).
   params:
     wd:
       type: string
@@ -54,7 +65,9 @@
            l.extract AS life, l.thumbnail AS thumbnail, l.pageUrl AS wikipedia
 
 - name: SaintPatronOf
-  description: What a saint is patron of — cities, countries, trades, causes — as Wikidata records it (churches dedicated to them excluded), fetched live.
+  description: >-
+    What a saint is patron of — cities, countries, trades, causes — from Wikidata. Fetched live;
+    churches and other buildings dedicated to them are excluded, and at most `limit` come back.
   params:
     wd:
       type: string
@@ -63,7 +76,7 @@
     limit:
       type: int
       default: 40
-      description: "How many to return."
+      description: "At most this many patronages."
   cypher: |
     MATCH (k:SaintCard {wd: CASE WHEN $wd STARTS WITH 'http' THEN $wd ELSE 'http://www.wikidata.org/entity/' + $wd END})-[:PATRON_OF]->(p:SaintPatronage)
     RETURN p.thingLabel AS patronOf, collect(DISTINCT p.kindLabel)[0..3] AS kind
@@ -71,7 +84,11 @@
     LIMIT $limit
 
 - name: SaintsOfCountry
-  description: The saints and blessed (and venerable, and servants of God) of a country — citizenship or birthplace — from Wikidata, fetched live, by ISO 3166-1 alpha-2 code so the app can start from the reader's locale. Saints first, then the blessed, the venerable and servants of God, each by fame (how many Wikipedias have an article on them).
+  description: >-
+    The saints, blessed, venerable and servants of God of one country. By citizenship or birthplace,
+    from Wikidata, fetched live, by ISO 3166-1 alpha-2 code. Saints first, then the blessed, the
+    venerable and servants of God, each by fame; only the 600 most famous are fetched, and at most
+    `limit` return.
   params:
     country:
       type: string
@@ -80,7 +97,7 @@
     limit:
       type: int
       default: 60
-      description: "How many to return."
+      description: "At most this many people."
   cypher: |
     MATCH (c:Country) WHERE c.iso2 = toUpper($country) OR toLower(c.name) = toLower($country)
     MATCH (c)-[:SAINTS]->(s:CountrySaint)
@@ -93,12 +110,15 @@
     LIMIT $limit
 
 - name: CountriesBySaints
-  description: Countries ranked by how many saints they have — saints, blessed, venerable and servants of God by citizenship or birthplace, and how many of those are canonized — counted on Wikidata, uncapped. The first run fetches every country (about four minutes, ten countries a call); after that it is cached for 30 days.
+  description: >-
+    Countries ranked by how many saints, blessed and venerable they have. By citizenship or
+    birthplace, with how many are canonized — counted on Wikidata, uncapped. The first run fetches
+    every country (about four minutes, ten countries a call); after that it is cached for 30 days.
   params:
     limit:
       type: int
       default: 30
-      description: "How many countries to return."
+      description: "At most this many countries."
   cypher: |
     MATCH (c:Country)-[:SAINT_COUNT]->(n:CountrySaintCount)
     RETURN c.name AS country, c.iso2 AS iso2, n.total AS saints, n.canonized AS canonized
@@ -106,7 +126,10 @@
     LIMIT $limit
 
 - name: SaintsInScripture
-  description: The saints who are also people of Scripture — the apostles, the Holy Family, the women at the tomb, Stephen, Timothy — with how many verses name them, the chapters that name them most, and their feasts in the calendar as month-day and name (`06-29 Saints Peter and Paul, Apostles`).
+  description: >-
+    The saints who are also people of Scripture, with the chapters that name them. The apostles, the
+    Holy Family, the women at the tomb, Stephen, Timothy — with how many verses name them and their
+    feasts in the calendar; only the saints matched by hand to a Theographic person.
   params:
     chapters:
       type: int
@@ -138,7 +161,11 @@
 # martyr. `includeKilled: false` keeps to the first two.
 
 - name: CausesByYear
-  description: How many people reached a stage of sainthood each year — canonized, beatified, declared venerable, or named a servant of God — as Wikidata dates it, with up to five names a year. Only dated stages count, and Wikidata dates a minority (about 1 in 9 canonizations), so a year's count is a floor, and the mass canonizations (2000, the Martyrs of China; 1988, Vietnam; 1984, Korea) dominate. People only, not groups.
+  description: >-
+    How many people reached a stage of sainthood each year, as Wikidata dates it. Canonized,
+    beatified, declared venerable, or named a servant of God, with up to five names a year. Only
+    dated stages count, and Wikidata dates a minority (about 1 in 9 canonizations), so a year's
+    count is a floor; people only, not groups.
   params:
     stage:
       type: string
@@ -151,7 +178,7 @@
     limit:
       type: int
       default: 50
-      description: "How many years to return, latest first."
+      description: "At most this many years, latest first."
   cypher: |
     MATCH (:SaintRoll)-[:CAUSE]->(s:SaintCause)
     WHERE s.kind = 'person'
@@ -169,7 +196,12 @@
     LIMIT $limit
 
 - name: Martyrs
-  description: Saints, blessed, venerable and servants of God who died as martyrs, most recent death first, with the evidence for each — Wikidata's record of martyrdom, its description, the General Roman Calendar's title, or (weakest, and labelled so) Wikidata's record that they were killed. Set `includeKilled` false for recorded martyrdom only. Filter by stage for canonized martyrs; `datedOnly` keeps to those whose stage Wikidata dates, which excludes the few Wikidata wrongly marks as saints (some beatified martyrs carry a `Catholic saint` status with no date). Only those whose year of death is known are listed; the counts are MartyrCount.
+  description: >-
+    Martyrs among saints, blessed, venerable and servants of God, latest first. With the
+    evidence for each — Wikidata's record of martyrdom, its description, the General Roman
+    Calendar's title, or (weakest, and labelled so) Wikidata's record that they were killed. Set
+    `includeKilled` false for recorded martyrdom only; `datedOnly` keeps to those whose stage
+    Wikidata dates. Only those whose year of death is known; the counts are MartyrCount.
   params:
     stage:
       type: string
@@ -186,7 +218,7 @@
     limit:
       type: int
       default: 25
-      description: "How many to return."
+      description: "At most this many people."
   cypher: |
     MATCH (cs:CalendarSaint)
     MATCH (:LiturgicalDay)<-[:ON]-(c:Celebration)
@@ -210,7 +242,11 @@
     LIMIT $limit
 
 - name: MartyrCount
-  description: "How many martyrs there are at each stage of sainthood — saint, blessed, venerable, servant of God — split by the evidence: recorded (Wikidata or the General Roman Calendar says martyr) and killed (Wikidata records only a killing, the weakest evidence). A martyr nothing records is not counted, so these are floors."
+  description: >-
+    How many martyrs there are at each stage of sainthood, by evidence. Saint, blessed, venerable,
+    servant of God, split into recorded (Wikidata or the calendar says martyr) and killed (only a
+    killing is recorded, the weakest evidence). A martyr nothing records is not counted, so these
+    are floors.
   cypher: |
     MATCH (cs:CalendarSaint)
     MATCH (:LiturgicalDay)<-[:ON]-(c:Celebration)
@@ -226,7 +262,11 @@
     ORDER BY recordedMartyrs DESC
 
 - name: SaintLifespans
-  description: Saints, blessed, venerable and servants of God by age at death — the longest-lived first, or the youngest first with `youngest`. By default only those whose birth and death are both known to the day, which is the answer to trust; set `exactOnly` false to add those known only by year, which brings in the legends of the first millennium (Ciarán of Saigir, 155 by Wikidata's years) and is one year high at most for the rest. People only — Adam's 930 years are Scripture's, not a lifespan.
+  description: >-
+    Saints, blessed, venerable and servants of God by age at death. Longest-lived first, or youngest
+    first with `youngest`. By default only those whose birth and death are both known to the day;
+    `exactOnly` false adds those known only by year, which brings in the legends of the first
+    millennium and may be one year high. People only — not Adam's 930 years.
   params:
     youngest:
       type: boolean
@@ -243,7 +283,7 @@
     limit:
       type: int
       default: 25
-      description: "How many to return."
+      description: "At most this many people."
   cypher: |
     MATCH (:SaintRoll)-[:CAUSE]->(s:SaintCause)
     WHERE s.kind = 'person' AND s.birthYear IS NOT NULL AND s.deathYear IS NOT NULL
@@ -259,16 +299,20 @@
     LIMIT $limit
 
 - name: SaintCauseStages
-  description: The stages of one person's cause, by name — when they were named a servant of God, declared venerable, beatified and canonized, as far as Wikidata dates them — with their birth, death, age at death and any martyrdom. A stage with no date may still have happened; Wikidata dates a minority.
+  description: >-
+    The dated stages of one person's cause for sainthood, by name. When they were named a servant of
+    God, declared venerable, beatified and canonized, as far as Wikidata dates them, with birth,
+    death, age and any martyrdom. A stage with no date may still have happened; at most `limit`
+    matches.
   params:
     name:
       type: string
       default: "Teresa"
-      description: "Part of the name, any case, e.g. `Kolbe`, `Teresa of Calcutta`."
+      description: "Part of the name, any case, e.g. `Kolbe`, `Teresa of Calcutta` — a partial match, so `Teresa` finds every Teresa."
     limit:
       type: int
       default: 10
-      description: "How many matches to return."
+      description: "At most this many matches."
   cypher: |
     MATCH (:SaintRoll)-[:CAUSE]->(s:SaintCause)
     WHERE toLower(s.name) CONTAINS toLower($name)
