@@ -83,6 +83,10 @@ def q(v):
 
 
 def write(name, header, records):
+    """Every file is named `prayer-book-…`, not `anglican-…`: the stored reference is seeded file by
+    file in name order, and an office's PSALM and LESSON edges, and an Article's PROVED_BY, are
+    written only when the Passage they point at is already there. `bible-02-passages.yml` must sort
+    first; `anglican-` sorts before it, and those edges were silently never made."""
     path = os.path.join(REF, name)
     with open(path, "w") as f:
         f.write(header.rstrip() + "\n\n")

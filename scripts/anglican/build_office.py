@@ -565,7 +565,7 @@ def build():
             d += dt.timedelta(1)
     assert not problems, problems[:20]
     for y in YEARS:
-        write(f"anglican-office-{y}.yml", f"""
+        write(f"prayer-book-office-{y}.yml", f"""
 # The Daily Office for {y}: Morning and Evening Prayer for each day — the day's place in the church
 # year, the psalms and lessons the Daily Office Lectionary appoints, the collect, and the canticles the
 # Prayer Book suggests. An office's psalms are each the PSALM chapter, its lessons LESSON chapters (a
@@ -603,7 +603,7 @@ def load_collect_days():
     import yaml
     from common import REF
     import os
-    for r in yaml.safe_load(open(os.path.join(REF, "anglican-collects.yml"))):
+    for r in yaml.safe_load(open(os.path.join(REF, "prayer-book-collects.yml"))):
         md = r["data"]["monthDay"]
         if r["data"]["kind"] == "holy day" and md:
             COLLECT_DAYS[r["data"]["key"]] = (int(md[:2]), int(md[3:]))
