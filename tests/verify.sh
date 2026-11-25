@@ -44,6 +44,45 @@ def post(path, body):
         return json.loads(out, strict=False)
     except ValueError:
         return {"error": "not JSON: " + out[:200]}
+# A figure is only this realm's figure when the engine says the answer is whole. A source that failed
+# or was capped, a hop cut short, a value a step could not work out: each leaves rows that still look
+# like an answer, and counting them reports drift that is not the realm's. short() reads the answer's
+# own verdict — `error`, `run`, `reason` and the codes `warnings` open with on a query; `status`,
+# `outcome` and the warning codes on a view — and is None when whole, else the line that stands in
+# for the figure: "REFUSED: <why>" or "PARTIAL <figure>: <the engine's reason>".
+SHORT_CODES = ("PARTIAL_RESULT", "PRODUCER_ERROR", "NEEDS_FILTER", "NEEDS_PRODUCER", "FILTER_REJECTED",
+               "UNPUSHED_FILTER", "AMBIGUOUS_LABEL", "INCOMPLETE_TRAVERSAL", "INCOMPLETE_RANKING",
+               "INCOMPLETE_AGGREGATE", "INCOMPLETE_INPUT", "MATERIALIZATION_FAILED", "REDUCTION_FAILED",
+               "UNPARSEABLE_ANSWER", "TERMS_UNAVAILABLE", "COMPUTE_FAILED", "PROPERTY_NOT_STORED",
+               "FOLLOW_CAPPED", "UNLINKED_CHILDREN", "RESOLUTION_DROPPED", "AGENTIC_DEGRADED", "SOURCE_UNANSWERED")
+SHORT_REASONS = ("UNBOUNDED", "PARTIAL_NOT_MATCHED", "UNPUSHED_FILTER", "DISCONNECTED",
+                 "INTERNAL_ERROR", "WRITE_IN_PROGRESS", "KILLED", "TOO_EXPENSIVE")
+SHORT_PUBLIC = ("PARTIAL", "REDUCTION_FAILED", "COMPUTE_FAILED", "PROPERTY_NOT_STORED", "AGENTIC_DEGRADED",
+                "RATE_LIMITED", "SOURCE_UNAVAILABLE", "SOURCE_REJECTED", "INVALID_FILTER", "UNPUSHED_FILTER",
+                "TOO_BROAD", "FETCH_CAPPED", "INDEX_UNAVAILABLE", "ARGUMENT_REFUSED")
+def short(d, figure=None):
+    tag = "PARTIAL" if figure is None else "PARTIAL %s" % (figure,)
+    if not isinstance(d, dict):
+        return "REFUSED: not an engine answer: " + str(d)[:160]
+    if "outcome" in d or "status" in d:
+        if d.get("status") != "SUCCEEDED":
+            e = d.get("error") or {}
+            e = (e.get("code", "") + " " + e.get("message", "")).strip() if isinstance(e, dict) else str(e)
+            return "REFUSED: %s %s" % (d.get("status"), e[:160])
+        ws = [w for w in d.get("warnings") or [] if isinstance(w, dict) and w.get("code") in SHORT_PUBLIC]
+        if d.get("outcome") not in ("OK", "EMPTY") or ws:
+            return "%s: %s" % (tag, (ws[0]["code"] + ": " + ws[0].get("message", "") if ws else "outcome %s" % d.get("outcome"))[:200])
+        return None
+    if d.get("error"):
+        return "REFUSED: " + str(d["error"])[:160]
+    if d.get("run"):
+        return "%s: the run had not finished (%s)" % (tag, d["run"])
+    ws = [w for w in d.get("warnings") or [] if isinstance(w, str) and w.split(":", 1)[0].strip() in SHORT_CODES]
+    if ws:
+        return "%s: %s" % (tag, ws[0][:200])
+    if d.get("reason") in SHORT_REASONS:
+        return "%s: reason %s" % (tag, d["reason"])
+    return None
 def kg_full(cypher, fresh=False):
     body = {"cypher": cypher}
     if fresh: body["ai"] = {"fresh": True}
@@ -53,10 +92,21 @@ def kg_full(cypher, fresh=False):
         r = post("/api/v1/admin/kg/execute", {"cypher": cypher})
     if r.get("error") or r.get("code"):
         raise SystemExit("  FAIL query REFUSED: %s\n    %s" % (str(r.get("error") or r.get("message") or r)[:400], cypher))
+    # A short count stops the battery as a refusal does: every check after it would read the same gap.
+    rows = r.get("rows") or []
+    s = short(r, rows[0]["n"] if len(rows) == 1 and "n" in rows[0] else "%d rows" % len(rows))
+    if s:
+        raise SystemExit("  FAIL query %s\n    %s" % (s, cypher))
     return r
 def kg(cypher): return kg_full(cypher).get("rows") or []
-def view(name, args=None):
-    return post("/api/v1/views/%s/invoke" % name, {"args": args or {}})
+def view(name, args=None, whole=True):
+    r = post("/api/v1/views/%s/invoke" % name, {"args": args or {}})
+    # Rows a view marks short are not its answer, so no check counts them. L1 asks with whole=False
+    # because it reports each view's verdict itself and goes on to the next.
+    s = whole and short(r, len(r.get("data") or []))
+    if s:
+        raise SystemExit("  FAIL view %s %s: %s" % (name, json.dumps(args or {}), s))
+    return r
 def check(what, want, got):
     global fail
     if want == got: print("  ok   %s = %s" % (what, got if len(str(got)) < 80 else str(got)[:77] + "..."))
@@ -82,12 +132,12 @@ for f in sorted(glob.glob(os.path.join(realm, "reference", "*.yml"))):
         if isinstance(rec, dict) and rec.get("type"): stored[rec["type"]] = stored.get(rec["type"], 0) + 1
 deadline = time.time() + 1800
 while True:
-    short = {t: (kg("MATCH (x:%s) RETURN count(x) AS n" % t) or [{"n": 0}])[0]["n"] for t in stored}
-    short = {t: "%d/%d" % (got, stored[t]) for t, got in short.items() if got != stored[t]}
-    if not short: break
+    missing = {t: (kg("MATCH (x:%s) RETURN count(x) AS n" % t) or [{"n": 0}])[0]["n"] for t in stored}
+    missing = {t: "%d/%d" % (got, stored[t]) for t, got in missing.items() if got != stored[t]}
+    if not missing: break
     if time.time() > deadline:
-        print("  FAIL the reference seed was still short after 30 minutes: %s" % short); fail = 1; break
-    print("  wait the reference seed is still writing: %s" % ", ".join("%s %s" % kv for kv in sorted(short.items())[:8]))
+        print("  FAIL the reference seed was still short after 30 minutes: %s" % missing); fail = 1; break
+    print("  wait the reference seed is still writing: %s" % ", ".join("%s %s" % kv for kv in sorted(missing.items())[:8]))
     time.sleep(30)
 
 print("== L1: every view answers by name ==")
@@ -97,10 +147,10 @@ OUTSIDE = {"SearchPassages": "needs the chapter documents and a model",
 for f in sorted(glob.glob(os.path.join(realm, "views", "*.yml"))):
     for v in yaml.safe_load(open(f)):
         n = v["name"]
-        r = view(n)
+        r = view(n, whole=False)
         rows = r.get("data") or []
-        if n in OUTSIDE and (r.get("status") != "SUCCEEDED" or not rows):
-            print("  note %-28s %s, %d rows — %s" % (n, r.get("status"), len(rows), OUTSIDE[n]))
+        if n in OUTSIDE and (r.get("status") != "SUCCEEDED" or not rows or short(r, len(rows))):
+            print("  note %-28s %s, %d rows — %s" % (n, short(r, len(rows)) or r.get("status"), len(rows), OUTSIDE[n]))
         elif r.get("status") != "SUCCEEDED":
             print("  FAIL %s: %s %s" % (n, r.get("status"), str(r.get("error") or r)[:600])); fail = 1
             if "VIEW_QUERY_INVALID" in json.dumps(r):
@@ -111,6 +161,8 @@ for f in sorted(glob.glob(os.path.join(realm, "views", "*.yml"))):
                     q = q.replace("$" + pn, json.dumps(spec.get("default")).replace('"', "'"))
                 d = post("/api/v1/admin/kg/execute", {"cypher": q})
                 print("       why: %s" % str(d.get("error") or d.get("message") or "the query ran directly: %d rows" % len(d.get("rows") or []))[:900])
+        elif short(r, len(rows)):
+            print("  FAIL %s: %s" % (n, short(r, len(rows)))); fail = 1
         elif not rows and n not in EMPTY_BY_DESIGN:
             print("  FAIL %s answered no rows on its defaults" % n); fail = 1
         else:

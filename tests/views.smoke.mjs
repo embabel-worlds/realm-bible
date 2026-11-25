@@ -100,6 +100,24 @@ const viewsDir = new URL('../views/', import.meta.url).pathname;
 const names = readdirSync(viewsDir).filter(f => f.endsWith('.yml')).sort()
   .flatMap(f => [...readFileSync(join(viewsDir, f), 'utf8').matchAll(/^- name:\s*(\S+)/gm)].map(m => m[1]));
 
+/*
+ * A view's rows are only its answer when the engine says they are whole. A public service that failed or
+ * capped its page, a model step that did not run: each leaves rows that still match a pattern, and a
+ * pass on them hides the gap. short() reads the envelope's own verdict — `status`, `outcome` and the
+ * warning codes that mean rows or values are missing — and is null when whole, else the problem to report.
+ */
+const SHORT_PUBLIC = new Set(['PARTIAL', 'REDUCTION_FAILED', 'COMPUTE_FAILED', 'PROPERTY_NOT_STORED',
+  'AGENTIC_DEGRADED', 'RATE_LIMITED', 'SOURCE_UNAVAILABLE', 'SOURCE_REJECTED', 'INVALID_FILTER',
+  'UNPUSHED_FILTER', 'TOO_BROAD', 'FETCH_CAPPED', 'INDEX_UNAVAILABLE', 'ARGUMENT_REFUSED']);
+function short(body, figure) {
+  if (body.status !== 'SUCCEEDED') return `REFUSED: ${body.status ?? ''} ${body.error?.code ?? ''} ${body.error?.message?.slice(0, 160) ?? ''}`;
+  const ws = (body.warnings ?? []).filter(w => SHORT_PUBLIC.has(w?.code));
+  if (!['OK', 'EMPTY'].includes(body.outcome) || ws.length) {
+    return `PARTIAL ${figure}: ${(ws.length ? `${ws[0].code}: ${ws[0].message ?? ''}` : `outcome ${body.outcome}`).slice(0, 200)}`;
+  }
+  return null;
+}
+
 let failures = 0;
 const report = (ok, line) => { if (!ok) failures++; console.log(`${ok ? 'PASS' : 'FAIL'}  ${line}`); };
 
@@ -110,7 +128,7 @@ for (const name of names) {
   const rows = body.data?.length ?? 0;
   const problem = http !== 200 || body.status !== 'SUCCEEDED'
     ? `${http} ${body.status ?? ''} ${body.error?.message?.slice(0, 160) ?? ''}`
-    : rows === 0 && !EMPTY_BY_DEFAULT.has(name) ? 'no rows with its defaults' : null;
+    : short(body, rows) ?? (rows === 0 && !EMPTY_BY_DEFAULT.has(name) ? 'no rows with its defaults' : null);
   report(!problem, `${name.padEnd(26)} ${String(rows).padStart(4)} rows ${String(ms).padStart(6)}ms${ms > SLOW_MS ? ' SLOW' : ''}${problem ? '  ' + problem : ''}`);
 }
 
@@ -123,8 +141,8 @@ for (const [name, args, pattern] of CASES) {
   const text = JSON.stringify(rows);
   const problem = http !== 200 || body.status !== 'SUCCEEDED'
     ? `${http} ${body.status ?? ''} ${body.error?.message?.slice(0, 160) ?? ''}`
-    : rows.length === 0 ? 'no rows'
-    : pattern && !pattern.test(text) ? `rows lack ${pattern}` : null;
+    : short(body, rows.length) ?? (rows.length === 0 ? 'no rows' : null)
+    ?? (pattern && !pattern.test(text) ? `rows lack ${pattern}` : null);
   report(!problem, `${name.padEnd(26)} ${JSON.stringify(args).slice(0, 60).padEnd(60)} ${String(ms).padStart(6)}ms${ms > SLOW_MS ? ' SLOW' : ''}${problem ? '  ' + problem : ''}`);
 }
 

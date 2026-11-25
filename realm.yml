@@ -15,7 +15,7 @@ description: |
   Daily Office, collects, Psalter and the Articles of Religion.
 
   Keyless. Nothing to configure.
-version: 0.3.0
+version: 0.3.1
 # Experimental: it relies on engine features from October 2026 — finding a person by name, walking a
 # family tree in reverse and through list-valued keys, and DERIVE demands planned like queries. On an
 # older host those queries are refused. Querying the Rendering parent label (every translation at
