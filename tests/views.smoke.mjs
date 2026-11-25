@@ -23,6 +23,7 @@
  */
 import { readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { short } from './lib/short.mjs';
 
 const base = process.env.APPLIANCE_URL ?? 'http://localhost:11043';
 const user = process.env.APPLIANCE_USER;
@@ -100,23 +101,9 @@ const viewsDir = new URL('../views/', import.meta.url).pathname;
 const names = readdirSync(viewsDir).filter(f => f.endsWith('.yml')).sort()
   .flatMap(f => [...readFileSync(join(viewsDir, f), 'utf8').matchAll(/^- name:\s*(\S+)/gm)].map(m => m[1]));
 
-/*
- * A view's rows are only its answer when the engine says they are whole. A public service that failed or
- * capped its page, a model step that did not run: each leaves rows that still match a pattern, and a
- * pass on them hides the gap. short() reads the envelope's own verdict — `status`, `outcome` and the
- * warning codes that mean rows or values are missing — and is null when whole, else the problem to report.
- */
-const SHORT_PUBLIC = new Set(['PARTIAL', 'REDUCTION_FAILED', 'COMPUTE_FAILED', 'PROPERTY_NOT_STORED',
-  'AGENTIC_DEGRADED', 'RATE_LIMITED', 'SOURCE_UNAVAILABLE', 'SOURCE_REJECTED', 'INVALID_FILTER',
-  'UNPUSHED_FILTER', 'TOO_BROAD', 'FETCH_CAPPED', 'INDEX_UNAVAILABLE', 'ARGUMENT_REFUSED']);
-function short(body, figure) {
-  if (body.status !== 'SUCCEEDED') return `REFUSED: ${body.status ?? ''} ${body.error?.code ?? ''} ${body.error?.message?.slice(0, 160) ?? ''}`;
-  const ws = (body.warnings ?? []).filter(w => SHORT_PUBLIC.has(w?.code));
-  if (!['OK', 'EMPTY'].includes(body.outcome) || ws.length) {
-    return `PARTIAL ${figure}: ${(ws.length ? `${ws[0].code}: ${ws[0].message ?? ''}` : `outcome ${body.outcome}`).slice(0, 200)}`;
-  }
-  return null;
-}
+/* A figure is only this realm's when the engine says the answer is whole: short() is the battery
+ * library's (tests/lib, pinned from embabel-worlds/realm-spec), null when whole, else the line that
+ * stands in for the figure, "REFUSED: <why>" or "PARTIAL <figure>: <the engine's reason>". */
 
 let failures = 0;
 const report = (ok, line) => { if (!ok) failures++; console.log(`${ok ? 'PASS' : 'FAIL'}  ${line}`); };

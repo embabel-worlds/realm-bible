@@ -24,7 +24,7 @@ AUTHCFG=$(mktemp); trap 'rm -f "$AUTHCFG"' EXIT
 if [ -n "${TOKEN:-}" ]; then printf 'header = "Authorization: Bearer %s"\n' "$TOKEN" > "$AUTHCFG"
 else printf 'user = "%s"\n' "${AUTH:?set AUTH (user:pass) or TOKEN}" > "$AUTHCFG"; fi
 APPLIANCE="${APPLIANCE:-http://127.0.0.1:11043}"
-APPLIANCE="$APPLIANCE" AUTHCFG="$AUTHCFG" python3 - "$(dirname "$0")/.." <<'PY'
+BATTERY_LIB="$(dirname "$0")/lib" APPLIANCE="$APPLIANCE" AUTHCFG="$AUTHCFG" python3 - "$(dirname "$0")/.." <<'PY'
 import csv, glob, io, json, os, re, subprocess, sys, urllib.request, zipfile, yaml
 base, auth, realm = os.environ["APPLIANCE"], os.environ["AUTHCFG"], sys.argv[1]
 THEOGRAPHIC = "https://raw.githubusercontent.com/robertrouse/theographic-bible-metadata/master/CSV/{}.csv"
@@ -44,45 +44,12 @@ def post(path, body):
         return json.loads(out, strict=False)
     except ValueError:
         return {"error": "not JSON: " + out[:200]}
-# A figure is only this realm's figure when the engine says the answer is whole. A source that failed
-# or was capped, a hop cut short, a value a step could not work out: each leaves rows that still look
-# like an answer, and counting them reports drift that is not the realm's. short() reads the answer's
-# own verdict — `error`, `run`, `reason` and the codes `warnings` open with on a query; `status`,
-# `outcome` and the warning codes on a view — and is None when whole, else the line that stands in
-# for the figure: "REFUSED: <why>" or "PARTIAL <figure>: <the engine's reason>".
-SHORT_CODES = ("PARTIAL_RESULT", "PRODUCER_ERROR", "NEEDS_FILTER", "NEEDS_PRODUCER", "FILTER_REJECTED",
-               "UNPUSHED_FILTER", "AMBIGUOUS_LABEL", "INCOMPLETE_TRAVERSAL", "INCOMPLETE_RANKING",
-               "INCOMPLETE_AGGREGATE", "INCOMPLETE_INPUT", "MATERIALIZATION_FAILED", "REDUCTION_FAILED",
-               "UNPARSEABLE_ANSWER", "TERMS_UNAVAILABLE", "COMPUTE_FAILED", "PROPERTY_NOT_STORED",
-               "FOLLOW_CAPPED", "UNLINKED_CHILDREN", "RESOLUTION_DROPPED", "AGENTIC_DEGRADED", "SOURCE_UNANSWERED")
-SHORT_REASONS = ("UNBOUNDED", "PARTIAL_NOT_MATCHED", "UNPUSHED_FILTER", "DISCONNECTED",
-                 "INTERNAL_ERROR", "WRITE_IN_PROGRESS", "KILLED", "TOO_EXPENSIVE")
-SHORT_PUBLIC = ("PARTIAL", "REDUCTION_FAILED", "COMPUTE_FAILED", "PROPERTY_NOT_STORED", "AGENTIC_DEGRADED",
-                "RATE_LIMITED", "SOURCE_UNAVAILABLE", "SOURCE_REJECTED", "INVALID_FILTER", "UNPUSHED_FILTER",
-                "TOO_BROAD", "FETCH_CAPPED", "INDEX_UNAVAILABLE", "ARGUMENT_REFUSED")
-def short(d, figure=None):
-    tag = "PARTIAL" if figure is None else "PARTIAL %s" % (figure,)
-    if not isinstance(d, dict):
-        return "REFUSED: not an engine answer: " + str(d)[:160]
-    if "outcome" in d or "status" in d:
-        if d.get("status") != "SUCCEEDED":
-            e = d.get("error") or {}
-            e = (e.get("code", "") + " " + e.get("message", "")).strip() if isinstance(e, dict) else str(e)
-            return "REFUSED: %s %s" % (d.get("status"), e[:160])
-        ws = [w for w in d.get("warnings") or [] if isinstance(w, dict) and w.get("code") in SHORT_PUBLIC]
-        if d.get("outcome") not in ("OK", "EMPTY") or ws:
-            return "%s: %s" % (tag, (ws[0]["code"] + ": " + ws[0].get("message", "") if ws else "outcome %s" % d.get("outcome"))[:200])
-        return None
-    if d.get("error"):
-        return "REFUSED: " + str(d["error"])[:160]
-    if d.get("run"):
-        return "%s: the run had not finished (%s)" % (tag, d["run"])
-    ws = [w for w in d.get("warnings") or [] if isinstance(w, str) and w.split(":", 1)[0].strip() in SHORT_CODES]
-    if ws:
-        return "%s: %s" % (tag, ws[0][:200])
-    if d.get("reason") in SHORT_REASONS:
-        return "%s: reason %s" % (tag, d["reason"])
-    return None
+# A figure is only this realm's when the engine says the answer is whole. short() is the battery
+# library's (tests/lib, pinned from embabel-worlds/realm-spec): None when whole, else the line that
+# stands in for the figure, "REFUSED: <why>" or "PARTIAL <figure>: <the engine's reason>".
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.environ["BATTERY_LIB"])
+from short import short  # noqa: E402
 def kg_full(cypher, fresh=False):
     body = {"cypher": cypher}
     if fresh: body["ai"] = {"fresh": True}
